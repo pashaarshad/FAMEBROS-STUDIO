@@ -1,36 +1,43 @@
 "use client";
 
-import Image from "next/image";
+import { useState, useRef } from "react";
 
 const heroCards = [
   {
     num: "01",
     label: "STRATEGY",
     sub: "That Builds",
-    img: "/imp-doc/uiux1.png", // We will style and overlay them beautifully
-    offset: "translate-y-8",
+    bgPosition: "15% 10%",
+    offset: "translate-y-6",
+    defaultZ: "z-10",
+    videoSrc: "", // Future video path (e.g. "/videos/strategy.mp4")
   },
   {
     num: "02",
     label: "CONTENT",
     sub: "That Connects",
-    img: "/imp-doc/uiux1.png",
-    hasPlay: true,
+    bgPosition: "50% 10%",
     offset: "-translate-y-8",
+    defaultZ: "z-30",
+    videoSrc: "", // Future video path (e.g. "/videos/content.mp4")
   },
   {
     num: "03",
     label: "INFLUENCE",
     sub: "That Converts",
-    img: "/imp-doc/uiux1.png",
-    offset: "translate-y-8",
+    bgPosition: "80% 10%",
+    offset: "translate-y-6",
+    defaultZ: "z-20",
+    videoSrc: "", // Future video path (e.g. "/videos/influence.mp4")
   },
   {
     num: "04",
     label: "GROWTH",
     sub: "That Lasts",
-    img: "/imp-doc/uiux1.png",
+    bgPosition: "95% 10%",
     offset: "-translate-y-4",
+    defaultZ: "z-10",
+    videoSrc: "", // Future video path (e.g. "/videos/growth.mp4")
   },
 ];
 
@@ -44,6 +51,25 @@ const trustLogos = [
 ];
 
 export default function Hero() {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const handleMouseEnter = (idx: number) => {
+    setHoveredIdx(idx);
+    const video = videoRefs.current[idx];
+    if (video && video.src) {
+      video.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = (idx: number) => {
+    setHoveredIdx(null);
+    const video = videoRefs.current[idx];
+    if (video && video.src) {
+      video.pause();
+    }
+  };
+
   return (
     <section className="relative min-h-screen bg-[#050505] pt-32 pb-16 overflow-hidden flex flex-col justify-between">
       {/* Background circular swirl graphic behind the cards */}
@@ -98,60 +124,88 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Side 4-Video stack matching layout of uiux1 */}
+        {/* Right Side 4-Video stack with dynamic hover active front-back switching */}
         <div className="relative flex justify-center lg:justify-end items-center">
           <div className="flex items-center gap-0 relative">
-            
-            {/* Card 1: Strategy */}
-            <div className="w-[120px] md:w-[135px] aspect-[9/16] rounded-2xl border border-white/10 overflow-hidden relative translate-y-6 z-10 bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg group">
-              <div className="absolute inset-0 bg-cover bg-center opacity-65 mix-blend-luminosity hover:mix-blend-normal transition-all" style={{ backgroundImage: "url('/imp-doc/uiux1.png')", backgroundPosition: "15% 10%" }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">01</span>
-                <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">STRATEGY</span>
-                <span className="text-[10px] text-[#A7A7A2]">That Builds</span>
-              </div>
-            </div>
+            {heroCards.map((card, idx) => {
+              const isHovered = hoveredIdx === idx;
+              const isAnyHovered = hoveredIdx !== null;
+              
+              // Calculate dynamic z-index
+              let zClass = card.defaultZ;
+              if (isHovered) {
+                zClass = "z-40";
+              } else if (isAnyHovered) {
+                zClass = "z-0";
+              }
 
-            {/* Card 2: Content (Overlaps Card 1 and 3) */}
-            <div className="w-[130px] md:w-[145px] aspect-[9/16] rounded-2xl border border-[#F59A57]/30 overflow-hidden relative -translate-y-8 -ml-6 z-30 bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-[0_0_30px_rgba(245,154,87,0.15)] group">
-              <div className="absolute inset-0 bg-cover bg-center opacity-70" style={{ backgroundImage: "url('/imp-doc/uiux1.png')", backgroundPosition: "50% 10%" }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="w-11 h-11 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white text-xs pl-0.5 group-hover:scale-110 transition-all backdrop-blur-sm shadow-md">
-                  ▶
+              // Calculate dynamic scale and styling
+              let styleClass = "border-white/10 opacity-70";
+              if (isHovered) {
+                styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_0_40px_rgba(245,154,87,0.25)]";
+              } else if (isAnyHovered) {
+                styleClass = "border-white/5 opacity-30 scale-95 blur-[0.5px]";
+              }
+
+              return (
+                <div
+                  key={card.num}
+                  onMouseEnter={() => handleMouseEnter(idx)}
+                  onMouseLeave={() => handleMouseLeave(idx)}
+                  className={`w-[120px] md:w-[135px] aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-6`}
+                >
+                  {/* Poster Image */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{ 
+                      backgroundImage: "url('/imp-doc/uiux1.png')", 
+                      backgroundPosition: card.bgPosition 
+                    }} 
+                  />
+
+                  {/* Future Video Integration */}
+                  {card.videoSrc && (
+                    <video
+                      ref={(el) => { videoRefs.current[idx] = el; }}
+                      src={card.videoSrc}
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100"
+                    />
+                  )}
+
+                  {/* Dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-15" />
+
+                  {/* Hover visual details - Play icon when hovered or default center icon */}
+                  {card.num === "02" && !isAnyHovered && (
+                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                      <div className="w-11 h-11 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white text-xs pl-0.5 backdrop-blur-sm shadow-md">
+                        ▶
+                      </div>
+                    </div>
+                  )}
+
+                  {isHovered && (
+                    <div className="absolute inset-0 flex items-center justify-center z-20 transition-all duration-300">
+                      <div className="w-12 h-12 rounded-full border border-white/80 bg-white/20 flex items-center justify-center text-white text-sm pl-0.5 backdrop-blur-md shadow-lg scale-110">
+                        ▶
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Bottom labels */}
+                  <div className="absolute bottom-4 left-4 right-4 z-20">
+                    <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">{card.num}</span>
+                    <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">{card.label}</span>
+                    <span className={`text-[10px] transition-colors duration-300 ${isHovered ? "text-[#F59A57]" : "text-[#A7A7A2]"}`}>
+                      {card.sub}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">02</span>
-                <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">CONTENT</span>
-                <span className="text-[10px] text-[#F59A57]">That Connects</span>
-              </div>
-            </div>
-
-            {/* Card 3: Influence */}
-            <div className="w-[120px] md:w-[135px] aspect-[9/16] rounded-2xl border border-white/10 overflow-hidden relative translate-y-6 -ml-6 z-20 bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg group">
-              <div className="absolute inset-0 bg-cover bg-center opacity-65 mix-blend-luminosity hover:mix-blend-normal transition-all" style={{ backgroundImage: "url('/imp-doc/uiux1.png')", backgroundPosition: "80% 10%" }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">03</span>
-                <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">INFLUENCE</span>
-                <span className="text-[10px] text-[#A7A7A2]">That Converts</span>
-              </div>
-            </div>
-
-            {/* Card 4: Growth */}
-            <div className="w-[120px] md:w-[135px] aspect-[9/16] rounded-2xl border border-[#249E98]/20 overflow-hidden relative -translate-y-4 -ml-6 z-10 bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg group">
-              <div className="absolute inset-0 bg-cover bg-center opacity-65 mix-blend-luminosity hover:mix-blend-normal transition-all" style={{ backgroundImage: "url('/imp-doc/uiux1.png')", backgroundPosition: "95% 10%" }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">04</span>
-                <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">GROWTH</span>
-                <span className="text-[10px] text-[#249E98]">That Lasts</span>
-              </div>
-            </div>
-
+              );
+            })}
           </div>
         </div>
 
