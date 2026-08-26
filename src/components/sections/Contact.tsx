@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Contact() {
+  const [mounted, setMounted] = useState(false);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -45,6 +46,13 @@ export default function Contact() {
     e.preventDefault();
     setStep(5); // Success state
   };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <section id="contact" className="bg-[#050505] py-20 border-t border-white/5 relative min-h-[400px]" />;
+  }
 
   return (
     <section id="contact" className="bg-[#050505] py-20 border-t border-white/5 relative">
