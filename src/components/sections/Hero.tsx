@@ -7,7 +7,7 @@ const heroCards = [
     num: "01",
     label: "STRATEGY",
     sub: "That Builds",
-    bgPosition: "15% 10%",
+    img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=300&q=80",
     offset: "translate-y-6",
     defaultZ: "z-10",
     videoSrc: "", 
@@ -16,7 +16,7 @@ const heroCards = [
     num: "02",
     label: "CONTENT",
     sub: "That Connects",
-    bgPosition: "50% 10%",
+    img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&q=80",
     offset: "-translate-y-8",
     defaultZ: "z-30",
     videoSrc: "", 
@@ -25,7 +25,7 @@ const heroCards = [
     num: "03",
     label: "INFLUENCE",
     sub: "That Converts",
-    bgPosition: "80% 10%",
+    img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=300&q=80",
     offset: "translate-y-6",
     defaultZ: "z-20",
     videoSrc: "", 
@@ -34,11 +34,20 @@ const heroCards = [
     num: "04",
     label: "GROWTH",
     sub: "That Lasts",
-    bgPosition: "95% 10%",
+    img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
     offset: "-translate-y-4",
     defaultZ: "z-10",
     videoSrc: "", 
   },
+];
+
+const trustLogos = [
+  "PRESENCE",
+  "THE BOMBAY BRONX",
+  "HK",
+  "MERAKI",
+  "F BAR",
+  "theka",
 ];
 
 export default function Hero() {
@@ -145,12 +154,11 @@ export default function Hero() {
                   onMouseLeave={() => handleMouseLeave(idx)}
                   className={`w-[120px] md:w-[135px] aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-6`}
                 >
-                  {/* Poster Image */}
+                  {/* Poster Image - Removed mockup screenshot */}
                   <div 
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ 
-                      backgroundImage: "url('/imp-doc/uiux1.png')", 
-                      backgroundPosition: card.bgPosition 
+                      backgroundImage: `url('${card.img}')`
                     }} 
                   />
 
