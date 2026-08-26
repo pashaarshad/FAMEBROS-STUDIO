@@ -29,9 +29,9 @@ export default function Navbar() {
           <Image
             src="/imp-doc/logo.png"
             alt="Famebros Studio"
-            width={130}
-            height={50}
-            className="h-10 w-auto object-contain"
+            width={180}
+            height={70}
+            className="h-14 md:h-16 w-auto object-contain"
             priority
           />
         </Link>
