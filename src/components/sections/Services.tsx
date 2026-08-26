@@ -1,104 +1,114 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+
 const services = [
   {
     num: "01",
-    icon: "📱",
-    title: "Social Media\nGrowth",
+    title: "Social Media Growth",
     desc: "Strategy, content, posting, ads & analytics that drive real growth.",
-    accent: "#F59A57",
-    imgBg: "from-[#1a120a] to-[#050505]",
+    img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80",
   },
   {
     num: "02",
-    icon: "🎬",
-    title: "Content\nProduction",
+    title: "Content Production",
     desc: "Photos, Reels, Brand films, product shoots & commercial video production.",
-    accent: "#F59A57",
-    imgBg: "from-[#0a0f1a] to-[#050505]",
+    img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=400&q=80",
   },
   {
     num: "03",
-    icon: "🤝",
-    title: "Influencer\nMarketing",
+    title: "Influencer Marketing",
     desc: "Right creators, real influence. Campaigns that connect & convert.",
-    accent: "#F59A57",
-    imgBg: "from-[#150a1a] to-[#050505]",
+    img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&q=80",
   },
   {
     num: "04",
-    icon: "⭐",
-    title: "Creator\nGrowth",
+    title: "Creator Growth",
     desc: "We build creators, personal brands, and open doors to collaborations.",
-    accent: "#F59A57",
-    imgBg: "from-[#0a1a15] to-[#050505]",
+    img: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&w=400&q=80",
   },
   {
     num: "05",
-    icon: "🎥",
-    title: "Reel\nShoots",
+    title: "Reel Shoots",
     desc: "One shoot day. A month of content. That's the FAMEBROS way.",
-    accent: "#F59A57",
-    imgBg: "from-[#1a1a0a] to-[#050505]",
+    img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&q=80",
   },
   {
     num: "06",
-    icon: "🎪",
-    title: "Event\nReel Shoots",
+    title: "Event Reel Shoots",
     desc: "Fast. Creative. Vertical. Capturing your events as they happen.",
-    accent: "#F59A57",
-    imgBg: "from-[#0a1520] to-[#050505]",
+    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#050505] py-20">
+    <section id="services" className="bg-[#050505] py-24 border-t border-white/5 relative">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        
+        {/* Header matching exact layout details */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-xl">
-            <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#A7A7A2] mb-4">
+            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#A7A7A2] mb-4">
               WHAT WE DO
             </p>
-            <h2 className="font-display font-extrabold text-white leading-[1.1]"
-              style={{ fontSize: "clamp(28px, 3.2vw, 44px)" }}>
+            <h2 className="font-display font-extrabold text-white leading-[1.1] text-[32px] md:text-[40px]">
               Everything your brand needs to grow<br />
-              in today&apos;s{" "}
-              <span className="text-[#249E98]">digital world.</span>
+              in today&apos;s <span className="text-[#249E98]">digital world.</span>
             </h2>
           </div>
-          <a href="#all-services"
-            className="inline-flex items-center gap-2 text-[13px] text-[#A7A7A2] hover:text-white transition-colors whitespace-nowrap">
-            Explore All Services &rarr;
-          </a>
+          <Link
+            href="#all-services"
+            className="inline-flex items-center gap-3 text-[13px] font-bold text-[#A7A7A2] hover:text-white transition-colors whitespace-nowrap"
+          >
+            Explore All Services
+            <span className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[#A7A7A2] hover:border-white text-xs">
+              →
+            </span>
+          </Link>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        {/* Services Grid matching media_1787770160810.png exactly */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
           {services.map((svc) => (
-            <div key={svc.num}
-              className={`relative rounded-2xl border border-white/10 overflow-hidden group cursor-pointer hover:-translate-y-1 hover:border-[#F59A57]/40 transition-all bg-gradient-to-b ${svc.imgBg}`}
-              style={{ minHeight: "240px" }}>
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div 
+              key={svc.num}
+              className="rounded-2xl border border-white/10 overflow-hidden bg-[#111416]/40 hover:border-[#F59A57]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              style={{ minHeight: "380px" }}
+            >
+              {/* Image Block (Top Half) */}
+              <div className="h-[170px] w-full relative overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11]">
+                <img 
+                  src={svc.img} 
+                  alt={svc.title}
+                  className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ease-out" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111416]/40 via-transparent to-transparent" />
+              </div>
 
-              <div className="relative z-10 p-4 h-full flex flex-col justify-between" style={{ minHeight: "240px" }}>
+              {/* Text Block (Bottom Half) */}
+              <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="font-mono-custom text-[9px] tracking-[0.1em] text-[#A7A7A2]">{svc.num}</span>
-                  <div className="text-2xl mt-2 mb-3">{svc.icon}</div>
-                  <h3 className="font-display font-bold text-[#F59A57] text-[14px] leading-tight mb-2 whitespace-pre-line">
+                  <h3 className="font-display font-extrabold text-[#F59A57] text-[15px] leading-tight mb-2">
                     {svc.title}
                   </h3>
                   <p className="text-[#A7A7A2] text-[11px] leading-relaxed">
                     {svc.desc}
                   </p>
                 </div>
-                <div className="mt-4 w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-white text-[11px] group-hover:border-[#F59A57] group-hover:text-[#F59A57] group-hover:translate-x-0.5 transition-all">
-                  →
+                
+                <div className="flex justify-end pt-4">
+                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white text-xs group-hover:border-[#F59A57] group-hover:text-[#F59A57] group-hover:translate-x-0.5 transition-all">
+                    →
+                  </div>
                 </div>
               </div>
+
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
