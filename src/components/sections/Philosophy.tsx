@@ -77,10 +77,26 @@ const row2Nodes = [
 export default function Philosophy() {
   return (
     <section className="bg-[#050505] py-24 border-t border-white/5 relative overflow-hidden">
+      {/* Self-contained CSS stylesheet for dashed flowing arrows */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes flowDash {
+          from {
+            stroke-dashoffset: 0;
+          }
+          to {
+            stroke-dashoffset: -20;
+          }
+        }
+        .flow-arrow-path {
+          stroke-dasharray: 6 4;
+          animation: flowDash 1.2s linear infinite;
+        }
+      `}} />
+
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_2.15fr] gap-12 lg:gap-16 items-center">
 
-          {/* Left Column (Restored to original prominent alignment/text sizes) */}
+          {/* Left Column */}
           <div className="flex flex-col justify-center">
             <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#F59A57] mb-5">
               OUR PHILOSOPHY
@@ -105,40 +121,40 @@ export default function Philosophy() {
             </Link>
           </div>
 
-          {/* Right Column – Double Row Growth Flow with interconnecting vector arrows */}
+          {/* Right Column – Double Row Growth Flow with animated train dash vectors */}
           <div className="relative p-6">
             
             {/* Connection SVG Line Canvas */}
             <div className="absolute inset-0 pointer-events-none hidden md:block z-0">
-              <svg className="w-full h-full animate-pulse" viewBox="0 0 700 320" fill="none">
+              <svg className="w-full h-full" viewBox="0 0 700 320" fill="none">
                 {/* --- Row 1 Horizontal Connections --- */}
                 {/* Vis -> Fol */}
-                <path d="M 125 70 L 165 70" stroke="#F59A57" strokeWidth="1.2" strokeDasharray="3 3" />
+                <path d="M 125 70 L 165 70" stroke="#F59A57" strokeWidth="1.5" className="flow-arrow-path" />
                 <path d="M 165 70 L 159 66 M 165 70 L 159 74" stroke="#F59A57" strokeWidth="1.2" />
 
                 {/* Fol -> Trust */}
-                <path d="M 285 70 L 325 70" stroke="#F59A57" strokeWidth="1.2" strokeDasharray="3 3" />
+                <path d="M 285 70 L 325 70" stroke="#F59A57" strokeWidth="1.5" className="flow-arrow-path" />
                 <path d="M 325 70 L 319 66 M 325 70 L 319 74" stroke="#F59A57" strokeWidth="1.2" />
 
                 {/* Trust -> Comm */}
-                <path d="M 445 70 L 485 70" stroke="#F59A57" strokeWidth="1.2" strokeDasharray="3 3" />
+                <path d="M 445 70 L 485 70" stroke="#F59A57" strokeWidth="1.5" className="flow-arrow-path" />
                 <path d="M 485 70 L 479 66 M 485 70 L 479 74" stroke="#F59A57" strokeWidth="1.2" />
 
                 {/* --- Loop/Sweep Connection from Row 1 End to Row 2 Start --- */}
-                <path d="M 605 70 C 685 70, 685 160, 350 160 C 15 160, 15 250, 65 250" stroke="#F59A57" strokeWidth="1.5" strokeDasharray="4 4" />
+                <path d="M 605 70 C 685 70, 685 160, 350 160 C 15 160, 15 250, 65 250" stroke="#F59A57" strokeWidth="1.8" className="flow-arrow-path" />
                 <path d="M 65 250 L 59 246 M 65 250 L 59 254" stroke="#F59A57" strokeWidth="1.5" />
 
                 {/* --- Row 2 Horizontal Connections --- */}
                 {/* Auth -> Comm */}
-                <path d="M 125 250 L 165 250" stroke="#F59A57" strokeWidth="1.2" strokeDasharray="3 3" />
+                <path d="M 125 250 L 165 250" stroke="#F59A57" strokeWidth="1.5" className="flow-arrow-path" />
                 <path d="M 165 250 L 159 246 M 165 250 L 159 254" stroke="#F59A57" strokeWidth="1.2" />
 
                 {/* Comm -> BrandVal */}
-                <path d="M 285 250 L 325 250" stroke="#F59A57" strokeWidth="1.2" strokeDasharray="3 3" />
+                <path d="M 285 250 L 325 250" stroke="#F59A57" strokeWidth="1.5" className="flow-arrow-path" />
                 <path d="M 325 250 L 319 246 M 325 250 L 319 254" stroke="#F59A57" strokeWidth="1.2" />
 
                 {/* BrandVal -> Business Growth */}
-                <path d="M 445 250 L 485 250" stroke="#F59A57" strokeWidth="1.2" strokeDasharray="3 3" />
+                <path d="M 445 250 L 485 250" stroke="#F59A57" strokeWidth="1.5" className="flow-arrow-path" />
                 <path d="M 485 250 L 479 246 M 485 250 L 479 254" stroke="#F59A57" strokeWidth="1.2" />
               </svg>
             </div>
@@ -153,7 +169,7 @@ export default function Philosophy() {
                     key={idx}
                     className="w-full md:w-[120px] h-[120px] rounded-xl border border-[#F59A57]/20 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(245,154,87,0.04)] hover:border-[#F59A57]/60 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner">
+                    <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner animate-pulse">
                       {node.icon}
                     </div>
                     <span className="font-sans font-bold text-[11px] text-white text-center tracking-wide leading-tight">
@@ -170,7 +186,7 @@ export default function Philosophy() {
                     key={idx}
                     className="w-full md:w-[120px] h-[120px] rounded-xl border border-[#249E98]/10 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(36,158,152,0.03)] hover:border-[#249E98]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner">
+                    <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner animate-pulse">
                       {node.icon}
                     </div>
                     <span className="font-sans font-bold text-[11px] text-white text-center tracking-wide leading-tight">
