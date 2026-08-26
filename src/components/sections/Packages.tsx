@@ -25,13 +25,42 @@ export default function Packages() {
               Let&apos;s Discuss Your Brand &rarr;
             </a>
 
-            {/* Visual camera overlay at the bottom left */}
-            <div className="mt-12 opacity-40 hover:opacity-75 transition-opacity max-w-[280px] hidden lg:block">
-              {/* Representing a premium DSLR camera placeholder visually */}
-              <div className="relative w-full aspect-video bg-gradient-to-tr from-[#111416] to-[#1C1C21] rounded-2xl border border-white/10 p-6 flex flex-col justify-between">
-                <span className="font-mono-custom text-[9px] tracking-widest text-[#249E98]">EQUIPMENT & CREATIVE</span>
-                <span className="text-white text-xs font-semibold">Premium Camera Shoot Included</span>
+            {/* Visual camera overlay at the bottom left with glow and shining line */}
+            <div className="mt-10 max-w-[320px] hidden lg:block relative select-none pointer-events-none">
+              {/* Background orange radial glow */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,154,87,0.22),transparent_70%)] z-0 blur-xl" />
+              
+              {/* Glowing sweeping light path behind the camera */}
+              <div className="absolute left-[-20%] bottom-[-10%] w-[140%] h-[120%] z-0 pointer-events-none">
+                <svg className="w-full h-full animate-pulse" viewBox="0 0 200 200" fill="none" style={{ animationDuration: '3s' }}>
+                  <path 
+                    d="M -10 170 C 50 140, 110 110, 210 120" 
+                    stroke="url(#orangeLineGradient)" 
+                    strokeWidth="3.5" 
+                    className="opacity-60 blur-[2px]"
+                  />
+                  <path 
+                    d="M -10 170 C 50 140, 110 110, 210 120" 
+                    stroke="#F59A57" 
+                    strokeWidth="0.8" 
+                    className="opacity-80"
+                  />
+                  <defs>
+                    <linearGradient id="orangeLineGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#F59A57" stopOpacity="0" />
+                      <stop offset="40%" stopColor="#F59A57" stopOpacity="0.8" />
+                      <stop offset="70%" stopColor="#E9BF61" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="#E9BF61" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
+
+              <img 
+                src="/crama-new.png" 
+                alt="Professional Studio Camera" 
+                className="w-full h-auto object-contain relative z-10 opacity-95 filter drop-shadow-[0_0_35px_rgba(245,154,87,0.2)]"
+              />
             </div>
           </div>
 
