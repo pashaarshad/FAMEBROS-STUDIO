@@ -147,12 +147,16 @@ export default function Hero() {
                 styleClass = "border-white/5 opacity-30 scale-95 blur-[0.5px]";
               }
 
+              const cardWidth = card.num === "02" 
+                ? "w-[135px] md:w-[165px]" 
+                : "w-[125px] md:w-[150px]";
+
               return (
                 <div
                   key={card.num}
                   onMouseEnter={() => handleMouseEnter(idx)}
                   onMouseLeave={() => handleMouseLeave(idx)}
-                  className={`w-[120px] md:w-[135px] aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-6`}
+                  className={`${cardWidth} aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-8`}
                 >
                   {/* Poster Image - Removed mockup screenshot */}
                   <div 
