@@ -69,37 +69,37 @@ export default function Services() {
           </Link>
         </div>
 
-        {/* Services Grid matching media_1787770160810.png exactly */}
+        {/* Services Grid matching media_1787770160810.png exactly, height decreased slightly for snug look */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
           {services.map((svc) => (
             <div 
               key={svc.num}
-              className="rounded-2xl border border-white/10 overflow-hidden bg-[#111416]/40 hover:border-[#F59A57]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-              style={{ minHeight: "380px" }}
+              className="rounded-2xl border border-white/10 overflow-hidden bg-[#111416]/40 hover:border-[#F59A57]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              style={{ minHeight: "330px" }}
             >
-              {/* Image Block (Top Half) */}
-              <div className="h-[170px] w-full relative overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11]">
+              {/* Image Block (Top Half) - Removed grayscale, always colorful */}
+              <div className="h-[150px] w-full relative overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11]">
                 <img 
                   src={svc.img} 
                   alt={svc.title}
-                  className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ease-out" 
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-500 ease-out" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111416]/40 via-transparent to-transparent" />
               </div>
 
               {/* Text Block (Bottom Half) */}
-              <div className="p-5 flex-1 flex flex-col justify-between">
+              <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-display font-extrabold text-[#F59A57] text-[15px] leading-tight mb-2">
+                  <h3 className="font-display font-extrabold text-[#F59A57] text-[14px] leading-tight mb-2">
                     {svc.title}
                   </h3>
-                  <p className="text-[#A7A7A2] text-[11px] leading-relaxed">
+                  <p className="text-[#A7A7A2] text-[10.5px] leading-relaxed">
                     {svc.desc}
                   </p>
                 </div>
                 
-                <div className="flex justify-end pt-4">
-                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white text-xs group-hover:border-[#F59A57] group-hover:text-[#F59A57] group-hover:translate-x-0.5 transition-all">
+                <div className="flex justify-end pt-3">
+                  <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-white text-xs group-hover:border-[#F59A57] group-hover:text-[#F59A57] group-hover:translate-x-0.5 transition-all">
                     →
                   </div>
                 </div>

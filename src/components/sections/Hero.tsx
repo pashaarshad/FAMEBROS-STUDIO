@@ -214,7 +214,7 @@ export default function Hero() {
             <div className="h-[1px] bg-white/10 flex-grow" />
           </div>
           
-          <div className="flex flex-wrap items-center justify-between gap-6 md:gap-12 opacity-50 hover:opacity-85 transition-opacity duration-300">
+          <div className="flex flex-wrap items-center justify-between gap-6 md:gap-12 opacity-90 transition-opacity duration-300">
             {/* Presence Wellness */}
             <span className="font-serif text-[18px] tracking-[0.15em] font-light text-white italic">
               PRESENCE
