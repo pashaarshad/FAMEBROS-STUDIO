@@ -10,7 +10,7 @@ const heroCards = [
     img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=300&q=80",
     offset: "translate-y-6",
     defaultZ: "z-10",
-    videoSrc: "", 
+    videoSrc: "/vedios/influencer shoot/Video-11217.mp4", 
   },
   {
     num: "02",
@@ -19,7 +19,7 @@ const heroCards = [
     img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&q=80",
     offset: "-translate-y-8",
     defaultZ: "z-30",
-    videoSrc: "", 
+    videoSrc: "/vedios/influencer shoot/Video-15470.mp4", 
   },
   {
     num: "03",
@@ -28,7 +28,7 @@ const heroCards = [
     img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=300&q=80",
     offset: "translate-y-6",
     defaultZ: "z-20",
-    videoSrc: "", 
+    videoSrc: "/vedios/influencer shoot/Video-42780.mp4", 
   },
   {
     num: "04",
@@ -37,7 +37,7 @@ const heroCards = [
     img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
     offset: "-translate-y-4",
     defaultZ: "z-10",
-    videoSrc: "", 
+    videoSrc: "/vedios/influencer shoot/Video-49284.mp4", 
   },
 ];
 
@@ -52,22 +52,65 @@ const trustLogos = [
 
 export default function Hero() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleMouseEnter = (idx: number) => {
+    if (activeVideoIdx === idx) return; // Ignore hover actions on active audio video
     setHoveredIdx(idx);
     const video = videoRefs.current[idx];
-    if (video && video.src) {
+    if (video) {
       video.play().catch(() => {});
     }
   };
 
   const handleMouseLeave = (idx: number) => {
+    if (activeVideoIdx === idx) return; // Ignore hover actions on active audio video
     setHoveredIdx(null);
     const video = videoRefs.current[idx];
-    if (video && video.src) {
+    if (video) {
       video.pause();
     }
+  };
+
+  const handleCardClick = (idx: number) => {
+    if (activeVideoIdx === idx) {
+      // Pause and reset active card on click again
+      const video = videoRefs.current[idx];
+      if (video) {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          video.muted = true;
+          setActiveVideoIdx(null);
+          setHoveredIdx(null);
+        }
+      }
+      return;
+    }
+
+    // Pause previous active card
+    if (activeVideoIdx !== null) {
+      const prevVideo = videoRefs.current[activeVideoIdx];
+      if (prevVideo) {
+        prevVideo.pause();
+        prevVideo.muted = true;
+      }
+    }
+
+    // Set new active video card
+    setActiveVideoIdx(idx);
+    setHoveredIdx(idx);
+
+    // Unmute and play the clicked video
+    setTimeout(() => {
+      const video = videoRefs.current[idx];
+      if (video) {
+        video.muted = false;
+        video.play().catch(() => {});
+      }
+    }, 50);
   };
 
   return (
@@ -130,10 +173,11 @@ export default function Hero() {
             {heroCards.map((card, idx) => {
               const isHovered = hoveredIdx === idx;
               const isAnyHovered = hoveredIdx !== null;
+              const isActive = activeVideoIdx === idx;
               
               // Calculate dynamic z-index
               let zClass = card.defaultZ;
-              if (isHovered) {
+              if (isHovered || isActive) {
                 zClass = "z-40";
               } else if (isAnyHovered) {
                 zClass = "z-0";
@@ -141,7 +185,9 @@ export default function Hero() {
 
               // Calculate dynamic scale and styling
               let styleClass = "border-white/10 opacity-70";
-              if (isHovered) {
+              if (isActive) {
+                styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_0_40px_rgba(245,154,87,0.3)]";
+              } else if (isHovered) {
                 styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_0_40px_rgba(245,154,87,0.25)]";
               } else if (isAnyHovered) {
                 styleClass = "border-white/5 opacity-30 scale-95 blur-[0.5px]";
@@ -154,13 +200,14 @@ export default function Hero() {
               return (
                 <div
                   key={card.num}
+                  onClick={() => handleCardClick(idx)}
                   onMouseEnter={() => handleMouseEnter(idx)}
                   onMouseLeave={() => handleMouseLeave(idx)}
                   className={`${cardWidth} aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-8`}
                 >
-                  {/* Poster Image - Removed mockup screenshot */}
+                  {/* Poster Image - Removed mockup screenshot, hidden on active play */}
                   <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-out ${isActive ? "opacity-0 pointer-events-none" : "opacity-100 group-hover:scale-105"}`}
                     style={{ 
                       backgroundImage: `url('${card.img}')`
                     }} 
@@ -171,18 +218,19 @@ export default function Hero() {
                     <video
                       ref={(el) => { videoRefs.current[idx] = el; }}
                       src={card.videoSrc}
-                      loop
-                      muted
+                      loop={!isActive}
+                      muted={!isActive}
+                      controls={isActive}
                       playsInline
-                      className="absolute inset-0 w-full h-full object-cover z-10 opacity-0 transition-opacity duration-300 pointer-events-none group-hover:opacity-100"
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isActive ? "z-20 opacity-100" : "z-10 opacity-0 group-hover:opacity-100 pointer-events-none"}`}
                     />
                   )}
 
-                  {/* Dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-15" />
+                  {/* Dark gradient overlay - hidden when active to not block video controls */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-15 opacity-100"}`} />
 
                   {/* Hover visual details - Play icon when hovered or default center icon */}
-                  {card.num === "02" && !isAnyHovered && (
+                  {card.num === "02" && !isAnyHovered && !isActive && (
                     <div className="absolute inset-0 flex items-center justify-center z-20">
                       <div className="w-11 h-11 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white text-xs pl-0.5 backdrop-blur-sm shadow-md">
                         ▶
@@ -190,7 +238,7 @@ export default function Hero() {
                     </div>
                   )}
 
-                  {isHovered && (
+                  {isHovered && !isActive && (
                     <div className="absolute inset-0 flex items-center justify-center z-20 transition-all duration-300">
                       <div className="w-12 h-12 rounded-full border border-white/80 bg-white/20 flex items-center justify-center text-white text-sm pl-0.5 backdrop-blur-md shadow-lg scale-110">
                         ▶
@@ -198,8 +246,8 @@ export default function Hero() {
                     </div>
                   )}
 
-                  {/* Bottom labels */}
-                  <div className="absolute bottom-4 left-4 right-4 z-20">
+                  {/* Bottom labels - hidden on active play to keep layout clean */}
+                  <div className={`absolute bottom-4 left-4 right-4 transition-all duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-20 opacity-100"}`}>
                     <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">{card.num}</span>
                     <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">{card.label}</span>
                     <span className={`text-[10px] transition-colors duration-300 ${isHovered ? "text-[#F59A57]" : "text-[#A7A7A2]"}`}>
@@ -263,7 +311,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Dynamic Statistics Bar matching media_1787768988549.png exactly */}
+        {/* Dynamic Statistics Bar */}
         <div className="bg-[#111416]/40 rounded-2xl border border-white/10 p-5 mt-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-px md:divide-x divide-white/10">
             
