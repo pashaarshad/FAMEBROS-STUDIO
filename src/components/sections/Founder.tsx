@@ -29,22 +29,23 @@ export default function Founder() {
             </Link>
           </div>
 
-          {/* Right Column - Two Horizontal Cards matching screenshot style */}
+          {/* Right Column - Horizontal Cards with absolute bottom-left aligned profile images */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             
             {/* Card 1: Orange/Gold Field (Sultan Yunus) */}
-            <div className="bg-[#111416]/40 border border-[#F59A57]/20 rounded-2xl p-6 flex flex-row items-stretch gap-6 hover:border-[#F59A57]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px]">
-              {/* Left Cutout Photo of Sultan */}
-              <div className="w-[120px] md:w-[140px] relative flex-shrink-0 flex items-end">
+            <div className="bg-[#111416]/40 border border-[#F59A57]/20 rounded-2xl flex flex-row items-stretch hover:border-[#F59A57]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px]">
+              
+              {/* Left Cutout Photo - touching absolute bottom-left edge */}
+              <div className="w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
                 <img 
                   src="/Sultan photos-with-png.png" 
                   alt="Sultan Yunus" 
-                  className="w-full h-auto max-h-[190px] object-contain object-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
+                  className="absolute left-0 bottom-0 w-full h-[100%] object-cover object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
-              {/* Right Profile Details */}
-              <div className="flex-1 flex flex-col justify-center relative z-20">
+              {/* Right Profile Details - padding applied inside details area */}
+              <div className="flex-1 py-6 pr-6 pl-4 flex flex-col justify-center relative z-20">
                 {/* Custom styled signature image with orange filter tint */}
                 <div className="h-10 mb-2 relative select-none">
                   <img 
@@ -101,18 +102,19 @@ export default function Founder() {
             </div>
 
             {/* Card 2: Teal Field (Sultan Yunus duplicate for now, colored in teal) */}
-            <div className="bg-[#111416]/40 border border-[#249E98]/20 rounded-2xl p-6 flex flex-row items-stretch gap-6 hover:border-[#249E98]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px]">
-              {/* Left Cutout Photo of Sultan */}
-              <div className="w-[120px] md:w-[140px] relative flex-shrink-0 flex items-end">
+            <div className="bg-[#111416]/40 border border-[#249E98]/20 rounded-2xl flex flex-row items-stretch hover:border-[#249E98]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px]">
+              
+              {/* Left Cutout Photo - touching absolute bottom-left edge */}
+              <div className="w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
                 <img 
                   src="/Sultan photos-with-png.png" 
                   alt="Sultan Yunus" 
-                  className="w-full h-auto max-h-[190px] object-contain object-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
+                  className="absolute left-0 bottom-0 w-full h-[100%] object-cover object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
-              {/* Right Profile Details */}
-              <div className="flex-1 flex flex-col justify-center relative z-20">
+              {/* Right Profile Details - padding applied inside details area */}
+              <div className="flex-1 py-6 pr-6 pl-4 flex flex-col justify-center relative z-20">
                 {/* Custom styled signature image with teal filter tint */}
                 <div className="h-10 mb-2 relative select-none">
                   <img 
