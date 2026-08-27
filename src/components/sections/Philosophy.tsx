@@ -124,7 +124,7 @@ export default function Philosophy() {
           {/* Right Column – Double Row Growth Flow with animated train dash vectors */}
           <div className="relative p-6">
             
-            {/* Connection SVG Line Canvas */}
+            {/* Connection SVG Line Canvas (Desktop/Tablet only) */}
             <div className="absolute inset-0 pointer-events-none hidden md:block z-0">
               <svg className="w-full h-full" viewBox="0 0 700 320" fill="none">
                 {/* --- Row 1 Horizontal Connections --- */}
@@ -159,15 +159,15 @@ export default function Philosophy() {
               </svg>
             </div>
 
-            {/* Compact Cards Container - Two Rows */}
-            <div className="flex flex-col gap-16 relative z-10">
+            {/* Compact Cards Container - Two Rows (Desktop/Tablet only) */}
+            <div className="hidden md:flex flex-col gap-16 relative z-10">
               
               {/* Row 1 Nodes */}
-              <div className="grid grid-cols-2 md:flex md:flex-row justify-between items-center gap-4">
+              <div className="flex flex-row justify-between items-center gap-4">
                 {row1Nodes.map((node, idx) => (
                   <div
                     key={idx}
-                    className="w-full md:w-[120px] h-[120px] rounded-xl border border-[#F59A57]/20 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(245,154,87,0.04)] hover:border-[#F59A57]/60 hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className="w-[120px] h-[120px] rounded-xl border border-[#F59A57]/20 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(245,154,87,0.04)] hover:border-[#F59A57]/60 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
                     <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner animate-pulse">
                       {node.icon}
@@ -180,11 +180,11 @@ export default function Philosophy() {
               </div>
 
               {/* Row 2 Nodes */}
-              <div className="grid grid-cols-2 md:flex md:flex-row justify-between items-center gap-4">
+              <div className="flex flex-row justify-between items-center gap-4">
                 {row2Nodes.map((node, idx) => (
                   <div
                     key={idx}
-                    className="w-full md:w-[120px] h-[120px] rounded-xl border border-[#249E98]/10 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(36,158,152,0.03)] hover:border-[#249E98]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className="w-[120px] h-[120px] rounded-xl border border-[#249E98]/10 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(36,158,152,0.03)] hover:border-[#249E98]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
                     <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner animate-pulse">
                       {node.icon}
@@ -196,6 +196,58 @@ export default function Philosophy() {
                 ))}
               </div>
 
+            </div>
+
+            {/* Mobile Flow Layout matching media_1787854541639.png (Mobile only) */}
+            <div className="block md:hidden mt-4 relative z-10 text-center select-none">
+              <span className="font-mono text-[9px] tracking-[0.2em] text-[#6E716F] uppercase block mb-5 text-left">
+                HOW BRAND VALUE IS BUILT
+              </span>
+              
+              <div className="flex flex-col gap-3 max-w-[340px] mx-auto">
+                
+                {/* Row 1 Flow */}
+                <div className="flex items-center justify-between gap-1">
+                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                    Visibility
+                  </div>
+                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                    Followers
+                  </div>
+                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                    Trust
+                  </div>
+                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                    Authority
+                  </div>
+                </div>
+
+                {/* Transition Arrow down */}
+                <div className="flex justify-end pr-8">
+                  <span className="text-[#F59A57] text-[10px] rotate-90 inline-block font-bold">
+                    &rarr;
+                  </span>
+                </div>
+
+                {/* Row 2 Flow */}
+                <div className="flex items-center justify-between gap-1">
+                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-white flex-[1.1] text-center">
+                    Community
+                  </div>
+                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-white flex-[1.1] text-center">
+                    Brand Value
+                  </div>
+                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <div className="bg-[#F59A57] rounded-lg px-3 py-2.5 text-[10px] font-extrabold text-white flex-[1.5] text-center shadow-[0_0_15px_rgba(245,154,87,0.2)]">
+                    Business Growth
+                  </div>
+                </div>
+
+              </div>
             </div>
 
           </div>
