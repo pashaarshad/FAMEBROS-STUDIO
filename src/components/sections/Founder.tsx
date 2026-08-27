@@ -174,21 +174,6 @@ export default function Founder() {
 
         </div>
 
-        {/* Gallery / Story documentary titles */}
-        <div className="border-t border-white/10 pt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          {[
-            { tag: "EP 01", title: "The number I was embarrassed to share" },
-            { tag: "EP 02", title: "Why I underpriced for five years" },
-            { tag: "EP 03", title: "The client I should have refused" },
-            { tag: "EP 04", title: "What a bad month actually looks like" },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-[#111416]/30 border border-white/5 rounded-xl p-5 hover:bg-[#111416]/80 transition-colors">
-              <span className="font-mono-custom text-[9px] tracking-widest text-[#F59A57] font-bold block mb-2">{item.tag}</span>
-              <p className="text-white text-xs font-semibold leading-relaxed">{item.title}</p>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );
