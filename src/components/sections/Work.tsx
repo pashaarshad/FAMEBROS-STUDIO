@@ -8,43 +8,44 @@ const workItems = [
     line1: "FOUNDER", 
     line2: "STORY", 
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-    youtubeId: "aqz-KE-bpKQ" // Example influencer / tech creator review video
+    videoUrl: "/vedios/business client testimonial/Video-37410.mp4"
   },
   { 
     line1: "PRODUCT", 
     line2: "FILM", 
     img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=400&q=80",
-    youtubeId: "hHW1oY26kxQ" // Example dynamic product video
+    videoUrl: "/vedios/Shoot testimonial/Video-15097.mp4"
   },
   { 
     line1: "BRAND", 
     line2: "CAMPAIGN", 
     img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
-    youtubeId: "3snQ1Nl0LGs" // Example brand story / lifestyle promo
+    videoUrl: "/vedios/Celeb shoot/Video-97955.mp4"
   },
   { 
     line1: "BTS", 
     line2: "CONTENT", 
     img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=400&q=80",
-    youtubeId: "K1T8J0-m7c4" // Example behind the scenes setup video
+    videoUrl: "/vedios/influencer shoot/Video-62911.mp4"
   },
   { 
     line1: "EVENT", 
     line2: "COVERAGE", 
     img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80",
-    youtubeId: "7y0O4A2058k" // Example concert / event video
+    videoUrl: "/vedios/Shoot testimonial/Video-4203.mp4"
   },
   { 
     line1: "LAUNCH", 
     line2: "CAMPAIGN", 
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80",
-    youtubeId: "L_LUpnjgPso" // Example launch commercial
+    videoUrl: "/vedios/Creator growth testimonial/Video-43663.mp4"
   },
 ];
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeYoutubeId, setActiveYoutubeId] = useState<string | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -56,6 +57,60 @@ export default function Work() {
     if (containerRef.current) {
       containerRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
+  };
+
+  const handleMouseEnter = (idx: number) => {
+    if (activeIdx === idx) return; // Don't interrupt active audio card
+    const video = videoRefs.current[idx];
+    if (video) {
+      video.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = (idx: number) => {
+    if (activeIdx === idx) return; // Don't interrupt active audio card
+    const video = videoRefs.current[idx];
+    if (video) {
+      video.pause();
+    }
+  };
+
+  const handleCardClick = (idx: number) => {
+    if (activeIdx === idx) {
+      // Toggle pause/play or reset on clicking again
+      const video = videoRefs.current[idx];
+      if (video) {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          video.muted = true;
+          setActiveIdx(null);
+        }
+      }
+      return;
+    }
+
+    // Pause and mute previous active card
+    if (activeIdx !== null) {
+      const prevVideo = videoRefs.current[activeIdx];
+      if (prevVideo) {
+        prevVideo.pause();
+        prevVideo.muted = true;
+      }
+    }
+
+    // Set new active card
+    setActiveIdx(idx);
+
+    // Unmute and play the clicked video
+    setTimeout(() => {
+      const video = videoRefs.current[idx];
+      if (video) {
+        video.muted = false;
+        video.play().catch(() => {});
+      }
+    }, 50);
   };
 
   return (
@@ -102,44 +157,62 @@ export default function Work() {
           ref={containerRef}
           className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6"
         >
-          {workItems.map((item, idx) => (
-            <div 
-              key={idx}
-              onClick={() => setActiveYoutubeId(item.youtubeId)}
-              className="flex-shrink-0 w-[220px] snap-start group cursor-pointer"
-            >
-              {/* Media Card matching layout of media_1787772365822.png */}
-              <div className="relative aspect-[9/16] rounded-2xl border border-white/10 overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11] transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40 shadow-lg">
-                
-                {/* Background Poster Image */}
-                <img 
-                  src={item.img} 
-                  alt={`${item.line1} ${item.line2}`} 
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
+          {workItems.map((item, idx) => {
+            const isActive = activeIdx === idx;
+            
+            return (
+              <div 
+                key={idx}
+                onClick={() => handleCardClick(idx)}
+                onMouseEnter={() => handleMouseEnter(idx)}
+                onMouseLeave={() => handleMouseLeave(idx)}
+                className="flex-shrink-0 w-[220px] snap-start group cursor-pointer"
+              >
+                {/* Media Card with inline playing capabilities */}
+                <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11] shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_0_30px_rgba(245,154,87,0.2)]' : 'border-white/10 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
+                  
+                  {/* Background Poster Image - hidden when active */}
+                  <img 
+                    src={item.img} 
+                    alt={`${item.line1} ${item.line2}`} 
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out z-0 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-80 group-hover:opacity-20'}`}
+                  />
 
-                {/* Hover overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent z-10" />
+                  {/* Inline Video Playback (Muted on hover, unmuted with controls when clicked active) */}
+                  <video
+                    ref={(el) => { videoRefs.current[idx] = el; }}
+                    src={item.videoUrl}
+                    loop={!isActive} // Loop on hover, let user control when active
+                    muted={!isActive}
+                    controls={isActive}
+                    playsInline
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isActive ? 'z-20 opacity-100' : 'z-10 opacity-0 group-hover:opacity-95 pointer-events-none'}`}
+                  />
 
-                {/* Play Button Overlay (Centered) */}
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <div className="w-11 h-11 rounded-full border border-white/40 bg-white/10 flex items-center justify-center text-white pl-0.5 group-hover:scale-110 group-hover:bg-[#F59A57] group-hover:border-[#F59A57] group-hover:text-[#050505] transition-all backdrop-blur-sm shadow-md">
-                    ▶
+                  {/* Hover overlay gradient - hidden when active to not block controls */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-20 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
+
+                  {/* Play Button Overlay (Centered) - hidden when active */}
+                  <div className={`absolute inset-0 flex items-center justify-center z-30 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                    <div className="w-11 h-11 rounded-full border border-white/40 bg-white/10 flex items-center justify-center text-white pl-0.5 group-hover:scale-110 group-hover:bg-[#F59A57] group-hover:border-[#F59A57] group-hover:text-[#050505] transition-all backdrop-blur-sm shadow-md">
+                      ▶
+                    </div>
                   </div>
-                </div>
 
-                {/* Stacked text at the bottom left */}
-                <div className="absolute bottom-5 left-5 right-5 z-20 font-display font-extrabold leading-none tracking-tight">
-                  <span className="text-[16px] text-white block uppercase mb-1">
-                    {item.line1}
-                  </span>
-                  <span className="text-[16px] text-white block uppercase">
-                    {item.line2}
-                  </span>
+                  {/* Stacked text at the bottom left - hidden when active to not overlap controls */}
+                  <div className={`absolute bottom-5 left-5 right-5 z-30 font-display font-extrabold leading-none tracking-tight transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                    <span className="text-[16px] text-white block uppercase mb-1">
+                      {item.line1}
+                    </span>
+                    <span className="text-[16px] text-white block uppercase">
+                      {item.line2}
+                    </span>
+                  </div>
+
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-10">
@@ -154,39 +227,6 @@ export default function Work() {
         </div>
 
       </div>
-
-      {/* Fullscreen Video Overlay Lightbox Modal */}
-      {activeYoutubeId && (
-        <div 
-          className="fixed inset-0 bg-black/95 z-[999] flex items-center justify-center p-4 backdrop-blur-md animate-fade-in"
-          onClick={() => setActiveYoutubeId(null)}
-        >
-          {/* Close button */}
-          <button 
-            onClick={() => setActiveYoutubeId(null)}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-2xl transition-all border border-white/10"
-            aria-label="Close video"
-          >
-            ✕
-          </button>
-
-          {/* YouTube Video Wrapper */}
-          <div 
-            className="w-full max-w-[800px] aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative bg-[#0E0E11]"
-            onClick={(e) => e.stopPropagation()} // Stop closing click
-          >
-            <iframe
-              src={`https://www.youtube.com/embed/${activeYoutubeId}?autoplay=1&rel=0&modestbranding=1`}
-              title="Work Video Player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full"
-            />
-          </div>
-        </div>
-      )}
-
     </section>
   );
 }
