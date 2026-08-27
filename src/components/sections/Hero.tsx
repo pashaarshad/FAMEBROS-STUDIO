@@ -168,8 +168,8 @@ export default function Hero() {
         </div>
 
         {/* Right Side 4-Video stack with dynamic hover active front-back switching */}
-        <div className="relative flex justify-center lg:justify-end items-center">
-          <div className="flex items-center gap-0 relative">
+        <div className="relative flex justify-center lg:justify-end items-center w-full">
+          <div className="flex items-center justify-center gap-0 relative w-full lg:w-auto">
             {heroCards.map((card, idx) => {
               const isHovered = hoveredIdx === idx;
               const isAnyHovered = hoveredIdx !== null;
@@ -197,13 +197,15 @@ export default function Hero() {
                 ? "w-[135px] md:w-[165px]" 
                 : "w-[125px] md:w-[150px]";
 
+              const displayClass = idx === 3 ? "hidden md:block" : "";
+
               return (
                 <div
                   key={card.num}
                   onClick={() => handleCardClick(idx)}
                   onMouseEnter={() => handleMouseEnter(idx)}
                   onMouseLeave={() => handleMouseLeave(idx)}
-                  className={`${cardWidth} aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-8`}
+                  className={`${cardWidth} aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-8 ${displayClass}`}
                 >
                   {/* Poster Image - Removed mockup screenshot, hidden on active play */}
                   <div 
