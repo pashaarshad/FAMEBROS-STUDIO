@@ -4,6 +4,7 @@ import Services from "@/components/sections/Services";
 import Packages from "@/components/sections/Packages";
 import Work from "@/components/sections/Work";
 import Founder from "@/components/sections/Founder";
+import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Packages />
       <Work />
       <Founder />
+      <CTA />
       <Contact />
     </div>
   );
