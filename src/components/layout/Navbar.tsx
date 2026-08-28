@@ -19,7 +19,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#050505]/95 backdrop-blur-md py-4 border-b border-white/5"
+          ? "bg-white/90 backdrop-blur-md py-4 border-b border-black/5 shadow-sm"
           : "bg-transparent py-6"
       }`}
     >
@@ -31,7 +31,7 @@ export default function Navbar() {
             alt="Famebros Studio"
             width={180}
             height={70}
-            className="h-14 md:h-16 w-auto object-contain"
+            className="h-14 md:h-16 w-auto object-contain filter invert"
             priority
           />
         </Link>
@@ -51,7 +51,7 @@ export default function Navbar() {
               href={item.href}
               onClick={() => setActiveItem(item.label)}
               className={`relative px-1 py-2 text-[14px] font-medium transition-colors whitespace-nowrap ${
-                activeItem === item.label ? "text-white" : "text-[#A7A7A2] hover:text-white"
+                activeItem === item.label ? "text-[#0A0A0A] font-bold" : "text-[#55555A] hover:text-[#0A0A0A]"
               }`}
             >
               {item.label}
@@ -66,7 +66,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="#contact"
-            className="hidden md:inline-flex items-center gap-3 px-6 py-2.5 bg-[#F59A57] text-[#050505] rounded-full text-[14px] font-bold hover:bg-[#FF8A3D] transition-all"
+            className="hidden md:inline-flex items-center gap-3 px-6 py-2.5 bg-[#F59A57] text-[#050505] rounded-full text-[14px] font-bold hover:bg-[#FF8A3D] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.15)]"
           >
             Let&apos;s Talk
             <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-extrabold text-xs">
@@ -74,7 +74,7 @@ export default function Navbar() {
             </span>
           </Link>
           <button
-            className="md:hidden text-white text-xl"
+            className="md:hidden text-[#0A0A0A] text-xl"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -85,12 +85,12 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#050505] border-t border-white/5 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-black/5 px-6 py-4 flex flex-col gap-4 shadow-lg">
           {["Home", "What We Do", "Work", "Creators", "Founder", "About"].map((item) => (
             <Link
               key={item}
               href="#"
-              className="text-[14px] text-[#A7A7A2] hover:text-white py-1"
+              className="text-[14px] text-[#55555A] hover:text-[#0A0A0A] py-1 font-medium"
               onClick={() => setMenuOpen(false)}
             >
               {item}

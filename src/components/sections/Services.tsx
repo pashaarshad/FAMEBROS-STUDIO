@@ -44,26 +44,26 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#050505] py-24 border-t border-white/5 relative">
+    <section id="services" className="bg-bg-primary py-24 border-t border-black/5 relative">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         
         {/* Header matching exact layout details */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-xl">
-            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#A7A7A2] mb-4">
+            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#55555A] mb-4">
               WHAT WE DO
             </p>
-            <h2 className="font-display font-extrabold text-white leading-[1.1] text-[32px] md:text-[40px]">
+            <h2 className="font-display font-extrabold text-[#0A0A0A] leading-[1.1] text-[32px] md:text-[40px]">
               Everything your brand needs to grow<br />
               in today&apos;s <span className="text-[#249E98]">digital world.</span>
             </h2>
           </div>
           <Link
             href="#all-services"
-            className="inline-flex items-center gap-3 text-[13px] font-bold text-[#A7A7A2] hover:text-white transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-3 text-[13px] font-bold text-[#55555A] hover:text-[#0A0A0A] transition-colors whitespace-nowrap"
           >
             Explore All Services
-            <span className="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center text-[#A7A7A2] hover:border-white text-xs">
+            <span className="w-6 h-6 rounded-full border border-black/15 flex items-center justify-center text-[#55555A] hover:border-black text-xs">
               →
             </span>
           </Link>
@@ -74,17 +74,18 @@ export default function Services() {
           {services.map((svc) => (
             <div 
               key={svc.num}
-              className="rounded-2xl border border-white/10 overflow-hidden bg-[#111416]/40 hover:border-[#F59A57]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              className="rounded-2xl border border-black/5 overflow-hidden bg-[#FAFAFA] hover:border-[#F59A57]/45 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group cursor-pointer shadow-sm"
               style={{ minHeight: "330px" }}
             >
               {/* Image Block (Top Half) - Removed grayscale, always colorful */}
-              <div className="h-[150px] w-full relative overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11]">
+              <div className="h-[150px] w-full relative overflow-hidden bg-gradient-to-br from-[#F5F5F7] to-[#E5E7EB]">
                 <img 
                   src={svc.img} 
                   alt={svc.title}
                   className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-500 ease-out" 
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#111416]/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA]/40 via-transparent to-transparent" />
               </div>
 
               {/* Text Block (Bottom Half) */}
@@ -93,13 +94,13 @@ export default function Services() {
                   <h3 className="font-display font-extrabold text-[#F59A57] text-[14px] leading-tight mb-2">
                     {svc.title}
                   </h3>
-                  <p className="text-[#A7A7A2] text-[10.5px] leading-relaxed">
+                  <p className="text-[#55555A] text-[10.5px] leading-relaxed">
                     {svc.desc}
                   </p>
                 </div>
                 
                 <div className="flex justify-end pt-3">
-                  <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-white text-xs group-hover:border-[#F59A57] group-hover:text-[#F59A57] group-hover:translate-x-0.5 transition-all">
+                  <div className="w-7 h-7 rounded-full border border-black/10 flex items-center justify-center text-[#0A0A0A] text-xs group-hover:border-[#F59A57] group-hover:text-[#F59A57] group-hover:translate-x-0.5 transition-all">
                     →
                   </div>
                 </div>

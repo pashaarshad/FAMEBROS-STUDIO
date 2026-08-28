@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] text-white pt-24 pb-8 border-t border-white/5 relative">
+    <footer className="bg-[#FAFAFA] text-[#0A0A0A] pt-24 pb-8 border-t border-black/5 relative">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         
         {/* Five Column Grid Layout matching media_1787834047514.png exactly */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pb-16 border-b border-white/5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pb-16 border-b border-black/5">
           
           {/* Column 1: Brand details */}
           <div className="col-span-2 md:col-span-1 lg:col-span-1 flex flex-col gap-5">
@@ -16,10 +16,10 @@ export default function Footer() {
               <img 
                 src="/imp-doc/logo.png" 
                 alt="FAMEBROS STUDIO Logo" 
-                className="h-14 md:h-[70px] w-auto object-contain"
+                className="h-14 md:h-[70px] w-auto object-contain filter invert"
               />
             </Link>
-            <p className="text-[12px] text-[#A7A7A2] leading-relaxed max-w-[240px]">
+            <p className="text-[12px] text-[#55555A] leading-relaxed max-w-[240px]">
               We build brands through powerful content,<br />
               smart strategies and real influence.<br />
               Designed to grow. Built to last.
@@ -28,20 +28,20 @@ export default function Footer() {
 
           {/* Column 2: Company */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-[13px] font-bold text-white tracking-wide uppercase">
+            <h4 className="text-[13px] font-bold text-[#0A0A0A] tracking-wide uppercase">
               Company
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="#about" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#about" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 About Us
               </Link>
-              <Link href="#founder" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#founder" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Our Team
               </Link>
-              <Link href="#careers" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#careers" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Careers
               </Link>
-              <Link href="#contact" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#contact" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Contact
               </Link>
             </div>
@@ -49,26 +49,26 @@ export default function Footer() {
 
           {/* Column 3: What We Do */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-[13px] font-bold text-white tracking-wide uppercase">
+            <h4 className="text-[13px] font-bold text-[#0A0A0A] tracking-wide uppercase">
               What We Do
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="#services" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#services" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Social Media Growth
               </Link>
-              <Link href="#services" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#services" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Content Production
               </Link>
-              <Link href="#services" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#services" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Influencer Marketing
               </Link>
-              <Link href="#services" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#services" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Creator Growth
               </Link>
-              <Link href="#services" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#services" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Reel Shoots
               </Link>
-              <Link href="#services" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#services" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Event Reel Shoots
               </Link>
             </div>
@@ -76,17 +76,17 @@ export default function Footer() {
 
           {/* Column 4: Work */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-[13px] font-bold text-white tracking-wide uppercase">
+            <h4 className="text-[13px] font-bold text-[#0A0A0A] tracking-wide uppercase">
               Work
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="#work" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#work" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Reels
               </Link>
-              <Link href="#work" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#work" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Campaigns
               </Link>
-              <Link href="#work" className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors">
+              <Link href="#work" className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors">
                 Case Studies
               </Link>
             </div>
@@ -94,13 +94,13 @@ export default function Footer() {
 
           {/* Column 5: Connect with Instagram & YouTube circular links */}
           <div className="flex flex-col gap-5">
-            <h4 className="text-[13px] font-bold text-white tracking-wide uppercase">
+            <h4 className="text-[13px] font-bold text-[#0A0A0A] tracking-wide uppercase">
               Connect
             </h4>
             <div className="flex flex-col gap-3">
               <a 
                 href="mailto:famebros.studio@gmail.com" 
-                className="text-[12px] text-[#A7A7A2] hover:text-white transition-colors break-words"
+                className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-colors break-words"
               >
                 famebros.studio@gmail.com
               </a>
@@ -110,10 +110,10 @@ export default function Footer() {
                 href="https://wa.me/message/famebros-sales" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-[12px] text-[#A7A7A2] hover:text-white transition-all leading-normal"
+                className="text-[12px] text-[#55555A] hover:text-[#0A0A0A] transition-all leading-normal"
               >
                 <span className="block font-semibold">Famebros Sales</span>
-                <span className="text-[11px] text-[#6E716F] font-normal block">(Chat on WhatsApp)</span>
+                <span className="text-[11px] text-[#71717A] font-normal block">(Chat on WhatsApp)</span>
               </a>
 
               {/* Dynamic Circular Outline Social Links */}
@@ -122,7 +122,7 @@ export default function Footer() {
                   href="https://www.instagram.com/famebrosstudio/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-white/20 hover:border-[#F59A57] flex items-center justify-center text-white/70 hover:text-white transition-all bg-black/30 hover:scale-105"
+                  className="w-8 h-8 rounded-full border border-black/15 hover:border-[#F59A57] flex items-center justify-center text-[#0A0A0A]/70 hover:text-[#0A0A0A] transition-all bg-black/5 hover:scale-105"
                   aria-label="Instagram Link"
                 >
                   <svg className="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
@@ -133,7 +133,7 @@ export default function Footer() {
                   href="https://www.youtube.com/@bilalsayed1993" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-white/20 hover:border-[#F59A57] flex items-center justify-center text-white/70 hover:text-white transition-all bg-black/30 hover:scale-105"
+                  className="w-8 h-8 rounded-full border border-black/15 hover:border-[#F59A57] flex items-center justify-center text-[#0A0A0A]/70 hover:text-[#0A0A0A] transition-all bg-black/5 hover:scale-105"
                   aria-label="YouTube Link"
                 >
                   <svg className="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
@@ -147,13 +147,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright alignment bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-[#6E716F]">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-[#71717A]">
           <p>© 2026 Famebros Studio. All Rights Reserved.</p>
           <div className="flex gap-5">
-            <Link href="#privacy" className="hover:text-white transition-colors">
+            <Link href="#privacy" className="hover:text-[#0A0A0A] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="hover:text-white transition-colors">
+            <Link href="#terms" className="hover:text-[#0A0A0A] transition-colors">
               Terms & Conditions
             </Link>
           </div>

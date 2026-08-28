@@ -1,9 +1,9 @@
 export default function Packages() {
   return (
-    <section className="bg-[#050505] py-20 border-t border-white/5 relative overflow-hidden">
+    <section className="bg-bg-primary py-20 border-t border-black/5 relative overflow-hidden">
       {/* Background camera glow placeholder */}
       <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[100%] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, rgba(36,158,152,0.08), transparent 60%)" }} />
+        style={{ background: "radial-gradient(ellipse at center, rgba(36,158,152,0.04), transparent 60%)" }} />
 
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.2fr] gap-12 items-start">
@@ -13,15 +13,15 @@ export default function Packages() {
             <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#249E98] mb-4">
               OUR SOLUTIONS
             </p>
-            <h2 className="font-display font-extrabold text-white text-[32px] md:text-[40px] leading-[1.1] mb-5">
+            <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-5">
               Social Media<br />
               Growth Packages
             </h2>
-            <p className="text-[#A7A7A2] text-sm leading-relaxed mb-8 max-w-xs">
+            <p className="text-[#55555A] text-sm leading-relaxed mb-8 max-w-xs">
               Choose the level of support your brand needs. All packages are customized to your goals.
             </p>
             <a href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white rounded-lg text-[14px] font-semibold hover:border-white/50 transition-all">
+              className="inline-flex items-center gap-2 px-6 py-3 border border-black/15 text-[#0A0A0A] rounded-lg text-[14px] font-semibold hover:border-black/35 hover:bg-black/5 transition-all">
               Let&apos;s Discuss Your Brand &rarr;
             </a>
 
@@ -64,15 +64,15 @@ export default function Packages() {
             </div>
           </div>
 
-          {/* Right Cards Stack */}
+           {/* Right Cards Stack */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Basic Package */}
-            <div className="bg-[#111416]/50 border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-white/20 transition-all">
+            <div className="bg-[#FAFAFA] border border-black/5 rounded-2xl p-8 flex flex-col justify-between hover:border-[#249E98]/30 transition-all shadow-sm">
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <span className="font-mono-custom text-[11px] tracking-widest text-[#249E98] block">01 · BASIC</span>
-                    <h3 className="font-display font-extrabold text-white text-[22px] mt-1">Social Media Growth</h3>
+                    <h3 className="font-display font-extrabold text-[#0A0A0A] text-[22px] mt-1">Social Media Growth</h3>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ export default function Packages() {
                     "Meta Ads Management",
                     "Creatives When Needed",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-[#A7A7A2]">
+                    <li key={item} className="flex items-start gap-3 text-sm text-[#55555A]">
                       <span className="text-[#249E98] mt-0.5">✓</span>
                       <span>{item}</span>
                     </li>
@@ -95,13 +95,13 @@ export default function Packages() {
               </div>
 
               <a href="#contact"
-                className="inline-flex items-center justify-center gap-2 w-full py-3 border border-white/10 text-white rounded-lg text-sm font-semibold hover:bg-white/5 transition-all">
+                className="inline-flex items-center justify-center gap-2 w-full py-3 border border-black/15 text-[#0A0A0A] rounded-lg text-sm font-semibold hover:bg-black/5 transition-all">
                 Best for Growing Brands &rarr;
               </a>
             </div>
 
             {/* Elite Package */}
-            <div className="bg-[#111416] border border-[#F59A57]/40 rounded-2xl p-8 flex flex-col justify-between relative hover:border-[#F59A57] transition-all">
+            <div className="bg-white border-2 border-[#F59A57] rounded-2xl p-8 flex flex-col justify-between relative hover:shadow-md transition-all">
               <span className="absolute -top-3 right-6 bg-[#F59A57] text-[#050505] font-mono-custom text-[9px] font-extrabold tracking-widest px-3 py-1 rounded-full uppercase">
                 Most Comprehensive
               </span>
@@ -110,7 +110,7 @@ export default function Packages() {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <span className="font-mono-custom text-[11px] tracking-widest text-[#F59A57] block">02 · ELITE</span>
-                    <h3 className="font-display font-extrabold text-white text-[22px] mt-1">Social Media Growth</h3>
+                    <h3 className="font-display font-extrabold text-[#0A0A0A] text-[22px] mt-1">Social Media Growth</h3>
                   </div>
                 </div>
 
@@ -124,7 +124,7 @@ export default function Packages() {
                     "Meta Ads Management",
                     "Influencer Coordination & Support",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-white">
+                    <li key={item} className="flex items-start gap-3 text-sm text-[#55555A]">
                       <span className="text-[#F59A57] mt-0.5">✓</span>
                       <span>{item}</span>
                     </li>

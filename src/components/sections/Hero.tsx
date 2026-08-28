@@ -114,7 +114,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#050505] pt-32 pb-12 overflow-hidden flex flex-col justify-between">
+    <section className="relative min-h-screen bg-bg-primary pt-32 pb-12 overflow-hidden flex flex-col justify-between">
       {/* Background circular swirl graphic behind the cards */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none opacity-20 z-0">
         <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -130,17 +130,17 @@ export default function Hero() {
         
         {/* Left Side Info */}
         <div className="flex flex-col justify-center">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#A7A7A2] uppercase mb-6">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#55555A] uppercase mb-6">
             BRAND. CONTENT. INFLUENCE. GROWTH.
           </p>
           
-          <h1 className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-6 text-[44px] md:text-[56px] lg:text-[70px]">
+          <h1 className="font-display font-extrabold text-[#0A0A0A] leading-[1.05] tracking-[-0.03em] mb-6 text-[44px] md:text-[56px] lg:text-[70px]">
             We build brands<br />
             designed to<br />
             <span className="text-[#F59A57]">grow</span> for <span className="text-[#249E98]">years.</span>
           </h1>
 
-          <p className="text-[#A7A7A2] text-sm md:text-base leading-relaxed mb-10 max-w-lg">
+          <p className="text-[#55555A] text-sm md:text-base leading-relaxed mb-10 max-w-lg">
             Content that connects. Strategies that scale.<br />
             Influence that lasts. Growth that stays.
           </p>
@@ -148,7 +148,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-4">
             <a 
               href="#contact"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-full text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all"
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-full text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.15)]"
             >
               Start a Conversation 
               <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-xs">
@@ -157,10 +157,10 @@ export default function Hero() {
             </a>
             <a 
               href="#work"
-              className="inline-flex items-center gap-3 px-7 py-3.5 border border-white/20 text-white rounded-full text-[15px] font-bold hover:border-white/50 hover:-translate-y-[2px] transition-all bg-[#050505]/40"
+              className="inline-flex items-center gap-3 px-7 py-3.5 border border-black/15 text-[#0A0A0A] rounded-full text-[15px] font-bold hover:border-black/35 hover:-translate-y-[2px] transition-all bg-bg-secondary/40"
             >
               See Our Work
-              <span className="w-5 h-5 rounded-full border border-white/30 flex items-center justify-center text-white text-[9px]">
+              <span className="w-5 h-5 rounded-full border border-black/25 flex items-center justify-center text-[#0A0A0A] text-[9px]">
                 ▶
               </span>
             </a>
@@ -273,49 +273,49 @@ export default function Hero() {
             <span className="font-mono-custom text-[10px] tracking-[0.2em] text-[#6E716F] uppercase whitespace-nowrap">
               TRUSTED BY BRANDS ACROSS INDIA
             </span>
-            <div className="h-[1px] bg-white/10 flex-grow" />
+            <div className="h-[1px] bg-black/10 flex-grow" />
           </div>
           
           <div className="flex flex-wrap items-center justify-between gap-6 md:gap-12 opacity-90 transition-opacity duration-300">
             {/* Presence Wellness */}
-            <span className="font-serif text-[18px] tracking-[0.15em] font-light text-white italic">
+            <span className="font-serif text-[18px] tracking-[0.15em] font-light text-[#0A0A0A] italic">
               PRESENCE
             </span>
             
             {/* The Bombay Bronx */}
             <div className="flex flex-col items-center leading-none text-center">
-              <span className="font-mono text-[7px] tracking-widest text-white">THE BOMBAY</span>
-              <span className="font-sans font-black text-[15px] tracking-wider text-white">BRONX</span>
+              <span className="font-mono text-[7px] tracking-widest text-[#0A0A0A]">THE BOMBAY</span>
+              <span className="font-sans font-black text-[15px] tracking-wider text-[#0A0A0A]">BRONX</span>
             </div>
 
             {/* HK */}
-            <span className="font-serif font-semibold text-[22px] tracking-tight text-white">
+            <span className="font-serif font-semibold text-[22px] tracking-tight text-[#0A0A0A]">
               HK
             </span>
 
             {/* Meraki */}
-            <div className="w-9 h-9 rounded-full border border-white flex items-center justify-center">
-              <span className="font-sans text-[7px] tracking-[0.2em] font-bold text-white pl-0.5">MERAKI</span>
+            <div className="w-9 h-9 rounded-full border border-black/20 flex items-center justify-center">
+              <span className="font-sans text-[7px] tracking-[0.2em] font-bold text-[#0A0A0A] pl-0.5">MERAKI</span>
             </div>
 
             {/* F BAR */}
-            <div className="flex items-center gap-1.5 font-sans font-semibold text-[17px] text-white">
+            <div className="flex items-center gap-1.5 font-sans font-semibold text-[17px] text-[#0A0A0A]">
               <span>F</span>
-              <div className="w-[1px] h-4 bg-white" />
+              <div className="w-[1px] h-4 bg-black/20" />
               <span className="text-[12px] font-normal tracking-widest">BAR</span>
             </div>
 
             {/* Theka Coffee */}
             <div className="flex flex-col items-start leading-none">
-              <span className="font-sans font-light text-[18px] text-white">theka</span>
+              <span className="font-sans font-light text-[18px] text-[#0A0A0A]">theka</span>
               <span className="font-mono text-[6px] tracking-widest text-[#F59A57]">COFFEE</span>
             </div>
           </div>
         </div>
 
         {/* Dynamic Statistics Bar */}
-        <div className="bg-[#111416]/40 rounded-2xl border border-white/10 p-5 mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-px md:divide-x divide-white/10">
+        <div className="bg-[#FAFAFA] rounded-2xl border border-black/5 p-5 mt-6 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-px md:divide-x divide-black/5">
             
             {/* Stat 1: 6+ Years */}
             <div className="flex items-center gap-4 md:px-6">
@@ -328,7 +328,7 @@ export default function Hero() {
               </div>
               <div>
                 <span className="font-display font-extrabold text-[32px] text-[#E9BF61] leading-none block">6+</span>
-                <span className="text-[12px] text-[#A7A7A2] font-medium mt-1 block">Years of Experience</span>
+                <span className="text-[12px] text-[#55555A] font-medium mt-1 block">Years of Experience</span>
               </div>
             </div>
 
@@ -343,7 +343,7 @@ export default function Hero() {
               </div>
               <div>
                 <span className="font-display font-extrabold text-[32px] text-[#249E98] leading-none block">50+</span>
-                <span className="text-[12px] text-[#A7A7A2] font-medium mt-1 block">Brands Partnered</span>
+                <span className="text-[12px] text-[#55555A] font-medium mt-1 block">Brands Partnered</span>
               </div>
             </div>
 
@@ -358,7 +358,7 @@ export default function Hero() {
               </div>
               <div>
                 <span className="font-display font-extrabold text-[32px] text-[#249E98] leading-none block">25</span>
-                <span className="text-[12px] text-[#A7A7A2] font-medium mt-1 block">Team Members</span>
+                <span className="text-[12px] text-[#55555A] font-medium mt-1 block">Team Members</span>
               </div>
             </div>
 
@@ -374,15 +374,13 @@ export default function Hero() {
               </div>
               <div>
                 <span className="font-display font-extrabold text-[32px] text-[#E9BF61] leading-none block">1000+</span>
-                <span className="text-[12px] text-[#A7A7A2] font-medium mt-1 block">Reels Created / Month</span>
+                <span className="text-[12px] text-[#55555A] font-medium mt-1 block">Reels Created / Month</span>
               </div>
             </div>
 
           </div>
         </div>
-
       </div>
-
     </section>
   );
 }

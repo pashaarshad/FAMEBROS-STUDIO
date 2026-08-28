@@ -73,10 +73,9 @@ const row2Nodes = [
     label: "Business Growth",
   },
 ];
-
 export default function Philosophy() {
   return (
-    <section className="bg-[#050505] py-24 border-t border-white/5 relative overflow-hidden">
+    <section className="bg-bg-primary py-24 border-t border-black/5 relative overflow-hidden">
       {/* Self-contained CSS stylesheet for dashed flowing arrows */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes flowDash {
@@ -101,21 +100,21 @@ export default function Philosophy() {
             <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#F59A57] mb-5">
               OUR PHILOSOPHY
             </p>
-            <h2 className="font-display font-extrabold text-white mb-6 leading-[1.1] text-[32px] md:text-[40px]">
+            <h2 className="font-display font-extrabold text-[#0A0A0A] mb-6 leading-[1.1] text-[32px] md:text-[40px]">
               Ads stop when<br />
               you stop paying.<br />
               <span className="text-[#F59A57]">A brand doesn&apos;t.</span>
             </h2>
-            <p className="text-[#A7A7A2] text-sm leading-relaxed mb-8 max-w-sm">
+            <p className="text-[#55555A] text-sm leading-relaxed mb-8 max-w-sm">
               We build recognition, trust, community and organic reach first. Paid campaigns and influencer
               marketing become amplifiers — not replacements for a strong brand.
             </p>
             <Link
               href="#contact"
-              className="inline-flex items-center gap-3 px-6 py-2.5 border border-white/20 text-white rounded-full text-[14px] font-bold hover:border-white/50 hover:bg-white/5 transition-all self-start"
+              className="inline-flex items-center gap-3 px-6 py-2.5 border border-black/15 text-[#0A0A0A] rounded-full text-[14px] font-bold hover:border-black/35 hover:bg-black/5 transition-all self-start"
             >
               Our Growth Engine
-              <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#050505] font-bold text-xs">
+              <span className="w-5 h-5 rounded-full bg-black flex items-center justify-center text-white font-bold text-xs">
                 →
               </span>
             </Link>
@@ -167,12 +166,12 @@ export default function Philosophy() {
                 {row1Nodes.map((node, idx) => (
                   <div
                     key={idx}
-                    className="w-[120px] h-[120px] rounded-xl border border-[#F59A57]/20 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(245,154,87,0.04)] hover:border-[#F59A57]/60 hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className="w-[120px] h-[120px] rounded-xl border border-[#F59A57]/20 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-white to-[#FAFAFA] shadow-[0_4px_20px_rgba(245,154,87,0.02)] border border-black/5 hover:border-[#F59A57]/60 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner animate-pulse">
+                    <div className="w-10 h-10 rounded-full bg-bg-secondary flex items-center justify-center shadow-inner">
                       {node.icon}
                     </div>
-                    <span className="font-sans font-bold text-[11px] text-white text-center tracking-wide leading-tight">
+                    <span className="font-sans font-bold text-[11px] text-[#0A0A0A] text-center tracking-wide leading-tight">
                       {node.label}
                     </span>
                   </div>
@@ -184,12 +183,12 @@ export default function Philosophy() {
                 {row2Nodes.map((node, idx) => (
                   <div
                     key={idx}
-                    className="w-[120px] h-[120px] rounded-xl border border-[#249E98]/10 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-[#111416]/95 to-[#050505]/98 shadow-[0_0_20px_rgba(36,158,152,0.03)] hover:border-[#249E98]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className="w-[120px] h-[120px] rounded-xl border border-[#249E98]/20 p-3 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-white to-[#FAFAFA] shadow-[0_4px_20px_rgba(36,158,152,0.02)] border border-black/5 hover:border-[#249E98]/50 hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#1C1C21]/80 flex items-center justify-center shadow-inner animate-pulse">
+                    <div className="w-10 h-10 rounded-full bg-bg-secondary flex items-center justify-center shadow-inner">
                       {node.icon}
                     </div>
-                    <span className="font-sans font-bold text-[11px] text-white text-center tracking-wide leading-tight">
+                    <span className="font-sans font-bold text-[11px] text-[#0A0A0A] text-center tracking-wide leading-tight">
                       {node.label}
                     </span>
                   </div>
@@ -208,19 +207,19 @@ export default function Philosophy() {
                 
                 {/* Row 1 Flow */}
                 <div className="flex items-center justify-between gap-1">
-                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                  <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Visibility
                   </div>
                   <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
-                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                  <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Followers
                   </div>
                   <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
-                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                  <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Trust
                   </div>
                   <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
-                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-white flex-1 text-center">
+                  <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Authority
                   </div>
                 </div>
@@ -234,15 +233,15 @@ export default function Philosophy() {
 
                 {/* Row 2 Flow */}
                 <div className="flex items-center justify-between gap-1">
-                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-white flex-[1.1] text-center">
+                  <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-[1.1] text-center">
                     Community
                   </div>
                   <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
-                  <div className="bg-[#111416]/90 border border-white/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-white flex-[1.1] text-center">
+                  <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-[1.1] text-center">
                     Brand Value
                   </div>
                   <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
-                  <div className="bg-[#F59A57] rounded-lg px-3 py-2.5 text-[10px] font-extrabold text-white flex-[1.5] text-center shadow-[0_0_15px_rgba(245,154,87,0.2)]">
+                  <div className="bg-[#F59A57] rounded-lg px-3 py-2.5 text-[10px] font-extrabold text-white flex-[1.5] text-center shadow-[0_4px_15px_rgba(245,154,87,0.15)]">
                     Business Growth
                   </div>
                 </div>

@@ -114,7 +114,7 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="bg-[#050505] py-24 border-t border-white/5 relative">
+    <section id="work" className="bg-bg-primary py-24 border-t border-black/5 relative">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         
         {/* Header with control arrows */}
@@ -123,11 +123,11 @@ export default function Work() {
             <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#F59A57] mb-4">
               RECENT WORK
             </p>
-            <h2 className="font-display font-extrabold text-white text-[32px] md:text-[40px] leading-[1.1] mb-3">
+            <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-3">
               Work that <span className="text-[#F59A57]">speaks</span><br />
               before we do.
             </h2>
-            <p className="text-[#6E716F] text-sm font-semibold">
+            <p className="text-[#55555A] text-sm font-semibold">
               Real content. Real campaigns. Real stories.
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function Work() {
           <div className="flex gap-2">
             <button 
               onClick={scrollLeft}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
+              className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-[#0A0A0A] hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
               aria-label="Scroll left"
               suppressHydrationWarning
             >
@@ -143,7 +143,7 @@ export default function Work() {
             </button>
             <button 
               onClick={scrollRight}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
+              className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-[#0A0A0A] hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
               aria-label="Scroll right"
               suppressHydrationWarning
             >
@@ -169,7 +169,7 @@ export default function Work() {
                 className="flex-shrink-0 w-[220px] snap-start group cursor-pointer"
               >
                 {/* Media Card with inline playing capabilities */}
-                <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-[#1C1C21] to-[#0E0E11] shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_0_30px_rgba(245,154,87,0.2)]' : 'border-white/10 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
+                <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-[#F5F5F7] to-[#E5E7EB] shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_4px_30px_rgba(245,154,87,0.15)]' : 'border-black/5 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
                   
                   {/* Background Poster Image - hidden when active */}
                   <img 
@@ -217,10 +217,10 @@ export default function Work() {
 
         <div className="text-center mt-10">
           <Link href="#contact"
-            className="inline-flex items-center gap-3 px-6 py-2.5 border border-white/20 text-white rounded-full text-[14px] font-bold hover:border-white/50 hover:bg-white/5 transition-all"
+            className="inline-flex items-center gap-3 px-6 py-2.5 border border-black/15 text-[#0A0A0A] rounded-full text-[14px] font-bold hover:border-black/35 hover:bg-black/5 transition-all"
           >
             View More Work
-            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#050505] font-bold text-xs">
+            <span className="w-5 h-5 rounded-full bg-black flex items-center justify-center text-white font-bold text-xs">
               →
             </span>
           </Link>
