@@ -175,25 +175,41 @@ export default function Hero() {
             We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <Link 
-              href="#contact"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-lg text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)]"
-            >
-              Grow My Business
-              <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-xs">
-                →
-              </span>
-            </Link>
-            <Link 
-              href="#case-studies"
-              className="inline-flex items-center gap-3 px-7 py-3.5 border border-white/20 text-white rounded-lg text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5"
-            >
-              See Case Studies
-              <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-white text-[9px]">
-                ▶
-              </span>
-            </Link>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex flex-wrap items-center gap-4">
+              <Link 
+                href="#contact"
+                className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-lg text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)]"
+              >
+                Grow My Business
+                <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-xs">
+                  →
+                </span>
+              </Link>
+              <Link 
+                href="#case-studies"
+                className="inline-flex items-center gap-3 px-7 py-3.5 border border-white/20 text-white rounded-lg text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5"
+              >
+                See Case Studies
+                <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-white text-[9px]">
+                  ▶
+                </span>
+              </Link>
+            </div>
+
+            {/* Mobile-only trust badge */}
+            <div className="lg:hidden">
+              <img 
+                src="/google-reviews-png.png" 
+                alt="Google 5.0 Rating 13 Google Reviews" 
+                className="w-[180px] xs:w-[200px] h-auto drop-shadow-[0_8px_20px_rgba(245,154,87,0.2)]" 
+                draggable={false}
+                style={{
+                  WebkitUserDrag: "none",
+                  userDrag: "none"
+                } as any}
+              />
+            </div>
           </div>
         </div>
 
@@ -292,8 +308,8 @@ export default function Hero() {
             })}
           </div>
 
-          {/* Floating Google Review Trust Badge (Bottom Right style) */}
-          <div className="absolute -bottom-36 right-0 lg:right-6 z-30 transition-all hover:scale-105 hover:-translate-y-1 duration-300 select-none cursor-pointer">
+          {/* Floating Google Review Trust Badge (Bottom Right style - Desktop Only) */}
+          <div className="hidden lg:block absolute -bottom-36 right-0 lg:right-6 z-30 transition-all hover:scale-105 hover:-translate-y-1 duration-300 select-none cursor-pointer">
             <img 
               src="/google-reviews-png.png" 
               alt="Google 5.0 Rating 13 Google Reviews" 
