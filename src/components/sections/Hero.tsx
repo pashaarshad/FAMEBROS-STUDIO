@@ -159,9 +159,60 @@ export default function Hero() {
             their <span className="text-[#249E98]">expectations.</span>
           </h1>
 
-          <p className="text-[#A7A7A2] text-sm md:text-base leading-relaxed mb-10 max-w-lg">
+          <p className="text-[#A7A7A2] text-sm md:text-base leading-relaxed mb-8 max-w-lg">
             We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
           </p>
+
+          {/* Target Business Growth Outcomes */}
+          <div className="grid grid-cols-2 gap-3 mb-8 max-w-md w-full">
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3 hover:border-[#F59A57]/30 transition-colors">
+              <div className="w-8 h-8 rounded-full bg-[#F59A57]/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v3m0 0a6 6 0 016 6v3H6v-3a6 6 0 016-6zm-9 12h18" />
+                </svg>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#A7A7A2] block leading-none font-bold uppercase tracking-wider mb-0.5">Restaurants</span>
+                <span className="text-[12px] font-extrabold text-white block">Grow Table Bookings</span>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3 hover:border-[#249E98]/30 transition-colors">
+              <div className="w-8 h-8 rounded-full bg-[#249E98]/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21" />
+                </svg>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#A7A7A2] block leading-none font-bold uppercase tracking-wider mb-0.5">Resorts & Hotels</span>
+                <span className="text-[12px] font-extrabold text-white block">Grow Occupancy</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3 hover:border-[#249E98]/30 transition-colors">
+              <div className="w-8 h-8 rounded-full bg-[#249E98]/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.5 7.5h11m-11 9h11m-13-4.5h15M3.5 5.5v13m17-13v13" />
+                </svg>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#A7A7A2] block leading-none font-bold uppercase tracking-wider mb-0.5">Gyms & Fitness</span>
+                <span className="text-[12px] font-extrabold text-white block">Grow Memberships</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-3 hover:border-[#F59A57]/30 transition-colors">
+              <div className="w-8 h-8 rounded-full bg-[#F59A57]/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+              </div>
+              <div>
+                <span className="text-[9px] text-[#A7A7A2] block leading-none font-bold uppercase tracking-wider mb-0.5">Retail Showrooms</span>
+                <span className="text-[12px] font-extrabold text-white block">Grow Store Traffic</span>
+              </div>
+            </div>
+          </div>
 
           <div className="flex flex-wrap items-center gap-4">
             <Link 
