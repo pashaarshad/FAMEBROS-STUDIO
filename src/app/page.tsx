@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import BrandingComparison from "@/components/sections/BrandingComparison";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
@@ -12,6 +13,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Hero />
       <WhyChooseUs />
+      <BrandingComparison />
       <HowItWorks />
       <Services />
       <Work />
