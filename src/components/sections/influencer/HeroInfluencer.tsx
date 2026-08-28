@@ -108,6 +108,18 @@ export default function HeroInfluencer() {
         backgroundImage: `linear-gradient(to bottom, rgba(10, 10, 12, 0.45), rgba(10, 10, 12, 0.95)), url('/bg-hero.png')`
       }}
     >
+      {/* Premium ambient branding glows & sweeps */}
+      <div className="absolute left-[-10%] top-[-5%] w-[50%] h-[80%] rounded-full bg-gradient-to-tr from-[#DC2626]/20 via-[#FF3B30]/12 to-[#F59A57]/8 blur-[130px] pointer-events-none z-0" />
+      <div className="absolute right-[-10%] bottom-[-5%] w-[50%] h-[80%] rounded-full bg-gradient-to-bl from-[#249E98]/12 via-[#DC2626]/10 to-[#F59A57]/8 blur-[130px] pointer-events-none z-0" />
+      
+      {/* Subtle diagonal branding light sweep across the section background */}
+      <div 
+        className="absolute inset-0 opacity-[0.06] pointer-events-none z-0 mix-blend-screen"
+        style={{
+          backgroundImage: `linear-gradient(135deg, #DC2626 0%, transparent 60%, #F59A57 100%)`
+        }}
+      />
+
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none opacity-20 z-0">
         <svg className="w-full h-full" viewBox="0 0 100 100">
           <circle cx="65" cy="50" r="45" stroke="#F59A57" strokeWidth="0.08" fill="none" strokeDasharray="1 1" />

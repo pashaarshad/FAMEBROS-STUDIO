@@ -30,9 +30,17 @@ export default function BrandingComparison() {
   return (
     <section className="bg-[#0A0A0C] text-white py-24 border-t border-white/10 relative overflow-hidden">
       
-      {/* Decorative background glow */}
-      <div className="absolute right-[-10%] top-[-10%] w-[40%] h-[60%] rounded-full bg-[#F59A57]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute left-[-10%] bottom-[-10%] w-[40%] h-[60%] rounded-full bg-[#249E98]/5 blur-[120px] pointer-events-none" />
+      {/* Premium ambient branding glows & sweeps */}
+      <div className="absolute left-[-10%] top-[-5%] w-[50%] h-[80%] rounded-full bg-gradient-to-tr from-[#DC2626]/15 via-[#FF3B30]/10 to-[#F59A57]/6 blur-[130px] pointer-events-none z-0" />
+      <div className="absolute right-[-10%] bottom-[-5%] w-[50%] h-[80%] rounded-full bg-gradient-to-bl from-[#249E98]/10 via-[#DC2626]/8 to-[#F59A57]/6 blur-[130px] pointer-events-none z-0" />
+      
+      {/* Subtle diagonal branding light sweep across the section background */}
+      <div 
+        className="absolute inset-0 opacity-[0.05] pointer-events-none z-0 mix-blend-screen"
+        style={{
+          backgroundImage: `linear-gradient(135deg, #DC2626 0%, transparent 60%, #F59A57 100%)`
+        }}
+      />
 
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 relative z-10">
         

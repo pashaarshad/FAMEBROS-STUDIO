@@ -43,8 +43,20 @@ const businessServices = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#121214] py-24 border-t border-white/5 relative text-white">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
+    <section id="services" className="bg-[#0A0A0C] py-24 border-t border-white/10 relative text-white overflow-hidden">
+      {/* Premium ambient branding glows & sweeps */}
+      <div className="absolute left-[-10%] top-[-5%] w-[50%] h-[80%] rounded-full bg-gradient-to-tr from-[#DC2626]/15 via-[#FF3B30]/10 to-[#F59A57]/6 blur-[130px] pointer-events-none z-0" />
+      <div className="absolute right-[-10%] bottom-[-5%] w-[50%] h-[80%] rounded-full bg-gradient-to-bl from-[#249E98]/10 via-[#DC2626]/8 to-[#F59A57]/6 blur-[130px] pointer-events-none z-0" />
+      
+      {/* Subtle diagonal branding light sweep across the section background */}
+      <div 
+        className="absolute inset-0 opacity-[0.05] pointer-events-none z-0 mix-blend-screen"
+        style={{
+          backgroundImage: `linear-gradient(135deg, #DC2626 0%, transparent 60%, #F59A57 100%)`
+        }}
+      />
+
+      <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 relative z-10">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
