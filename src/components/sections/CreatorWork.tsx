@@ -76,6 +76,7 @@ export default function CreatorWork() {
               onClick={scrollLeft}
               className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
               aria-label="Scroll left"
+              suppressHydrationWarning
             >
               ←
             </button>
@@ -83,6 +84,7 @@ export default function CreatorWork() {
               onClick={scrollRight}
               className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
               aria-label="Scroll right"
+              suppressHydrationWarning
             >
               →
             </button>

@@ -63,6 +63,7 @@ export default function FAQ() {
                   <button
                     onClick={() => toggleFAQ(idx)}
                     className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-display font-extrabold text-sm md:text-base text-[#0A0A0A] hover:text-[#F59A57] transition-colors"
+                    suppressHydrationWarning
                   >
                     <span>{item.q}</span>
                     <span className="text-lg font-mono text-[#F59A57]">
