@@ -163,25 +163,29 @@ export default function HeroInfluencer() {
               const isAnyHovered = hoveredIdx !== null;
               const isActive = activeVideoIdx === idx;
               
-              let zClass = card.defaultZ;
-              if (isHovered || isActive) {
+              let zClass = "z-10";
+              if (isActive) {
+                zClass = "z-50";
+              } else if (isHovered) {
                 zClass = "z-40";
-              } else if (isAnyHovered) {
-                zClass = "z-0";
+              } else if (idx === 1) {
+                zClass = "z-30";
+              } else if (idx === 2) {
+                zClass = "z-20";
               }
 
               let styleClass = "border-white/10 opacity-70";
               if (isActive) {
-                styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_4px_40px_rgba(245,154,87,0.3)]";
+                styleClass = "border-[#F59A57] scale-130 opacity-100 shadow-[0_12px_60px_rgba(245,154,87,0.55)]";
               } else if (isHovered) {
-                styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_4px_40px_rgba(245,154,87,0.25)]";
+                styleClass = "border-[#F59A57] scale-118 opacity-100 shadow-[0_6px_35px_rgba(245,154,87,0.35)]";
               } else if (isAnyHovered) {
                 styleClass = "border-white/5 opacity-30 scale-95 blur-[0.5px]";
               }
 
               const cardWidth = card.num === "02" 
-                ? "w-[135px] md:w-[165px]" 
-                : "w-[125px] md:w-[150px]";
+                ? "w-[160px] md:w-[195px]" 
+                : "w-[145px] md:w-[175px]";
 
               const displayClass = idx === 3 ? "hidden md:block" : "";
 

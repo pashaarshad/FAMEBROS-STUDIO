@@ -194,7 +194,9 @@ export default function Hero() {
               const isActive = activeVideoIdx === idx;
               
               let zClass = "z-10";
-              if (isActive || isHovered) {
+              if (isActive) {
+                zClass = "z-50";
+              } else if (isHovered) {
                 zClass = "z-40";
               } else if (idx === 1) {
                 zClass = "z-30";
@@ -204,16 +206,16 @@ export default function Hero() {
 
               let styleClass = "border-white/10 opacity-80";
               if (isActive) {
-                styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_4px_40px_rgba(245,154,87,0.3)]";
+                styleClass = "border-[#F59A57] scale-130 opacity-100 shadow-[0_12px_60px_rgba(245,154,87,0.55)]";
               } else if (isHovered) {
-                styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_4px_40px_rgba(245,154,87,0.25)]";
+                styleClass = "border-[#F59A57] scale-118 opacity-100 shadow-[0_6px_35px_rgba(245,154,87,0.35)]";
               } else if (isAnyHovered) {
                 styleClass = "border-white/5 opacity-30 scale-95 blur-[0.5px]";
               }
 
               const cardWidth = idx === 1 
-                ? "w-[140px] md:w-[170px]" 
-                : "w-[125px] md:w-[150px]";
+                ? "w-[160px] md:w-[195px]" 
+                : "w-[145px] md:w-[175px]";
 
               const displayClass = idx === 3 ? "hidden md:block" : "";
               const offsetClass = idx === 0 || idx === 2 ? "translate-y-6" : idx === 1 ? "-translate-y-8" : "-translate-y-4";
