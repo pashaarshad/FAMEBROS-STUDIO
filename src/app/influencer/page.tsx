@@ -1,7 +1,6 @@
 import HeroInfluencer from "@/components/sections/influencer/HeroInfluencer";
 import PhilosophyInfluencer from "@/components/sections/influencer/PhilosophyInfluencer";
 import ServicesInfluencer from "@/components/sections/influencer/ServicesInfluencer";
-import PackagesInfluencer from "@/components/sections/influencer/PackagesInfluencer";
 import WorkInfluencer from "@/components/sections/influencer/WorkInfluencer";
 import FounderInfluencer from "@/components/sections/influencer/FounderInfluencer";
 import CTAInfluencer from "@/components/sections/influencer/CTAInfluencer";
@@ -13,7 +12,6 @@ export default function InfluencerPage() {
       <HeroInfluencer />
       <PhilosophyInfluencer />
       <ServicesInfluencer />
-      <PackagesInfluencer />
       <WorkInfluencer />
       <FounderInfluencer />
       <CTAInfluencer />
