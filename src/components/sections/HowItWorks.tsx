@@ -226,15 +226,7 @@ export default function HowItWorks() {
           })}
         </div>
 
-        {/* Pulsing indicator at the bottom */}
-        <div className="flex flex-col items-center justify-center mt-28 select-none">
-          <span className="font-mono-custom text-[9px] tracking-[0.2em] text-[#55555A] uppercase mb-3">
-            Inbound Leads Generated Below
-          </span>
-          <div className="w-8 h-8 rounded-full border border-[#F59A57]/30 flex items-center justify-center text-[#F59A57] animate-bounce text-[10px] font-bold">
-            ▼
-          </div>
-        </div>
+
 
       </div>
     </section>
