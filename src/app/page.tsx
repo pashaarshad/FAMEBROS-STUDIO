@@ -1,9 +1,9 @@
 import Hero from "@/components/sections/Hero";
-import Philosophy from "@/components/sections/Philosophy";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import HowItWorks from "@/components/sections/HowItWorks";
 import Services from "@/components/sections/Services";
-import Packages from "@/components/sections/Packages";
 import Work from "@/components/sections/Work";
-import Founder from "@/components/sections/Founder";
+import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 
@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Hero />
-      <Philosophy />
+      <WhyChooseUs />
+      <HowItWorks />
       <Services />
-      <Packages />
       <Work />
-      <Founder />
+      <FAQ />
       <CTA />
       <Contact />
     </div>

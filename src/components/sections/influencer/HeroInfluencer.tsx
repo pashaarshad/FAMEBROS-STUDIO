@@ -3,60 +3,52 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 
-const businessHeroCards = [
+const heroCards = [
   {
     num: "01",
-    quote: "Our restaurant sales grew like never before.",
-    name: "Rahul Mehta",
-    role: "Restaurant Owner",
-    growth: "+240%",
-    growthLabel: "Revenue Growth",
-    img: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=300&q=80",
-    videoSrc: "/vedios/business client testimonial/Video-37410.mp4",
-    color: "text-[#F59A57]"
+    label: "STRATEGY",
+    sub: "That Builds",
+    img: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=300&q=80",
+    offset: "translate-y-6",
+    defaultZ: "z-10",
+    videoSrc: "/vedios/influencer shoot/Video-11217.mp4", 
   },
   {
     num: "02",
-    quote: "More enquiries in 30 days than we got in 6 months.",
-    name: "Neha Sharma",
-    role: "Retail Business Owner",
-    growth: "3.2X",
-    growthLabel: "More Enquiries",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
-    videoSrc: "/vedios/business client testimonial/Video-4099.mp4",
-    color: "text-[#249E98]"
+    label: "CONTENT",
+    sub: "That Connects",
+    img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&q=80",
+    offset: "-translate-y-8",
+    defaultZ: "z-30",
+    videoSrc: "/vedios/influencer shoot/Video-15470.mp4", 
   },
   {
     num: "03",
-    quote: "Memberships increased consistently every month.",
-    name: "Amit Verma",
-    role: "Gym Owner",
-    growth: "+180%",
-    growthLabel: "Membership Growth",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-    videoSrc: "/vedios/business client testimonial/Video-41182.mp4",
-    color: "text-[#F59A57]"
+    label: "INFLUENCE",
+    sub: "That Converts",
+    img: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=300&q=80",
+    offset: "translate-y-6",
+    defaultZ: "z-20",
+    videoSrc: "/vedios/influencer shoot/Video-42780.mp4", 
   },
   {
     num: "04",
-    quote: "We now get quality bookings every week.",
-    name: "Karan Malhotra",
-    role: "Resort Owner",
-    growth: "+3.7X",
-    growthLabel: "Bookings Increase",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-    videoSrc: "/vedios/business client testimonial/Video-58243.mp4",
-    color: "text-[#249E98]"
-  }
+    label: "GROWTH",
+    sub: "That Lasts",
+    img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
+    offset: "-translate-y-4",
+    defaultZ: "z-10",
+    videoSrc: "/vedios/influencer shoot/Video-49284.mp4", 
+  },
 ];
 
-export default function Hero() {
+export default function HeroInfluencer() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleMouseEnter = (idx: number) => {
-    if (activeVideoIdx === idx) return;
+    if (activeVideoIdx === idx) return; 
     setHoveredIdx(idx);
     const video = videoRefs.current[idx];
     if (video) {
@@ -65,7 +57,7 @@ export default function Hero() {
   };
 
   const handleMouseLeave = (idx: number) => {
-    if (activeVideoIdx === idx) return;
+    if (activeVideoIdx === idx) return; 
     setHoveredIdx(null);
     const video = videoRefs.current[idx];
     if (video) {
@@ -116,93 +108,69 @@ export default function Hero() {
         backgroundImage: `linear-gradient(to bottom, rgba(10, 10, 12, 0.45), rgba(10, 10, 12, 0.95)), url('/bg-hero.png')`
       }}
     >
-      <div className="absolute right-[-10%] top-[20%] w-[80%] h-[60%] pointer-events-none opacity-20 z-0">
-        <svg className="w-full h-full" viewBox="0 0 800 400" fill="none">
-          <defs>
-            <linearGradient id="glowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#F59A57" stopOpacity="0" />
-              <stop offset="50%" stopColor="#F59A57" stopOpacity="0.4" />
-              <stop offset="80%" stopColor="#249E98" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#249E98" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          {/* Grid lines */}
-          <path d="M 0 100 L 800 100 M 0 200 L 800 200 M 0 300 L 800 300" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
-          <path d="M 200 0 L 200 400 M 400 0 L 400 400 M 600 0 L 600 400" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
-          {/* Main rising curve graph */}
-          <path 
-            d="M -50 350 Q 150 340, 250 280 T 450 180 T 650 110 T 850 50" 
-            stroke="url(#glowGrad)" 
-            strokeWidth="4" 
-            className="blur-[4px]"
-          />
-          <path 
-            d="M -50 350 Q 150 340, 250 280 T 450 180 T 650 110 T 850 50" 
-            stroke="#F59A57" 
-            strokeWidth="1.5" 
-          />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none opacity-20 z-0">
+        <svg className="w-full h-full" viewBox="0 0 100 100">
+          <circle cx="65" cy="50" r="45" stroke="#F59A57" strokeWidth="0.08" fill="none" strokeDasharray="1 1" />
+          <circle cx="65" cy="50" r="35" stroke="#F59A57" strokeWidth="0.08" fill="none" />
+          <circle cx="65" cy="50" r="25" stroke="#249E98" strokeWidth="0.08" fill="none" strokeDasharray="2 1" />
+          <path d="M 65 15 A 35 35 0 0 1 100 50" stroke="#F59A57" strokeWidth="0.2" fill="none" />
         </svg>
       </div>
 
-      {/* Main Grid Content */}
-      <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center relative z-10 flex-1 my-auto">
-        
-        {/* Left Side Info */}
+      <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center relative z-10 flex-1 my-auto">
         <div className="flex flex-col justify-center">
           <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#F59A57] font-bold uppercase mb-6">
-            MUMBAI - GROWING BUSINESSES ACROSS INDIA
+            BRAND. CONTENT. INFLUENCE. GROWTH.
           </p>
           
-          <h1 className="font-display font-extrabold text-white leading-[1.08] tracking-[-0.03em] mb-6 text-[44px] md:text-[56px] lg:text-[66px]">
-            We help businesses<br />
-            <span className="text-[#F59A57]">grow</span> beyond<br />
-            their <span className="text-[#249E98]">expectations.</span>
+          <h1 className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-6 text-[44px] md:text-[56px] lg:text-[70px]">
+            We build brands<br />
+            designed to<br />
+            <span className="text-[#F59A57]">grow</span> for <span className="text-[#249E98]">years.</span>
           </h1>
 
           <p className="text-[#A7A7A2] text-sm md:text-base leading-relaxed mb-10 max-w-lg">
-            We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
+            Content that connects. Strategies that scale.<br />
+            Influence that lasts. Growth that stays.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
             <Link 
               href="#contact"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-lg text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)]"
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-full text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.15)]"
             >
-              Grow My Business
+              Start a Conversation 
               <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-xs">
                 →
               </span>
             </Link>
             <Link 
-              href="#case-studies"
-              className="inline-flex items-center gap-3 px-7 py-3.5 border border-white/20 text-white rounded-lg text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5"
+              href="#work"
+              className="inline-flex items-center gap-3 px-7 py-3.5 border border-white/20 text-white rounded-full text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5"
             >
-              See Case Studies
-              <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-white text-[9px]">
+              See Our Work
+              <span className="w-5 h-5 rounded-full border border-white/45 flex items-center justify-center text-white text-[9px]">
                 ▶
               </span>
             </Link>
           </div>
         </div>
 
-        {/* Right Side 4-Video stack for Business Success Testimonials */}
         <div className="relative flex justify-center lg:justify-end items-center w-full">
           <div className="flex items-center justify-center gap-0 relative w-full lg:w-auto">
-            {businessHeroCards.map((card, idx) => {
+            {heroCards.map((card, idx) => {
               const isHovered = hoveredIdx === idx;
               const isAnyHovered = hoveredIdx !== null;
               const isActive = activeVideoIdx === idx;
               
-              let zClass = "z-10";
-              if (isActive || isHovered) {
+              let zClass = card.defaultZ;
+              if (isHovered || isActive) {
                 zClass = "z-40";
-              } else if (idx === 1) {
-                zClass = "z-30";
-              } else if (idx === 2) {
-                zClass = "z-20";
+              } else if (isAnyHovered) {
+                zClass = "z-0";
               }
 
-              let styleClass = "border-white/10 opacity-80";
+              let styleClass = "border-white/10 opacity-70";
               if (isActive) {
                 styleClass = "border-[#F59A57] scale-110 opacity-100 shadow-[0_4px_40px_rgba(245,154,87,0.3)]";
               } else if (isHovered) {
@@ -211,12 +179,11 @@ export default function Hero() {
                 styleClass = "border-white/5 opacity-30 scale-95 blur-[0.5px]";
               }
 
-              const cardWidth = idx === 1 
-                ? "w-[140px] md:w-[170px]" 
+              const cardWidth = card.num === "02" 
+                ? "w-[135px] md:w-[165px]" 
                 : "w-[125px] md:w-[150px]";
 
               const displayClass = idx === 3 ? "hidden md:block" : "";
-              const offsetClass = idx === 0 || idx === 2 ? "translate-y-6" : idx === 1 ? "-translate-y-8" : "-translate-y-4";
 
               return (
                 <div
@@ -224,17 +191,15 @@ export default function Hero() {
                   onClick={() => handleCardClick(idx)}
                   onMouseEnter={() => handleMouseEnter(idx)}
                   onMouseLeave={() => handleMouseLeave(idx)}
-                  className={`${cardWidth} aspect-[9/16] rounded-2xl border overflow-hidden relative ${offsetClass} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#0A0A0C] shadow-lg cursor-pointer first:ml-0 -ml-8 ${displayClass}`}
+                  className={`${cardWidth} aspect-[9/16] rounded-2xl border overflow-hidden relative ${card.offset} ${zClass} ${styleClass} transition-all duration-500 ease-out bg-gradient-to-b from-[#1C1C21] to-[#050505] shadow-lg cursor-pointer first:ml-0 -ml-8 ${displayClass}`}
                 >
-                  {/* Poster Image */}
                   <div 
-                    className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-out ${isActive ? "opacity-0 pointer-events-none" : "opacity-90"}`}
+                    className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-out ${isActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}
                     style={{ 
                       backgroundImage: `url('${card.img}')`
                     }} 
                   />
 
-                  {/* Video */}
                   {card.videoSrc && (
                     <video
                       ref={(el) => { videoRefs.current[idx] = el; }}
@@ -247,48 +212,43 @@ export default function Hero() {
                     />
                   )}
 
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-15 opacity-100"}`} />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-15 opacity-100"}`} />
 
-                  {/* Center Play Icon */}
-                  {!isActive && (
+                  {card.num === "02" && !isAnyHovered && !isActive && (
                     <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <div className={`w-11 h-11 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white text-xs pl-0.5 backdrop-blur-sm shadow-md transition-transform duration-300 ${isHovered ? "scale-110 bg-[#F59A57] border-[#F59A57] text-black" : ""}`}>
+                      <div className="w-11 h-11 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white text-xs pl-0.5 backdrop-blur-sm shadow-md">
                         ▶
                       </div>
                     </div>
                   )}
 
-                  {/* Text Overlay Info */}
+                  {isHovered && !isActive && (
+                    <div className="absolute inset-0 flex items-center justify-center z-20 transition-all duration-300">
+                      <div className="w-12 h-12 rounded-full border border-white/80 bg-white/20 flex items-center justify-center text-white text-sm pl-0.5 backdrop-blur-md shadow-lg scale-110">
+                        ▶
+                      </div>
+                    </div>
+                  )}
+
                   <div className={`absolute bottom-4 left-4 right-4 transition-all duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-20 opacity-100"}`}>
-                    <p className="text-[9.5px] leading-tight text-white/90 italic mb-2 line-clamp-2">
-                      &ldquo;{card.quote}&rdquo;
-                    </p>
-                    <div className="border-t border-white/10 pt-2 mb-1.5">
-                      <span className="text-[10px] text-white font-bold block leading-none">{card.name}</span>
-                      <span className="text-[8px] text-white/60 block mt-0.5">{card.role}</span>
-                    </div>
-                    <div>
-                      <span className={`text-[15px] font-extrabold block leading-none ${card.color}`}>{card.growth}</span>
-                      <span className="text-[8px] text-white/60 block mt-0.5 leading-none">{card.growthLabel}</span>
-                    </div>
+                    <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">{card.num}</span>
+                    <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">{card.label}</span>
+                    <span className={`text-[10px] transition-colors duration-300 ${isHovered ? "text-[#F59A57]" : "text-[#A7A7A2]"}`}>
+                      {card.sub}
+                    </span>
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
-
       </div>
 
-      {/* Bottom Content Area: Trusted Brands */}
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 mt-8 z-10">
-        
-        {/* Trusted By Brands horizontal bar */}
-        <div className="mb-4">
+        <div className="mb-8">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-mono-custom text-[10px] tracking-[0.2em] text-[#6E716F] uppercase whitespace-nowrap">
-              TRUSTED BY BUSINESSES ACROSS INDIA
+              TRUSTED BY BRANDS ACROSS INDIA
             </span>
             <div className="h-[1px] bg-white/10 flex-grow" />
           </div>
@@ -302,31 +262,25 @@ export default function Hero() {
               <span className="font-sans font-black text-[15px] tracking-wider text-white">BRONX</span>
             </div>
             <span className="font-serif font-semibold text-[22px] tracking-tight text-white">
-              HK DESIGNS
+              HK
             </span>
             <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center">
               <span className="font-sans text-[7px] tracking-[0.2em] font-bold text-white pl-0.5">MERAKI</span>
+            </div>
+            <div className="flex items-center gap-1.5 font-sans font-semibold text-[17px] text-white">
+              <span>F</span>
+              <div className="w-[1px] h-4 bg-white/20" />
+              <span className="text-[12px] font-normal tracking-widest">BAR</span>
             </div>
             <div className="flex flex-col items-start leading-none">
               <span className="font-sans font-light text-[18px] text-white">theka</span>
               <span className="font-mono text-[6px] tracking-widest text-[#F59A57]">COFFEE</span>
             </div>
-            <span className="font-sans font-black tracking-widest text-[15px] text-white">
-              FITLEAF
-            </span>
-            <span className="font-serif tracking-wide text-[16px] text-white uppercase font-bold">
-              Manish Hospitals
-            </span>
-            <span className="font-sans tracking-[0.15em] text-[13px] text-white font-extrabold uppercase">
-              Torino Automobiles
-            </span>
           </div>
         </div>
 
-        {/* Statistics Bar */}
         <div className="bg-white/5 rounded-2xl border border-white/5 p-5 mt-6 shadow-sm backdrop-blur-sm">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-px md:divide-x divide-white/10">
-            
             <div className="flex items-center gap-4 md:px-6">
               <div className="w-12 h-12 rounded-full border border-[#E9BF61]/30 flex items-center justify-center flex-shrink-0 relative">
                 <div className="absolute inset-1 rounded-full border border-dashed border-[#E9BF61]/50" />

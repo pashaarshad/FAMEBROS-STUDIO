@@ -3,45 +3,46 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 
-const businessWorkItems = [
+const workItems = [
   {
-    videoUrl: "/vedios/business client testimonial/Video-60156.mp4",
-    img: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=300&q=80",
-    title: "Theka Coffee",
-    desc: "Cinematic Reel Launch",
-    metric: "10X Enquiries in 30 Days"
+    videoUrl: "/vedios/Shoot testimonial/Video-74349.mp4",
+    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80",
+    line1: "Influencer",
+    line2: "Shoot 01",
   },
   {
-    videoUrl: "/vedios/business client testimonial/Video-68531.mp4",
-    img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=300&q=80",
-    title: "Presence Wellness",
-    desc: "Resort Lifestyle Video",
-    metric: "+320% Bookings Increase"
+    videoUrl: "/vedios/Shoot testimonial/Video-74384.mp4",
+    img: "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=300&q=80",
+    line1: "Product",
+    line2: "Shoot 02",
   },
   {
-    videoUrl: "/vedios/business client testimonial/Video-71170.mp4",
-    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=300&q=80",
-    title: "Fitleaf Gym",
-    desc: "Trainer Profile Series",
-    metric: "+180% Memberships"
+    videoUrl: "/vedios/Shoot testimonial/Video-74404.mp4",
+    img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=300&q=80",
+    line1: "Event",
+    line2: "Production",
   },
   {
-    videoUrl: "/vedios/business client testimonial/Video-71381.mp4",
-    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80",
-    title: "Torino Auto",
-    desc: "Showroom Walkthrough",
-    metric: "50+ Test Drives"
+    videoUrl: "/vedios/Creator growth testimonial/Video-33139.mp4",
+    img: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=300&q=80",
+    line1: "Creator",
+    line2: "Growth 01",
   },
   {
-    videoUrl: "/vedios/business client testimonial/Video-74493.mp4",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
-    title: "Manish Hospital",
-    desc: "Doctor Profile Videos",
-    metric: "Trust Rating: 4.9★"
-  }
+    videoUrl: "/vedios/Creator growth testimonial/Video-33494.mp4",
+    img: "https://images.unsplash.com/photo-1516280440614-37939bbacd6a?auto=format&fit=crop&w=300&q=80",
+    line1: "Creator",
+    line2: "Growth 02",
+  },
+  {
+    videoUrl: "/vedios/Creator growth testimonial/Video-33850.mp4",
+    img: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=300&q=80",
+    line1: "Branded",
+    line2: "Podcast",
+  },
 ];
 
-export default function Work() {
+export default function WorkInfluencer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
@@ -109,20 +110,20 @@ export default function Work() {
   };
 
   return (
-    <section id="case-studies" className="bg-[#FAF6F0] py-24 border-t border-black/5 relative">
+    <section id="work" className="bg-bg-primary py-24 border-t border-black/5 relative">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         
-        {/* Header */}
         <div className="flex items-end justify-between mb-12">
           <div>
             <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#F59A57] mb-4">
-              SUCCESS VIDEOS & CASE STUDIES
+              RECENT WORK
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-3">
-              Proof of <span className="text-[#F59A57]">growth</span> in action.
+              Work that <span className="text-[#F59A57]">speaks</span><br />
+              before we do.
             </h2>
             <p className="text-[#55555A] text-sm font-semibold">
-              Real businesses. Cinematic content. Real bottom line scaling.
+              Real content. Real campaigns. Real stories.
             </p>
           </div>
 
@@ -146,12 +147,11 @@ export default function Work() {
           </div>
         </div>
 
-        {/* Carousel container */}
         <div 
           ref={containerRef}
           className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6"
         >
-          {businessWorkItems.map((item, idx) => {
+          {workItems.map((item, idx) => {
             const isActive = activeIdx === idx;
             
             return (
@@ -162,12 +162,11 @@ export default function Work() {
                 onMouseLeave={() => handleMouseLeave(idx)}
                 className="flex-shrink-0 w-[220px] snap-start group cursor-pointer"
               >
-                {/* Media Card */}
                 <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-[#F5F5F7] to-[#E5E7EB] shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_4px_30px_rgba(245,154,87,0.15)]' : 'border-black/5 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
                   
                   <img 
                     src={item.img} 
-                    alt={item.title} 
+                    alt={`${item.line1} ${item.line2}`} 
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out z-0 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-80 group-hover:opacity-20'}`}
                   />
 
@@ -183,24 +182,19 @@ export default function Work() {
 
                   <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-20 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
-                  {/* Play Button Overlay */}
                   <div className={`absolute inset-0 flex items-center justify-center z-30 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                     <div className="w-11 h-11 rounded-full border border-white/40 bg-white/10 flex items-center justify-center text-white pl-0.5 group-hover:scale-110 group-hover:bg-[#F59A57] group-hover:border-[#F59A57] group-hover:text-[#050505] transition-all backdrop-blur-sm shadow-md">
                       ▶
                     </div>
                   </div>
 
-                  {/* Text Details Overlay */}
-                  <div className={`absolute bottom-5 left-5 right-5 z-30 font-display transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <span className="text-[15px] font-extrabold text-white block uppercase tracking-wide mb-0.5">
-                      {item.title}
+                  <div className={`absolute bottom-5 left-5 right-5 z-30 font-display font-extrabold leading-none tracking-tight transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                    <span className="text-[16px] text-white block uppercase mb-1">
+                      {item.line1}
                     </span>
-                    <span className="text-[10px] text-white/70 block mb-3 font-medium">
-                      {item.desc}
+                    <span className="text-[16px] text-white block uppercase">
+                      {item.line2}
                     </span>
-                    <div className="bg-[#F59A57] text-[#050505] text-[9.5px] font-extrabold px-2.5 py-1 rounded-md inline-block uppercase tracking-wider">
-                      {item.metric}
-                    </div>
                   </div>
 
                 </div>
@@ -213,7 +207,7 @@ export default function Work() {
           <Link href="#contact"
             className="inline-flex items-center gap-3 px-6 py-2.5 border border-black/15 text-[#0A0A0A] rounded-full text-[14px] font-bold hover:border-black/35 hover:bg-black/5 transition-all"
           >
-            Request Custom Case Studies
+            View More Work
             <span className="w-5 h-5 rounded-full bg-black flex items-center justify-center text-white font-bold text-xs">
               →
             </span>

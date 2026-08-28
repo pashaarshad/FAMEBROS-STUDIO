@@ -19,7 +19,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md py-4 border-b border-black/5 shadow-sm"
+          ? "bg-white/95 backdrop-blur-md py-4 border-b border-black/5 shadow-sm"
           : "bg-transparent py-6"
       }`}
     >
@@ -31,27 +31,32 @@ export default function Navbar() {
             alt="Famebros Studio"
             width={180}
             height={70}
-            className="h-14 md:h-16 w-auto object-contain"
+            className="h-12 md:h-14 w-auto object-contain"
             priority
           />
         </Link>
 
-        {/* Navigation Items */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        {/* Navigation Items - matching screenshot layout */}
+        <nav className="hidden xl:flex items-center gap-6 lg:gap-7">
           {[
-            { label: "Home", href: "#" },
-            { label: "What We Do ▾", href: "#services" },
-            { label: "Work", href: "#work" },
-            { label: "Creators", href: "#creators" },
-            { label: "Founder", href: "#founder" },
-            { label: "About", href: "#about" },
+            { label: "Home", href: "/" },
+            { label: "Business Growth", href: "/#why-choose-us" },
+            { label: "Influencer Marketing", href: "/influencer" },
+            { label: "Book a Shoot", href: "/influencer#contact" },
+            { label: "Case Studies", href: "/#case-studies" },
+            { label: "For Creators", href: "/influencer" },
+            { label: "Founder", href: "/influencer#founder" },
           ].map((item) => (
             <Link
               key={item.label}
               href={item.href}
               onClick={() => setActiveItem(item.label)}
-              className={`relative px-1 py-2 text-[14px] font-medium transition-colors whitespace-nowrap ${
-                activeItem === item.label ? "text-[#0A0A0A] font-bold" : "text-[#55555A] hover:text-[#0A0A0A]"
+              className={`relative px-1 py-2 text-[13px] font-bold transition-all duration-200 whitespace-nowrap ${
+                activeItem === item.label 
+                  ? "text-[#F59A57]" 
+                  : scrolled 
+                    ? "text-[#0A0A0A] hover:text-[#F59A57]" 
+                    : "text-white/90 hover:text-[#F59A57]"
               }`}
             >
               {item.label}
@@ -66,15 +71,17 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="#contact"
-            className="hidden md:inline-flex items-center gap-3 px-6 py-2.5 bg-[#F59A57] text-[#050505] rounded-full text-[14px] font-bold hover:bg-[#FF8A3D] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.15)]"
+            className="hidden md:inline-flex items-center gap-3 px-6 py-2.5 bg-[#F59A57] text-white hover:bg-[#FF8A3D] rounded-lg text-[13px] font-extrabold tracking-wider transition-all shadow-[0_4px_15px_rgba(245,154,87,0.2)]"
           >
             Let&apos;s Talk
-            <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-extrabold text-xs">
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-white font-extrabold text-xs">
               →
             </span>
           </Link>
           <button
-            className="md:hidden text-[#0A0A0A] text-xl"
+            className={`xl:hidden text-2xl font-bold p-1 transition-colors ${
+              scrolled ? "text-[#0A0A0A]" : "text-white"
+            }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -85,20 +92,31 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-black/5 px-6 py-4 flex flex-col gap-4 shadow-lg">
-          {["Home", "What We Do", "Work", "Creators", "Founder", "About"].map((item) => (
+        <div className="xl:hidden bg-white border-t border-black/5 px-6 py-5 flex flex-col gap-4 shadow-lg animate-fadeIn">
+          {[
+            { label: "Home", href: "/" },
+            { label: "Business Growth", href: "/#why-choose-us" },
+            { label: "Influencer Marketing", href: "/influencer" },
+            { label: "Book a Shoot", href: "/influencer#contact" },
+            { label: "Case Studies", href: "/#case-studies" },
+            { label: "For Creators", href: "/influencer" },
+            { label: "Founder", href: "/influencer#founder" },
+          ].map((item) => (
             <Link
-              key={item}
-              href="#"
-              className="text-[14px] text-[#55555A] hover:text-[#0A0A0A] py-1 font-medium"
-              onClick={() => setMenuOpen(false)}
+              key={item.label}
+              href={item.href}
+              className="text-[14px] text-[#0A0A0A] hover:text-[#F59A57] py-1 font-bold transition-colors"
+              onClick={() => {
+                setActiveItem(item.label);
+                setMenuOpen(false);
+              }}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
           <Link
             href="#contact"
-            className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#F59A57] text-[#050505] rounded-full text-[14px] font-semibold"
+            className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#F59A57] text-white rounded-lg text-[14px] font-bold shadow-[0_4px_15px_rgba(245,154,87,0.2)]"
             onClick={() => setMenuOpen(false)}
           >
             Let&apos;s Talk &rarr;
