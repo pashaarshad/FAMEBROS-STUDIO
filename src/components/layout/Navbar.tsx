@@ -31,7 +31,7 @@ export default function Navbar() {
             alt="Famebros Studio"
             width={180}
             height={70}
-            className="h-14 md:h-16 w-auto object-contain filter invert"
+            className="h-14 md:h-16 w-auto object-contain"
             priority
           />
         </Link>
