@@ -119,51 +119,6 @@ export default function HeroInfluencer() {
 
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center relative z-10 flex-1 my-auto">
         <div className="flex flex-col justify-center">
-          {/* Google Reviews Trust Badge */}
-          <div className="inline-flex items-center gap-4 bg-black/70 backdrop-blur-md border border-white/20 rounded-2xl p-3 pr-5 mb-8 self-start hover:border-[#E9BF61]/50 hover:bg-black/90 transition-all duration-300 shadow-[0_8px_32px_rgba(0,0,0,0.5)] group relative overflow-hidden">
-            {/* Colorful vibrant left accent line */}
-            <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#E9BF61] to-[#F59A57]" />
-            
-            {/* Laurel Wreath Graphic with Rating */}
-            <div className="relative flex flex-col items-center justify-center w-14 h-14 flex-shrink-0">
-              <svg className="absolute inset-0 w-full h-full text-[#E9BF61]" fill="currentColor" viewBox="0 0 100 100">
-                <path d="M35 50c-2.3-5-2.5-10.7-.7-16.1.5-1.5 1.5-2.3 2.5-1.8.9.5.9 1.8.5 3.3-1.4 4.5-1.2 9.3.7 13.5.7 1.5.5 2.8-.5 3.3-.9.5-2-.2-2.5-2.2z" />
-                <path d="M38 38c-3.1-4.5-4.1-10.2-2.8-15.8.4-1.5 1.4-2.1 2.3-1.5.9.6.7 1.9.3 3.4-1.1 4.9-.3 10.1 2.3 14.1.8 1.4.5 2.7-.4 3.1-.9.5-1.9-.1-2.4-1.8z" />
-                <path d="M43 28C41 23.3 41 17.6 43 12c.5-1.5 1.5-1.9 2.4-1.3.8.6.6 1.9.1 3.4-1.8 4.7-1.8 9.9 0 13.9.8 1.4.4 2.7-.5 3.1-.9.4-1.9-.3-2.4-2z" />
-                <path d="M34 62c-1.3-5.3-1-11 1.1-16 .6-1.5 1.6-2 2.5-1.5.9.6.8 1.9.2 3.4-1.8 4.4-2.1 9.3-.9 13.5.4 1.5.1 2.8-.9 3.2-.9.5-1.9-.1-2.4-2z" />
-                <path d="M36 74c-.3-5.5.9-11.1 3.6-15.7.7-1.4 1.8-1.8 2.6-1.2.8.6.6 1.9-.1 3.4-2.3 4-3.3 9-2.3 13.3.4 1.5-.1 2.8-1 3.1-.9.4-1.9-.2-2.3-2.1z" />
-                <path d="M65 50c2.3-5 2.5-10.7.7-16.1-.5-1.5-1.5-2.3-2.5-1.8-.9.5-.9 1.8-.5 3.3 1.4 4.5 1.2 9.3-.7 13.5-.7 1.5-.5 2.8.5 3.3.9.5 2-.2 2.5-2.2z" />
-                <path d="M62 38c3.1-4.5 4.1-10.2 2.8-15.8-.4-1.5-1.4-2.1-2.3-1.5-.9.6-.7 1.9-.3 3.4 1.1 4.9.3 10.1-2.3 14.1-.8 1.4-.5 2.7.4 3.1.9.5 1.9-.1 2.4-1.8z" />
-                <path d="M57 28c2-4.7 2-10.4 0-16-.5-1.5-1.5-1.9-2.4-1.3-.8.6-.6 1.9-.1 3.4 1.8 4.7 1.8 9.9 0 13.9-.8 1.4-.4 2.7.5 3.1.9.4 1.9-.3 2.4-2z" />
-                <path d="M66 62c1.3-5.3 1-11-1.1-16-.6-1.5-1.6-2-2.5-1.5-.9.6-.8 1.9-.2 3.4 1.8 4.4 2.1 9.3.9 13.5-.4 1.5-.1 2.8.9 3.2.9.5 1.9-.1 2.4-2z" />
-                <path d="M64 74c.3-5.5-.9-11.1-3.6-15.7-.7-1.4-1.8-1.8-2.6-1.2-.8.6-.6 1.9.1 3.4 2.3 4 3.3 9 2.3 13.3-.4 1.5.1 2.8 1 3.1.9.4 1.9-.2 2.3-2.1z" />
-              </svg>
-              
-              <div className="flex flex-col items-center justify-center relative z-10 select-none -mt-1">
-                <span className="text-[20px] font-black text-white leading-none">5</span>
-                
-                {/* 5 gold vector stars directly below */}
-                <div className="flex gap-[1px] mt-0.5 leading-none">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-2.5 h-2.5 text-[#E9BF61]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Rating Details text */}
-            <div className="flex flex-col items-start justify-center pl-1">
-              <span className="text-[13px] font-bold text-white leading-tight">
-                13 reviews on Google Maps
-              </span>
-              <span className="text-[9px] text-white/70 uppercase tracking-widest mt-1.5 font-bold">
-                Famebros Studio LLP · 5.0 Rating
-              </span>
-            </div>
-          </div>
-
           <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#F59A57] font-bold uppercase mb-6">
             BRAND. CONTENT. INFLUENCE. GROWTH.
           </p>
@@ -289,6 +244,21 @@ export default function HeroInfluencer() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Floating Google Review Trust Badge (Bottom Right style) */}
+          <div className="absolute -bottom-36 right-0 lg:right-6 z-30 transition-all hover:scale-105 hover:-translate-y-1 duration-300 select-none cursor-pointer">
+            <img 
+              src="/google-reviews-png.png" 
+              alt="Google 5.0 Rating 13 Google Reviews" 
+              className="w-[250px] md:w-[300px] h-auto drop-shadow-[0_12px_30px_rgba(245,154,87,0.3)]" 
+              loading="lazy"
+              draggable={false}
+              style={{
+                WebkitUserDrag: "none",
+                userDrag: "none"
+              } as any}
+            />
           </div>
         </div>
       </div>
