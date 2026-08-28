@@ -175,34 +175,34 @@ export default function Hero() {
             We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-            <div className="flex flex-wrap items-center gap-4">
+          <div className="grid grid-cols-[1fr_auto] items-center gap-4 sm:gap-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Link 
                 href="#contact"
-                className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#F59A57] text-[#050505] rounded-lg text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)]"
+                className="inline-flex items-center justify-center gap-3 px-5 py-3 sm:px-7 sm:py-3.5 bg-[#F59A57] text-[#050505] rounded-lg text-[13px] sm:text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)] w-full sm:w-auto"
               >
                 Grow My Business
-                <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-xs">
+                <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-[10px] sm:text-xs">
                   →
                 </span>
               </Link>
               <Link 
                 href="#case-studies"
-                className="inline-flex items-center gap-3 px-7 py-3.5 border border-white/20 text-white rounded-lg text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5"
+                className="inline-flex items-center justify-center gap-3 px-5 py-3 sm:px-7 sm:py-3.5 border border-white/20 text-white rounded-lg text-[13px] sm:text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5 w-full sm:w-auto"
               >
                 See Case Studies
-                <span className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center text-white text-[9px]">
+                <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-white/40 flex items-center justify-center text-white text-[8px] sm:text-[9px]">
                   ▶
                 </span>
               </Link>
             </div>
 
-            {/* Mobile-only trust badge */}
-            <div className="lg:hidden">
+            {/* Mobile-only trust badge on the right */}
+            <div className="lg:hidden flex-shrink-0">
               <img 
                 src="/google-reviews-png.png" 
                 alt="Google 5.0 Rating 13 Google Reviews" 
-                className="w-[180px] xs:w-[200px] h-auto drop-shadow-[0_8px_20px_rgba(245,154,87,0.2)]" 
+                className="w-[125px] xs:w-[155px] sm:w-[190px] h-auto drop-shadow-[0_8px_20px_rgba(245,154,87,0.2)]" 
                 draggable={false}
                 style={{
                   WebkitUserDrag: "none",
