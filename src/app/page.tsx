@@ -4,6 +4,7 @@ import BrandingComparison from "@/components/sections/BrandingComparison";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
+import Founder from "@/components/sections/Founder";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
@@ -17,6 +18,7 @@ export default function Home() {
       <HowItWorks />
       <Services />
       <Work />
+      <Founder />
       <FAQ />
       <CTA />
       <Contact />
