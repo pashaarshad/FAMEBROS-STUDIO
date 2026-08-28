@@ -23,6 +23,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Famebros Studio | We build brands designed to grow for years",
   description: "A premium creative production studio focusing on brand building, storytelling, and organic growth.",
+  icons: {
+    icon: "/imp-doc/logo.png",
+    shortcut: "/imp-doc/logo.png",
+    apple: "/imp-doc/logo.png",
+  }
 };
 
 export default function RootLayout({

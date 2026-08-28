@@ -20,7 +20,7 @@ export default function Footer() {
               <img 
                 src="/imp-doc/logo.png" 
                 alt="FAMEBROS STUDIO Logo" 
-                className="h-14 md:h-[70px] w-auto object-contain brightness-0 invert"
+                className="h-14 md:h-[70px] w-auto object-contain"
               />
             </Link>
             <p className="text-[12px] text-white/60 leading-relaxed max-w-[240px]">
