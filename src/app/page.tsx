@@ -10,7 +10,6 @@ import Ecosystem from "@/components/sections/Ecosystem";
 import Work from "@/components/sections/Work";
 import CreatorWork from "@/components/sections/CreatorWork";
 import Founder from "@/components/sections/Founder";
-import Testimonials from "@/components/sections/Testimonials";
 import ClientsGrid from "@/components/sections/ClientsGrid";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
@@ -31,8 +30,7 @@ export default function Home() {
       <Work />
       <CreatorWork />
       <Founder />
-      <Testimonials />
-      <ClientsGrid />
+      <ClientsGrid isDark={true} />
       <FAQ />
       <CTA />
       <Contact />
