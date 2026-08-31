@@ -11,6 +11,7 @@ import Work from "@/components/sections/Work";
 import CreatorWork from "@/components/sections/CreatorWork";
 import Founder from "@/components/sections/Founder";
 import Testimonials from "@/components/sections/Testimonials";
+import ClientsGrid from "@/components/sections/ClientsGrid";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
@@ -31,6 +32,7 @@ export default function Home() {
       <CreatorWork />
       <Founder />
       <Testimonials />
+      <ClientsGrid />
       <FAQ />
       <CTA />
       <Contact />

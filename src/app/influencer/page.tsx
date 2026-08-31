@@ -2,6 +2,7 @@ import HeroInfluencer from "@/components/sections/influencer/HeroInfluencer";
 import PhilosophyInfluencer from "@/components/sections/influencer/PhilosophyInfluencer";
 import ServicesInfluencer from "@/components/sections/influencer/ServicesInfluencer";
 import WorkInfluencer from "@/components/sections/influencer/WorkInfluencer";
+import ClientsGrid from "@/components/sections/ClientsGrid";
 import FounderInfluencer from "@/components/sections/influencer/FounderInfluencer";
 import CTAInfluencer from "@/components/sections/influencer/CTAInfluencer";
 import ContactInfluencer from "@/components/sections/influencer/ContactInfluencer";
@@ -13,6 +14,7 @@ export default function InfluencerPage() {
       <PhilosophyInfluencer />
       <ServicesInfluencer />
       <WorkInfluencer />
+      <ClientsGrid isDark={true} />
       <FounderInfluencer />
       <CTAInfluencer />
       <ContactInfluencer />

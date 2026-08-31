@@ -37,7 +37,7 @@ export default function Footer() {
               <Link href="#about" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 About Us
               </Link>
-              <Link href="/clients" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="#clients" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Our Clients
               </Link>
               <Link href="#founder" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">

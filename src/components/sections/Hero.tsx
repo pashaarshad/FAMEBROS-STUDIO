@@ -361,27 +361,45 @@ export default function Hero() {
           <div className="w-full overflow-hidden relative py-2">
             <div className="flex animate-marquee gap-16 items-center">
               {/* Loop 1 */}
-              {clientLogos.map((logo, idx) => (
-                <div key={`logo-1-${idx}`} className="flex-shrink-0 flex items-center justify-center w-28 md:w-36 h-10 px-2">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.name} 
-                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300"
-                    draggable={false}
-                  />
-                </div>
-              ))}
+              {clientLogos.map((logo, idx) => {
+                const isJioMart = logo.name === "JioMart";
+                const isRealme = logo.name === "Realme";
+                return (
+                  <div key={`logo-1-${idx}`} className="flex-shrink-0 flex items-center justify-center w-28 md:w-36 h-10 px-2">
+                    <img 
+                      src={logo.src} 
+                      alt={logo.name} 
+                      className={`max-h-8 md:max-h-10 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
+                        isJioMart ? "scale-145 md:scale-160" : ""
+                      }`}
+                      style={isRealme ? {
+                        filter: "invert(1) sepia(1) saturate(5) hue-rotate(340deg) brightness(1.2)"
+                      } : undefined}
+                      draggable={false}
+                    />
+                  </div>
+                );
+              })}
               {/* Loop 2 */}
-              {clientLogos.map((logo, idx) => (
-                <div key={`logo-2-${idx}`} className="flex-shrink-0 flex items-center justify-center w-28 md:w-36 h-10 px-2">
-                  <img 
-                    src={logo.src} 
-                    alt={logo.name} 
-                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300"
-                    draggable={false}
-                  />
-                </div>
-              ))}
+              {clientLogos.map((logo, idx) => {
+                const isJioMart = logo.name === "JioMart";
+                const isRealme = logo.name === "Realme";
+                return (
+                  <div key={`logo-2-${idx}`} className="flex-shrink-0 flex items-center justify-center w-28 md:w-36 h-10 px-2">
+                    <img 
+                      src={logo.src} 
+                      alt={logo.name} 
+                      className={`max-h-8 md:max-h-10 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
+                        isJioMart ? "scale-145 md:scale-160" : ""
+                      }`}
+                      style={isRealme ? {
+                        filter: "invert(1) sepia(1) saturate(5) hue-rotate(340deg) brightness(1.2)"
+                      } : undefined}
+                      draggable={false}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

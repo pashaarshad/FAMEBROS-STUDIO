@@ -44,7 +44,7 @@ export default function Navbar() {
             { label: "Influencer Marketing", href: "/influencer" },
             { label: "Book a Shoot", href: "/influencer#contact" },
             { label: "Case Studies", href: "/#case-studies" },
-            { label: "Our Clients", href: "/clients" },
+            { label: "Our Clients", href: "/#clients" },
             { label: "Founder", href: "/influencer#founder" },
           ].map((item) => (
             <Link
@@ -99,7 +99,7 @@ export default function Navbar() {
             { label: "Influencer Marketing", href: "/influencer" },
             { label: "Book a Shoot", href: "/influencer#contact" },
             { label: "Case Studies", href: "/#case-studies" },
-            { label: "Our Clients", href: "/clients" },
+            { label: "Our Clients", href: "/#clients" },
             { label: "Founder", href: "/influencer#founder" },
           ].map((item) => (
             <Link
