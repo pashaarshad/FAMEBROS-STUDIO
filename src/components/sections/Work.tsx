@@ -6,35 +6,35 @@ import Link from "next/link";
 const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-60156.mp4",
-    img: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-60156_poster.jpg",
     title: "Theka Coffee",
     desc: "Cinematic Reel Launch",
     metric: "10X Enquiries in 30 Days"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-68531.mp4",
-    img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-68531_poster.jpg",
     title: "Presence Wellness",
     desc: "Resort Lifestyle Video",
     metric: "+320% Bookings Increase"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-71170.mp4",
-    img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-71170_poster.jpg",
     title: "Fitleaf Gym",
     desc: "Trainer Profile Series",
     metric: "+180% Memberships"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-71381.mp4",
-    img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-71381_poster.jpg",
     title: "Torino Auto",
     desc: "Showroom Walkthrough",
     metric: "50+ Test Drives"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-74493.mp4",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-74493_poster.jpg",
     title: "Manish Hospital",
     desc: "Doctor Profile Videos",
     metric: "Trust Rating: 4.9★"

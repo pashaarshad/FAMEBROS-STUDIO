@@ -6,37 +6,37 @@ import Link from "next/link";
 const workItems = [
   {
     videoUrl: "/vedios/Shoot testimonial/Video-74349.mp4",
-    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/Shoot testimonial/Video-7411_poster.jpg", // fallback to active video poster extracted in same directory
     line1: "Influencer",
     line2: "Shoot 01",
   },
   {
     videoUrl: "/vedios/Shoot testimonial/Video-74384.mp4",
-    img: "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/Shoot testimonial/Video-15097_poster.jpg",
     line1: "Product",
     line2: "Shoot 02",
   },
   {
     videoUrl: "/vedios/Shoot testimonial/Video-74404.mp4",
-    img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/Shoot testimonial/Video-15430_poster.jpg",
     line1: "Event",
     line2: "Production",
   },
   {
     videoUrl: "/vedios/Creator growth testimonial/Video-33139.mp4",
-    img: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/Creator growth testimonial/Video-16374_poster.jpg",
     line1: "Creator",
     line2: "Growth 01",
   },
   {
     videoUrl: "/vedios/Creator growth testimonial/Video-33494.mp4",
-    img: "https://images.unsplash.com/photo-1516280440614-37939bbacd6a?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/Creator growth testimonial/Video-20051_poster.jpg",
     line1: "Creator",
     line2: "Growth 02",
   },
   {
     videoUrl: "/vedios/Creator growth testimonial/Video-33850.mp4",
-    img: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/Creator growth testimonial/Video-20338_poster.jpg",
     line1: "Branded",
     line2: "Podcast",
   },

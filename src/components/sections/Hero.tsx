@@ -31,7 +31,7 @@ const businessHeroCards = [
     role: "Restaurant Owner",
     growth: "+240%",
     growthLabel: "Revenue Growth",
-    img: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-37410_poster.jpg",
     videoSrc: "/vedios/business client testimonial/Video-37410.mp4",
     color: "text-[#F59A57]"
   },
@@ -42,7 +42,7 @@ const businessHeroCards = [
     role: "Retail Business Owner",
     growth: "3.2X",
     growthLabel: "More Enquiries",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-4099_poster.jpg",
     videoSrc: "/vedios/business client testimonial/Video-4099.mp4",
     color: "text-[#249E98]"
   },
@@ -53,7 +53,7 @@ const businessHeroCards = [
     role: "Gym Owner",
     growth: "+180%",
     growthLabel: "Membership Growth",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-41182_poster.jpg",
     videoSrc: "/vedios/business client testimonial/Video-41182.mp4",
     color: "text-[#F59A57]"
   },
@@ -64,7 +64,7 @@ const businessHeroCards = [
     role: "Resort Owner",
     growth: "+3.7X",
     growthLabel: "Bookings Increase",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+    img: "/vedios/business client testimonial/Video-58243_poster.jpg",
     videoSrc: "/vedios/business client testimonial/Video-58243.mp4",
     color: "text-[#249E98]"
   }
