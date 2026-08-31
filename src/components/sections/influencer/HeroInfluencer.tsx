@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { clientLogos } from "../Hero";
 
 const heroCards = [
   {
@@ -292,7 +293,8 @@ export default function HeroInfluencer() {
       </div>
 
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 mt-8 z-10">
-        <div className="mb-8">
+        {/* Trusted By Brands horizontal marquee */}
+        <div className="mb-4 overflow-hidden relative">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-mono-custom text-[10px] tracking-[0.2em] text-[#6E716F] uppercase whitespace-nowrap">
               TRUSTED BY BRANDS ACROSS INDIA
@@ -300,28 +302,30 @@ export default function HeroInfluencer() {
             <div className="h-[1px] bg-white/10 flex-grow" />
           </div>
           
-          <div className="flex flex-wrap items-center justify-between gap-6 md:gap-12 opacity-80 transition-opacity duration-300">
-            <span className="font-serif text-[18px] tracking-[0.15em] font-light text-white italic">
-              PRESENCE
-            </span>
-            <div className="flex flex-col items-center leading-none text-center">
-              <span className="font-mono text-[7px] tracking-widest text-white/80">THE BOMBAY</span>
-              <span className="font-sans font-black text-[15px] tracking-wider text-white">BRONX</span>
-            </div>
-            <span className="font-serif font-semibold text-[22px] tracking-tight text-white">
-              HK
-            </span>
-            <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center">
-              <span className="font-sans text-[7px] tracking-[0.2em] font-bold text-white pl-0.5">MERAKI</span>
-            </div>
-            <div className="flex items-center gap-1.5 font-sans font-semibold text-[17px] text-white">
-              <span>F</span>
-              <div className="w-[1px] h-4 bg-white/20" />
-              <span className="text-[12px] font-normal tracking-widest">BAR</span>
-            </div>
-            <div className="flex flex-col items-start leading-none">
-              <span className="font-sans font-light text-[18px] text-white">theka</span>
-              <span className="font-mono text-[6px] tracking-widest text-[#F59A57]">COFFEE</span>
+          <div className="w-full overflow-hidden relative py-2">
+            <div className="flex animate-marquee gap-16 items-center">
+              {/* Loop 1 */}
+              {clientLogos.map((logo, idx) => (
+                <div key={`logo-1-${idx}`} className="flex-shrink-0 flex items-center justify-center w-28 md:w-36 h-10 px-2">
+                  <img 
+                    src={logo.src} 
+                    alt={logo.name} 
+                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-50 hover:opacity-100 transition-all duration-300 filter grayscale brightness-200 hover:grayscale-0 hover:brightness-100"
+                    draggable={false}
+                  />
+                </div>
+              ))}
+              {/* Loop 2 */}
+              {clientLogos.map((logo, idx) => (
+                <div key={`logo-2-${idx}`} className="flex-shrink-0 flex items-center justify-center w-28 md:w-36 h-10 px-2">
+                  <img 
+                    src={logo.src} 
+                    alt={logo.name} 
+                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-50 hover:opacity-100 transition-all duration-300 filter grayscale brightness-200 hover:grayscale-0 hover:brightness-100"
+                    draggable={false}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
