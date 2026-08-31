@@ -7,6 +7,7 @@ import HowItWorks from "@/components/sections/HowItWorks";
 import Storytelling from "@/components/sections/Storytelling";
 import Services from "@/components/sections/Services";
 import Ecosystem from "@/components/sections/Ecosystem";
+import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import Work from "@/components/sections/Work";
 import CreatorWork from "@/components/sections/CreatorWork";
 import Founder from "@/components/sections/Founder";
@@ -26,6 +27,7 @@ export default function Home() {
       <Storytelling />
       <OrganicGrowth />
       <Ecosystem />
+      <CelebrityGallery />
       <Services />
       <Work />
       <CreatorWork />

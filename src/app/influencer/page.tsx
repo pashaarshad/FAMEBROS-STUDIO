@@ -4,6 +4,7 @@ import ServicesInfluencer from "@/components/sections/influencer/ServicesInfluen
 import WorkInfluencer from "@/components/sections/influencer/WorkInfluencer";
 import ClientsGrid from "@/components/sections/ClientsGrid";
 import FounderInfluencer from "@/components/sections/influencer/FounderInfluencer";
+import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import CTAInfluencer from "@/components/sections/influencer/CTAInfluencer";
 import ContactInfluencer from "@/components/sections/influencer/ContactInfluencer";
 
@@ -16,6 +17,7 @@ export default function InfluencerPage() {
       <WorkInfluencer />
       <ClientsGrid isDark={true} />
       <FounderInfluencer />
+      <CelebrityGallery isDark={true} />
       <CTAInfluencer />
       <ContactInfluencer />
     </div>
