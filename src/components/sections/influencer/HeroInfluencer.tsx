@@ -310,7 +310,7 @@ export default function HeroInfluencer() {
                   <img 
                     src={logo.src} 
                     alt={logo.name} 
-                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-50 hover:opacity-100 transition-all duration-300 filter grayscale brightness-200 hover:grayscale-0 hover:brightness-100"
+                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300"
                     draggable={false}
                   />
                 </div>
@@ -321,7 +321,7 @@ export default function HeroInfluencer() {
                   <img 
                     src={logo.src} 
                     alt={logo.name} 
-                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-50 hover:opacity-100 transition-all duration-300 filter grayscale brightness-200 hover:grayscale-0 hover:brightness-100"
+                    className="max-h-8 md:max-h-10 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300"
                     draggable={false}
                   />
                 </div>

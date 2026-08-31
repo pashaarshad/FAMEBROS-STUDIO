@@ -64,7 +64,7 @@ export default function ClientsPage() {
                 <img 
                   src={logo.src} 
                   alt={logo.name} 
-                  className="max-h-full max-w-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 filter grayscale brightness-200 group-hover:grayscale-0 group-hover:brightness-100"
+                  className="max-h-full max-w-full object-contain opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                   draggable={false}
                 />
               </div>
