@@ -3,20 +3,20 @@
 const pillars = [
   {
     num: "01",
-    title: "Cinematic Authority",
-    desc: "Average content attracts average customers. Our premium cinematic production establishes immediate brand authority, allowing you to charge premium prices.",
+    title: "Brand Authority",
+    desc: "Premium content that makes your business impossible to overlook and easier to trust.",
     color: "border-[#F59A57]"
   },
   {
     num: "02",
-    title: "Organic-First Lead Engine",
-    desc: "Paid campaigns stop running the second you stop paying. We build organic distribution channels that continue generating customers for months and years.",
+    title: "Organic + Paid Growth",
+    desc: "Content and campaigns designed to consistently reach the right people and generate demand.",
     color: "border-[#249E98]"
   },
   {
     num: "03",
-    title: "Comment-to-Sales Funnels",
-    desc: "Views are vanity metrics. We construct message automation, landing pages, and WhatsApp funnels that turn raw social media attention into trackable revenue.",
+    title: "Attention-to-Sales Systems",
+    desc: "DMs, WhatsApp, landing pages and automation that help turn attention into actual business.",
     color: "border-[#F59A57]"
   }
 ];
@@ -41,17 +41,17 @@ export default function WhyChooseUs() {
                 WHY FAMEBROS
               </p>
               <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[44px] leading-[1.1]">
-                We don&apos;t count views.<br />
-                We grow your <span className="text-[#F59A57]">bottom line.</span>
+                We don&apos;t just grow views.<br />
+                We grow <span className="text-[#F59A57]">businesses.</span>
               </h2>
             </div>
             
             <p className="text-[#55555A] text-sm md:text-base leading-relaxed max-w-md">
-              Most agencies focus on likes and followers. We focus on the metric that actually matters: **revenue growth**. Whether you run a resort, a restaurant chain, a fitness brand, or a retail showroom, we turn your physical space into a digital customer magnet.
+              Most agencies stop at likes, followers and reach. We go further, combining strategy, content and performance marketing to turn attention into trust, enquiries, customers and measurable business growth.
             </p>
 
             {/* Growth Stat Board */}
-            <div className="bg-white/60 backdrop-blur-sm border border-black/5 rounded-2xl p-6 grid grid-cols-2 gap-6 max-w-sm shadow-sm">
+            <div className="bg-white/80 backdrop-blur-sm border border-black/5 rounded-2xl p-6 grid grid-cols-2 gap-6 max-w-sm shadow-sm">
               <div>
                 <span className="text-[28px] font-black text-[#F59A57] block leading-none">+300%</span>
                 <span className="text-[10px] font-bold text-[#55555A] uppercase tracking-wider mt-1 block">Avg Organic Reach</span>

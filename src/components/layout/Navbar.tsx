@@ -42,10 +42,10 @@ export default function Navbar() {
             { label: "Home", href: "/" },
             { label: "Business Growth", href: "/#why-choose-us" },
             { label: "Influencer Marketing", href: "/influencer" },
-            { label: "Book a Shoot", href: "/influencer#contact" },
-            { label: "Case Studies", href: "/#case-studies" },
+            { label: "Paid Trial Shoot", href: "/shoot" },
+            { label: "For Creators", href: "/creator" },
             { label: "Our Clients", href: "/#clients" },
-            { label: "Founder", href: "/influencer#founder" },
+            { label: "Founder", href: "/#founder" },
           ].map((item) => (
             <Link
               key={item.label}
@@ -97,10 +97,10 @@ export default function Navbar() {
             { label: "Home", href: "/" },
             { label: "Business Growth", href: "/#why-choose-us" },
             { label: "Influencer Marketing", href: "/influencer" },
-            { label: "Book a Shoot", href: "/influencer#contact" },
-            { label: "Case Studies", href: "/#case-studies" },
+            { label: "Paid Trial Shoot", href: "/shoot" },
+            { label: "For Creators", href: "/creator" },
             { label: "Our Clients", href: "/#clients" },
-            { label: "Founder", href: "/influencer#founder" },
+            { label: "Founder", href: "/#founder" },
           ].map((item) => (
             <Link
               key={item.label}

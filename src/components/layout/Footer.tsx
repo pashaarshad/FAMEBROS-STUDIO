@@ -34,16 +34,16 @@ export default function Footer() {
               Company
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="#about" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#about" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 About Us
               </Link>
-              <Link href="#clients" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#clients" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Our Clients
               </Link>
-              <Link href="#founder" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#founder" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Our Team
               </Link>
-              <Link href="#contact" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#contact" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Contact Us
               </Link>
             </div>
@@ -55,17 +55,17 @@ export default function Footer() {
               Services
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="#services" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#services" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Social Media Growth
               </Link>
-              <Link href="#services" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
-                Content Production
-              </Link>
-              <Link href="#services" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/influencer" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Influencer Marketing
               </Link>
-              <Link href="#services" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
-                Reel Shoots
+              <Link href="/shoot" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+                Book a Paid Trial Shoot
+              </Link>
+              <Link href="/creator" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+                Creator Growth
               </Link>
             </div>
           </div>
@@ -76,10 +76,10 @@ export default function Footer() {
               Resources
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="#work" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#work" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Case Studies
               </Link>
-              <Link href="#faq" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+              <Link href="/#faq" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 FAQ
               </Link>
             </div>
