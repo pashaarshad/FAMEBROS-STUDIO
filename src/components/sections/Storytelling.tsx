@@ -3,17 +3,17 @@
 const storyTimeline = [
   "The Beginning",
   "Behind the Scenes",
-  "Struggles",
-  "Failures",
-  "Rebuilding",
+  "Challenges",
+  "Turning Points",
+  "Progress",
   "Growth",
-  "Success"
+  "Wins"
 ];
 
 const storyPillars = [
   {
     title: "The real people",
-    desc: "Founders, staff, karigars, the person who opens the shutter at 8am. Audiences connect with people far faster than with products.",
+    desc: "Founders, teams, craftsmen and the people working behind the scenes. Audiences connect with real people before they connect with businesses.",
     icon: (
       <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -21,8 +21,8 @@ const storyPillars = [
     )
   },
   {
-    title: "The honest parts",
-    desc: "The struggles and the failures are usually the most watched content we make. Nobody shares a perfect story — they share a real one.",
+    title: "The honest moments",
+    desc: "Challenges, lessons and unexpected moments often create the most relatable content. People connect with real journeys, not perfect ones.",
     icon: (
       <svg className="w-5 h-5 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -31,7 +31,7 @@ const storyPillars = [
   },
   {
     title: "The journey, month after month",
-    desc: "Told consistently, your business stops being a shop people pass and becomes a story people follow.",
+    desc: "Consistent storytelling turns your business from something people simply see into a brand they recognise, remember and want to follow.",
     icon: (
       <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -55,11 +55,11 @@ export default function Storytelling() {
             BUSINESS STORYTELLING
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
-            We don&apos;t just create content. <br />
-            We build your <span className="text-[#F59A57]">story.</span>
+            We don&apos;t just post content.<br />
+            We turn your business into a <span className="text-[#F59A57]">story people follow.</span>
           </h2>
           <p className="text-[#55555A] text-sm md:text-base leading-relaxed max-w-2xl">
-            Every business has a story worth telling &mdash; how it started, what nearly ended it, and what it took to keep going. That story is what people remember. Promotional posts are what they scroll past.
+            Every business has a story worth telling: how it started, the people behind it, the challenges, the progress and everything it took to grow. We turn those real moments into content people remember, connect with and keep coming back for.
           </p>
         </div>
 
