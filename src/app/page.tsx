@@ -5,7 +5,6 @@ import BrandingComparison from "@/components/sections/BrandingComparison";
 import OrganicGrowth from "@/components/sections/OrganicGrowth";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Storytelling from "@/components/sections/Storytelling";
-import Services from "@/components/sections/Services";
 import Ecosystem from "@/components/sections/Ecosystem";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import Work from "@/components/sections/Work";
@@ -28,7 +27,6 @@ export default function Home() {
       <OrganicGrowth />
       <Ecosystem />
       <CelebrityGallery />
-      <Services />
       <Work />
       <CreatorWork />
       <Founder />
