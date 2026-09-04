@@ -7,9 +7,9 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-60156.mp4",
     img: "/vedios/business client testimonial/Video-60156_poster.jpg",
-    title: "Theka Coffee",
-    desc: "Cinematic Reel Launch",
-    metric: "10X Enquiries in 30 Days"
+    title: "Ali Salon",
+    desc: "25 Years in Business. No Social Presence.",
+    metric: "10X More Inquiries With Us"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-68531.mp4",
