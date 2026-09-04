@@ -14,9 +14,9 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-68531.mp4",
     img: "/vedios/business client testimonial/Video-68531_poster.jpg",
-    title: "Presence Wellness",
-    desc: "Resort Lifestyle Video",
-    metric: "+320% Bookings Increase"
+    title: "SK Furniture",
+    desc: "Customer Queues Despite an Offbeat Location",
+    metric: "10K+ Followers in 6 Months"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-71170.mp4",
