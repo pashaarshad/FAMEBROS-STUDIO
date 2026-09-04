@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Link from "next/link";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import Contact from "@/components/sections/Contact";
@@ -10,32 +11,80 @@ const journeys = [
     quote: "I was posting every day and getting 200 views. I nearly stopped.",
     name: "Fashion & Lifestyle Creator",
     handle: "@mumbai_fashion_vibe",
-    videoSrc: "/vedios/Creator growth testimonial/Video-16374.mp4",
-    poster: "/vedios/Creator growth testimonial/Video-16374_poster.jpg"
+    videoSrc: "/vedios-For Creators/1.mp4",
+    poster: "/vedios-For Creators/1_poster.jpg"
   },
   {
     milestone: "50K 🎉 MILESTONE",
     quote: "The difference was having someone plan it instead of me guessing.",
     name: "Fitness & Wellness Creator",
     handle: "@fit_with_rohan",
-    videoSrc: "/vedios/Creator growth testimonial/Video-20051.mp4",
-    poster: "/vedios/Creator growth testimonial/Video-20051_poster.jpg"
+    videoSrc: "/vedios-For Creators/2.mp4",
+    poster: "/vedios-For Creators/2_poster.jpg"
   },
   {
     milestone: "0 → 100K · 9 MONTHS",
     quote: "The quality of the shoots made brands reach out directly.",
     name: "Lifestyle & Travel Creator",
     handle: "@ananya_diaries",
-    videoSrc: "/vedios/Creator growth testimonial/Video-20338.mp4",
-    poster: "/vedios/Creator growth testimonial/Video-20338_poster.jpg"
+    videoSrc: "/vedios-For Creators/3.mp4",
+    poster: "/vedios-For Creators/3_poster.jpg"
   },
   {
     milestone: "FIRST BRAND DEAL",
     quote: "Three months in, a brand messaged me. I hadn't approached anyone.",
     name: "Food & Culinary Creator",
     handle: "@mumbai_food_tales",
-    videoSrc: "/vedios/Creator growth testimonial/Video-43663.mp4",
-    poster: "/vedios/Creator growth testimonial/Video-43663_poster.jpg"
+    videoSrc: "/vedios-For Creators/4.mp4",
+    poster: "/vedios-For Creators/4_poster.jpg"
+  },
+  {
+    milestone: "300K+ REACH",
+    quote: "Consistent quality shoots turned views into real followers.",
+    name: "Beauty & Style Creator",
+    handle: "@glam_by_priya",
+    videoSrc: "/vedios-For Creators/5.mp4",
+    poster: "/vedios-For Creators/5_poster.jpg"
+  },
+  {
+    milestone: "VIRAL REELS",
+    quote: "Scripting and storytelling made all the difference.",
+    name: "Tech & Gadgets Creator",
+    handle: "@tech_insights",
+    videoSrc: "/vedios-For Creators/6.mp4",
+    poster: "/vedios-For Creators/6_poster.jpg"
+  },
+  {
+    milestone: "COMMUNITY BUILT",
+    quote: "Went from zero strategy to monthly paid brand deals.",
+    name: "Luxury & Lifestyle Creator",
+    handle: "@luxe_living_in",
+    videoSrc: "/vedios-For Creators/7.mp4",
+    poster: "/vedios-For Creators/7_poster.jpg"
+  },
+  {
+    milestone: "10X ENGAGEMENT",
+    quote: "Our engagement skyrocketed within 60 days of launching.",
+    name: "Dance & Entertainment Creator",
+    handle: "@rhythm_vibes",
+    videoSrc: "/vedios-For Creators/8.mp4",
+    poster: "/vedios-For Creators/8_poster.jpg"
+  },
+  {
+    milestone: "CONSISTENT LEADS",
+    quote: "People trust my recommendations because the content looks professional.",
+    name: "Business & Career Creator",
+    handle: "@growth_mentor_in",
+    videoSrc: "/vedios-For Creators/9.mp4",
+    poster: "/vedios-For Creators/9_poster.jpg"
+  },
+  {
+    milestone: "NATIONAL CAMPAIGNS",
+    quote: "We scaled from local reels to multi-city brand campaigns.",
+    name: "Travel & Culture Creator",
+    handle: "@india_uncovered",
+    videoSrc: "/vedios-For Creators/10.mp4",
+    poster: "/vedios-For Creators/10_poster.jpg"
   }
 ];
 
@@ -73,6 +122,56 @@ const creatorServices = [
 ];
 
 export default function CreatorPage() {
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+  const handleMouseEnter = (idx: number) => {
+    if (activeIdx === idx) return;
+    const video = videoRefs.current[idx];
+    if (video) {
+      video.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = (idx: number) => {
+    if (activeIdx === idx) return;
+    const video = videoRefs.current[idx];
+    if (video) {
+      video.pause();
+    }
+  };
+
+  const handleCardClick = (idx: number) => {
+    if (activeIdx === idx) {
+      const video = videoRefs.current[idx];
+      if (video) {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          video.muted = true;
+          setActiveIdx(null);
+        }
+      }
+      return;
+    }
+
+    if (activeIdx !== null) {
+      const prevVideo = videoRefs.current[activeIdx];
+      if (prevVideo) {
+        prevVideo.pause();
+        prevVideo.muted = true;
+      }
+    }
+
+    setActiveIdx(idx);
+    const video = videoRefs.current[idx];
+    if (video) {
+      video.muted = false;
+      video.play().catch(() => {});
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#0A0A0C] text-white pt-24">
       
@@ -125,33 +224,71 @@ export default function CreatorPage() {
             </p>
           </div>
 
+          {/* Interactive Video Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {journeys.map((item, idx) => (
-              <div 
-                key={idx} 
-                className="bg-[#121215] border border-white/5 rounded-2xl p-5 flex flex-col justify-between hover:border-[#F59A57]/30 transition-all group"
-              >
-                <div>
-                  <div className="aspect-[9/16] rounded-xl overflow-hidden mb-4 relative bg-black/40 border border-white/5">
-                    <img 
-                      src={item.poster} 
-                      alt={item.name} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-[#F59A57] text-[#050505] font-mono-custom text-[9px] font-extrabold px-2.5 py-1 rounded-md uppercase">
-                      {item.milestone}
+            {journeys.map((item, idx) => {
+              const isActive = activeIdx === idx;
+
+              return (
+                <div 
+                  key={idx} 
+                  onClick={() => handleCardClick(idx)}
+                  onMouseEnter={() => handleMouseEnter(idx)}
+                  onMouseLeave={() => handleMouseLeave(idx)}
+                  className={`bg-[#121215] border rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 group cursor-pointer ${
+                    isActive ? "border-[#F59A57] bg-[#16161A] shadow-[0_4px_30px_rgba(245,154,87,0.15)]" : "border-white/5 hover:border-[#F59A57]/40"
+                  }`}
+                >
+                  <div>
+                    {/* Media Container */}
+                    <div className="aspect-[9/16] rounded-xl overflow-hidden mb-4 relative bg-black/60 border border-white/5">
+                      <img 
+                        src={item.poster} 
+                        alt={item.name} 
+                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 z-0 ${
+                          isActive ? "opacity-0 pointer-events-none" : "opacity-80 group-hover:opacity-30"
+                        }`}
+                      />
+
+                      <video
+                        ref={(el) => { videoRefs.current[idx] = el; }}
+                        src={item.videoSrc}
+                        loop={!isActive}
+                        muted={!isActive}
+                        controls={isActive}
+                        playsInline
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                          isActive ? "z-20 opacity-100" : "z-10 opacity-0 group-hover:opacity-95 pointer-events-none"
+                        }`}
+                      />
+
+                      <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20 transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none" : "opacity-100"}`} />
+
+                      {/* Milestone Tag */}
+                      <div className="absolute top-3 left-3 bg-[#F59A57] text-[#050505] font-mono-custom text-[9px] font-extrabold px-2.5 py-1 rounded-md uppercase z-30 shadow-md">
+                        {item.milestone}
+                      </div>
+
+                      {/* Play Icon Overlay */}
+                      <div className={`absolute inset-0 flex items-center justify-center z-30 transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+                        <div className="w-12 h-12 rounded-full border border-white/40 bg-black/40 flex items-center justify-center text-white pl-0.5 group-hover:scale-110 group-hover:bg-[#F59A57] group-hover:border-[#F59A57] group-hover:text-[#050505] transition-all backdrop-blur-sm shadow-md">
+                          ▶
+                        </div>
+                      </div>
                     </div>
+
+                    <p className="text-white/90 text-sm italic mb-4 leading-relaxed">
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
                   </div>
-                  <p className="text-white/90 text-sm italic mb-4 leading-relaxed">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
+
+                  <div className="pt-3 border-t border-white/5">
+                    <h3 className="text-white font-bold text-sm">{item.name}</h3>
+                    <span className="text-[#249E98] text-xs font-mono">{item.handle}</span>
+                  </div>
                 </div>
-                <div className="pt-3 border-t border-white/5">
-                  <h4 className="text-white font-bold text-sm">{item.name}</h4>
-                  <span className="text-[#249E98] text-xs font-mono">{item.handle}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
