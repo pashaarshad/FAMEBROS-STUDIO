@@ -35,9 +35,9 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-74493.mp4",
     img: "/vedios/business client testimonial/Video-74493_poster.jpg",
-    title: "Manish Hospital",
-    desc: "Doctor Profile Videos",
-    metric: "Trust Rating: 4.9★"
+    title: "Al Ahmed",
+    desc: "India's Top Perfume Brand",
+    metric: "3 Years With Us"
   }
 ];
 
