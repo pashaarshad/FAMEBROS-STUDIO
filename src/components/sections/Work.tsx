@@ -21,9 +21,9 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-71170.mp4",
     img: "/vedios/business client testimonial/Video-71170_poster.jpg",
-    title: "Fitleaf Gym",
-    desc: "Trainer Profile Series",
-    metric: "+180% Memberships"
+    title: "Arabian Collection",
+    desc: "Mumbai, Dubai & Hyderabad",
+    metric: "600K+ Followers | 3 Years With Us"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-71381.mp4",
