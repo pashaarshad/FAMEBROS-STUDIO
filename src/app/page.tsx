@@ -8,7 +8,6 @@ import Storytelling from "@/components/sections/Storytelling";
 import Ecosystem from "@/components/sections/Ecosystem";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import Work from "@/components/sections/Work";
-import CreatorWork from "@/components/sections/CreatorWork";
 import Founder from "@/components/sections/Founder";
 import ClientsGrid from "@/components/sections/ClientsGrid";
 import FAQ from "@/components/sections/FAQ";
@@ -28,7 +27,6 @@ export default function Home() {
       <OrganicGrowth />
       <Ecosystem />
       <Work />
-      <CreatorWork />
       <Founder />
       <ClientsGrid isDark={true} />
       <FAQ />
