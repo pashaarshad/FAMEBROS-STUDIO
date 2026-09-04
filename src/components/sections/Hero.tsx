@@ -31,8 +31,8 @@ const businessHeroCards = [
     role: "Restaurant Owner",
     growth: "+240%",
     growthLabel: "Revenue Growth",
-    img: "/vedios/business client testimonial/Video-37410_poster.jpg",
-    videoSrc: "/vedios/business client testimonial/Video-37410.mp4",
+    img: "/vedios-hero/1st__poster.jpg",
+    videoSrc: "/vedios-hero/1st_.mp4",
     color: "text-[#F59A57]"
   },
   {
@@ -42,8 +42,8 @@ const businessHeroCards = [
     role: "Retail Business Owner",
     growth: "3.2X",
     growthLabel: "More Enquiries",
-    img: "/vedios/business client testimonial/Video-4099_poster.jpg",
-    videoSrc: "/vedios/business client testimonial/Video-4099.mp4",
+    img: "/vedios-hero/2nd_poster.jpg",
+    videoSrc: "/vedios-hero/2nd.mp4",
     color: "text-[#249E98]"
   },
   {
@@ -53,8 +53,8 @@ const businessHeroCards = [
     role: "Gym Owner",
     growth: "+180%",
     growthLabel: "Membership Growth",
-    img: "/vedios/business client testimonial/Video-41182_poster.jpg",
-    videoSrc: "/vedios/business client testimonial/Video-41182.mp4",
+    img: "/vedios-hero/3rd_poster.jpg",
+    videoSrc: "/vedios-hero/3rd.mp4",
     color: "text-[#F59A57]"
   },
   {
@@ -64,8 +64,8 @@ const businessHeroCards = [
     role: "Resort Owner",
     growth: "+3.7X",
     growthLabel: "Bookings Increase",
-    img: "/vedios/business client testimonial/Video-58243_poster.jpg",
-    videoSrc: "/vedios/business client testimonial/Video-58243.mp4",
+    img: "/vedios-hero/4th_poster.jpg",
+    videoSrc: "/vedios-hero/4th.mp4",
     color: "text-[#249E98]"
   }
 ];
