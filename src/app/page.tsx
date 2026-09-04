@@ -20,13 +20,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Hero />
       <WhyChooseUs />
+      <CelebrityGallery />
       <WhyWeExist />
       <HowItWorks />
       <BrandingComparison />
       <Storytelling />
       <OrganicGrowth />
       <Ecosystem />
-      <CelebrityGallery />
       <Work />
       <CreatorWork />
       <Founder />
