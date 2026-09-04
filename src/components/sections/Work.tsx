@@ -28,9 +28,9 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-71381.mp4",
     img: "/vedios/business client testimonial/Video-71381_poster.jpg",
-    title: "Torino Auto",
-    desc: "Showroom Walkthrough",
-    metric: "50+ Test Drives"
+    title: "Jolly Honest Tailor",
+    desc: "50 Years in Business",
+    metric: "3 Years With Us"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-74493.mp4",
