@@ -11,7 +11,11 @@ const row1Photos = [
   "/vedios/Photos with celebrity/1 (4).jpg",
   "/vedios/Photos with celebrity/1 (5).jpg",
   "/vedios/Photos with celebrity/1 (6).jpg",
-  "/vedios/Photos with celebrity/1 (7).jpg"
+  "/vedios/Photos with celebrity/1 (7).jpg",
+  "/new-Photos with celebrity/0905.png",
+  "/new-Photos with celebrity/0905(1).png",
+  "/new-Photos with celebrity/0905(2).png",
+  "/new-Photos with celebrity/0905(3).png",
 ];
 
 const row2Photos = [
@@ -21,7 +25,10 @@ const row2Photos = [
   "/vedios/Photos with celebrity/1 (11).jpg",
   "/vedios/Photos with celebrity/1 (12).jpg",
   "/vedios/Photos with celebrity/1 (13).jpg",
-  "/vedios/Photos with celebrity/1 (14).jpg"
+  "/vedios/Photos with celebrity/1 (14).jpg",
+  "/new-Photos with celebrity/0905(4).png",
+  "/new-Photos with celebrity/0905(5).png",
+  "/new-Photos with celebrity/0905(7).png",
 ];
 
 export default function CelebrityGallery({ isDark = false }: CelebrityGalleryProps) {
