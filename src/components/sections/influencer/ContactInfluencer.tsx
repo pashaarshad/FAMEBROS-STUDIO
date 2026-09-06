@@ -72,7 +72,7 @@ export default function ContactInfluencer() {
               </div>
 
               {/* FORM FIELDS */}
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs text-[#55555A] font-semibold mb-2">Your Name</label>
@@ -83,6 +83,7 @@ export default function ContactInfluencer() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -94,6 +95,7 @@ export default function ContactInfluencer() {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -108,6 +110,7 @@ export default function ContactInfluencer() {
                       onChange={(e) => setFormData({ ...formData, socialHandle: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -117,6 +120,7 @@ export default function ContactInfluencer() {
                       onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all"
                       required
+                      suppressHydrationWarning
                     >
                       <option value="">Select Niche</option>
                       <option value="Fashion & Lifestyle">Fashion & Lifestyle</option>
@@ -138,12 +142,14 @@ export default function ContactInfluencer() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={3}
                     className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all resize-none placeholder:text-gray-400"
+                    suppressHydrationWarning
                   />
                 </div>
 
                 <button 
                   type="submit"
                   className="w-full py-3.5 bg-[#0A0A0B] hover:bg-[#1C1C21] text-white rounded-xl font-bold text-sm transition-all hover:scale-[1.01]"
+                  suppressHydrationWarning
                 >
                   Submit Enquiry Form &rarr;
                 </button>
