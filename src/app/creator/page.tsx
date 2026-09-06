@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
-import Contact from "@/components/sections/Contact";
+import ContactCreator from "@/components/sections/ContactCreator";
 
 const journeys = [
   {
@@ -404,7 +404,7 @@ export default function CreatorPage() {
       <CelebrityGallery isDark={true} />
 
       {/* Contact Section */}
-      <Contact />
+      <ContactCreator />
 
     </div>
   );
