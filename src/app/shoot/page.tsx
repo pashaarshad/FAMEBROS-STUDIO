@@ -144,26 +144,28 @@ export default function BookPaidTrialShootPage() {
                   OPTION 01 &bull; FOR BUSINESSES &amp; BRANDS
                 </span>
                 <h2 className="font-display font-extrabold text-white text-3xl md:text-4xl mb-6 leading-tight">
-                  Test our content quality, shooting style and Reel strategy.
+                  Take a trial shoot. Get 15 reels. See our work before you commit.
                 </h2>
-                <p className="text-white/70 text-base leading-relaxed mb-8">
-                  Designed for brands that want to see how we plan, script, shoot, and edit before committing to a full retainer.
+                <p className="text-white/70 text-base leading-relaxed mb-10">
+                  Experience our complete content process, from strategy and scripting to shooting and final editing, before choosing Famebros for long-term social media management.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                   <div className="bg-[#0A0A0C] border border-white/5 rounded-2xl p-6">
-                    <h3 className="font-bold text-white text-base mb-2">What&apos;s Included</h3>
+                    <h3 className="font-bold text-white text-base mb-4">WHAT&apos;S INCLUDED</h3>
                     <ul className="text-sm text-white/70 space-y-2.5">
-                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> 1 Planned Shoot Session</li>
-                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> 3 High-Converting Vertical Reels</li>
-                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> Complete Scripting &amp; Direction</li>
-                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> High-Retention Editing &amp; Audio</li>
+                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> <strong className="text-white/90">1 Complete Content Shoot</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> <strong className="text-white/90">Content Planning &amp; Scripting</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> <strong className="text-white/90">15 Professional Reels</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> <strong className="text-white/90">Complete Video Editing</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#F59A57]">✓</span> <strong className="text-white/90">Final Ready-to-Post Videos</strong></li>
                     </ul>
                   </div>
                   <div className="bg-[#0A0A0C] border border-white/5 rounded-2xl p-6">
-                    <h3 className="font-bold text-white text-base mb-2">Ideal For</h3>
+                    <h3 className="font-bold text-white text-base mb-3">WHY TAKE THE TRIAL?</h3>
+                    <p className="text-[#F59A57] font-semibold text-sm mb-3">Experience Famebros Before You Commit</p>
                     <p className="text-sm text-white/70 leading-relaxed">
-                      Restaurants, Showrooms, Gyms, Resorts, Real Estate, and Founders testing agency fit.
+                      See our content ideas, shoot direction, production quality, editing style and overall execution with your own brand before moving forward with a long-term plan.
                     </p>
                   </div>
                 </div>
@@ -173,9 +175,9 @@ export default function BookPaidTrialShootPage() {
                     href="#contact"
                     className="inline-flex items-center gap-3 px-8 py-4 bg-[#F59A57] text-[#050505] rounded-xl text-sm font-bold hover:bg-[#FF8A3D] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)]"
                   >
-                    Enquire for Business Trial Shoot &rarr;
+                    Book Your Trial Shoot &rarr;
                   </a>
-                  <span className="text-white/40 text-xs font-mono">Zero Contract Commitment &bull; 100% Execution</span>
+                  <span className="text-white/40 text-xs font-mono">15 Reels &bull; Complete Production &bull; No Long-Term Commitment</span>
                 </div>
               </div>
             </div>
@@ -189,26 +191,28 @@ export default function BookPaidTrialShootPage() {
                   OPTION 02 &bull; FOR CREATORS &amp; INFLUENCERS
                 </span>
                 <h2 className="font-display font-extrabold text-white text-3xl md:text-4xl mb-6 leading-tight">
-                  Experience our content planning, shoot direction and Reel production.
+                  Take a trial shoot. See how we can level up your content.
                 </h2>
-                <p className="text-white/70 text-base leading-relaxed mb-8">
-                  For creators who want to upgrade their visual quality, increase engagement, and attract brand sponsorships.
+                <p className="text-white/70 text-base leading-relaxed mb-10">
+                  Experience our complete creator process, from content strategy and concepts to shoot direction and final edits, before choosing Famebros for ongoing social media growth and management.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                   <div className="bg-[#0A0A0C] border border-white/5 rounded-2xl p-6">
-                    <h3 className="font-bold text-white text-base mb-2">What&apos;s Included</h3>
+                    <h3 className="font-bold text-white text-base mb-4">WHAT&apos;S INCLUDED</h3>
                     <ul className="text-sm text-white/70 space-y-2.5">
-                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> Personal Brand Positioning Call</li>
-                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> 1 Studio or Outdoor Shoot</li>
-                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> 3 Premium Edited Creator Reels</li>
-                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> Hook &amp; Caption Optimization</li>
+                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> <strong className="text-white/90">1 Complete Creator Shoot</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> <strong className="text-white/90">Content Planning &amp; Concepts</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> <strong className="text-white/90">Hook &amp; Reel Scripting</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> <strong className="text-white/90">10 Edited Reels</strong></li>
+                      <li className="flex items-center gap-2"><span className="text-[#249E98]">✓</span> <strong className="text-white/90">Final Ready-to-Post Videos</strong></li>
                     </ul>
                   </div>
                   <div className="bg-[#0A0A0C] border border-white/5 rounded-2xl p-6">
-                    <h3 className="font-bold text-white text-base mb-2">Ideal For</h3>
+                    <h3 className="font-bold text-white text-base mb-3">WHY TAKE THE TRIAL?</h3>
+                    <p className="text-[#249E98] font-semibold text-sm mb-3">Experience Famebros Before You Commit</p>
                     <p className="text-sm text-white/70 leading-relaxed">
-                      Lifestyle, Fashion, Fitness, Tech, Food, and Personal Brand Creators wanting real growth.
+                      See how we understand your content style, plan stronger ideas, direct your shoot and turn your personality into content that feels natural, engaging and built for growth.
                     </p>
                   </div>
                 </div>
@@ -218,9 +222,9 @@ export default function BookPaidTrialShootPage() {
                     href="#contact"
                     className="inline-flex items-center gap-3 px-8 py-4 bg-[#249E98] text-[#050505] rounded-xl text-sm font-bold hover:bg-[#208B86] transition-all shadow-[0_4px_20px_rgba(36,158,152,0.25)]"
                   >
-                    Enquire for Creator Trial Shoot &rarr;
+                    Book Your Creator Trial Shoot &rarr;
                   </a>
-                  <span className="text-white/40 text-xs font-mono">Batch Creator Session &bull; High Impact</span>
+                  <span className="text-white/40 text-xs font-mono">Strategy &bull; Shoot &bull; 10 Final Reels &bull; No Long-Term Commitment</span>
                 </div>
               </div>
             </div>
