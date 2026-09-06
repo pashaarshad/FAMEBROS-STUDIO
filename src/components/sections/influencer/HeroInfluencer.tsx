@@ -133,38 +133,37 @@ export default function HeroInfluencer() {
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center relative z-10 flex-1 my-auto">
         <div className="flex flex-col justify-center">
           <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#F59A57] font-bold uppercase mb-6">
-            BRAND. CONTENT. INFLUENCE. GROWTH.
+            INFLUENCER MARKETING
           </p>
           
-          <h1 className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-6 text-[44px] md:text-[56px] lg:text-[70px]">
-            We build brands<br />
-            designed to<br />
-            <span className="text-[#F59A57]">grow</span> for <span className="text-[#249E98]">years.</span>
+          <h1 className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-6 text-[40px] md:text-[52px] lg:text-[64px]">
+            Most influencer budgets are<br />
+            <span className="text-[#F59A57]">wasted</span> on the<br />
+            <span className="text-[#249E98]">wrong creator.</span>
           </h1>
 
           <p className="text-[#A7A7A2] text-sm md:text-base leading-relaxed mb-10 max-w-lg">
-            Content that connects. Strategies that scale.<br />
-            Influence that lasts. Growth that stays.
+            Big follower counts hide fake audiences, bought views and people who will never buy from you. We check first &mdash; then we match the creator to your actual customer.
           </p>
 
           <div className="grid grid-cols-[1fr_auto] items-center gap-4 sm:gap-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Link 
                 href="#contact"
-                className="inline-flex items-center justify-center gap-3 px-5 py-3 sm:px-7 sm:py-3.5 bg-[#F59A57] text-[#050505] rounded-full text-[13px] sm:text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.15)] w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-3 px-5 py-3.5 sm:px-7 sm:py-4 bg-[#F59A57] text-[#050505] rounded-xl text-[13px] sm:text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)] w-full sm:w-auto"
               >
-                Start a Conversation 
+                Grow Your Brand With Influencers
                 <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-[10px] sm:text-xs">
-                  →
+                  &rarr;
                 </span>
               </Link>
               <Link 
                 href="#work"
-                className="inline-flex items-center justify-center gap-3 px-5 py-3 sm:px-7 sm:py-3.5 border border-white/20 text-white rounded-full text-[13px] sm:text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-3 px-5 py-3.5 sm:px-7 sm:py-4 border border-white/20 text-white rounded-xl text-[13px] sm:text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5 w-full sm:w-auto"
               >
-                See Our Work
+                See Campaign Work
                 <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-white/45 flex items-center justify-center text-white text-[8px] sm:text-[9px]">
-                  ▶
+                  &#9654;
                 </span>
               </Link>
             </div>
