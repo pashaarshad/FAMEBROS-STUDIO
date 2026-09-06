@@ -88,6 +88,39 @@ const journeys = [
   }
 ];
 
+const creatorServices = [
+  {
+    num: "01",
+    title: "Personal Branding",
+    desc: "Positioning, content pillars, and a consistent identity brands can recognise and trust."
+  },
+  {
+    num: "02",
+    title: "Shoot Production",
+    desc: "Monthly professional shoots — outfits, lifestyle, and personality-led content."
+  },
+  {
+    num: "03",
+    title: "Reel Production",
+    desc: "Trend-based editing, hooks, transitions, audio selection and colour grading."
+  },
+  {
+    num: "04",
+    title: "Page Management",
+    desc: "Posting, scheduling, captions, hashtags and complete monthly content planning."
+  },
+  {
+    num: "05",
+    title: "Collaboration Support",
+    desc: "Barter and paid brand introductions through our own extensive brand network."
+  },
+  {
+    num: "06",
+    title: "Content Strategy",
+    desc: "What to post, when, and why — planned a month ahead so you never run out of ideas."
+  }
+];
+
 export default function CreatorPage() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
@@ -260,81 +293,110 @@ export default function CreatorPage() {
         </div>
       </section>
 
-      {/* HOW WE GROW CREATORS Section */}
+      {/* How We Grow Creators Section */}
       <section className="py-24 bg-[#121215] border-b border-white/5">
         <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
-          
-          {/* Header */}
           <div className="max-w-2xl mb-16">
-            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-3">
+            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#249E98] font-bold mb-3">
               HOW WE GROW CREATORS
             </p>
-            <h2 className="font-display font-extrabold text-white text-[32px] md:text-[44px] leading-[1.1] mb-4">
-              From content to <span className="text-[#249E98]">influence.</span>
+            <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] mb-4">
+              From content to influence.
             </h2>
-            <p className="text-white/70 text-sm md:text-base leading-relaxed">
+            <p className="text-white/60 text-sm md:text-base">
               We help creators grow with a complete system built around strategy, consistent content, audience growth, stronger positioning and brand opportunities.
             </p>
           </div>
 
-          {/* 5-Step Growth Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
             {[
               {
                 num: "01",
                 title: "Strategy & Positioning",
-                desc: "We define your niche, content direction, audience and personal brand positioning."
+                desc: "We define your niche, content direction, audience and personal brand positioning.",
               },
               {
                 num: "02",
                 title: "Content Planning & Creation",
-                desc: "We plan ideas, hooks, shoots and content formats designed around your growth goals."
+                desc: "We plan ideas, hooks, shoots and content formats designed around your growth goals.",
               },
               {
                 num: "03",
                 title: "Consistent Social Media Management",
-                desc: "We manage your content flow, posting, optimisation and overall social media presence."
+                desc: "We manage your content flow, posting, optimisation and overall social media presence.",
               },
               {
                 num: "04",
                 title: "Audience Growth",
-                desc: "We focus on reach, engagement, discoverability and building a loyal audience around your content."
+                desc: "We focus on reach, engagement, discoverability and building a loyal audience around your content.",
               },
               {
                 num: "05",
                 title: "Brand Opportunities",
-                desc: "We help position you for collaborations, paid campaigns and stronger brand partnerships."
-              }
-            ].map((pillar) => (
-              <div 
-                key={pillar.num}
-                className="bg-[#0A0A0C] border border-white/10 rounded-2xl p-8 hover:border-[#F59A57]/40 transition-all duration-300 group flex flex-col justify-between"
+                desc: "We help position you for collaborations, paid campaigns and stronger brand partnerships.",
+              },
+            ].map((step) => (
+              <div
+                key={step.num}
+                className="bg-[#0A0A0C] border border-white/10 rounded-2xl p-8 hover:border-[#249E98]/40 transition-all"
               >
-                <div>
-                  <span className="font-mono text-xs font-bold text-[#F59A57] bg-[#F59A57]/10 px-3 py-1 rounded-md inline-block mb-5">
-                    {pillar.num}
-                  </span>
-                  <h3 className="font-display font-extrabold text-white text-xl mb-3 group-hover:text-[#F59A57] transition-colors">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-white/60 text-sm leading-relaxed">
-                    {pillar.desc}
-                  </p>
-                </div>
+                <span className="font-mono-custom text-xs font-bold text-[#F59A57] block mb-4">
+                  {step.num}
+                </span>
+                <h3 className="font-display font-extrabold text-white text-xl mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             ))}
           </div>
 
-          {/* CTA Section */}
-          <div className="text-center pt-4">
-            <Link 
-              href="/shoot#creator"
-              className="inline-flex items-center gap-2 px-9 py-4 bg-[#F59A57] text-[#050505] rounded-xl text-sm font-bold hover:bg-[#FF8A3D] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)]"
+          <div className="flex justify-center">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#249E98] text-[#050505] rounded-xl text-sm font-bold hover:bg-[#208B86] transition-all"
             >
               Grow With Famebros &rarr;
-            </Link>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-24 bg-[#0A0A0C] border-b border-white/5">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
+          <div className="max-w-2xl mb-16">
+            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-3">
+              WHAT WE HANDLE
+            </p>
+            <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] mb-4">
+              Everything except being you.
+            </h2>
+            <p className="text-white/60 text-sm md:text-base">
+              We manage the strategy, shoots, editing, and growth so you can focus on creating.
+            </p>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {creatorServices.map((service) => (
+              <div 
+                key={service.num}
+                className="bg-[#121215] border border-white/5 rounded-2xl p-8 hover:border-[#249E98]/30 transition-all"
+              >
+                <span className="font-mono-custom text-xs font-bold text-[#F59A57] block mb-4">
+                  {service.num}
+                </span>
+                <h3 className="font-display font-extrabold text-white text-xl mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
