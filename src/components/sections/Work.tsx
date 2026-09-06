@@ -38,8 +38,44 @@ const businessWorkItems = [
     title: "Al Ahmed",
     desc: "India's Top Perfume Brand",
     metric: "3 Years With Us"
+  },
+  {
+    videoUrl: "/vedios/business client testimonial/Video-4099.mp4",
+    img: "/vedios/business client testimonial/Video-4099_poster.jpg",
+    title: "Client Story",
+    desc: "Real Growth. Real Results.",
+    metric: "With Famebros"
+  },
+  {
+    videoUrl: "/vedios/business client testimonial/Video-37410.mp4",
+    img: "/vedios/business client testimonial/Video-37410_poster.jpg",
+    title: "Client Story",
+    desc: "Real Growth. Real Results.",
+    metric: "With Famebros"
+  },
+  {
+    videoUrl: "/vedios/business client testimonial/Video-41182.mp4",
+    img: "/vedios/business client testimonial/Video-41182_poster.jpg",
+    title: "Client Story",
+    desc: "Real Growth. Real Results.",
+    metric: "With Famebros"
+  },
+  {
+    videoUrl: "/vedios/business client testimonial/Video-58243.mp4",
+    img: "/vedios/business client testimonial/Video-58243_poster.jpg",
+    title: "Client Story",
+    desc: "Real Growth. Real Results.",
+    metric: "With Famebros"
+  },
+  {
+    videoUrl: "/vedios/business client testimonial/Video-74649.mp4",
+    img: "/vedios/business client testimonial/Video-74649_poster.jpg",
+    title: "SK Furniture",
+    desc: "10K in 6 Months",
+    metric: "10K+ Followers in 6 Months"
   }
 ];
+
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null);
