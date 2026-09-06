@@ -185,11 +185,11 @@ export default function CreatorPage() {
               FOR CREATORS &bull; CREATOR GROWTH
             </p>
             <h1 className="font-display font-extrabold text-white text-[38px] md:text-[58px] leading-[1.08] mb-6">
-              We don&apos;t just advise creators.<br />
-              <span className="text-[#249E98]">We build them.</span>
+              We don&apos;t just guide creators.<br />
+              <span className="text-[#249E98]">We build creator brands.</span>
             </h1>
             <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-              Managed, shot, and grown by our team — until the collaborations, brand deals, and audience trust start arriving on their own.
+              From strategy and content shoots to complete social media management, we help creators grow their audience, build trust and attract better brand opportunities.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link 
@@ -202,7 +202,7 @@ export default function CreatorPage() {
                 href="#contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl text-sm font-semibold hover:bg-white/10 transition-all"
               >
-                Grow Your Personal Brand
+                Manage My Social Media
               </Link>
             </div>
           </div>
