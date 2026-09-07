@@ -137,11 +137,21 @@ export default function Hero() {
       {/* Top Header Section */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center">
         
-        {/* Eyebrow Pill Badge */}
-        <div className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 rounded-full bg-white border border-black/10 shadow-xs mb-6">
-          <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] font-bold text-[#F59A57] uppercase">
-            MUMBAI - GROWING BUSINESSES ACROSS INDIA
-          </span>
+        {/* Eyebrow Pill Badge & Google 5-Star Rating Tag */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+          <div className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 rounded-full bg-white border border-black/10 shadow-xs">
+            <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] font-bold text-[#F59A57] uppercase">
+              MUMBAI - GROWING BUSINESSES ACROSS INDIA
+            </span>
+          </div>
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-black/10 px-3.5 py-1.5 rounded-full shadow-xs">
+            <img 
+              src="/google-reviews-png.png" 
+              alt="Google 5.0 Rating" 
+              className="h-5 sm:h-6 w-auto object-contain"
+            />
+            <span className="text-[11px] sm:text-xs font-bold text-gray-800">5.0 Star Rated Agency</span>
+          </div>
         </div>
 
         {/* High-Impact Centered Headline with Purple SCROLL Bubble Highlight */}
@@ -179,26 +189,27 @@ export default function Hero() {
           We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
         </p>
 
-        {/* Action Button & Rating */}
+        {/* Action Buttons: Grow My Business & What Our Clients Say */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-14">
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:px-8 sm:py-4 bg-[#0A0A0C] text-white rounded-full text-sm sm:text-base font-semibold hover:bg-[#202025] hover:scale-105 active:scale-95 transition-all shadow-xl group"
+            className="inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:px-8 sm:py-4 bg-[#F59A57] text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:bg-[#FF8A3D] hover:scale-105 active:scale-95 transition-all shadow-[0_8px_25px_rgba(245,154,87,0.3)] group"
           >
-            <span className="w-7 h-7 rounded-full bg-white text-[#0A0A0C] flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+            <span className="w-7 h-7 rounded-full bg-[#0A0A0C] text-white flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
               →
             </span>
             <span>Grow My Business</span>
           </Link>
           
-          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-black/10 px-4 py-2.5 rounded-full shadow-xs">
-            <img 
-              src="/google-reviews-png.png" 
-              alt="Google 5.0 Rating" 
-              className="h-6 sm:h-7 w-auto object-contain"
-            />
-            <span className="text-xs font-bold text-gray-800">5.0 Star Rated Agency</span>
-          </div>
+          <Link
+            href="#what-our-clients-say"
+            className="inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:px-8 sm:py-4 bg-white border border-black/15 text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:border-[#F59A57] hover:bg-[#FAF6F0] hover:scale-105 active:scale-95 transition-all shadow-md group"
+          >
+            <span className="w-7 h-7 rounded-full bg-[#FAF6F0] border border-black/10 flex items-center justify-center text-[#F59A57] font-bold text-xs">
+              ▶
+            </span>
+            <span>What Our Clients Say</span>
+          </Link>
         </div>
 
       </div>
