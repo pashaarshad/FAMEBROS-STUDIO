@@ -207,7 +207,7 @@ export default function Hero() {
                 </span>
               </Link>
               <Link 
-                href="/case-studies"
+                href="#what-our-clients-say"
                 className="inline-flex items-center justify-center gap-3 px-5 py-3 sm:px-7 sm:py-3.5 border border-white/20 text-white rounded-lg text-[13px] sm:text-[15px] font-bold hover:border-[#F59A57] hover:-translate-y-[2px] transition-all bg-white/5 w-full sm:w-auto"
               >
                 What Our Clients Say

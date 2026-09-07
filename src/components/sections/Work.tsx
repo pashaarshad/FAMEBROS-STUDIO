@@ -145,17 +145,17 @@ export default function Work() {
   };
 
   return (
-    <section id="case-studies" className="bg-[#FAF6F0] py-24 border-t border-black/5 relative">
+    <section id="what-our-clients-say" className="bg-[#FAF6F0] py-24 border-t border-black/5 relative">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         
         {/* Header */}
         <div className="flex items-end justify-between mb-12">
           <div>
             <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#F59A57] mb-4">
-              SUCCESS VIDEOS & CASE STUDIES
+              CLIENT TESTIMONIALS &bull; PROOF OF GROWTH
             </p>
-            <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-3">
-              Proof of <span className="text-[#F59A57]">growth</span> in action.
+            <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-3">
+              What Our <span className="text-[#F59A57]">Clients Say.</span>
             </h2>
             <p className="text-[#55555A] text-sm font-semibold">
               Real businesses. Cinematic content. Real bottom line scaling.
