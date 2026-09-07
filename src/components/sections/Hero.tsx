@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 export const clientLogos = [
@@ -72,89 +72,93 @@ const businessHeroCards = [
 
 export default function Hero() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
+  const [unmutedIdx, setUnmutedIdx] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
+  // Autoplay all 4 videos simultaneously silently on mount
+  useEffect(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.muted = true;
+        video.play().catch(() => {});
+      }
+    });
+  }, []);
+
   const handleMouseEnter = (idx: number) => {
-    if (activeVideoIdx === idx) return;
     setHoveredIdx(idx);
-    const video = videoRefs.current[idx];
-    if (video) {
-      video.play().catch(() => {});
-    }
+    setUnmutedIdx(idx);
+    videoRefs.current.forEach((v, i) => {
+      if (v) v.muted = i !== idx;
+    });
   };
 
-  const handleMouseLeave = (idx: number) => {
-    if (activeVideoIdx === idx) return;
+  const handleMouseLeave = () => {
     setHoveredIdx(null);
-    const video = videoRefs.current[idx];
-    if (video) {
-      video.pause();
-    }
+    setUnmutedIdx(null);
+    videoRefs.current.forEach((v) => {
+      if (v) v.muted = true;
+    });
   };
 
   const handleCardClick = (idx: number) => {
-    if (activeVideoIdx === idx) {
-      const video = videoRefs.current[idx];
-      if (video) {
-        if (video.paused) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-          video.muted = true;
-          setActiveVideoIdx(null);
-          setHoveredIdx(null);
-        }
-      }
-      return;
+    if (unmutedIdx === idx) {
+      setUnmutedIdx(null);
+      const v = videoRefs.current[idx];
+      if (v) v.muted = true;
+    } else {
+      setUnmutedIdx(idx);
+      videoRefs.current.forEach((v, i) => {
+        if (v) v.muted = i !== idx;
+      });
     }
-
-    if (activeVideoIdx !== null) {
-      const prevVideo = videoRefs.current[activeVideoIdx];
-      if (prevVideo) {
-        prevVideo.pause();
-        prevVideo.muted = true;
-      }
-    }
-
-    setActiveVideoIdx(idx);
-    setHoveredIdx(idx);
-
-    setTimeout(() => {
-      const video = videoRefs.current[idx];
-      if (video) {
-        video.muted = false;
-        video.play().catch(() => {});
-      }
-    }, 50);
   };
 
   return (
-    <section className="relative min-h-screen bg-[#F4F4F6] pt-28 sm:pt-36 pb-12 overflow-hidden flex flex-col justify-between text-[#0A0A0C]">
-      {/* Soft Ambient Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[400px] bg-gradient-to-tr from-[#8B5CF6]/10 via-[#F59A57]/10 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
+    <section className="relative min-h-screen bg-[#FAF9F6] pt-28 sm:pt-36 pb-12 overflow-hidden flex flex-col justify-between text-[#0A0A0C]">
       
-      {/* Top Header Section */}
+      {/* Background Soft Glow Accents */}
+      <div className="absolute top-10 left-[-5%] w-[450px] sm:w-[600px] h-[450px] bg-[#F59A57]/12 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-10 right-[-5%] w-[450px] sm:w-[600px] h-[450px] bg-[#8B5CF6]/12 rounded-full blur-[140px] pointer-events-none z-0" />
+      
+      {/* Top Right Decorative Growth Arrow Accent */}
+      <div className="absolute top-20 right-10 md:right-24 pointer-events-none opacity-20 z-0 hidden sm:block">
+        <svg className="w-32 h-32 md:w-44 md:h-44 text-[#F59A57]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="4">
+          <path d="M 20 80 L 80 20 M 45 20 L 80 20 L 80 55" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
+
+      {/* Left Side Handwritten "Ideas People Impact" Accent */}
+      <div className="absolute top-1/3 left-4 md:left-12 pointer-events-none z-10 hidden lg:block transform -rotate-12 select-none">
+        <div className="flex flex-col items-start gap-0.5 text-left">
+          <span className="font-display italic font-extrabold text-2xl md:text-3xl text-gray-700 tracking-tight leading-tight">
+            Ideas
+          </span>
+          <span className="font-display italic font-extrabold text-2xl md:text-3xl text-gray-700 tracking-tight leading-tight">
+            People
+          </span>
+          <span className="font-display italic font-extrabold text-2xl md:text-3xl text-gray-700 tracking-tight leading-tight">
+            Impact
+          </span>
+          <div className="w-16 h-1 bg-[#F59A57] rounded-full mt-1.5 transform rotate-3" />
+        </div>
+      </div>
+
+      {/* Main Top Header Section */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center">
         
-        {/* Eyebrow Pill Badge & Google 5-Star Rating Tag */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-          <div className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 rounded-full bg-white border border-black/10 shadow-xs">
-            <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] font-bold text-[#F59A57] uppercase">
-              MUMBAI - GROWING BUSINESSES ACROSS INDIA
+        {/* Eyebrow Badge with Flanking Horizontal Lines */}
+        <div className="w-full flex items-center justify-center gap-4 mb-6 max-w-3xl">
+          <div className="h-[1px] bg-black/10 flex-grow hidden xs:block" />
+          <div className="inline-flex items-center justify-center px-4 sm:px-6 py-1.5 rounded-full bg-white border border-black/10 shadow-xs">
+            <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] font-extrabold text-[#F59A57] uppercase">
+              MUMBAI &bull; GROWING BUSINESSES ACROSS INDIA
             </span>
           </div>
-          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-black/10 px-3.5 py-1.5 rounded-full shadow-xs">
-            <img 
-              src="/google-reviews-png.png" 
-              alt="Google 5.0 Rating" 
-              className="h-5 sm:h-6 w-auto object-contain"
-            />
-            <span className="text-[11px] sm:text-xs font-bold text-gray-800">5.0 Star Rated Agency</span>
-          </div>
+          <div className="h-[1px] bg-black/10 flex-grow hidden xs:block" />
         </div>
 
-        {/* High-Impact Centered Headline with Purple SCROLL Bubble Highlight */}
+        {/* High-Impact Headline with Orange-to-Purple Gradient Highlight */}
         <h1 className="font-display font-black text-[38px] xs:text-[48px] sm:text-[68px] md:text-[80px] lg:text-[92px] leading-[0.98] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
           WE HELP BUSINESSES
           <br className="hidden sm:block" />
@@ -167,7 +171,6 @@ export default function Hero() {
                 fill="none" 
               >
                 <circle cx="50" cy="50" r="41" stroke="#0A0A0C" strokeWidth="11" />
-                {/* Bold upward growth arrow */}
                 <path 
                   d="M 32 68 L 68 32 M 44 32 L 68 32 L 68 56" 
                   stroke="#F59A57" 
@@ -178,7 +181,7 @@ export default function Hero() {
               </svg>
             </span>
             <span>W BEYOND THEIR</span>
-            <span className="bg-[#8B5CF6] text-white px-4 sm:px-8 py-1 sm:py-2.5 rounded-[28px] sm:rounded-[40px] inline-block shadow-lg tracking-normal font-extrabold normal-case sm:uppercase">
+            <span className="bg-gradient-to-r from-[#F59A57] via-[#8B5CF6] to-[#7C3AED] text-white px-5 sm:px-10 py-1.5 sm:py-3 rounded-[32px] sm:rounded-[50px] inline-block shadow-xl tracking-normal font-extrabold normal-case sm:uppercase">
               EXPECTATIONS.
             </span>
           </span>
@@ -189,11 +192,45 @@ export default function Hero() {
           We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
         </p>
 
-        {/* Action Buttons: Grow My Business & What Our Clients Say */}
+        {/* Google 5.0 Star Card in Center with "Trusted by Businesses Like Yours" Arrow */}
+        <div className="relative mb-8 z-10 flex items-center justify-center">
+          {/* Handwritten Arrow & Text on Right Side */}
+          <div className="absolute left-full ml-4 sm:ml-6 top-1/2 -translate-y-1/2 items-center gap-2 text-left hidden sm:flex pointer-events-none select-none">
+            <svg className="w-12 h-6 text-[#F59A57] transform -rotate-6" viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="3">
+              <path d="M 10 35 Q 50 10 85 25 M 70 15 L 85 25 L 75 40" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="font-display italic font-bold text-xs sm:text-sm text-[#F59A57] leading-tight max-w-[110px] transform rotate-3">
+              Trusted by Businesses Like Yours
+            </span>
+          </div>
+
+          {/* Google Card */}
+          <div className="bg-white/95 backdrop-blur-md border border-black/10 px-6 py-3.5 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex items-center gap-3.5 relative">
+            {/* Sparkle Lines Accent */}
+            <span className="absolute -top-2 -left-2 text-[#F59A57] text-xs">✦</span>
+            <span className="absolute -bottom-2 -right-2 text-[#F59A57] text-xs">✦</span>
+
+            <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+              <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z" />
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+            </svg>
+            <div className="text-left">
+              <div className="flex items-center gap-1.5">
+                <span className="font-display font-extrabold text-sm text-[#0A0A0C]">Google</span>
+                <span className="font-bold text-xs text-amber-500">5.0 ★★★★★</span>
+              </div>
+              <span className="text-[10px] text-gray-500 font-medium block">Based on 300+ reviews</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-14">
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:px-8 sm:py-4 bg-[#F59A57] text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:bg-[#FF8A3D] hover:scale-105 active:scale-95 transition-all shadow-[0_8px_25px_rgba(245,154,87,0.3)] group"
+            className="inline-flex items-center justify-center gap-3.5 px-8 py-4 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:scale-105 active:scale-95 transition-all shadow-[0_8px_25px_rgba(245,154,87,0.35)] group"
           >
             <span className="w-7 h-7 rounded-full bg-[#0A0A0C] text-white flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
               →
@@ -203,7 +240,7 @@ export default function Hero() {
           
           <Link
             href="#what-our-clients-say"
-            className="inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:px-8 sm:py-4 bg-white border border-black/15 text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:border-[#F59A57] hover:bg-[#FAF6F0] hover:scale-105 active:scale-95 transition-all shadow-md group"
+            className="inline-flex items-center justify-center gap-3.5 px-8 py-4 bg-white border border-black/15 text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:border-[#F59A57] hover:bg-[#FAF6F0] hover:scale-105 active:scale-95 transition-all shadow-md group"
           >
             <span className="w-7 h-7 rounded-full bg-[#FAF6F0] border border-black/10 flex items-center justify-center text-[#F59A57] font-bold text-xs">
               ▶
@@ -214,16 +251,15 @@ export default function Hero() {
 
       </div>
 
-      {/* 4-Video Fan Cards Showcase */}
+      {/* 4-Video Simultaneous Autoplay Fan Showcase */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-2">
         
         {/* Desktop Tilted Fan Grid of 4 Client Videos */}
         <div className="hidden lg:grid grid-cols-4 gap-5 items-center justify-center py-6 px-2">
           {businessHeroCards.map((card, idx) => {
-            const isActive = activeVideoIdx === idx;
+            const isUnmuted = unmutedIdx === idx;
             const isHovered = hoveredIdx === idx;
             
-            // Rotation tilts for the 4 cards
             const tiltClasses = [
               "transform -rotate-8 -translate-y-2",
               "transform -rotate-3 translate-y-3",
@@ -236,45 +272,37 @@ export default function Hero() {
                 key={card.num}
                 onClick={() => handleCardClick(idx)}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={() => handleMouseLeave(idx)}
+                onMouseLeave={handleMouseLeave}
                 className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black ${tiltClasses[idx]} hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer z-10 ${
-                  isActive ? "scale-110 z-50 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)]" : ""
+                  isUnmuted ? "scale-110 z-50 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-2 ring-[#F59A57]" : ""
                 }`}
               >
-                {/* Poster Background */}
-                <div 
-                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${
-                    isActive ? "opacity-0 pointer-events-none" : "opacity-90"
-                  }`}
-                  style={{ backgroundImage: `url('${card.img}')` }}
-                />
-
-                {/* Video Element */}
+                {/* Autoplay Video Element (All 4 play simultaneously) */}
                 <video
                   ref={(el) => { videoRefs.current[idx] = el; }}
                   src={card.videoSrc}
-                  loop={!isActive}
-                  muted={!isActive}
-                  controls={isActive}
+                  autoPlay
+                  loop
+                  muted
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 />
 
-                {/* Overlay gradient */}
+                {/* Overlay Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 ${
-                  isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                  isUnmuted ? "opacity-30" : "opacity-100"
                 }`} />
                 
-                {/* Play/Pause icon button */}
+                {/* Sound & Play Toggle Icon */}
                 <div className={`absolute bottom-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[10px] font-bold border border-white/20 transition-transform ${
-                  isHovered ? "scale-110 bg-[#F59A57] text-black border-[#F59A57]" : ""
+                  isHovered || isUnmuted ? "scale-110 bg-[#F59A57] text-black border-[#F59A57]" : ""
                 }`}>
-                  {isActive || isHovered ? "||" : "▶"}
+                  {isUnmuted ? "🔊" : "🔇"}
                 </div>
 
                 {/* Client Info & Growth Pill Overlay */}
                 <div className={`absolute bottom-4 left-4 right-14 z-20 text-white transition-opacity duration-300 ${
-                  isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                  isUnmuted ? "opacity-90" : "opacity-100"
                 }`}>
                   <p className="text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
                     &ldquo;{card.quote}&rdquo;
@@ -296,7 +324,7 @@ export default function Hero() {
         {/* Mobile 2x2 Tilted Grid Showcase */}
         <div className="grid lg:hidden grid-cols-2 gap-3 sm:gap-5 py-4 max-w-lg mx-auto">
           {businessHeroCards.map((card, idx) => {
-            const isActive = activeVideoIdx === idx;
+            const isUnmuted = unmutedIdx === idx;
             const mobileTilts = ["-rotate-4", "rotate-4", "-rotate-3", "rotate-3"];
 
             return (
@@ -305,25 +333,19 @@ export default function Hero() {
                 onClick={() => handleCardClick(idx)}
                 className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98`}
               >
-                <div 
-                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${
-                    isActive ? "opacity-0 pointer-events-none" : "opacity-90"
-                  }`}
-                  style={{ backgroundImage: `url('${card.img}')` }}
-                />
                 <video
                   ref={(el) => { if (!videoRefs.current[idx]) videoRefs.current[idx] = el; }}
                   src={card.videoSrc}
-                  loop={!isActive}
-                  muted={!isActive}
-                  controls={isActive}
+                  autoPlay
+                  loop
+                  muted
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
                 
                 <div className="absolute bottom-3 right-3 z-20 w-6 h-6 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[9px]">
-                  {isActive ? "||" : "▶"}
+                  {isUnmuted ? "🔊" : "🔇"}
                 </div>
 
                 <div className="absolute bottom-3 left-3 right-10 z-20 text-white">
