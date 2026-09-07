@@ -120,13 +120,6 @@ export default function Hero() {
       {/* Background Soft Glow Accents */}
       <div className="absolute top-10 left-[-5%] w-[450px] sm:w-[600px] h-[450px] bg-[#F59A57]/12 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="absolute bottom-10 right-[-5%] w-[450px] sm:w-[600px] h-[450px] bg-[#8B5CF6]/12 rounded-full blur-[140px] pointer-events-none z-0" />
-      
-      {/* Top Right Decorative Growth Arrow Accent */}
-      <div className="absolute top-20 right-10 md:right-24 pointer-events-none opacity-20 z-0 hidden sm:block">
-        <svg className="w-32 h-32 md:w-44 md:h-44 text-[#F59A57]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="4">
-          <path d="M 20 80 L 80 20 M 45 20 L 80 20 L 80 55" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
 
       {/* Left Side Handwritten "Ideas People Impact" Accent */}
       <div className="absolute top-1/3 left-4 md:left-12 pointer-events-none z-10 hidden lg:block transform -rotate-12 select-none">
@@ -253,6 +246,9 @@ export default function Hero() {
 
       {/* 4-Video Simultaneous Autoplay Fan Showcase */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-2">
+        
+        {/* Flowing multi-color ambient aura behind video cards */}
+        <div className="absolute inset-0 max-w-5xl mx-auto rounded-full bg-gradient-to-r from-[#F59A57]/30 via-[#F472B6]/30 to-[#8B5CF6]/30 blur-[90px] pointer-events-none z-0 transform scale-110" />
         
         {/* Desktop Tilted Fan Grid of 4 Client Videos */}
         <div className="hidden lg:grid grid-cols-4 gap-5 items-center justify-center py-6 px-2">
