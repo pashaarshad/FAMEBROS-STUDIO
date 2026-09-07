@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
   const [activeItem, setActiveItem] = useState("Home");
 
   useEffect(() => {
@@ -15,12 +17,29 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (pathname === "/case-studies") {
+      setActiveItem("Case Studies");
+    } else if (pathname === "/influencer") {
+      setActiveItem("Influencer Marketing");
+    } else if (pathname === "/creator") {
+      setActiveItem("For Creators");
+    } else if (pathname === "/shoot" || pathname === "/book-shoot") {
+      setActiveItem("Paid Trial Shoot");
+    } else if (pathname === "/") {
+      setActiveItem("Home");
+    }
+  }, [pathname]);
+
+  const isLightPage = pathname === "/case-studies" || pathname === "/shoot" || pathname === "/book-shoot";
+  const isScrolledOrLight = scrolled || isLightPage;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md py-4 border-b border-black/5 shadow-sm"
-          : "bg-transparent py-6"
+        isScrolledOrLight
+          ? "bg-white/95 backdrop-blur-md py-3.5 border-b border-black/5 shadow-sm"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-10 flex items-center justify-between">
@@ -36,7 +55,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Navigation Items - balanced 8 links spacing */}
+        {/* Navigation Items - 2XL Screen Spacing */}
         <nav className="hidden 2xl:flex items-center gap-4 2xl:gap-6">
           {[
             { label: "Home", href: "/" },
@@ -52,23 +71,23 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               onClick={() => setActiveItem(item.label)}
-              className={`relative px-1 py-1.5 text-[12.5px] 2xl:text-[13.5px] font-bold transition-all duration-200 whitespace-nowrap ${
+              className={`relative px-1.5 py-1.5 text-[12.5px] 2xl:text-[13.5px] font-bold transition-all duration-200 whitespace-nowrap ${
                 activeItem === item.label 
                   ? "text-[#F59A57]" 
-                  : scrolled 
+                  : isScrolledOrLight 
                     ? "text-[#0A0A0A] hover:text-[#F59A57]" 
                     : "text-white/90 hover:text-[#F59A57]"
               }`}
             >
               {item.label}
               {activeItem === item.label && (
-                <span className="absolute bottom-[-4px] left-0 right-0 h-[2px] bg-[#F59A57] rounded-full" />
+                <span className="absolute bottom-[-4px] left-0 right-0 h-[2.5px] bg-[#F59A57] rounded-full" />
               )}
             </Link>
           ))}
         </nav>
 
-        {/* Medium to Large Screen Navigation (Compact) */}
+        {/* Medium to Large Screen Navigation (Compact XL) */}
         <nav className="hidden xl:flex 2xl:hidden items-center gap-3.5">
           {[
             { label: "Home", href: "/" },
@@ -85,16 +104,16 @@ export default function Navbar() {
               href={item.href}
               onClick={() => setActiveItem(item.label)}
               className={`relative px-1 py-1 text-[12px] font-bold transition-all duration-200 whitespace-nowrap ${
-                activeItem === item.label 
+                activeItem === item.label || (activeItem === "Case Studies" && item.label === "Case Studies")
                   ? "text-[#F59A57]" 
-                  : scrolled 
+                  : isScrolledOrLight 
                     ? "text-[#0A0A0A] hover:text-[#F59A57]" 
                     : "text-white/90 hover:text-[#F59A57]"
               }`}
             >
               {item.label}
-              {activeItem === item.label && (
-                <span className="absolute bottom-[-4px] left-0 right-0 h-[2px] bg-[#F59A57] rounded-full" />
+              {(activeItem === item.label || (activeItem === "Case Studies" && item.label === "Case Studies")) && (
+                <span className="absolute bottom-[-4px] left-0 right-0 h-[2.5px] bg-[#F59A57] rounded-full" />
               )}
             </Link>
           ))}
@@ -113,7 +132,7 @@ export default function Navbar() {
           </Link>
           <button
             className={`xl:hidden text-2xl font-bold p-1 transition-colors ${
-              scrolled ? "text-[#0A0A0A]" : "text-white"
+              isScrolledOrLight ? "text-[#0A0A0A]" : "text-white"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
@@ -139,7 +158,9 @@ export default function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-[14px] text-[#0A0A0A] hover:text-[#F59A57] py-1 font-bold transition-colors"
+              className={`text-[14px] py-1 font-bold transition-colors ${
+                activeItem === item.label ? "text-[#F59A57]" : "text-[#0A0A0A] hover:text-[#F59A57]"
+              }`}
               onClick={() => {
                 setActiveItem(item.label);
                 setMenuOpen(false);
