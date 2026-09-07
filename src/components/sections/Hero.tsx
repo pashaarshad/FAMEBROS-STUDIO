@@ -23,13 +23,51 @@ export const clientLogos = [
   { name: "Realme", src: "/clients-logo/realme_logo.png" }
 ];
 
-const creatorHandles = [
-  { handle: "bilalsayed", stat: "5M" },
-  { handle: "taravibe_", stat: "42K" },
-  { handle: "shree_jewellers", stat: "36K" },
-  { handle: "famebros", stat: "600K" },
-  { handle: "cadbury", stat: "2.5M" },
-  { handle: "mikasingh", stat: "2.8M" }
+const businessHeroCards = [
+  {
+    num: "01",
+    quote: "Our restaurant sales grew like never before.",
+    name: "Rahul Mehta",
+    role: "Restaurant Owner",
+    growth: "+240%",
+    growthLabel: "Revenue Growth",
+    img: "/vedios-hero/1st__poster.jpg",
+    videoSrc: "/vedios-hero/1st_.mp4",
+    color: "text-[#F59A57]"
+  },
+  {
+    num: "02",
+    quote: "More enquiries in 30 days than we got in 6 months.",
+    name: "Neha Sharma",
+    role: "Retail Business Owner",
+    growth: "3.2X",
+    growthLabel: "More Enquiries",
+    img: "/vedios-hero/2nd_poster.jpg",
+    videoSrc: "/vedios-hero/2nd.mp4",
+    color: "text-[#249E98]"
+  },
+  {
+    num: "03",
+    quote: "Memberships increased consistently every month.",
+    name: "Amit Verma",
+    role: "Gym Owner",
+    growth: "+180%",
+    growthLabel: "Membership Growth",
+    img: "/vedios-hero/3rd_poster.jpg",
+    videoSrc: "/vedios-hero/3rd.mp4",
+    color: "text-[#F59A57]"
+  },
+  {
+    num: "04",
+    quote: "We now get quality bookings every week.",
+    name: "Karan Malhotra",
+    role: "Resort Owner",
+    growth: "+3.7X",
+    growthLabel: "Bookings Increase",
+    img: "/vedios-hero/4th_poster.jpg",
+    videoSrc: "/vedios-hero/4th.mp4",
+    color: "text-[#249E98]"
+  }
 ];
 
 export default function Hero() {
@@ -93,25 +131,25 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen bg-[#F4F4F6] pt-28 sm:pt-36 pb-12 overflow-hidden flex flex-col justify-between text-[#0A0A0C]">
-      {/* Soft Background Accent Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[400px] bg-gradient-to-tr from-[#8B5CF6]/10 via-[#3B82F6]/10 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
+      {/* Soft Ambient Background Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[400px] bg-gradient-to-tr from-[#8B5CF6]/10 via-[#F59A57]/10 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
       
       {/* Top Header Section */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center">
         
-        {/* Category Pill Badge */}
+        {/* Eyebrow Pill Badge */}
         <div className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 rounded-full bg-white border border-black/10 shadow-xs mb-6">
-          <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] font-semibold text-[#333336] uppercase">
-            SOCIAL MEDIA • CONTENT • PRODUCTION
+          <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] font-bold text-[#F59A57] uppercase">
+            MUMBAI - GROWING BUSINESSES ACROSS INDIA
           </span>
         </div>
 
-        {/* High-Impact Centered Headline */}
-        <h1 className="font-display font-black text-[42px] xs:text-[52px] sm:text-[72px] md:text-[84px] lg:text-[96px] leading-[0.98] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
-          CONTENT THAT
+        {/* High-Impact Centered Headline with Purple SCROLL Bubble Highlight */}
+        <h1 className="font-display font-black text-[38px] xs:text-[48px] sm:text-[68px] md:text-[80px] lg:text-[92px] leading-[0.98] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
+          WE HELP BUSINESSES
           <br className="hidden sm:block" />
-          <span className="inline-flex items-center gap-1 sm:gap-3 flex-wrap justify-center mt-1 sm:mt-2">
-            <span>ST</span>
+          <span className="inline-flex items-center gap-1.5 sm:gap-3 flex-wrap justify-center mt-1 sm:mt-2">
+            <span>GR</span>
             <span className="inline-inline-flex items-center justify-center align-middle mx-[0.5px] relative -top-[0.03em]">
               <svg 
                 className="w-[0.8em] h-[0.8em] inline-block text-[#0A0A0C]" 
@@ -124,20 +162,20 @@ export default function Hero() {
                 <line x1="20" y1="80" x2="80" y2="20" strokeWidth="11" strokeLinecap="round" />
               </svg>
             </span>
-            <span>PS THE</span>
+            <span>W BEYOND THEIR</span>
             <span className="bg-[#8B5CF6] text-white px-4 sm:px-8 py-1 sm:py-2.5 rounded-[28px] sm:rounded-[40px] inline-block shadow-lg tracking-normal font-extrabold normal-case sm:uppercase">
-              SCROLL.
+              EXPECTATIONS.
             </span>
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-[#55555C] text-sm sm:text-base md:text-lg max-w-xl mx-auto font-medium leading-relaxed mb-8 text-center">
-          We create content that stops the scroll and gets your brand noticed. From reels and shoots to social media management, everything starts with your brand.
+        <p className="text-[#55555C] text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed mb-8 text-center">
+          We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
         </p>
 
         {/* Action Button & Rating */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 sm:mb-14">
           <Link
             href="#contact"
             className="inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:px-8 sm:py-4 bg-[#0A0A0C] text-white rounded-full text-sm sm:text-base font-semibold hover:bg-[#202025] hover:scale-105 active:scale-95 transition-all shadow-xl group"
@@ -145,288 +183,140 @@ export default function Hero() {
             <span className="w-7 h-7 rounded-full bg-white text-[#0A0A0C] flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
               →
             </span>
-            <span>Start growing</span>
+            <span>Grow My Business</span>
           </Link>
           
-          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-black/5 px-4 py-2 rounded-full shadow-xs">
+          <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-black/10 px-4 py-2.5 rounded-full shadow-xs">
             <img 
               src="/google-reviews-png.png" 
               alt="Google 5.0 Rating" 
               className="h-6 sm:h-7 w-auto object-contain"
             />
-            <span className="text-xs font-semibold text-gray-700">5.0 Star Rated Agency</span>
+            <span className="text-xs font-bold text-gray-800">5.0 Star Rated Agency</span>
           </div>
         </div>
 
       </div>
 
-      {/* Fan Cards Showcase Section */}
-      <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-4">
+      {/* 4-Video Fan Cards Showcase */}
+      <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-2">
         
-        {/* Desktop Tilted Fan Grid (Hidden on Mobile) */}
-        <div className="hidden lg:grid grid-cols-4 gap-4 items-center justify-center py-6 px-4">
-          
-          {/* Card 1: Video Card (@bilalsayed) */}
-          <div 
-            onClick={() => handleCardClick(0)}
-            onMouseEnter={() => handleMouseEnter(0)}
-            onMouseLeave={() => handleMouseLeave(0)}
-            className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black transform -rotate-8 -translate-y-2 hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer z-10 ${
-              activeVideoIdx === 0 ? "scale-110 z-50 rotate-0 shadow-[0_20px_50px_rgba(0,0,0,0.4)]" : ""
-            }`}
-          >
-            <div 
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${
-                activeVideoIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-90"
-              }`}
-              style={{ backgroundImage: `url('/vedios-hero/1st__poster.jpg')` }}
-            />
-            <video
-              ref={(el) => { videoRefs.current[0] = el; }}
-              src="/vedios-hero/1st_.mp4"
-              loop={activeVideoIdx !== 0}
-              muted={activeVideoIdx !== 0}
-              controls={activeVideoIdx === 0}
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+        {/* Desktop Tilted Fan Grid of 4 Client Videos */}
+        <div className="hidden lg:grid grid-cols-4 gap-5 items-center justify-center py-6 px-2">
+          {businessHeroCards.map((card, idx) => {
+            const isActive = activeVideoIdx === idx;
+            const isHovered = hoveredIdx === idx;
             
-            {/* Tag Badge */}
-            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 shadow-md">
-              <span>bilalsayed</span>
-              <span className="w-3.5 h-3.5 rounded-full bg-[#3B82F6] flex items-center justify-center text-[9px] text-white">✓</span>
-            </div>
-            <div className="absolute bottom-4 right-4 z-20 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center text-[10px]">
-              {hoveredIdx === 0 || activeVideoIdx === 0 ? "||" : "▶"}
-            </div>
-          </div>
+            // Rotation tilts for the 4 cards
+            const tiltClasses = [
+              "transform -rotate-8 -translate-y-2",
+              "transform -rotate-3 translate-y-3",
+              "transform rotate-2 -translate-y-3",
+              "transform rotate-8 translate-y-2"
+            ];
 
-          {/* Card 2: Video Card (@famebrosstudio) */}
-          <div 
-            onClick={() => handleCardClick(1)}
-            onMouseEnter={() => handleMouseEnter(1)}
-            onMouseLeave={() => handleMouseLeave(1)}
-            className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black transform -rotate-3 translate-y-3 hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer z-20 ${
-              activeVideoIdx === 1 ? "scale-110 z-50 rotate-0 shadow-[0_20px_50px_rgba(0,0,0,0.4)]" : ""
-            }`}
-          >
-            <div 
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${
-                activeVideoIdx === 1 ? "opacity-0 pointer-events-none" : "opacity-90"
-              }`}
-              style={{ backgroundImage: `url('/vedios-hero/2nd_poster.jpg')` }}
-            />
-            <video
-              ref={(el) => { videoRefs.current[1] = el; }}
-              src="/vedios-hero/2nd.mp4"
-              loop={activeVideoIdx !== 1}
-              muted={activeVideoIdx !== 1}
-              controls={activeVideoIdx === 1}
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-            
-            {/* Tag Badge */}
-            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 shadow-md">
-              <span>famebrosstudio</span>
-              <span className="w-3.5 h-3.5 rounded-full bg-[#3B82F6] flex items-center justify-center text-[9px] text-white">✓</span>
-            </div>
-            <div className="absolute bottom-4 right-4 z-20 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center text-[10px]">
-              {hoveredIdx === 1 || activeVideoIdx === 1 ? "||" : "▶"}
-            </div>
-          </div>
+            return (
+              <div 
+                key={card.num}
+                onClick={() => handleCardClick(idx)}
+                onMouseEnter={() => handleMouseEnter(idx)}
+                onMouseLeave={() => handleMouseLeave(idx)}
+                className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black ${tiltClasses[idx]} hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer z-10 ${
+                  isActive ? "scale-110 z-50 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)]" : ""
+                }`}
+              >
+                {/* Poster Background */}
+                <div 
+                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${
+                    isActive ? "opacity-0 pointer-events-none" : "opacity-90"
+                  }`}
+                  style={{ backgroundImage: `url('${card.img}')` }}
+                />
 
-          {/* Card 3: Sky Blue Stats Card */}
-          <div className="relative aspect-[9/16] rounded-[28px] p-6 bg-[#3B82F6] text-white shadow-2xl flex flex-col justify-between transform rotate-2 -translate-y-4 hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out z-30 border border-white/20">
-            {/* Top Avatars */}
-            <div className="flex flex-col items-center pt-2">
-              <div className="flex -space-x-3 mb-3">
-                <img src="/Sultan photos-with-png.png" alt="Creator" className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" />
-                <img src="/Bilal Sayed.png" alt="Creator" className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" />
-                <img src="/vedios-hero/1st__poster.jpg" alt="Creator" className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" />
-                <img src="/vedios-hero/2nd_poster.jpg" alt="Creator" className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" />
-              </div>
-              <span className="text-xs font-medium text-white/90 tracking-tight text-center">
-                Creators we work with
-              </span>
-              <span className="font-display font-extrabold text-5xl md:text-6xl text-white tracking-tight mt-1">
-                50+
-              </span>
-            </div>
+                {/* Video Element */}
+                <video
+                  ref={(el) => { videoRefs.current[idx] = el; }}
+                  src={card.videoSrc}
+                  loop={!isActive}
+                  muted={!isActive}
+                  controls={isActive}
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
 
-            {/* Bottom Handle Pills */}
-            <div className="flex flex-col gap-2 pb-1">
-              <div className="grid grid-cols-2 gap-2">
-                {creatorHandles.map((item, i) => (
-                  <div key={i} className="bg-white/20 backdrop-blur-md border border-white/25 rounded-full px-2.5 py-1 text-[11px] font-semibold text-white flex items-center justify-between shadow-xs">
-                    <span className="truncate">.{item.handle}</span>
-                    <span className="text-white/80 font-normal text-[10px] ml-1">{item.stat}</span>
+                {/* Overlay gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 ${
+                  isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`} />
+                
+                {/* Play/Pause icon button */}
+                <div className={`absolute bottom-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[10px] font-bold border border-white/20 transition-transform ${
+                  isHovered ? "scale-110 bg-[#F59A57] text-black border-[#F59A57]" : ""
+                }`}>
+                  {isActive || isHovered ? "||" : "▶"}
+                </div>
+
+                {/* Client Info & Growth Pill Overlay */}
+                <div className={`absolute bottom-4 left-4 right-14 z-20 text-white transition-opacity duration-300 ${
+                  isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}>
+                  <p className="text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
+                    &ldquo;{card.quote}&rdquo;
+                  </p>
+                  <div className="border-t border-white/20 pt-1.5 mb-1">
+                    <span className="text-[11px] font-bold text-white block leading-none">{card.name}</span>
+                    <span className="text-[9px] text-white/70 block mt-0.5">{card.role}</span>
                   </div>
-                ))}
+                  <div className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">
+                    <span className={`text-[12px] font-extrabold block leading-none ${card.color}`}>{card.growth}</span>
+                    <span className="text-[8px] text-white/80 font-medium block leading-none">{card.growthLabel}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Card 4: Video Card (@mikasingh) */}
-          <div 
-            onClick={() => handleCardClick(2)}
-            onMouseEnter={() => handleMouseEnter(2)}
-            onMouseLeave={() => handleMouseLeave(2)}
-            className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black transform rotate-8 translate-y-1 hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer z-10 ${
-              activeVideoIdx === 2 ? "scale-110 z-50 rotate-0 shadow-[0_20px_50px_rgba(0,0,0,0.4)]" : ""
-            }`}
-          >
-            <div 
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${
-                activeVideoIdx === 2 ? "opacity-0 pointer-events-none" : "opacity-90"
-              }`}
-              style={{ backgroundImage: `url('/vedios-hero/4th_poster.jpg')` }}
-            />
-            <video
-              ref={(el) => { videoRefs.current[2] = el; }}
-              src="/vedios-hero/4th.mp4"
-              loop={activeVideoIdx !== 2}
-              muted={activeVideoIdx !== 2}
-              controls={activeVideoIdx === 2}
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-            
-            {/* Tag Badge */}
-            <div className="absolute bottom-4 left-4 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs font-semibold border border-white/10 shadow-md">
-              <span>mikasingh</span>
-              <span className="w-3.5 h-3.5 rounded-full bg-[#3B82F6] flex items-center justify-center text-[9px] text-white">✓</span>
-            </div>
-            <div className="absolute bottom-4 right-4 z-20 w-7 h-7 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center text-[10px]">
-              {hoveredIdx === 2 || activeVideoIdx === 2 ? "||" : "▶"}
-            </div>
-          </div>
-
+            );
+          })}
         </div>
 
-        {/* Mobile 2x2 Tilted Grid Showcase (Visible on Mobile/Tablet) */}
+        {/* Mobile 2x2 Tilted Grid Showcase */}
         <div className="grid lg:hidden grid-cols-2 gap-3 sm:gap-5 py-4 max-w-lg mx-auto">
-          
-          {/* Mobile Card 1 */}
-          <div 
-            onClick={() => handleCardClick(0)}
-            className="relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform -rotate-4 transition-all duration-300 active:scale-98"
-          >
-            <div 
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${
-                activeVideoIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-90"
-              }`}
-              style={{ backgroundImage: `url('/vedios-hero/1st__poster.jpg')` }}
-            />
-            <video
-              ref={(el) => { if (!videoRefs.current[0]) videoRefs.current[0] = el; }}
-              src="/vedios-hero/1st_.mp4"
-              loop={activeVideoIdx !== 0}
-              muted={activeVideoIdx !== 0}
-              controls={activeVideoIdx === 0}
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-            <div className="absolute bottom-3 left-3 z-20 flex items-center gap-1 bg-black/60 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[10px] font-semibold border border-white/10">
-              <span>bilalsayed</span>
-              <span className="w-3 h-3 rounded-full bg-[#3B82F6] flex items-center justify-center text-[7px] text-white">✓</span>
-            </div>
-            <div className="absolute bottom-3 right-3 z-20 w-6 h-6 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center text-[9px]">
-              {activeVideoIdx === 0 ? "||" : "▶"}
-            </div>
-          </div>
+          {businessHeroCards.map((card, idx) => {
+            const isActive = activeVideoIdx === idx;
+            const mobileTilts = ["-rotate-4", "rotate-4", "-rotate-3", "rotate-3"];
 
-          {/* Mobile Card 2 */}
-          <div 
-            onClick={() => handleCardClick(1)}
-            className="relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform rotate-4 transition-all duration-300 active:scale-98"
-          >
-            <div 
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${
-                activeVideoIdx === 1 ? "opacity-0 pointer-events-none" : "opacity-90"
-              }`}
-              style={{ backgroundImage: `url('/vedios-hero/2nd_poster.jpg')` }}
-            />
-            <video
-              ref={(el) => { if (!videoRefs.current[1]) videoRefs.current[1] = el; }}
-              src="/vedios-hero/2nd.mp4"
-              loop={activeVideoIdx !== 1}
-              muted={activeVideoIdx !== 1}
-              controls={activeVideoIdx === 1}
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-            <div className="absolute bottom-3 left-3 z-20 flex items-center gap-1 bg-black/60 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[10px] font-semibold border border-white/10">
-              <span>famebrosstudio</span>
-              <span className="w-3 h-3 rounded-full bg-[#3B82F6] flex items-center justify-center text-[7px] text-white">✓</span>
-            </div>
-            <div className="absolute bottom-3 right-3 z-20 w-6 h-6 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center text-[9px]">
-              {activeVideoIdx === 1 ? "||" : "▶"}
-            </div>
-          </div>
-
-          {/* Mobile Card 3: Sky Blue Stats Card */}
-          <div className="relative aspect-[9/15] rounded-[22px] p-4 bg-[#3B82F6] text-white shadow-xl flex flex-col justify-between transform -rotate-3 border border-white/20">
-            <div className="flex flex-col items-center pt-1">
-              <div className="flex -space-x-2 mb-2">
-                <img src="/Sultan photos-with-png.png" alt="Creator" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-                <img src="/Bilal Sayed.png" alt="Creator" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-                <img src="/vedios-hero/1st__poster.jpg" alt="Creator" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-                <img src="/vedios-hero/2nd_poster.jpg" alt="Creator" className="w-7 h-7 rounded-full border-2 border-white object-cover" />
-              </div>
-              <span className="text-[10px] font-medium text-white/90 text-center leading-tight">
-                Creators we work with
-              </span>
-              <span className="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mt-0.5">
-                50+
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              {creatorHandles.slice(0, 4).map((item, i) => (
-                <div key={i} className="bg-white/20 backdrop-blur-md border border-white/20 rounded-full px-2 py-0.5 text-[9px] font-semibold text-white flex items-center justify-between">
-                  <span className="truncate">.{item.handle}</span>
-                  <span className="text-white/80 font-normal text-[8px] ml-1">{item.stat}</span>
+            return (
+              <div 
+                key={`mobile-${card.num}`}
+                onClick={() => handleCardClick(idx)}
+                className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98`}
+              >
+                <div 
+                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${
+                    isActive ? "opacity-0 pointer-events-none" : "opacity-90"
+                  }`}
+                  style={{ backgroundImage: `url('${card.img}')` }}
+                />
+                <video
+                  ref={(el) => { if (!videoRefs.current[idx]) videoRefs.current[idx] = el; }}
+                  src={card.videoSrc}
+                  loop={!isActive}
+                  muted={!isActive}
+                  controls={isActive}
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+                
+                <div className="absolute bottom-3 right-3 z-20 w-6 h-6 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[9px]">
+                  {isActive ? "||" : "▶"}
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Mobile Card 4 */}
-          <div 
-            onClick={() => handleCardClick(2)}
-            className="relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform rotate-3 transition-all duration-300 active:scale-98"
-          >
-            <div 
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${
-                activeVideoIdx === 2 ? "opacity-0 pointer-events-none" : "opacity-90"
-              }`}
-              style={{ backgroundImage: `url('/vedios-hero/4th_poster.jpg')` }}
-            />
-            <video
-              ref={(el) => { if (!videoRefs.current[2]) videoRefs.current[2] = el; }}
-              src="/vedios-hero/4th.mp4"
-              loop={activeVideoIdx !== 2}
-              muted={activeVideoIdx !== 2}
-              controls={activeVideoIdx === 2}
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
-            <div className="absolute bottom-3 left-3 z-20 flex items-center gap-1 bg-black/60 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[10px] font-semibold border border-white/10">
-              <span>mikasingh</span>
-              <span className="w-3 h-3 rounded-full bg-[#3B82F6] flex items-center justify-center text-[7px] text-white">✓</span>
-            </div>
-            <div className="absolute bottom-3 right-3 z-20 w-6 h-6 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center text-[9px]">
-              {activeVideoIdx === 2 ? "||" : "▶"}
-            </div>
-          </div>
-
+                <div className="absolute bottom-3 left-3 right-10 z-20 text-white">
+                  <span className="text-[10px] font-bold text-white block leading-none truncate">{card.name}</span>
+                  <span className={`text-[11px] font-extrabold block leading-none mt-1 ${card.color}`}>{card.growth}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
       </div>
@@ -436,7 +326,7 @@ export default function Hero() {
         <div className="overflow-hidden relative">
           <div className="flex items-center gap-4 mb-4">
             <span className="font-mono-custom text-[10px] sm:text-[11px] tracking-[0.2em] text-gray-500 font-semibold uppercase whitespace-nowrap">
-              TRUSTED BY LEADING BRANDS & CREATORS
+              TRUSTED BY LEADING BRANDS & BUSINESSES ACROSS INDIA
             </span>
             <div className="h-[1px] bg-black/10 flex-grow" />
           </div>
@@ -446,14 +336,18 @@ export default function Hero() {
               {/* Loop 1 */}
               {clientLogos.map((logo, idx) => {
                 const isJioMart = logo.name === "JioMart";
+                const isRealme = logo.name === "Realme";
                 return (
                   <div key={`logo-1-${idx}`} className="flex-shrink-0 flex items-center justify-center w-24 sm:w-32 h-10 px-2">
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
-                      className={`max-h-7 sm:max-h-9 max-w-full object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
-                        isJioMart ? "scale-130 sm:scale-150" : ""
+                      className={`max-h-7 sm:max-h-9 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
+                        isJioMart ? "scale-135 sm:scale-155" : ""
                       }`}
+                      style={isRealme ? {
+                        filter: "invert(1) sepia(1) saturate(5) hue-rotate(340deg) brightness(1.2)"
+                      } : undefined}
                       draggable={false}
                     />
                   </div>
@@ -462,14 +356,18 @@ export default function Hero() {
               {/* Loop 2 */}
               {clientLogos.map((logo, idx) => {
                 const isJioMart = logo.name === "JioMart";
+                const isRealme = logo.name === "Realme";
                 return (
                   <div key={`logo-2-${idx}`} className="flex-shrink-0 flex items-center justify-center w-24 sm:w-32 h-10 px-2">
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
-                      className={`max-h-7 sm:max-h-9 max-w-full object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
-                        isJioMart ? "scale-130 sm:scale-150" : ""
+                      className={`max-h-7 sm:max-h-9 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
+                        isJioMart ? "scale-135 sm:scale-155" : ""
                       }`}
+                      style={isRealme ? {
+                        filter: "invert(1) sepia(1) saturate(5) hue-rotate(340deg) brightness(1.2)"
+                      } : undefined}
                       draggable={false}
                     />
                   </div>

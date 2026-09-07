@@ -31,15 +31,15 @@ export default function Navbar() {
     }
   }, [pathname]);
 
-  const isLightPage = pathname === "/case-studies" || pathname === "/shoot" || pathname === "/book-shoot";
+  const isLightPage = true; // All pages are on light/high-contrast backgrounds
   const isScrolledOrLight = scrolled || isLightPage;
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolledOrLight
+        scrolled
           ? "bg-white/95 backdrop-blur-md py-3.5 border-b border-black/5 shadow-sm"
-          : "bg-transparent py-5"
+          : "bg-white/80 backdrop-blur-sm py-4 border-b border-black/5"
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-10 flex items-center justify-between">
@@ -71,12 +71,10 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               onClick={() => setActiveItem(item.label)}
-              className={`relative px-1.5 py-1.5 text-[12.5px] 2xl:text-[13.5px] font-bold transition-all duration-200 whitespace-nowrap ${
+              className={`relative px-1.5 py-1.5 text-[12.5px] 2xl:text-[13.5px] font-extrabold transition-all duration-200 whitespace-nowrap ${
                 activeItem === item.label 
                   ? "text-[#F59A57]" 
-                  : isScrolledOrLight 
-                    ? "text-[#0A0A0A] hover:text-[#F59A57]" 
-                    : "text-white/90 hover:text-[#F59A57]"
+                  : "text-[#0A0A0A] hover:text-[#F59A57]"
               }`}
             >
               {item.label}
@@ -103,12 +101,10 @@ export default function Navbar() {
               key={item.label}
               href={item.href}
               onClick={() => setActiveItem(item.label)}
-              className={`relative px-1 py-1 text-[12px] font-bold transition-all duration-200 whitespace-nowrap ${
+              className={`relative px-1 py-1 text-[12.5px] font-extrabold transition-all duration-200 whitespace-nowrap ${
                 activeItem === item.label || (activeItem === "Case Studies" && item.label === "Case Studies")
                   ? "text-[#F59A57]" 
-                  : isScrolledOrLight 
-                    ? "text-[#0A0A0A] hover:text-[#F59A57]" 
-                    : "text-white/90 hover:text-[#F59A57]"
+                  : "text-[#0A0A0A] hover:text-[#F59A57]"
               }`}
             >
               {item.label}
@@ -131,9 +127,7 @@ export default function Navbar() {
             </span>
           </Link>
           <button
-            className={`xl:hidden text-2xl font-bold p-1 transition-colors ${
-              isScrolledOrLight ? "text-[#0A0A0A]" : "text-white"
-            }`}
+            className="xl:hidden text-2xl font-bold p-1 transition-colors text-[#0A0A0A]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
