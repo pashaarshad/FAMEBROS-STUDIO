@@ -568,7 +568,7 @@ export default function CaseStudiesPage() {
       {/* 6. CONTACT SECTION */}
       <Contact />
 
-      {/* 7. FULL DETAIL MODAL WITH PLAYABLE VIDEO PLAYER */}
+      {/* 7. FULL DETAIL TEXTUAL MODAL */}
       {activeModal && (
         <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 md:p-6 overflow-y-auto animate-fadeIn">
           <div className="bg-white rounded-[32px] max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl border border-black/10">
@@ -580,17 +580,6 @@ export default function CaseStudiesPage() {
             >
               ✕
             </button>
-
-            {/* FULL PLAYABLE VIDEO EMBED AT TOP OF MODAL */}
-            <div className="aspect-[16/9] md:aspect-[9/16] md:max-h-[380px] w-full bg-black rounded-2xl overflow-hidden mb-6 relative shadow-lg">
-              <video
-                src={activeModal.videoUrl}
-                controls
-                autoPlay
-                playsInline
-                className="w-full h-full object-contain"
-              />
-            </div>
 
             <div className="mb-6">
               <span className="font-mono-custom text-xs font-bold text-[#F59A57] uppercase tracking-wider block mb-2">
