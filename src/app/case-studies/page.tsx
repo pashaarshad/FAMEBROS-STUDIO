@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Contact from "@/components/sections/Contact";
 
@@ -10,6 +10,7 @@ interface CaseStudy {
   category: string;
   niche: string;
   img: string;
+  videoUrl: string;
   imgBadge: string;
   metric1Val: string;
   metric1Label: string;
@@ -32,6 +33,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "Jewellery & Luxury",
     niche: "Jewellery & Luxury \u2022 Instagram reels",
     img: "/vedios/business client testimonial/Video-37410_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-37410.mp4",
     imgBadge: "SHREE MAHALAXMI",
     metric1Val: "36K+",
     metric1Label: "Combined audience growth",
@@ -56,6 +58,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "F&B & Festive",
     niche: "F&B & Festive \u2022 Meta Ads + reels",
     img: "/vedios/business client testimonial/Video-4099_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-4099.mp4",
     imgBadge: "HAZEL SWEETS",
     metric1Val: "Stop Boosting",
     metric1Label: "In-store footfall peak",
@@ -80,6 +83,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "Jewellery & Luxury",
     niche: "Jewellery \u2022 Reel reach & strategy",
     img: "/vedios/business client testimonial/Video-41182_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-41182.mp4",
     imgBadge: "RAJ LAXMI",
     metric1Val: "300K+",
     metric1Label: "Views on 1st new reel",
@@ -104,6 +108,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "Fashion & Retail",
     niche: "Fashion Retail \u2022 Launch campaign",
     img: "/vedios/business client testimonial/Video-58243_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-58243.mp4",
     imgBadge: "DEVI & CO",
     metric1Val: "3rd Store",
     metric1Label: "Opening launch campaign",
@@ -127,6 +132,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "Salon & Services",
     niche: "Salon & Grooming \u2022 10X Growth",
     img: "/vedios/business client testimonial/Video-60156_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-60156.mp4",
     imgBadge: "ALI SALON",
     metric1Val: "10X",
     metric1Label: "More inquiries with us",
@@ -150,6 +156,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "Fashion & Retail",
     niche: "Home & Retail \u2022 10K Followers",
     img: "/vedios/business client testimonial/Video-68531_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-68531.mp4",
     imgBadge: "SK FURNITURE",
     metric1Val: "10K+",
     metric1Label: "Followers in 6 months",
@@ -173,6 +180,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "Fashion & Retail",
     niche: "Fashion & Luxury \u2022 Pan-India & UAE",
     img: "/vedios/business client testimonial/Video-71170_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-71170.mp4",
     imgBadge: "ARABIAN COLL.",
     metric1Val: "600K+",
     metric1Label: "Combined followers",
@@ -196,6 +204,7 @@ const caseStudiesData: CaseStudy[] = [
     category: "D2C Brands",
     niche: "Fragrance & D2C \u2022 Top Brand",
     img: "/vedios/business client testimonial/Video-74493_poster.jpg",
+    videoUrl: "/vedios/business client testimonial/Video-74493.mp4",
     imgBadge: "AL AHMED",
     metric1Val: "Top Brand",
     metric1Label: "India's top perfume brand",
@@ -219,6 +228,8 @@ export default function CaseStudiesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeModal, setActiveModal] = useState<CaseStudy | null>(null);
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
   const categories = [
     "All",
@@ -246,10 +257,55 @@ export default function CaseStudiesPage() {
     setCurrentPage(1);
   };
 
+  const handleVideoHover = (id: string, isHovering: boolean) => {
+    if (playingVideoId === id) return;
+    const video = videoRefs.current[id];
+    if (video) {
+      if (isHovering) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+  };
+
+  const handleVideoClick = (e: React.MouseEvent, study: CaseStudy) => {
+    e.stopPropagation();
+    const id = study.id;
+    const video = videoRefs.current[id];
+    
+    if (playingVideoId === id) {
+      if (video) {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+          video.muted = true;
+          setPlayingVideoId(null);
+        }
+      }
+      return;
+    }
+
+    if (playingVideoId && videoRefs.current[playingVideoId]) {
+      const prevVideo = videoRefs.current[playingVideoId];
+      if (prevVideo) {
+        prevVideo.pause();
+        prevVideo.muted = true;
+      }
+    }
+
+    setPlayingVideoId(id);
+    if (video) {
+      video.muted = false;
+      video.play().catch(() => {});
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[#FFFFFF] text-[#0A0A0A] pt-28 md:pt-36">
       
-      {/* 1. HERO SECTION (Recreating Screenshot Title & Subtitle) */}
+      {/* 1. HERO SECTION */}
       <section className="py-12 md:py-16 text-center border-b border-black/5 relative overflow-hidden bg-[#FAF6F0]">
         <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
@@ -308,75 +364,106 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* 3. CASE STUDIES GRID (Recreating Screenshot Cards) */}
+      {/* 3. CASE STUDIES GRID WITH PLAYABLE VIDEOS */}
       <section className="py-16 md:py-24 bg-[#FFFFFF]">
         <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mb-16">
-            {displayedStudies.map((study) => (
-              <div
-                key={study.id}
-                onClick={() => setActiveModal(study)}
-                className="bg-[#FAFAFA] border border-black/10 rounded-[28px] md:rounded-[36px] p-6 md:p-8 hover:border-[#F59A57]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col sm:flex-row gap-6 cursor-pointer group shadow-sm hover:shadow-xl"
-              >
-                {/* Image Cover (Left) */}
-                <div className="w-full sm:w-[200px] md:w-[220px] aspect-square rounded-[22px] md:rounded-[26px] overflow-hidden relative flex-shrink-0 bg-black/80 shadow-md">
-                  <img
-                    src={study.img}
-                    alt={study.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
-                  {/* Badge on top of image (matching screenshot) */}
-                  <span className="absolute bottom-3 left-3 right-3 text-center font-display font-extrabold text-white text-xs md:text-sm tracking-wider uppercase bg-black/60 backdrop-blur-md py-1.5 px-3 rounded-lg border border-white/20">
-                    {study.imgBadge}
-                  </span>
-                </div>
+            {displayedStudies.map((study) => {
+              const isPlaying = playingVideoId === study.id;
 
-                {/* Right Details */}
-                <div className="flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl md:text-3xl mb-1 group-hover:text-[#F59A57] transition-colors">
-                      {study.title}
-                    </h3>
-                    <p className="text-[#71717A] text-xs font-semibold mb-6">
-                      {study.niche}
-                    </p>
+              return (
+                <div
+                  key={study.id}
+                  onClick={() => setActiveModal(study)}
+                  className="bg-[#FAFAFA] border border-black/10 rounded-[28px] md:rounded-[36px] p-6 md:p-8 hover:border-[#F59A57]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col sm:flex-row gap-6 cursor-pointer group shadow-sm hover:shadow-xl"
+                >
+                  {/* PLAYABLE VIDEO THUMBNAIL (Left Side) */}
+                  <div 
+                    onClick={(e) => handleVideoClick(e, study)}
+                    onMouseEnter={() => handleVideoHover(study.id, true)}
+                    onMouseLeave={() => handleVideoHover(study.id, false)}
+                    className="w-full sm:w-[200px] md:w-[220px] aspect-[9/16] sm:aspect-square rounded-[22px] md:rounded-[26px] overflow-hidden relative flex-shrink-0 bg-black shadow-md border border-black/10 group/vid"
+                  >
+                    <img
+                      src={study.img}
+                      alt={study.title}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-0 ${
+                        isPlaying ? "opacity-0 pointer-events-none" : "opacity-90 group-hover/vid:opacity-30"
+                      }`}
+                    />
 
-                    {/* 2 Big Bold Metrics (Matching Screenshot Numbers & Sizing) */}
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/5">
-                      <div>
-                        <div className="font-display font-extrabold text-2xl md:text-3xl text-[#0A0A0A] leading-tight">
-                          {study.metric1Val}
-                        </div>
-                        <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
-                          {study.metric1Label}
-                        </p>
-                      </div>
-                      <div>
-                        <div className="font-display font-extrabold text-2xl md:text-3xl text-[#F59A57] leading-tight">
-                          {study.metric2Val}
-                        </div>
-                        <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
-                          {study.metric2Label}
-                        </p>
+                    <video
+                      ref={(el) => { videoRefs.current[study.id] = el; }}
+                      src={study.videoUrl}
+                      loop={!isPlaying}
+                      muted={!isPlaying}
+                      controls={isPlaying}
+                      playsInline
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                        isPlaying ? "z-20 opacity-100" : "z-10 opacity-0 group-hover/vid:opacity-100 pointer-events-none"
+                      }`}
+                    />
+
+                    <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"}`} />
+                    
+                    {/* Interactive Play Button overlay */}
+                    <div className={`absolute inset-0 flex items-center justify-center z-20 transition-all duration-300 ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+                      <div className="w-13 h-13 rounded-full border border-white/50 bg-black/50 text-white flex items-center justify-center pl-0.5 group-hover/vid:scale-110 group-hover/vid:bg-[#F59A57] group-hover/vid:text-black group-hover/vid:border-[#F59A57] transition-all backdrop-blur-sm shadow-xl">
+                        ▶
                       </div>
                     </div>
-                  </div>
 
-                  <div className="pt-6 flex items-center justify-between text-xs font-bold text-[#F59A57]">
-                    <span>Read Full Strategy &rarr;</span>
-                    <span className="w-8 h-8 rounded-full bg-[#F59A57]/10 flex items-center justify-center text-[#F59A57] group-hover:bg-[#F59A57] group-hover:text-white transition-all">
-                      &rarr;
+                    {/* Badge on top of image */}
+                    <span className={`absolute bottom-3 left-3 right-3 text-center font-display font-extrabold text-white text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md py-1.5 px-2.5 rounded-lg border border-white/20 z-20 transition-opacity duration-300 ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+                      {study.imgBadge}
                     </span>
                   </div>
+
+                  {/* Right Details */}
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl md:text-3xl mb-1 group-hover:text-[#F59A57] transition-colors">
+                        {study.title}
+                      </h3>
+                      <p className="text-[#71717A] text-xs font-semibold mb-6">
+                        {study.niche}
+                      </p>
+
+                      {/* 2 Big Bold Metrics */}
+                      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/5">
+                        <div>
+                          <div className="font-display font-extrabold text-2xl md:text-3xl text-[#0A0A0A] leading-tight">
+                            {study.metric1Val}
+                          </div>
+                          <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
+                            {study.metric1Label}
+                          </p>
+                        </div>
+                        <div>
+                          <div className="font-display font-extrabold text-2xl md:text-3xl text-[#F59A57] leading-tight">
+                            {study.metric2Val}
+                          </div>
+                          <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
+                            {study.metric2Label}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-6 flex items-center justify-between text-xs font-bold text-[#F59A57]">
+                      <span>Read Full Strategy &rarr;</span>
+                      <span className="w-8 h-8 rounded-full bg-[#F59A57]/10 flex items-center justify-center text-[#F59A57] group-hover:bg-[#F59A57] group-hover:text-white transition-all">
+                        &rarr;
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* 4. PAGINATION CONTROLS (Recreating '1 / 2' and 'Next' button from Screenshot) */}
+          {/* 4. PAGINATION CONTROLS */}
           {totalPages > 1 && (
             <div className="flex items-center justify-center gap-6 pt-4">
               <span className="font-mono-custom text-sm font-bold text-[#55555A]">
@@ -481,18 +568,29 @@ export default function CaseStudiesPage() {
       {/* 6. CONTACT SECTION */}
       <Contact />
 
-      {/* 7. FULL DETAIL MODAL / DRAWER */}
+      {/* 7. FULL DETAIL MODAL WITH PLAYABLE VIDEO PLAYER */}
       {activeModal && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 md:p-6 overflow-y-auto animate-fadeIn">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 md:p-6 overflow-y-auto animate-fadeIn">
           <div className="bg-white rounded-[32px] max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-10 relative shadow-2xl border border-black/10">
             <button
               onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-black/5 border border-black/10 flex items-center justify-center text-black font-bold text-lg hover:bg-black/10 transition-all"
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-black/5 border border-black/10 flex items-center justify-center text-black font-bold text-lg hover:bg-black/10 transition-all z-30"
               aria-label="Close modal"
               suppressHydrationWarning
             >
               ✕
             </button>
+
+            {/* FULL PLAYABLE VIDEO EMBED AT TOP OF MODAL */}
+            <div className="aspect-[16/9] md:aspect-[9/16] md:max-h-[380px] w-full bg-black rounded-2xl overflow-hidden mb-6 relative shadow-lg">
+              <video
+                src={activeModal.videoUrl}
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+              />
+            </div>
 
             <div className="mb-6">
               <span className="font-mono-custom text-xs font-bold text-[#F59A57] uppercase tracking-wider block mb-2">
