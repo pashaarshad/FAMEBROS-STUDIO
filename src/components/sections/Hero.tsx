@@ -150,16 +150,21 @@ export default function Hero() {
           <br className="hidden sm:block" />
           <span className="inline-flex items-center gap-1.5 sm:gap-3 flex-wrap justify-center mt-1 sm:mt-2">
             <span>GR</span>
-            <span className="inline-inline-flex items-center justify-center align-middle mx-[0.5px] relative -top-[0.03em]">
+            <span className="inline-flex items-center justify-center align-middle mx-[0.5px] relative -top-[0.03em]">
               <svg 
-                className="w-[0.8em] h-[0.8em] inline-block text-[#0A0A0C]" 
+                className="w-[0.82em] h-[0.82em] inline-block" 
                 viewBox="0 0 100 100" 
                 fill="none" 
-                stroke="currentColor" 
-                strokeWidth="11"
               >
-                <circle cx="50" cy="50" r="41" />
-                <line x1="20" y1="80" x2="80" y2="20" strokeWidth="11" strokeLinecap="round" />
+                <circle cx="50" cy="50" r="41" stroke="#0A0A0C" strokeWidth="11" />
+                {/* Bold upward growth arrow */}
+                <path 
+                  d="M 32 68 L 68 32 M 44 32 L 68 32 L 68 56" 
+                  stroke="#F59A57" 
+                  strokeWidth="12" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                />
               </svg>
             </span>
             <span>W BEYOND THEIR</span>
