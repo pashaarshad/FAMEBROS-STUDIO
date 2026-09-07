@@ -336,18 +336,18 @@ export default function Hero() {
             <div className="h-[1px] bg-black/10 flex-grow" />
           </div>
           
-          <div className="w-full overflow-hidden relative py-2">
-            <div className="flex animate-marquee gap-12 sm:gap-16 items-center">
+          <div className="w-full overflow-hidden relative py-4">
+            <div className="flex animate-marquee gap-14 sm:gap-20 items-center">
               {/* Loop 1 */}
               {clientLogos.map((logo, idx) => {
                 const isJioMart = logo.name === "JioMart";
                 const isRealme = logo.name === "Realme";
                 return (
-                  <div key={`logo-1-${idx}`} className="flex-shrink-0 flex items-center justify-center w-24 sm:w-32 h-10 px-2">
+                  <div key={`logo-1-${idx}`} className="flex-shrink-0 flex items-center justify-center w-36 sm:w-48 h-16 sm:h-20 px-3">
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
-                      className={`max-h-7 sm:max-h-9 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
+                      className={`max-h-11 sm:max-h-15 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
                         isJioMart ? "scale-135 sm:scale-155" : ""
                       }`}
                       style={isRealme ? {
@@ -363,11 +363,11 @@ export default function Hero() {
                 const isJioMart = logo.name === "JioMart";
                 const isRealme = logo.name === "Realme";
                 return (
-                  <div key={`logo-2-${idx}`} className="flex-shrink-0 flex items-center justify-center w-24 sm:w-32 h-10 px-2">
+                  <div key={`logo-2-${idx}`} className="flex-shrink-0 flex items-center justify-center w-36 sm:w-48 h-16 sm:h-20 px-3">
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
-                      className={`max-h-7 sm:max-h-9 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
+                      className={`max-h-11 sm:max-h-15 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
                         isJioMart ? "scale-135 sm:scale-155" : ""
                       }`}
                       style={isRealme ? {
