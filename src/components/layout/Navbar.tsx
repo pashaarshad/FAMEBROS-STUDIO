@@ -41,6 +41,7 @@ export default function Navbar() {
           {[
             { label: "Home", href: "/" },
             { label: "Business Growth", href: "/#why-choose-us" },
+            { label: "Case Studies", href: "/case-studies" },
             { label: "Influencer Marketing", href: "/influencer" },
             { label: "Paid Trial Shoot", href: "/shoot" },
             { label: "For Creators", href: "/creator" },
@@ -75,7 +76,7 @@ export default function Navbar() {
           >
             Let&apos;s Talk
             <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-white font-extrabold text-xs">
-              →
+              &rarr;
             </span>
           </Link>
           <button
@@ -96,6 +97,7 @@ export default function Navbar() {
           {[
             { label: "Home", href: "/" },
             { label: "Business Growth", href: "/#why-choose-us" },
+            { label: "Case Studies", href: "/case-studies" },
             { label: "Influencer Marketing", href: "/influencer" },
             { label: "Paid Trial Shoot", href: "/shoot" },
             { label: "For Creators", href: "/creator" },
