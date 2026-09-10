@@ -49,7 +49,7 @@ export default function Founder() {
                 {/* Signature styled in orange */}
                 <div className="h-8 md:h-10 mb-1.5 relative select-none">
                   <img 
-                    src="/Sultan sign.png" 
+                    src="/Bilal Sayed-sings.png" 
                     alt="Bilal Sayed Signature"
                     className="h-full object-contain object-left"
                     style={{ 
