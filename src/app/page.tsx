@@ -19,8 +19,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Hero />
       <CelebrityGallery />
-      <WhyChooseUs />
       <WhyWeExist />
+      <WhyChooseUs />
       <HowItWorks />
       <BrandingComparison />
       <Storytelling />
