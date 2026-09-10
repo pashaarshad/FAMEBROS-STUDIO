@@ -89,7 +89,10 @@ export default function Hero() {
     setHoveredIdx(idx);
     setUnmutedIdx(idx);
     videoRefs.current.forEach((v, i) => {
-      if (v) v.muted = i !== idx;
+      if (v) {
+        v.muted = i !== idx;
+        if (v.paused) v.play().catch(() => {});
+      }
     });
   };
 
@@ -97,19 +100,29 @@ export default function Hero() {
     setHoveredIdx(null);
     setUnmutedIdx(null);
     videoRefs.current.forEach((v) => {
-      if (v) v.muted = true;
+      if (v) {
+        v.muted = true;
+        if (v.paused) v.play().catch(() => {});
+      }
     });
   };
 
   const handleCardClick = (idx: number) => {
     if (unmutedIdx === idx) {
       setUnmutedIdx(null);
-      const v = videoRefs.current[idx];
-      if (v) v.muted = true;
+      videoRefs.current.forEach((v) => {
+        if (v) {
+          v.muted = true;
+          if (v.paused) v.play().catch(() => {});
+        }
+      });
     } else {
       setUnmutedIdx(idx);
       videoRefs.current.forEach((v, i) => {
-        if (v) v.muted = i !== idx;
+        if (v) {
+          v.muted = i !== idx;
+          if (v.paused) v.play().catch(() => {});
+        }
       });
     }
   };
@@ -250,8 +263,8 @@ export default function Hero() {
         {/* Flowing multi-color ambient aura behind video cards */}
         <div className="absolute inset-0 max-w-5xl mx-auto rounded-full bg-gradient-to-r from-[#F59A57]/30 via-[#F472B6]/30 to-[#8B5CF6]/30 blur-[90px] pointer-events-none z-0 transform scale-110" />
         
-        {/* Desktop Tilted Fan Grid of 4 Client Videos */}
-        <div className="hidden lg:grid grid-cols-4 gap-5 items-center justify-center py-6 px-2">
+        {/* Desktop Tilted Fan Grid of 4 Client Videos with Stable Event Handlers */}
+        <div className="hidden lg:grid grid-cols-4 gap-4 items-center justify-center py-6 px-2">
           {businessHeroCards.map((card, idx) => {
             const isUnmuted = unmutedIdx === idx;
             const isHovered = hoveredIdx === idx;
@@ -263,53 +276,63 @@ export default function Hero() {
               "transform rotate-8 translate-y-2"
             ];
 
+            const zIndexClass = isUnmuted ? "z-50" : isHovered ? "z-40" : idx === 1 ? "z-30" : idx === 2 ? "z-20" : "z-10";
+
             return (
               <div 
                 key={card.num}
-                onClick={() => handleCardClick(idx)}
                 onMouseEnter={() => handleMouseEnter(idx)}
                 onMouseLeave={handleMouseLeave}
-                className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black ${tiltClasses[idx]} hover:rotate-0 hover:scale-105 transition-all duration-500 ease-out cursor-pointer z-10 ${
-                  isUnmuted ? "scale-110 z-50 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-2 ring-[#F59A57]" : ""
-                }`}
+                onClick={() => handleCardClick(idx)}
+                className={`relative cursor-pointer transition-all duration-300 ${zIndexClass}`}
               >
-                {/* Autoplay Video Element (All 4 play simultaneously) */}
-                <video
-                  ref={(el) => { videoRefs.current[idx] = el; }}
-                  src={card.videoSrc}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                <div 
+                  className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black ${tiltClasses[idx]} transition-all duration-300 ease-out ${
+                    isUnmuted 
+                      ? "scale-108 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-2 ring-[#F59A57]" 
+                      : isHovered 
+                        ? "scale-105 rotate-0 shadow-[0_20px_45px_rgba(0,0,0,0.35)]" 
+                        : ""
+                  }`}
+                >
+                  {/* Autoplay Video Element (All 4 play simultaneously) */}
+                  <video
+                    ref={(el) => { videoRefs.current[idx] = el; }}
+                    src={card.videoSrc}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
 
-                {/* Overlay Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 ${
-                  isUnmuted ? "opacity-30" : "opacity-100"
-                }`} />
-                
-                {/* Sound & Play Toggle Icon */}
-                <div className={`absolute bottom-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[10px] font-bold border border-white/20 transition-transform ${
-                  isHovered || isUnmuted ? "scale-110 bg-[#F59A57] text-black border-[#F59A57]" : ""
-                }`}>
-                  {isUnmuted ? "🔊" : "🔇"}
-                </div>
-
-                {/* Client Info & Growth Pill Overlay */}
-                <div className={`absolute bottom-4 left-4 right-14 z-20 text-white transition-opacity duration-300 ${
-                  isUnmuted ? "opacity-90" : "opacity-100"
-                }`}>
-                  <p className="text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
-                    &ldquo;{card.quote}&rdquo;
-                  </p>
-                  <div className="border-t border-white/20 pt-1.5 mb-1">
-                    <span className="text-[11px] font-bold text-white block leading-none">{card.name}</span>
-                    <span className="text-[9px] text-white/70 block mt-0.5">{card.role}</span>
+                  {/* Overlay Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 ${
+                    isUnmuted ? "opacity-30" : "opacity-100"
+                  }`} />
+                  
+                  {/* Sound & Play Toggle Icon */}
+                  <div className={`absolute bottom-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[10px] font-bold border border-white/20 transition-transform ${
+                    isHovered || isUnmuted ? "scale-110 bg-[#F59A57] text-black border-[#F59A57]" : ""
+                  }`}>
+                    {isUnmuted ? "🔊" : "🔇"}
                   </div>
-                  <div className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">
-                    <span className={`text-[12px] font-extrabold block leading-none ${card.color}`}>{card.growth}</span>
-                    <span className="text-[8px] text-white/80 font-medium block leading-none">{card.growthLabel}</span>
+
+                  {/* Client Info & Growth Pill Overlay */}
+                  <div className={`absolute bottom-4 left-4 right-14 z-20 text-white transition-opacity duration-300 ${
+                    isUnmuted ? "opacity-90" : "opacity-100"
+                  }`}>
+                    <p className="text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
+                      &ldquo;{card.quote}&rdquo;
+                    </p>
+                    <div className="border-t border-white/20 pt-1.5 mb-1">
+                      <span className="text-[11px] font-bold text-white block leading-none">{card.name}</span>
+                      <span className="text-[9px] text-white/70 block mt-0.5">{card.role}</span>
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">
+                      <span className={`text-[12px] font-extrabold block leading-none ${card.color}`}>{card.growth}</span>
+                      <span className="text-[8px] text-white/80 font-medium block leading-none">{card.growthLabel}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -327,7 +350,7 @@ export default function Hero() {
               <div 
                 key={`mobile-${card.num}`}
                 onClick={() => handleCardClick(idx)}
-                className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98`}
+                className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98 cursor-pointer`}
               >
                 <video
                   ref={(el) => { if (!videoRefs.current[idx]) videoRefs.current[idx] = el; }}
