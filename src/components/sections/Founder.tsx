@@ -35,12 +35,12 @@ export default function Founder() {
             {/* Card 1: Bilal Sayed (Orange) */}
             <div className="bg-[#FAFAFA] border border-[#F59A57]/20 rounded-2xl flex flex-row items-stretch hover:border-[#F59A57]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px] shadow-sm">
               
-              {/* Left Cutout Photo */}
+              {/* Left Cutout Photo (Horizontally Flipped to Right) */}
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
                 <img 
                   src="/Bilal Sayed.png" 
                   alt="Bilal Sayed" 
-                  className="absolute left-0 bottom-0 w-full h-[100%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
+                  className="absolute left-0 bottom-0 w-full h-[100%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
                 />
               </div>
 
