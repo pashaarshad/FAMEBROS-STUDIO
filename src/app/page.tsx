@@ -22,11 +22,11 @@ export default function Home() {
       <WhyWeExist />
       <WhyChooseUs />
       <HowItWorks />
+      <Work />
       <BrandingComparison />
       <Storytelling />
       <OrganicGrowth />
       <Ecosystem />
-      <Work />
       <Founder />
       <ClientsGrid isDark={true} />
       <FAQ />
