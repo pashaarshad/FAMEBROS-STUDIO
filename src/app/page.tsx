@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import WhyWeExist from "@/components/sections/WhyWeExist";
 import BrandingComparison from "@/components/sections/BrandingComparison";
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Hero />
       <CelebrityGallery />
+      <About />
       <WhyWeExist />
       <WhyChooseUs />
       <HowItWorks />
