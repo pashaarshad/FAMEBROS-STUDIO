@@ -55,11 +55,8 @@ export default function Footer() {
               Services
             </h4>
             <div className="flex flex-col gap-3">
-              <Link href="/#services" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
-                Social Media Growth
-              </Link>
-              <Link href="/influencer" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
-                Influencer Marketing
+              <Link href="/#why-choose-us" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
+                Business Growth
               </Link>
               <Link href="/shoot" className="text-[12px] text-white/70 hover:text-[#F59A57] transition-colors">
                 Book a Paid Trial Shoot
