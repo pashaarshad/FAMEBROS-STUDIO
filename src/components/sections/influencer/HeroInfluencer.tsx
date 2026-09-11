@@ -167,20 +167,6 @@ export default function HeroInfluencer() {
                 </span>
               </Link>
             </div>
-
-            {/* Mobile-only trust badge on the right */}
-            <div className="lg:hidden flex-shrink-0">
-              <img 
-                src="/google-reviews-png.png" 
-                alt="Google 5.0 Rating 13 Google Reviews" 
-                className="w-[125px] xs:w-[155px] sm:w-[190px] h-auto drop-shadow-[0_8px_20px_rgba(245,154,87,0.2)]" 
-                draggable={false}
-                style={{
-                  WebkitUserDrag: "none",
-                  userDrag: "none"
-                } as any}
-              />
-            </div>
           </div>
         </div>
 
@@ -272,21 +258,6 @@ export default function HeroInfluencer() {
                 </div>
               );
             })}
-          </div>
-
-          {/* Floating Google Review Trust Badge (Bottom Right style - Desktop Only) */}
-          <div className="hidden lg:block absolute -bottom-36 right-0 lg:right-6 z-30 transition-all hover:scale-105 hover:-translate-y-1 duration-300 select-none cursor-pointer">
-            <img 
-              src="/google-reviews-png.png" 
-              alt="Google 5.0 Rating 13 Google Reviews" 
-              className="w-[250px] md:w-[300px] h-auto drop-shadow-[0_12px_30px_rgba(245,154,87,0.3)]" 
-              loading="lazy"
-              draggable={false}
-              style={{
-                WebkitUserDrag: "none",
-                userDrag: "none"
-              } as any}
-            />
           </div>
         </div>
       </div>
