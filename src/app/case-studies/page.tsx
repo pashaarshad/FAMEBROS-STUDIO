@@ -327,63 +327,51 @@ export default function CaseStudiesPage() {
                 <div
                   key={study.id}
                   onClick={() => setActiveModal(study)}
-                  className="bg-[#FAFAFA] border border-black/10 rounded-[28px] md:rounded-[36px] p-6 md:p-8 hover:border-[#F59A57]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col sm:flex-row gap-6 cursor-pointer group shadow-sm hover:shadow-xl"
+                  className="bg-[#FAFAFA] border border-black/10 rounded-[28px] md:rounded-[36px] p-6 md:p-8 hover:border-[#F59A57]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group shadow-sm hover:shadow-xl"
                 >
-                  {/* PHOTO THUMBNAIL (Left Side) */}
-                  <div 
-                    className="w-full sm:w-[200px] md:w-[220px] aspect-[9/16] sm:aspect-square rounded-[22px] md:rounded-[26px] overflow-hidden relative flex-shrink-0 bg-black shadow-md border border-black/10 group/img"
-                  >
-                    <img
-                      src={study.img}
-                      alt={study.title}
-                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                    {/* Badge on top of image */}
-                    <span className="absolute bottom-3 left-3 right-3 text-center font-display font-extrabold text-white text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md py-1.5 px-2.5 rounded-lg border border-white/20 z-10">
-                      {study.imgBadge}
-                    </span>
-                  </div>
-
-                  {/* Right Details */}
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl md:text-3xl mb-1 group-hover:text-[#F59A57] transition-colors">
-                        {study.title}
-                      </h3>
-                      <p className="text-[#71717A] text-xs font-semibold mb-6">
-                        {study.niche}
-                      </p>
-
-                      {/* 2 Big Bold Metrics */}
-                      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/5">
-                        <div>
-                          <div className="font-display font-extrabold text-2xl md:text-3xl text-[#0A0A0A] leading-tight">
-                            {study.metric1Val}
-                          </div>
-                          <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
-                            {study.metric1Label}
-                          </p>
-                        </div>
-                        <div>
-                          <div className="font-display font-extrabold text-2xl md:text-3xl text-[#F59A57] leading-tight">
-                            {study.metric2Val}
-                          </div>
-                          <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
-                            {study.metric2Label}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="pt-6 flex items-center justify-between text-xs font-bold text-[#F59A57]">
-                      <span>Read Full Strategy &rarr;</span>
-                      <span className="w-8 h-8 rounded-full bg-[#F59A57]/10 flex items-center justify-center text-[#F59A57] group-hover:bg-[#F59A57] group-hover:text-white transition-all">
-                        &rarr;
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <span className="font-mono-custom text-[11px] font-extrabold text-[#F59A57] uppercase tracking-wider bg-[#F59A57]/10 px-3 py-1 rounded-full border border-[#F59A57]/20">
+                        {study.imgBadge}
+                      </span>
+                      <span className="text-[11px] font-bold text-[#71717A]">
+                        {study.category}
                       </span>
                     </div>
+
+                    <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl md:text-3xl mb-2 group-hover:text-[#F59A57] transition-colors">
+                      {study.title}
+                    </h3>
+                    <p className="text-[#55555A] text-xs md:text-sm font-medium mb-6 leading-relaxed">
+                      {study.headline}
+                    </p>
+
+                    {/* 2 Big Bold Metrics */}
+                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/10">
+                      <div>
+                        <div className="font-display font-extrabold text-2xl md:text-3xl text-[#0A0A0A] leading-tight">
+                          {study.metric1Val}
+                        </div>
+                        <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
+                          {study.metric1Label}
+                        </p>
+                      </div>
+                      <div>
+                        <div className="font-display font-extrabold text-2xl md:text-3xl text-[#F59A57] leading-tight">
+                          {study.metric2Val}
+                        </div>
+                        <p className="text-[11px] text-[#55555A] leading-tight font-medium mt-1">
+                          {study.metric2Label}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 flex items-center justify-between text-xs font-bold text-[#F59A57] border-t border-black/5 mt-6">
+                    <span>Read Full Strategy &rarr;</span>
+                    <span className="w-8 h-8 rounded-full bg-[#F59A57]/10 flex items-center justify-center text-[#F59A57] group-hover:bg-[#F59A57] group-hover:text-white transition-all">
+                      &rarr;
+                    </span>
                   </div>
                 </div>
               );
