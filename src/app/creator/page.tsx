@@ -193,16 +193,10 @@ export default function CreatorPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link 
-                href="/shoot#creator"
+                href="#contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#F59A57] text-[#050505] rounded-xl text-sm font-bold hover:bg-[#FF8A3D] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.2)]"
               >
-                Book Creator Trial Shoot &rarr;
-              </Link>
-              <Link 
-                href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl text-sm font-semibold hover:bg-white/10 transition-all"
-              >
-                Manage My Social Media
+                Manage My Social Media &rarr;
               </Link>
             </div>
           </div>
