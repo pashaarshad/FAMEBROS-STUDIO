@@ -16,34 +16,34 @@ export default function InfluencerPage() {
       {/* 1. DARK: Hero */}
       <HeroInfluencer />
 
-      {/* 2. LIGHT: Problem One */}
+      {/* 2. DARK: Campaign Reels (19 Videos) & Metrics */}
+      <CampaignReels />
+
+      {/* 3. LIGHT: Problem One */}
       <ProblemOne />
 
-      {/* 3. DARK: Problem Two */}
+      {/* 4. DARK: Problem Two */}
       <ProblemTwo />
 
-      {/* 4. LIGHT: End to End */}
+      {/* 5. LIGHT: End to End */}
       <EndToEnd />
 
-      {/* 5. DARK: In-House Creators */}
+      {/* 6. DARK: In-House Creators */}
       <InHouseCreators />
 
-      {/* 6. LIGHT: The Network (4 Tiers) */}
+      {/* 7. LIGHT: The Network (4 Tiers) */}
       <NetworkTiers />
-
-      {/* 7. DARK: Campaign Reels (19 Videos) & Metrics */}
-      <CampaignReels />
 
       {/* 8. DARK: Philosophy & The 5-Step Growth System */}
       <GrowthSystem />
 
-      {/* 10. LIGHT: Celebrity & Top Creator Gallery */}
+      {/* 9. LIGHT: Celebrity & Top Creator Gallery */}
       <CelebrityGallery isDark={false} />
 
-      {/* 11. DARK: CTA Band */}
+      {/* 10. DARK: CTA Band */}
       <CTAInfluencer />
 
-      {/* 12. LIGHT: Contact Section */}
+      {/* 11. LIGHT: Contact Section */}
       <ContactInfluencer />
     </div>
   );
