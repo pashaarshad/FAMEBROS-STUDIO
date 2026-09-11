@@ -5,7 +5,6 @@ import EndToEnd from "@/components/sections/influencer/EndToEnd";
 import InHouseCreators from "@/components/sections/influencer/InHouseCreators";
 import NetworkTiers from "@/components/sections/influencer/NetworkTiers";
 import CampaignReels from "@/components/sections/influencer/CampaignReels";
-import CaseStudies from "@/components/sections/influencer/CaseStudies";
 import GrowthSystem from "@/components/sections/influencer/GrowthSystem";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import CTAInfluencer from "@/components/sections/influencer/CTAInfluencer";
@@ -35,10 +34,7 @@ export default function InfluencerPage() {
       {/* 7. DARK: Campaign Reels (19 Videos) & Metrics */}
       <CampaignReels />
 
-      {/* 8. LIGHT: Real Business Case Studies */}
-      <CaseStudies />
-
-      {/* 9. DARK: Philosophy & The 5-Step Growth System */}
+      {/* 8. DARK: Philosophy & The 5-Step Growth System */}
       <GrowthSystem />
 
       {/* 10. LIGHT: Celebrity & Top Creator Gallery */}

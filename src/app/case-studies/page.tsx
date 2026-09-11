@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Contact from "@/components/sections/Contact";
+import DetailedCaseStudies from "@/components/sections/influencer/CaseStudies";
 
 interface CaseStudy {
   id: string;
@@ -417,6 +418,9 @@ export default function CaseStudiesPage() {
 
         </div>
       </section>
+
+      {/* 4. DETAILED CASE STUDIES SECTION */}
+      <DetailedCaseStudies />
 
       {/* 5. GROWTH SYSTEM SECTION */}
       <section className="py-24 bg-[#0A0A0C] text-white relative overflow-hidden">
