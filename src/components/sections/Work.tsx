@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Link from "next/link";
 
 const businessWorkItems = [
   {
@@ -244,18 +243,6 @@ export default function Work() {
             );
           })}
         </div>
-
-        <div className="text-center mt-10">
-          <Link href="#contact"
-            className="inline-flex items-center gap-3 px-6 py-2.5 border border-black/15 text-[#0A0A0A] rounded-full text-[14px] font-bold hover:border-black/35 hover:bg-black/5 transition-all"
-          >
-            Request Custom Case Studies
-            <span className="w-5 h-5 rounded-full bg-black flex items-center justify-center text-white font-bold text-xs">
-              →
-            </span>
-          </Link>
-        </div>
-
       </div>
     </section>
   );
