@@ -11,7 +11,6 @@ import Work from "@/components/sections/Work";
 import Founder from "@/components/sections/Founder";
 import ClientsGrid from "@/components/sections/ClientsGrid";
 import FAQ from "@/components/sections/FAQ";
-import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -30,7 +29,6 @@ export default function Home() {
       <Founder />
       <ClientsGrid isDark={true} />
       <FAQ />
-      <CTA />
       <Contact />
     </div>
   );
