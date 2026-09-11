@@ -5,7 +5,6 @@ import EndToEnd from "@/components/sections/influencer/EndToEnd";
 import InHouseCreators from "@/components/sections/influencer/InHouseCreators";
 import NetworkTiers from "@/components/sections/influencer/NetworkTiers";
 import CampaignReels from "@/components/sections/influencer/CampaignReels";
-import GrowthSystem from "@/components/sections/influencer/GrowthSystem";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import CTAInfluencer from "@/components/sections/influencer/CTAInfluencer";
 import ContactInfluencer from "@/components/sections/influencer/ContactInfluencer";
@@ -33,9 +32,6 @@ export default function InfluencerPage() {
 
       {/* 7. LIGHT: The Network (4 Tiers) */}
       <NetworkTiers />
-
-      {/* 8. DARK: Philosophy & The 5-Step Growth System */}
-      <GrowthSystem />
 
       {/* 9. LIGHT: Celebrity & Top Creator Gallery */}
       <CelebrityGallery isDark={false} />
