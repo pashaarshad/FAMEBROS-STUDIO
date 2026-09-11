@@ -165,29 +165,32 @@ export default function Hero() {
         </div>
 
         {/* High-Impact Headline with Orange-to-Purple Gradient Highlight */}
-        <h1 className="font-display font-black text-[38px] xs:text-[48px] sm:text-[68px] md:text-[80px] lg:text-[92px] leading-[0.98] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
+        <h1 className="font-display font-black text-[30px] xs:text-[42px] sm:text-[68px] md:text-[80px] lg:text-[92px] leading-[1.02] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
           WE HELP BUSINESSES
           <br className="hidden sm:block" />
-          <span className="inline-flex items-center gap-1.5 sm:gap-3 flex-wrap justify-center mt-1 sm:mt-2">
-            <span>GR</span>
-            <span className="inline-flex items-center justify-center align-middle mx-[0.5px] relative -top-[0.03em]">
-              <svg 
-                className="w-[0.82em] h-[0.82em] inline-block" 
-                viewBox="0 0 100 100" 
-                fill="none" 
-              >
-                <circle cx="50" cy="50" r="41" stroke="#0A0A0C" strokeWidth="11" />
-                <path 
-                  d="M 32 68 L 68 32 M 44 32 L 68 32 L 68 56" 
-                  stroke="#F59A57" 
-                  strokeWidth="12" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                />
-              </svg>
+          <span className="inline-flex items-center gap-2 sm:gap-3 flex-wrap justify-center mt-1 sm:mt-2">
+            <span className="inline-flex items-center whitespace-nowrap">
+              <span>GR</span>
+              <span className="inline-flex items-center justify-center align-middle mx-[0.02em] relative -top-[0.03em]">
+                <svg 
+                  className="w-[0.82em] h-[0.82em] inline-block" 
+                  viewBox="0 0 100 100" 
+                  fill="none" 
+                >
+                  <circle cx="50" cy="50" r="41" stroke="#0A0A0C" strokeWidth="11" />
+                  <path 
+                    d="M 32 68 L 68 32 M 44 32 L 68 32 L 68 56" 
+                    stroke="#F59A57" 
+                    strokeWidth="12" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                  />
+                </svg>
+              </span>
+              <span>W</span>
             </span>
-            <span>W BEYOND THEIR</span>
-            <span className="bg-gradient-to-r from-[#F59A57] via-[#8B5CF6] to-[#7C3AED] text-white px-5 sm:px-10 py-1.5 sm:py-3 rounded-[32px] sm:rounded-[50px] inline-block shadow-xl tracking-normal font-extrabold normal-case sm:uppercase">
+            <span>BEYOND THEIR</span>
+            <span className="bg-gradient-to-r from-[#F59A57] via-[#8B5CF6] to-[#7C3AED] text-white px-4 sm:px-10 py-1 sm:py-3 rounded-[32px] sm:rounded-[50px] inline-block shadow-xl tracking-normal font-extrabold normal-case sm:uppercase">
               EXPECTATIONS.
             </span>
           </span>
