@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Contact from "@/components/sections/Contact";
 
@@ -228,8 +228,6 @@ export default function CaseStudiesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeModal, setActiveModal] = useState<CaseStudy | null>(null);
-  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
-  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
   const categories = [
     "All",
@@ -255,51 +253,6 @@ export default function CaseStudiesPage() {
   const handleCategoryChange = (cat: string) => {
     setSelectedCategory(cat);
     setCurrentPage(1);
-  };
-
-  const handleVideoHover = (id: string, isHovering: boolean) => {
-    if (playingVideoId === id) return;
-    const video = videoRefs.current[id];
-    if (video) {
-      if (isHovering) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    }
-  };
-
-  const handleVideoClick = (e: React.MouseEvent, study: CaseStudy) => {
-    e.stopPropagation();
-    const id = study.id;
-    const video = videoRefs.current[id];
-    
-    if (playingVideoId === id) {
-      if (video) {
-        if (video.paused) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-          video.muted = true;
-          setPlayingVideoId(null);
-        }
-      }
-      return;
-    }
-
-    if (playingVideoId && videoRefs.current[playingVideoId]) {
-      const prevVideo = videoRefs.current[playingVideoId];
-      if (prevVideo) {
-        prevVideo.pause();
-        prevVideo.muted = true;
-      }
-    }
-
-    setPlayingVideoId(id);
-    if (video) {
-      video.muted = false;
-      video.play().catch(() => {});
-    }
   };
 
   return (
@@ -364,58 +317,32 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* 3. CASE STUDIES GRID WITH PLAYABLE VIDEOS */}
+      {/* 3. CASE STUDIES GRID */}
       <section className="py-16 md:py-24 bg-[#FFFFFF]">
         <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mb-16">
             {displayedStudies.map((study) => {
-              const isPlaying = playingVideoId === study.id;
-
               return (
                 <div
                   key={study.id}
                   onClick={() => setActiveModal(study)}
                   className="bg-[#FAFAFA] border border-black/10 rounded-[28px] md:rounded-[36px] p-6 md:p-8 hover:border-[#F59A57]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col sm:flex-row gap-6 cursor-pointer group shadow-sm hover:shadow-xl"
                 >
-                  {/* PLAYABLE VIDEO THUMBNAIL (Left Side) */}
+                  {/* PHOTO THUMBNAIL (Left Side) */}
                   <div 
-                    onClick={(e) => handleVideoClick(e, study)}
-                    onMouseEnter={() => handleVideoHover(study.id, true)}
-                    onMouseLeave={() => handleVideoHover(study.id, false)}
-                    className="w-full sm:w-[200px] md:w-[220px] aspect-[9/16] sm:aspect-square rounded-[22px] md:rounded-[26px] overflow-hidden relative flex-shrink-0 bg-black shadow-md border border-black/10 group/vid"
+                    className="w-full sm:w-[200px] md:w-[220px] aspect-[9/16] sm:aspect-square rounded-[22px] md:rounded-[26px] overflow-hidden relative flex-shrink-0 bg-black shadow-md border border-black/10 group/img"
                   >
                     <img
                       src={study.img}
                       alt={study.title}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-0 ${
-                        isPlaying ? "opacity-0 pointer-events-none" : "opacity-90 group-hover/vid:opacity-30"
-                      }`}
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
                     />
 
-                    <video
-                      ref={(el) => { videoRefs.current[study.id] = el; }}
-                      src={study.videoUrl}
-                      loop={!isPlaying}
-                      muted={!isPlaying}
-                      controls={isPlaying}
-                      playsInline
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                        isPlaying ? "z-20 opacity-100" : "z-10 opacity-0 group-hover/vid:opacity-100 pointer-events-none"
-                      }`}
-                    />
-
-                    <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"}`} />
-                    
-                    {/* Interactive Play Button overlay */}
-                    <div className={`absolute inset-0 flex items-center justify-center z-20 transition-all duration-300 ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-                      <div className="w-13 h-13 rounded-full border border-white/50 bg-black/50 text-white flex items-center justify-center pl-0.5 group-hover/vid:scale-110 group-hover/vid:bg-[#F59A57] group-hover/vid:text-black group-hover/vid:border-[#F59A57] transition-all backdrop-blur-sm shadow-xl">
-                        ▶
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                     {/* Badge on top of image */}
-                    <span className={`absolute bottom-3 left-3 right-3 text-center font-display font-extrabold text-white text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md py-1.5 px-2.5 rounded-lg border border-white/20 z-20 transition-opacity duration-300 ${isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+                    <span className="absolute bottom-3 left-3 right-3 text-center font-display font-extrabold text-white text-xs tracking-wider uppercase bg-black/70 backdrop-blur-md py-1.5 px-2.5 rounded-lg border border-white/20 z-10">
                       {study.imgBadge}
                     </span>
                   </div>
