@@ -34,7 +34,7 @@ export default function FounderInfluencer() {
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
                 <img 
                   src="/Sultan photos-with-png.png" 
-                  alt="Sultan Yunus" 
+                  alt="Sultan Sayed" 
                   className="absolute left-0 bottom-0 w-full h-[100%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -43,7 +43,7 @@ export default function FounderInfluencer() {
                 <div className="h-8 md:h-10 mb-1.5 relative select-none">
                   <img 
                     src="/Sultan sign.png" 
-                    alt="Sultan Yunus Signature"
+                    alt="Sultan Sayed Signature"
                     className="h-full object-contain object-left"
                     style={{ 
                       filter: "invert(72%) sepia(45%) saturate(1377%) hue-rotate(328deg) brightness(101%) contrast(93%)" 
@@ -52,7 +52,7 @@ export default function FounderInfluencer() {
                 </div>
 
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
-                  Sultan Yunus
+                  Sultan Sayed
                 </h3>
                 <span className="text-[11px] md:text-[12px] text-[#F59A57] font-bold block mb-3 md:mb-4">
                   Founder
@@ -97,7 +97,7 @@ export default function FounderInfluencer() {
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
                 <img 
                   src="/Sultan photos-with-png.png" 
-                  alt="Sultan Yunus" 
+                  alt="Sultan Sayed" 
                   className="absolute left-0 bottom-0 w-full h-[100%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -106,7 +106,7 @@ export default function FounderInfluencer() {
                 <div className="h-8 md:h-10 mb-1.5 relative select-none">
                   <img 
                     src="/Sultan sign.png" 
-                    alt="Sultan Yunus Signature"
+                    alt="Sultan Sayed Signature"
                     className="h-full object-contain object-left"
                     style={{ 
                       filter: "invert(56%) sepia(44%) saturate(718%) hue-rotate(133deg) brightness(91%) contrast(87%)" 
@@ -115,7 +115,7 @@ export default function FounderInfluencer() {
                 </div>
 
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
-                  Sultan Yunus
+                  Sultan Sayed
                 </h3>
                 <span className="text-[11px] md:text-[12px] text-[#249E98] font-bold block mb-3 md:mb-4">
                   Founder
