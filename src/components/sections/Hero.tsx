@@ -184,17 +184,17 @@ export default function Hero() {
         {/* Flowing multi-color ambient aura behind video cards */}
         <div className="absolute inset-0 max-w-5xl mx-auto rounded-full bg-gradient-to-r from-[#F59A57]/30 via-[#F472B6]/30 to-[#8B5CF6]/30 blur-[90px] pointer-events-none z-0 transform scale-110" />
         
-        {/* Desktop Tilted Fan Grid of 4 Client Video Cards */}
-        <div className="hidden lg:grid grid-cols-4 gap-4 items-center justify-center py-6 px-2">
+        {/* Unified Responsive Tilted Fan Grid (2 cols on mobile, 4 cols on desktop) - Single DOM instance per card */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-4 items-center justify-center py-4 lg:py-6 max-w-lg lg:max-w-none mx-auto lg:mx-0 px-2">
           {businessHeroCards.map((card, idx) => {
             const isPlaying = activeVideoIdx === idx;
             const isHovered = hoveredIdx === idx;
             
             const tiltClasses = [
-              "transform -rotate-8 -translate-y-2",
-              "transform -rotate-3 translate-y-3",
-              "transform rotate-2 -translate-y-3",
-              "transform rotate-8 translate-y-2"
+              "transform -rotate-4 lg:-rotate-8 lg:-translate-y-2",
+              "transform rotate-4 lg:-rotate-3 lg:translate-y-3",
+              "transform -rotate-3 lg:rotate-2 lg:-translate-y-3",
+              "transform rotate-3 lg:rotate-8 lg:translate-y-2"
             ];
 
             const zIndexClass = isPlaying ? "z-50" : isHovered ? "z-40" : idx === 1 ? "z-30" : idx === 2 ? "z-20" : "z-10";
@@ -208,9 +208,9 @@ export default function Hero() {
                 className={`relative cursor-pointer transition-all duration-300 ${zIndexClass} group`}
               >
                 <div 
-                  className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black ${tiltClasses[idx]} transition-all duration-300 ease-out ${
+                  className={`relative aspect-[9/15] sm:aspect-[9/16] rounded-[22px] sm:rounded-[28px] overflow-hidden border border-black/10 shadow-xl lg:shadow-2xl bg-black ${tiltClasses[idx]} transition-all duration-300 ease-out ${
                     isPlaying 
-                      ? "scale-108 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-2 ring-[#F59A57]" 
+                      ? "scale-105 lg:scale-108 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-2 ring-[#F59A57]" 
                       : isHovered 
                         ? "scale-105 rotate-0 shadow-[0_20px_45px_rgba(0,0,0,0.35)]" 
                         : ""
@@ -225,7 +225,7 @@ export default function Hero() {
                     }`}
                   />
 
-                  {/* Video Element (Only rendered & played when user explicitly clicks) */}
+                  {/* Video Element (Only 1 instance in DOM per card! Played only when user explicitly clicks) */}
                   {isPlaying && (
                     <video
                       src={card.videoSrc}
@@ -244,92 +244,35 @@ export default function Hero() {
                   {/* Central Play Button Overlay (When paused/not playing) */}
                   {!isPlaying && (
                     <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                      <div className="w-12 h-12 rounded-full bg-[#F59A57] text-[#0A0A0C] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform pl-0.5 text-base font-bold">
+                      <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[#F59A57] text-[#0A0A0C] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform pl-0.5 text-xs sm:text-base font-bold">
                         ▶
                       </div>
                     </div>
                   )}
                   
                   {/* Bottom Right Play/Pause Indicator Badge */}
-                  <div className={`absolute bottom-4 right-4 z-20 px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1.5 text-[10px] font-bold border border-white/20 transition-all ${
+                  <div className={`absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full backdrop-blur-md flex items-center gap-1 text-[9px] sm:text-[10px] font-bold border border-white/20 transition-all ${
                     isPlaying ? "bg-[#F59A57] text-black border-[#F59A57]" : "bg-black/70 text-white group-hover:bg-[#F59A57] group-hover:text-black"
                   }`}>
                     <span>{isPlaying ? "⏸ Pause" : "▶ Play"}</span>
                   </div>
 
                   {/* Client Info & Growth Pill Overlay */}
-                  <div className={`absolute bottom-4 left-4 right-24 z-20 text-white transition-opacity duration-300 pointer-events-none ${
+                  <div className={`absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-14 sm:right-24 z-20 text-white transition-opacity duration-300 pointer-events-none ${
                     isPlaying ? "opacity-90" : "opacity-100"
                   }`}>
-                    <p className="text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
+                    <p className="hidden sm:block text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
                       &ldquo;{card.quote}&rdquo;
                     </p>
-                    <div className="border-t border-white/20 pt-1.5 mb-1">
-                      <span className="text-[11px] font-bold text-white block leading-none">{card.name}</span>
-                      <span className="text-[9px] text-white/70 block mt-0.5">{card.role}</span>
+                    <div className="border-t border-white/20 pt-1 sm:pt-1.5 mb-1">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-white block leading-none truncate">{card.name}</span>
+                      <span className="hidden sm:block text-[9px] text-white/70 mt-0.5">{card.role}</span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">
-                      <span className={`text-[12px] font-extrabold block leading-none ${card.color}`}>{card.growth}</span>
+                    <div className="inline-flex items-center gap-1 sm:gap-1.5 bg-black/60 backdrop-blur-md px-2 sm:px-2.5 py-0.5 rounded-full border border-white/15">
+                      <span className={`text-[11px] sm:text-[12px] font-extrabold block leading-none ${card.color}`}>{card.growth}</span>
                       <span className="text-[8px] text-white/80 font-medium block leading-none">{card.growthLabel}</span>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Mobile 2x2 Tilted Grid Showcase */}
-        <div className="grid lg:hidden grid-cols-2 gap-3 sm:gap-5 py-4 max-w-lg mx-auto">
-          {businessHeroCards.map((card, idx) => {
-            const isPlaying = activeVideoIdx === idx;
-            const mobileTilts = ["-rotate-4", "rotate-4", "-rotate-3", "rotate-3"];
-
-            return (
-              <div 
-                key={`mobile-${card.num}`}
-                onClick={() => handleCardClick(idx)}
-                className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98 cursor-pointer group`}
-              >
-                {/* Preload Poster Image Banner */}
-                <img
-                  src={card.img}
-                  alt={card.name}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                    isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
-                  }`}
-                />
-
-                {/* Video Element (Only rendered & played when user explicitly clicks) */}
-                {isPlaying && (
-                  <video
-                    src={card.videoSrc}
-                    autoPlay
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover z-10"
-                  />
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-15" />
-
-                {!isPlaying && (
-                  <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                    <div className="w-10 h-10 rounded-full bg-[#F59A57] text-[#0A0A0C] flex items-center justify-center shadow-lg pl-0.5 text-xs font-bold">
-                      ▶
-                    </div>
-                  </div>
-                )}
-                
-                <div className={`absolute bottom-3 right-3 z-20 px-2 py-0.5 rounded-full backdrop-blur-md flex items-center justify-center text-[9px] font-bold border border-white/20 ${
-                  isPlaying ? "bg-[#F59A57] text-black border-[#F59A57]" : "bg-black/70 text-white"
-                }`}>
-                  {isPlaying ? "⏸" : "▶"}
-                </div>
-
-                <div className="absolute bottom-3 left-3 right-12 z-20 text-white pointer-events-none">
-                  <span className="text-[10px] font-bold text-white block leading-none truncate">{card.name}</span>
-                  <span className={`text-[11px] font-extrabold block leading-none mt-1 ${card.color}`}>{card.growth}</span>
                 </div>
               </div>
             );
