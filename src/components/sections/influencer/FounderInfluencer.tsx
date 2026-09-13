@@ -81,7 +81,7 @@ export default function FounderInfluencer() {
                 <img 
                   src="/Bilal Sayed.png" 
                   alt="Bilal Sayed" 
-                  className="absolute left-0 bottom-0 w-full h-[84%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
+                  className="absolute left-[-16px] md:left-[-20px] bottom-0 w-full h-[84%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
                 />
               </div>
 
