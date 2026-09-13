@@ -30,13 +30,13 @@ export default function Founder() {
           </div>
 
           {/* Right Column - Two Founder Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
             
             {/* Card 1: Bilal Sayed (Orange) */}
-            <div className="bg-[#FAFAFA] border border-[#F59A57]/20 rounded-2xl flex flex-row items-stretch hover:border-[#F59A57]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px] shadow-sm">
+            <div className="bg-[#FAFAFA] border border-[#F59A57]/20 rounded-2xl flex flex-row items-stretch hover:border-[#F59A57]/40 transition-all duration-300 relative overflow-hidden group h-full min-h-[220px] shadow-sm">
               
               {/* Left Cutout Photo (Horizontally Flipped to Right) */}
-              <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
+              <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
                   src="/Bilal Sayed.png" 
                   alt="Bilal Sayed" 
@@ -66,7 +66,7 @@ export default function Founder() {
                 </span>
 
                 {/* Social icons: Instagram + YouTube only */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center min-h-[32px]">
                   <a 
                     href="https://www.instagram.com/s_bilal24/" 
                     target="_blank" 
@@ -94,10 +94,10 @@ export default function Founder() {
             </div>
 
             {/* Card 2: Sultan Sayed (Teal) */}
-            <div className="bg-[#FAFAFA] border border-[#249E98]/20 rounded-2xl flex flex-row items-stretch hover:border-[#249E98]/40 transition-all duration-300 relative overflow-hidden group min-h-[220px] shadow-sm">
+            <div className="bg-[#FAFAFA] border border-[#249E98]/20 rounded-2xl flex flex-row items-stretch hover:border-[#249E98]/40 transition-all duration-300 relative overflow-hidden group h-full min-h-[220px] shadow-sm">
               
               {/* Left Cutout Photo */}
-              <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none">
+              <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
                   src="/Sultan photos-with-png.png" 
                   alt="Sultan Sayed" 
@@ -127,7 +127,7 @@ export default function Founder() {
                 </span>
 
                 {/* Social icons: Instagram only */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center min-h-[32px]">
                   <a 
                     href="https://www.instagram.com/famebrosstudio/" 
                     target="_blank" 
