@@ -93,21 +93,6 @@ export default function Work() {
     }
   };
 
-  const handleMouseEnter = (idx: number) => {
-    if (activeIdx === idx) return; 
-    const video = videoRefs.current[idx];
-    if (video) {
-      video.play().catch(() => {});
-    }
-  };
-
-  const handleMouseLeave = (idx: number) => {
-    if (activeIdx === idx) return; 
-    const video = videoRefs.current[idx];
-    if (video) {
-      video.pause();
-    }
-  };
 
   const handleCardClick = (idx: number) => {
     if (activeIdx === idx) {
@@ -193,34 +178,35 @@ export default function Work() {
               <div 
                 key={idx}
                 onClick={() => handleCardClick(idx)}
-                onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={() => handleMouseLeave(idx)}
                 className="flex-shrink-0 w-[220px] snap-start group cursor-pointer"
               >
                 {/* Media Card */}
-                <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-[#F5F5F7] to-[#E5E7EB] shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_4px_30px_rgba(245,154,87,0.15)]' : 'border-black/5 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
+                <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-black shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_4px_30px_rgba(245,154,87,0.15)]' : 'border-black/5 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
                   
+                  {/* Poster Image Banner (Preload Image) */}
                   <img 
                     src={item.img} 
                     alt={item.title} 
-                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out z-0 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-80 group-hover:opacity-20'}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 z-0 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-90'}`}
                   />
 
-                  <video
-                    ref={(el) => { videoRefs.current[idx] = el; }}
-                    src={item.videoUrl}
-                    loop={!isActive}
-                    muted={!isActive}
-                    controls={isActive}
-                    playsInline
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isActive ? 'z-20 opacity-100' : 'z-10 opacity-0 group-hover:opacity-95 pointer-events-none'}`}
-                  />
+                  {/* Video player - only rendered and played when user clicks */}
+                  {isActive && (
+                    <video
+                      ref={(el) => { videoRefs.current[idx] = el; }}
+                      src={item.videoUrl}
+                      controls
+                      autoPlay
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover z-20"
+                    />
+                  )}
 
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-20 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`} />
 
                   {/* Play Button Overlay */}
                   <div className={`absolute inset-0 flex items-center justify-center z-30 transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <div className="w-11 h-11 rounded-full border border-white/40 bg-white/10 flex items-center justify-center text-white pl-0.5 group-hover:scale-110 group-hover:bg-[#F59A57] group-hover:border-[#F59A57] group-hover:text-[#050505] transition-all backdrop-blur-sm shadow-md">
+                    <div className="w-12 h-12 rounded-full border border-white/40 bg-black/40 flex items-center justify-center text-white pl-0.5 group-hover:scale-110 group-hover:bg-[#F59A57] group-hover:border-[#F59A57] group-hover:text-[#050505] transition-all backdrop-blur-sm shadow-md">
                       ▶
                     </div>
                   </div>
