@@ -72,59 +72,10 @@ const businessHeroCards = [
 
 export default function Hero() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [unmutedIdx, setUnmutedIdx] = useState<number | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
-  // Autoplay all 4 videos simultaneously silently on mount
-  useEffect(() => {
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.muted = true;
-        video.play().catch(() => {});
-      }
-    });
-  }, []);
-
-  const handleMouseEnter = (idx: number) => {
-    setHoveredIdx(idx);
-    setUnmutedIdx(idx);
-    videoRefs.current.forEach((v, i) => {
-      if (v) {
-        v.muted = i !== idx;
-        if (v.paused) v.play().catch(() => {});
-      }
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIdx(null);
-    setUnmutedIdx(null);
-    videoRefs.current.forEach((v) => {
-      if (v) {
-        v.muted = true;
-        if (v.paused) v.play().catch(() => {});
-      }
-    });
-  };
+  const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
 
   const handleCardClick = (idx: number) => {
-    if (unmutedIdx === idx) {
-      setUnmutedIdx(null);
-      videoRefs.current.forEach((v) => {
-        if (v) {
-          v.muted = true;
-          if (v.paused) v.play().catch(() => {});
-        }
-      });
-    } else {
-      setUnmutedIdx(idx);
-      videoRefs.current.forEach((v, i) => {
-        if (v) {
-          v.muted = i !== idx;
-          if (v.paused) v.play().catch(() => {});
-        }
-      });
-    }
+    setActiveVideoIdx((prev) => (prev === idx ? null : idx));
   };
 
   return (
@@ -208,7 +159,7 @@ export default function Hero() {
             href="#contact"
             className="inline-flex items-center justify-center gap-3.5 px-8 py-4 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:scale-105 active:scale-95 transition-all shadow-[0_8px_25px_rgba(245,154,87,0.35)] group"
           >
-            <span className="w-7 h-7 rounded-full bg-[#0A0A0C] text-white flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
+            <span className="w-7 h-7 rounded-full bg-[#0A0A0C] text-[#FAF9F6] flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
               →
             </span>
             <span>Grow My Business</span>
@@ -227,16 +178,16 @@ export default function Hero() {
 
       </div>
 
-      {/* 4-Video Simultaneous Autoplay Fan Showcase */}
+      {/* 4-Video Fan Showcase */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 my-2">
         
         {/* Flowing multi-color ambient aura behind video cards */}
         <div className="absolute inset-0 max-w-5xl mx-auto rounded-full bg-gradient-to-r from-[#F59A57]/30 via-[#F472B6]/30 to-[#8B5CF6]/30 blur-[90px] pointer-events-none z-0 transform scale-110" />
         
-        {/* Desktop Tilted Fan Grid of 4 Client Videos with Stable Event Handlers */}
+        {/* Desktop Tilted Fan Grid of 4 Client Video Cards */}
         <div className="hidden lg:grid grid-cols-4 gap-4 items-center justify-center py-6 px-2">
           {businessHeroCards.map((card, idx) => {
-            const isUnmuted = unmutedIdx === idx;
+            const isPlaying = activeVideoIdx === idx;
             const isHovered = hoveredIdx === idx;
             
             const tiltClasses = [
@@ -246,51 +197,69 @@ export default function Hero() {
               "transform rotate-8 translate-y-2"
             ];
 
-            const zIndexClass = isUnmuted ? "z-50" : isHovered ? "z-40" : idx === 1 ? "z-30" : idx === 2 ? "z-20" : "z-10";
+            const zIndexClass = isPlaying ? "z-50" : isHovered ? "z-40" : idx === 1 ? "z-30" : idx === 2 ? "z-20" : "z-10";
 
             return (
               <div 
                 key={card.num}
-                onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
                 onClick={() => handleCardClick(idx)}
-                className={`relative cursor-pointer transition-all duration-300 ${zIndexClass}`}
+                className={`relative cursor-pointer transition-all duration-300 ${zIndexClass} group`}
               >
                 <div 
                   className={`relative aspect-[9/16] rounded-[28px] overflow-hidden border border-black/10 shadow-2xl bg-black ${tiltClasses[idx]} transition-all duration-300 ease-out ${
-                    isUnmuted 
+                    isPlaying 
                       ? "scale-108 rotate-0 shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-2 ring-[#F59A57]" 
                       : isHovered 
                         ? "scale-105 rotate-0 shadow-[0_20px_45px_rgba(0,0,0,0.35)]" 
                         : ""
                   }`}
                 >
-                  {/* Autoplay Video Element (All 4 play simultaneously) */}
-                  <video
-                    ref={(el) => { videoRefs.current[idx] = el; }}
-                    src={card.videoSrc}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
+                  {/* Preload Poster Image Banner */}
+                  <img
+                    src={card.img}
+                    alt={card.name}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                      isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
+                    }`}
                   />
 
+                  {/* Video Element (Only rendered & played when user explicitly clicks) */}
+                  {isPlaying && (
+                    <video
+                      src={card.videoSrc}
+                      autoPlay
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover z-10"
+                    />
+                  )}
+
                   {/* Overlay Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 ${
-                    isUnmuted ? "opacity-30" : "opacity-100"
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 pointer-events-none z-15 ${
+                    isPlaying ? "opacity-30 hover:opacity-70" : "opacity-100"
                   }`} />
+
+                  {/* Central Play Button Overlay (When paused/not playing) */}
+                  {!isPlaying && (
+                    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                      <div className="w-12 h-12 rounded-full bg-[#F59A57] text-[#0A0A0C] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform pl-0.5 text-base font-bold">
+                        ▶
+                      </div>
+                    </div>
+                  )}
                   
-                  {/* Sound & Play Toggle Icon */}
-                  <div className={`absolute bottom-4 right-4 z-20 w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[10px] font-bold border border-white/20 transition-transform ${
-                    isHovered || isUnmuted ? "scale-110 bg-[#F59A57] text-black border-[#F59A57]" : ""
+                  {/* Bottom Right Play/Pause Indicator Badge */}
+                  <div className={`absolute bottom-4 right-4 z-20 px-2.5 py-1 rounded-full backdrop-blur-md flex items-center gap-1.5 text-[10px] font-bold border border-white/20 transition-all ${
+                    isPlaying ? "bg-[#F59A57] text-black border-[#F59A57]" : "bg-black/70 text-white group-hover:bg-[#F59A57] group-hover:text-black"
                   }`}>
-                    {isUnmuted ? "🔊" : "🔇"}
+                    <span>{isPlaying ? "⏸ Pause" : "▶ Play"}</span>
                   </div>
 
                   {/* Client Info & Growth Pill Overlay */}
-                  <div className={`absolute bottom-4 left-4 right-14 z-20 text-white transition-opacity duration-300 ${
-                    isUnmuted ? "opacity-90" : "opacity-100"
+                  <div className={`absolute bottom-4 left-4 right-24 z-20 text-white transition-opacity duration-300 pointer-events-none ${
+                    isPlaying ? "opacity-90" : "opacity-100"
                   }`}>
                     <p className="text-[10px] leading-tight text-white/90 italic mb-2 line-clamp-2">
                       &ldquo;{card.quote}&rdquo;
@@ -313,31 +282,52 @@ export default function Hero() {
         {/* Mobile 2x2 Tilted Grid Showcase */}
         <div className="grid lg:hidden grid-cols-2 gap-3 sm:gap-5 py-4 max-w-lg mx-auto">
           {businessHeroCards.map((card, idx) => {
-            const isUnmuted = unmutedIdx === idx;
+            const isPlaying = activeVideoIdx === idx;
             const mobileTilts = ["-rotate-4", "rotate-4", "-rotate-3", "rotate-3"];
 
             return (
               <div 
                 key={`mobile-${card.num}`}
                 onClick={() => handleCardClick(idx)}
-                className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98 cursor-pointer`}
+                className={`relative aspect-[9/15] rounded-[22px] overflow-hidden border border-black/10 shadow-xl bg-black transform ${mobileTilts[idx]} transition-all duration-300 active:scale-98 cursor-pointer group`}
               >
-                <video
-                  ref={(el) => { if (!videoRefs.current[idx]) videoRefs.current[idx] = el; }}
-                  src={card.videoSrc}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
+                {/* Preload Poster Image Banner */}
+                <img
+                  src={card.img}
+                  alt={card.name}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                    isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+
+                {/* Video Element (Only rendered & played when user explicitly clicks) */}
+                {isPlaying && (
+                  <video
+                    src={card.videoSrc}
+                    autoPlay
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover z-10"
+                  />
+                )}
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none z-15" />
+
+                {!isPlaying && (
+                  <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <div className="w-10 h-10 rounded-full bg-[#F59A57] text-[#0A0A0C] flex items-center justify-center shadow-lg pl-0.5 text-xs font-bold">
+                      ▶
+                    </div>
+                  </div>
+                )}
                 
-                <div className="absolute bottom-3 right-3 z-20 w-6 h-6 rounded-full bg-black/70 backdrop-blur-md text-white flex items-center justify-center text-[9px]">
-                  {isUnmuted ? "🔊" : "🔇"}
+                <div className={`absolute bottom-3 right-3 z-20 px-2 py-0.5 rounded-full backdrop-blur-md flex items-center justify-center text-[9px] font-bold border border-white/20 ${
+                  isPlaying ? "bg-[#F59A57] text-black border-[#F59A57]" : "bg-black/70 text-white"
+                }`}>
+                  {isPlaying ? "⏸" : "▶"}
                 </div>
 
-                <div className="absolute bottom-3 left-3 right-10 z-20 text-white">
+                <div className="absolute bottom-3 left-3 right-12 z-20 text-white pointer-events-none">
                   <span className="text-[10px] font-bold text-white block leading-none truncate">{card.name}</span>
                   <span className={`text-[11px] font-extrabold block leading-none mt-1 ${card.color}`}>{card.growth}</span>
                 </div>
