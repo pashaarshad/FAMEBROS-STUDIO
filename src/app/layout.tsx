@@ -3,6 +3,7 @@ import { Inter, Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,8 +22,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Famebros Studio | We build brands designed to grow for years",
-  description: "A premium creative production studio focusing on brand building, storytelling, and organic growth.",
+  title: "Famebros Studio | Social Media Marketing Agency in Mumbai",
+  description: "Social media strategy, content production, influencer marketing and performance campaigns in Mumbai helping businesses build trust, enquiries, and long-term growth.",
   icons: {
     icon: "/imp-doc/logo.png",
     shortcut: "/imp-doc/logo.png",
@@ -45,6 +46,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

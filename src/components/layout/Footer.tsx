@@ -98,10 +98,10 @@ export default function Footer() {
 
               {/* Email */}
               <a 
-                href="mailto:famebros.studio@gmail.com" 
+                href="mailto:growth@famebrosstudio.com" 
                 className="hover:text-[#F59A57] transition-colors break-all"
               >
-                famebros.studio@gmail.com
+                growth@famebrosstudio.com
               </a>
 
               {/* Location details */}

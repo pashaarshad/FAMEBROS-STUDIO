@@ -116,10 +116,11 @@ export default function Hero() {
         </div>
 
         {/* High-Impact Headline with Orange-to-Purple Gradient Highlight */}
-        <h1 className="font-display font-black text-[30px] xs:text-[42px] sm:text-[68px] md:text-[80px] lg:text-[92px] leading-[1.02] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
-          WE HELP BUSINESSES
+        <h1 className="font-display font-black text-[30px] xs:text-[42px] sm:text-[66px] md:text-[78px] lg:text-[88px] leading-[1.02] tracking-[-0.04em] text-[#0A0A0C] uppercase mb-6 max-w-5xl">
+          WE DON&apos;T JUST GROW VIEWS.
           <br className="hidden sm:block" />
           <span className="inline-flex items-center gap-2 sm:gap-3 flex-wrap justify-center mt-1 sm:mt-2">
+            <span>WE</span>
             <span className="inline-flex items-center whitespace-nowrap">
               <span>GR</span>
               <span className="inline-flex items-center justify-center align-middle mx-[0.02em] relative -top-[0.03em]">
@@ -140,16 +141,15 @@ export default function Hero() {
               </span>
               <span>W</span>
             </span>
-            <span>BEYOND THEIR</span>
             <span className="bg-gradient-to-r from-[#F59A57] via-[#8B5CF6] to-[#7C3AED] text-white px-4 sm:px-10 py-1 sm:py-3 rounded-[32px] sm:rounded-[50px] inline-block shadow-xl tracking-normal font-extrabold normal-case sm:uppercase">
-              EXPECTATIONS.
+              BUSINESSES.
             </span>
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-[#55555C] text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed mb-8 text-center">
-          We build strong brands that attract the right audience, create trust and generate consistent business growth through social media, content and strategy.
+        <p className="text-[#55555C] text-sm sm:text-base md:text-lg max-w-3xl mx-auto font-medium leading-relaxed mb-8 text-center">
+          Social media strategy, content production, influencer marketing and performance campaigns designed to turn attention into trust, enquiries and growth.
         </p>
 
 
@@ -286,7 +286,7 @@ export default function Hero() {
         <div className="overflow-hidden relative">
           <div className="flex items-center gap-4 mb-4">
             <span className="font-mono-custom text-[10px] sm:text-[11px] tracking-[0.2em] text-gray-500 font-semibold uppercase whitespace-nowrap">
-              TRUSTED BY LEADING BRANDS & BUSINESSES ACROSS INDIA
+              BRANDS WE HAVE WORKED WITH
             </span>
             <div className="h-[1px] bg-black/10 flex-grow" />
           </div>

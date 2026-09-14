@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroInfluencer from "@/components/sections/influencer/HeroInfluencer";
 import ProblemOne from "@/components/sections/influencer/ProblemOne";
 import ProblemTwo from "@/components/sections/influencer/ProblemTwo";
@@ -8,6 +9,11 @@ import CampaignReels from "@/components/sections/influencer/CampaignReels";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import CTAInfluencer from "@/components/sections/influencer/CTAInfluencer";
 import ContactInfluencer from "@/components/sections/influencer/ContactInfluencer";
+
+export const metadata: Metadata = {
+  title: "Influencer Marketing Agency in Mumbai | Famebros Studio",
+  description: "Connect with active creators and influencers across fashion, lifestyle, food, fitness, and tech to amplify your brand's reach and sales.",
+};
 
 export default function InfluencerPage() {
   return (
