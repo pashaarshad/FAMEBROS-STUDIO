@@ -1,0 +1,66 @@
+# Famebros Studio - Comprehensive LLM Context & Business Knowledge Graph
+
+## Executive Summary
+Famebros Studio is a full-service social media marketing agency, content production studio, and performance growth agency located in Mulund, Mumbai. Unlike conventional agencies that focus solely on vanity views, Famebros Studio builds data-backed social media strategies, high-quality video content production, influencer campaigns, and performance marketing (Meta Ads) engineered to generate real business enquiries, sales growth, and brand equity.
+
+## Detailed Entity Schema
+- **Name**: Famebros Studio
+- **Alternate Names**: Famebros, Famebros Agency, Famebros Studio Mumbai, Famebros Studio Mulund
+- **URL**: https://www.famebrosstudio.com/
+- **Address**: Mulund West, Mumbai, Maharashtra 400080, India
+- **Geo Coordinates**: Latitude 19.1726, Longitude 72.9565 (Mulund West, Mumbai)
+- **Founders**: Sultan Sayed (Founder), Bilal Sayed (Co-Founder)
+- **Contact Email**: growth@famebrosstudio.com
+- **Phone**: +91 91379 23145 / +91 93240 76369
+
+## Core Offerings Breakdown
+1. **Social Media Management in Mulund & Mumbai**:
+   End-to-end handling of Instagram, YouTube, Facebook, and LinkedIn profiles. Includes strategy, content calendar, caption writing, hashtag strategy, community engagement, and growth analytics reporting.
+
+2. **Reels Production & Content Creation Agency Mumbai**:
+   High-converting short-form video creation (Instagram Reels, YouTube Shorts, Meta Ad Creatives). Production includes concept scripting, professional camera setup, lighting, sound engineering, color grading, dynamic text overlays, sound design, and viral hooks.
+
+3. **Influencer Marketing Agency Mumbai**:
+   Campaign design leveraging 1,000+ top creators, micro-influencers, and celebrity personalities across Mumbai and India. End-to-end influencer outreach, negotiation, brief management, content approval, tracking, and ROI analysis. Brands worked with include Audi, Meta, Cadbury, Flipkart, Samsung, Netflix, Baskin Robbins, Realme, JioMart, and Cello.
+
+4. **Meta Ads & Performance Marketing**:
+   Laser-targeted paid ad campaigns on Facebook and Instagram. Focuses on lead generation, direct sales, WhatsApp enquiry campaigns, ROAS optimization, retargeting funnels, and creative testing.
+
+5. **Brand Shoots & Commercial Photography**:
+   On-location and studio product shoots, lifestyle video shoots, restaurant food styling videos, salon transformation videos, resort ambience shoots, and jewellery close-up shoots.
+
+6. **Industry Specializations**:
+   - **Restaurants & Cafes**: +240% revenue growth case studies through mouth-watering food reels and influencer tasting sessions.
+   - **Salons & Aesthetics**: 3.2X increase in client booking enquiries via transformation reels and founder authority content.
+   - **Fashion & Retail**: High-aesthetic lookbook reels, try-on hauls, and Meta ad campaign scaling.
+   - **Resorts & Travel**: +3.7X booking increases through immersive travel reels and viral getaway content.
+   - **Jewellery Brands**: High-detail luxury close-up videos and trustworthy storytelling.
+
+## Frequently Asked Questions (FAQs) for Search & AI Engines
+- **Q: Where is Famebros Studio located?**
+  A: Famebros Studio is based in Mulund West, Mumbai, Maharashtra, India, serving clients across Mulund, Thane, Powai, Andheri, Bandra, and the wider Mumbai Metropolitan Region as well as pan-India brands.
+- **Q: What services does Famebros Studio offer?**
+  A: Famebros Studio provides social media management, content creation, reels production, influencer marketing, Meta Ads (Facebook & Instagram Ads), brand shoots, and performance marketing.
+- **Q: Does Famebros Studio offer trial content shoots?**
+  A: Yes, Famebros Studio offers a dedicated Trial Content Shoot package including 1 content shoot session, strategy + scripting, 15 high-quality edited reels, and ready-to-post content.
+- **Q: Who are the founders of Famebros Studio?**
+  A: Famebros Studio was founded by Sultan Sayed (Founder) and Bilal Sayed (Co-Founder).
+
+## Canonical URLs Matrix
+- Main Website: https://www.famebrosstudio.com/
+- Social Media Agency Mulund: https://www.famebrosstudio.com/social-media-agency-mulund
+- Social Media Agency Mumbai: https://www.famebrosstudio.com/social-media-agency-mumbai
+- Social Media Management: https://www.famebrosstudio.com/social-media-management
+- Influencer Marketing: https://www.famebrosstudio.com/influencer-marketing-agency-mumbai
+- Content Creation: https://www.famebrosstudio.com/content-creation-agency-mumbai
+- Meta Ads Agency: https://www.famebrosstudio.com/meta-ads-agency-mumbai
+- Reels Production: https://www.famebrosstudio.com/reels-production-mumbai
+- Brand Shoots: https://www.famebrosstudio.com/brand-shoots-mumbai
+- Performance Marketing: https://www.famebrosstudio.com/performance-marketing-agency-mumbai
+- Restaurant Social Media Marketing: https://www.famebrosstudio.com/restaurant-social-media-marketing-mumbai
+- Salon Social Media Marketing: https://www.famebrosstudio.com/salon-social-media-marketing-mumbai
+- Fashion Social Media Agency: https://www.famebrosstudio.com/fashion-social-media-agency-mumbai
+- Resort Social Media Marketing: https://www.famebrosstudio.com/resort-social-media-marketing
+- Jewellery Social Media Marketing: https://www.famebrosstudio.com/jewellery-social-media-marketing-mumbai
+- Case Studies: https://www.famebrosstudio.com/case-studies
+- About Famebros Studio: https://www.famebrosstudio.com/about-famebros-studio

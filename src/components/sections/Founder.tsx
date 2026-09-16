@@ -39,7 +39,7 @@ export default function Founder() {
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
                   src="/Sultan photos-with-png.png" 
-                  alt="Sultan Sayed" 
+                  alt="Sultan Sayed - Founder of Famebros Studio Social Media Agency Mulund Mumbai" 
                   className="absolute left-0 bottom-0 w-full h-full object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -50,7 +50,7 @@ export default function Founder() {
                 <div className="h-8 md:h-10 mb-1.5 relative select-none">
                   <img 
                     src="/Sultan sign.png" 
-                    alt="Sultan Sayed Signature"
+                    alt="Sultan Sayed Founder Signature"
                     className="h-full object-contain object-left"
                     style={{ 
                       filter: "invert(56%) sepia(44%) saturate(718%) hue-rotate(133deg) brightness(91%) contrast(87%)" 
@@ -89,7 +89,7 @@ export default function Founder() {
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
                   src="/Bilal Sayed.png" 
-                  alt="Bilal Sayed" 
+                  alt="Bilal Sayed - Co-Founder of Famebros Studio Social Media Agency Mulund Mumbai" 
                   className="absolute left-[-16px] md:left-[-20px] bottom-0 w-full h-[84%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
                 />
               </div>
