@@ -50,10 +50,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   const navLinks = [
     { href: '/admin', label: '📊 Overview' },
+    { href: '/admin/site-content', label: '✏️ Site Content' },
     { href: '/admin/case-studies', label: '📈 Case Studies' },
     { href: '/admin/portfolio', label: '🎬 Portfolio & Media' },
-    { href: '/admin/creators', label: '🤳 Creator Network' },
-    { href: '/admin/leads', label: '📞 Business Leads' },
   ];
 
   return (
@@ -64,7 +63,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <Link href="/admin" className="flex items-center gap-3">
             <img src="/imp-doc/logo.png" alt="Famebros Studio" className="h-8 object-contain" />
             <span className="font-display font-extrabold text-sm uppercase tracking-widest text-[#F59A57] hidden xs:inline-block">
-              CMS Dashboard
+              Site Manager
             </span>
           </Link>
 
