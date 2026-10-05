@@ -101,7 +101,7 @@ export default function AdminDashboardPage() {
         </Link>
 
         {/* ─── Secondary Cards ─────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <Link
             href="/admin/case-studies"
             className="p-6 rounded-2xl bg-[#141419] border border-white/10 hover:border-[#F59A57] transition-all group"
@@ -143,6 +143,25 @@ export default function AdminDashboardPage() {
               Existing videos are locked. Add new videos (max 15 MB) here.
             </p>
           </Link>
+
+          <Link
+            href="/admin/brands"
+            className="p-6 rounded-2xl bg-[#141419] border border-white/10 hover:border-[#F59A57] transition-all group"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <span className="text-2xl">🏷️</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#F59A57] group-hover:translate-x-1 transition-transform">
+                Manage →
+              </span>
+            </div>
+            <div className="font-display font-black text-3xl text-white mb-1">17+</div>
+            <div className="text-xs font-bold text-white/60 uppercase tracking-wider">
+              Brand Logos
+            </div>
+            <p className="text-xs text-white/40 mt-2">
+              17 baseline brands locked. Add new client logos here.
+            </p>
+          </Link>
         </div>
 
         {/* ─── Lock Policy Info ─────────────────────────────────────────── */}
@@ -167,7 +186,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* ─── Quick Actions ────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <Link
             href="/admin/site-content"
             className="p-4 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold rounded-xl text-center text-xs uppercase tracking-wider hover:scale-[1.02] transition-transform"
@@ -184,7 +203,13 @@ export default function AdminDashboardPage() {
             href="/admin/portfolio"
             className="p-4 bg-white/10 border border-white/20 text-white font-extrabold rounded-xl text-center text-xs uppercase tracking-wider hover:bg-white/20 transition-all"
           >
-            + Add Portfolio Video
+            + Add Video
+          </Link>
+          <Link
+            href="/admin/brands"
+            className="p-4 bg-white/10 border border-white/20 text-white font-extrabold rounded-xl text-center text-xs uppercase tracking-wider hover:bg-white/20 transition-all"
+          >
+            + Add Brand Logo
           </Link>
         </div>
 

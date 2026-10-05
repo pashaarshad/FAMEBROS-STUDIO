@@ -53,6 +53,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     { href: '/admin/site-content', label: '✏️ Site Content' },
     { href: '/admin/case-studies', label: '📈 Case Studies' },
     { href: '/admin/portfolio', label: '🎬 Portfolio & Media' },
+    { href: '/admin/brands', label: '🏷️ Brand Logos' },
   ];
 
   return (
