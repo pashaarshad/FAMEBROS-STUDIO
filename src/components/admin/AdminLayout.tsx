@@ -50,7 +50,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   const navLinks = [
     { href: '/admin', label: '📊 Overview' },
-    { href: '/admin/site-content', label: '✏️ Site Content' },
+    { href: '/admin/site-content', label: '✨ Visual Site Editor' },
     { href: '/admin/case-studies', label: '📈 Case Studies' },
     { href: '/admin/portfolio', label: '🎬 Portfolio & Media' },
     { href: '/admin/brands', label: '🏷️ Brand Logos' },

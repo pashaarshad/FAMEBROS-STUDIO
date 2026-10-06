@@ -97,6 +97,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { SiteContentProvider } from "@/context/SiteContentContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -110,10 +112,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${bricolage.variable} ${ibmPlexMono.variable} antialiased bg-bg-primary text-text-primary`}
       >
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <SiteContentProvider>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </SiteContentProvider>
       </body>
     </html>
   );

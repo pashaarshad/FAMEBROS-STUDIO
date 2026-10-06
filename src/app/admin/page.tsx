@@ -81,22 +81,27 @@ export default function AdminDashboardPage() {
           </div>
         </div>
 
-        {/* ─── Primary Action — Site Content Editor ───────────────────── */}
+        {/* ─── Primary Action — Visual Live Editor ───────────────────── */}
         <Link
           href="/admin/site-content"
-          className="block p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#F59A57]/20 to-[#F59A57]/5 border border-[#F59A57]/40 hover:border-[#F59A57] transition-all group"
+          className="block p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#F59A57]/25 via-[#F59A57]/10 to-transparent border border-[#F59A57]/50 hover:border-[#F59A57] transition-all group shadow-xl"
         >
           <div className="flex items-center justify-between mb-3">
-            <span className="text-3xl">✏️</span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#F59A57] group-hover:translate-x-1 transition-transform">
-              Open Editor →
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">✨</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest bg-[#F59A57] text-black px-2.5 py-1 rounded-md">
+                Live Preview Mode
+              </span>
+            </div>
+            <span className="text-xs font-extrabold uppercase tracking-wider text-[#F59A57] group-hover:translate-x-1.5 transition-transform flex items-center gap-1">
+              Open Visual Editor &rarr;
             </span>
           </div>
-          <div className="font-display font-black text-xl sm:text-2xl text-white mb-1">
-            Website Content Editor
+          <div className="font-display font-black text-xl sm:text-2xl text-white mb-2">
+            Visual Live Website Editor (Hostinger / Builder Style)
           </div>
-          <div className="text-sm text-white/60">
-            Edit all visible text on the website — Hero, About, FAQ, Contact, Founders, Influencer page, Footer, and more. Changes save directly to MongoDB and reflect on your site.
+          <div className="text-xs sm:text-sm text-white/70 leading-relaxed">
+            See your website directly inside the dashboard with a live split-screen preview. Edit headings, subheadings, paragraphs, brand logos, and shoot videos on the left — and watch your live site update instantly in real time on the right! Click &ldquo;Save &amp; Publish&rdquo; to send edits live to MongoDB.
           </div>
         </Link>
 

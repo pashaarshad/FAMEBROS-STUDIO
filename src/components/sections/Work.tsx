@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 const businessWorkItems = [
   {
@@ -77,9 +78,23 @@ const businessWorkItems = [
 
 
 export default function Work() {
+  const { portfolio } = useSiteContent();
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+  // Dynamic portfolio items added from dashboard
+  const dynamicItems = portfolio
+    .filter((p) => !p.isLocked)
+    .map((p) => ({
+      videoUrl: p.videoUrl || '',
+      img: p.thumbnailUrl || '/vedios-hero/1st__poster.jpg',
+      title: p.title,
+      desc: p.description || p.clientName,
+      metric: p.metricValue || 'Growth Partner',
+    }));
+
+  const displayWorkItems = [...businessWorkItems, ...dynamicItems];
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -171,7 +186,7 @@ export default function Work() {
           ref={containerRef}
           className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-6"
         >
-          {businessWorkItems.map((item, idx) => {
+          {displayWorkItems.map((item, idx) => {
             const isActive = activeIdx === idx;
             
             return (
