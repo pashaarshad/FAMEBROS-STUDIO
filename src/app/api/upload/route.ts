@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import { isAuthenticated } from '@/lib/auth';
 
 // Max sizes
 const MAX_IMAGE_MB = 5;
@@ -12,8 +13,8 @@ export const config = {
 
 export async function POST(request: NextRequest) {
   // Admin auth check
-  const session = request.cookies.get('admin_session');
-  if (!session?.value) {
+  const authed = await isAuthenticated();
+  if (!authed) {
     return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
   }
 

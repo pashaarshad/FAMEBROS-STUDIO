@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { SiteContent } from '@/models/SiteContent';
 import { SITE_CONTENT_DEFAULTS } from '@/lib/siteContentDefaults';
+import { isAuthenticated } from '@/lib/auth';
 
 /**
  * GET /api/site-content?section=hero
@@ -68,9 +69,8 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   // Admin auth check
-  const { cookies } = request;
-  const session = cookies.get('admin_session');
-  if (!session?.value) {
+  const authed = await isAuthenticated();
+  if (!authed) {
     return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
   }
 

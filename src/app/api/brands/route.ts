@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Brand } from '@/models/Brand';
+import { isAuthenticated } from '@/lib/auth';
 
 // Baseline locked brands (from Hero.tsx clientLogos)
 const BASELINE_BRANDS = [
@@ -63,8 +64,8 @@ export async function GET() {
 
 /** POST /api/brands  — add a new brand logo */
 export async function POST(request: NextRequest) {
-  const session = request.cookies.get('admin_session');
-  if (!session?.value) {
+  const authed = await isAuthenticated();
+  if (!authed) {
     return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -94,8 +95,8 @@ export async function POST(request: NextRequest) {
 
 /** DELETE /api/brands?id=xxx  — delete a non-locked brand */
 export async function DELETE(request: NextRequest) {
-  const session = request.cookies.get('admin_session');
-  if (!session?.value) {
+  const authed = await isAuthenticated();
+  if (!authed) {
     return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
   }
 
