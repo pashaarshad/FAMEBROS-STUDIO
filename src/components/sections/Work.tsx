@@ -85,7 +85,11 @@ export default function Work() {
 
   // Dynamic portfolio items added from dashboard
   const dynamicItems = portfolio
-    .filter((p) => !p.isLocked)
+    .filter((p) => {
+      if (p.isLocked) return false;
+      if (!p.sections || p.sections.length === 0) return true;
+      return p.sections.includes('what-our-clients-say') || p.sections.includes('work');
+    })
     .map((p) => ({
       videoUrl: p.videoUrl || '',
       img: p.thumbnailUrl || '/vedios-hero/1st__poster.jpg',

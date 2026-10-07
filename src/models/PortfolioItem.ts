@@ -9,6 +9,7 @@ export interface IPortfolioItem extends Document {
   description: string;
   metricLabel?: string;
   metricValue?: string;
+  sections?: string[];
   isCustom?: boolean;
   createdAt: Date;
 }
@@ -23,6 +24,7 @@ const PortfolioItemSchema: Schema = new Schema(
     description: { type: String, default: '' },
     metricLabel: { type: String, default: '' },
     metricValue: { type: String, default: '' },
+    sections: { type: [String], default: ['work'] },
     isCustom: { type: Boolean, default: true },
   },
   { timestamps: true }

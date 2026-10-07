@@ -92,7 +92,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { title, category, clientName, thumbnailUrl, videoUrl, description, metricLabel, metricValue } = body;
+    const { title, category, clientName, thumbnailUrl, videoUrl, description, metricLabel, metricValue, sections } = body;
 
     if (!title || !category || !clientName || !thumbnailUrl) {
       return NextResponse.json({ success: false, message: 'Missing required fields' }, { status: 400 });
@@ -107,6 +107,7 @@ export async function POST(request: Request) {
       description: description || '',
       metricLabel: metricLabel || '',
       metricValue: metricValue || '',
+      sections: Array.isArray(sections) && sections.length > 0 ? sections : ['what-our-clients-say', 'work'],
       isCustom: true,
     });
 

@@ -20,6 +20,7 @@ export interface PortfolioItem {
   description: string;
   metricLabel?: string;
   metricValue?: string;
+  sections?: string[];
   isLocked?: boolean;
 }
 
