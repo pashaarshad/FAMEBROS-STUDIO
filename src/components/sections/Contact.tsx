@@ -101,6 +101,7 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -112,6 +113,7 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -126,6 +128,7 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -137,6 +140,7 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
+                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -149,12 +153,14 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={3}
                     className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all resize-none placeholder:text-gray-400"
+                    suppressHydrationWarning
                   />
                 </div>
 
                 <button 
                   type="submit"
                   className="w-full py-3.5 bg-[#0A0A0B] hover:bg-[#1C1C21] text-white rounded-xl font-bold text-sm transition-all hover:scale-[1.01]"
+                  suppressHydrationWarning
                 >
                   Send My Enquiry &rarr;
                 </button>

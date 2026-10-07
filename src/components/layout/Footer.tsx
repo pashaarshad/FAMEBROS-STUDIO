@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function Footer() {
+  const pathname = usePathname();
   const { getContent } = useSiteContent();
+
+  if (pathname?.startsWith("/admin")) return null;
 
   const tagline = getContent("footer", "tagline") || "We don't just grow views. We grow businesses.";
   const address = getContent("footer", "address") || getContent("contact", "address") || "Mulund West, Mumbai - 400080";

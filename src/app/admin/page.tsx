@@ -124,7 +124,7 @@ export default function AdminDashboardPage() {
               Case Studies
             </div>
             <p className="text-xs text-white/40 mt-2">
-              4 baseline entries are locked. Add new case studies here.
+              8 baseline client entries are locked. Add new case studies here.
             </p>
           </Link>
 
@@ -179,7 +179,7 @@ export default function AdminDashboardPage() {
           </div>
           <ul className="text-xs text-white/60 leading-relaxed space-y-1.5">
             <li>
-              <strong className="text-white/80">Baseline Case Studies</strong> — The 4 original case studies (Restaurant, Retail, Gym, Resort) are <span className="text-amber-400 font-bold">locked</span>. They display as locked entries and cannot be deleted.
+              <strong className="text-white/80">Baseline Case Studies</strong> — The 8 original client case studies (Shree Mahalaxmi, Hazel Sweets, Raj Laxmi, Devi & Co, Ali Salon, SK Furniture, Arabian Collection, Al Ahmed) are <span className="text-amber-400 font-bold">locked</span>. They display as baseline entries and cannot be deleted.
             </li>
             <li>
               <strong className="text-white/80">Existing Portfolio Videos</strong> — Videos already embedded in the website code are <span className="text-amber-400 font-bold">locked</span>. You can add new ones (max 15 MB each).

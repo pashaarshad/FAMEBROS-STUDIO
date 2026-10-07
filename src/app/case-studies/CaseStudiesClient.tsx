@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Contact from "@/components/sections/Contact";
 
 interface CaseStudy {
@@ -224,22 +224,65 @@ const caseStudiesData: CaseStudy[] = [
 ];
 
 export default function CaseStudiesClient() {
+  const [studies, setStudies] = useState<CaseStudy[]>(caseStudiesData);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [activeModal, setActiveModal] = useState<CaseStudy | null>(null);
 
-  const categories = [
-    "All",
-    "Jewellery & Luxury",
-    "F&B & Festive",
-    "Fashion & Retail",
-    "Salon & Services",
-    "D2C Brands"
-  ];
+  useEffect(() => {
+    async function fetchCaseStudies() {
+      try {
+        const res = await fetch('/api/case-studies');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          const mapped: CaseStudy[] = data.data.map((item: any) => {
+            const title = item.clientName || item.title || 'Case Study';
+            const category = item.industry || item.category || 'General';
+            const headline = item.headline || '';
+            const metric = item.metric || item.metric1Val || 'Growth';
+            const problem = item.problem || item.story?.start || '';
+            const strategy = item.strategy || (Array.isArray(item.story?.execution) ? item.story.execution.join(' ') : '');
+            const results = item.results || item.story?.result || '';
+            const quote = item.testimonialQuote || item.story?.quote || '';
+
+            return {
+              id: item.id || item._id || item.slug || String(Math.random()),
+              title,
+              category,
+              niche: item.niche || `${category} • ${metric}`,
+              img: item.imageUrl || item.img || '/vedios/business client testimonial/Video-37410_poster.jpg',
+              videoUrl: item.videoUrl || '',
+              imgBadge: item.imgBadge || title.toUpperCase().slice(0, 18),
+              metric1Val: item.metric1Val || metric,
+              metric1Label: item.metric1Label || 'Primary Result',
+              metric2Val: item.metric2Val || 'Verified',
+              metric2Label: item.metric2Label || 'Famebros Strategy',
+              headline,
+              story: {
+                start: problem,
+                challenge: item.story?.challenge || problem,
+                execution: Array.isArray(item.story?.execution)
+                  ? item.story.execution
+                  : (strategy ? [strategy] : ['Implemented custom video content and Meta ads strategy.']),
+                result: results,
+                quote,
+              }
+            };
+          });
+          setStudies(mapped);
+        }
+      } catch (err) {
+        console.error('Failed to fetch dynamic case studies:', err);
+      }
+    }
+    fetchCaseStudies();
+  }, []);
+
+  const categories = ["All", ...Array.from(new Set(studies.map((s) => s.category)))];
 
   const filteredStudies = selectedCategory === "All"
-    ? caseStudiesData
-    : caseStudiesData.filter((item) => item.category === selectedCategory);
+    ? studies
+    : studies.filter((item) => item.category === selectedCategory);
 
   const itemsPerPage = 4;
   const totalPages = Math.ceil(filteredStudies.length / itemsPerPage);

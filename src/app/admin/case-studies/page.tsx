@@ -25,13 +25,14 @@ export default function AdminCaseStudiesPage() {
   const [caseStudies, setCaseStudies] = useState<CaseStudyItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [selectedViewItem, setSelectedViewItem] = useState<CaseStudyItem | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
   // Form State
   const [formData, setFormData] = useState({
     clientName: '',
-    industry: 'Hospitality',
+    industry: 'Jewellery & Luxury',
     headline: '',
     metric: '',
     problem: '',
@@ -79,7 +80,7 @@ export default function AdminCaseStudiesPage() {
         setShowModal(false);
         setFormData({
           clientName: '',
-          industry: 'Hospitality',
+          industry: 'Jewellery & Luxury',
           headline: '',
           metric: '',
           problem: '',
@@ -103,7 +104,8 @@ export default function AdminCaseStudiesPage() {
     }
   };
 
-  const handleDelete = async (id: string, isLocked?: boolean) => {
+  const handleDelete = async (e: React.MouseEvent, id: string, isLocked?: boolean) => {
+    e.stopPropagation();
     if (isLocked) {
       alert('This baseline case study is locked and cannot be deleted.');
       return;
@@ -135,7 +137,7 @@ export default function AdminCaseStudiesPage() {
               Case Studies Manager
             </h1>
             <p className="text-xs text-white/60">
-              Add new dynamic case studies or view existing locked baseline case studies.
+              Manage website case studies. Add new dynamic case studies or view baseline case studies.
             </p>
           </div>
 
@@ -155,23 +157,29 @@ export default function AdminCaseStudiesPage() {
             {caseStudies.map((cs) => (
               <div
                 key={cs.id || cs.slug}
-                className={`p-6 rounded-2xl border transition-all ${
+                onClick={() => setSelectedViewItem(cs)}
+                className={`p-6 rounded-2xl border transition-all cursor-pointer group hover:shadow-xl ${
                   cs.isLocked
-                    ? 'bg-[#141418] border-white/10'
+                    ? 'bg-[#141418] border-white/10 hover:border-[#F59A57]/50'
                     : 'bg-[#1a1a22] border-[#F59A57]/30 hover:border-[#F59A57]'
                 }`}
               >
                 <div className="flex justify-between items-start mb-3">
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-[#F59A57] bg-[#F59A57]/10 px-2.5 py-1 rounded-full border border-[#F59A57]/20">
-                    {cs.industry}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-extrabold tracking-widest uppercase text-[#F59A57] bg-[#F59A57]/10 px-2.5 py-1 rounded-full border border-[#F59A57]/20">
+                      {cs.clientName.toUpperCase()}
+                    </span>
+                    <span className="text-[10px] font-bold text-white/60">
+                      {cs.industry}
+                    </span>
+                  </div>
                   {cs.isLocked ? (
                     <span className="text-xs font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded flex items-center gap-1 border border-amber-400/20">
                       🔒 Baseline Locked
                     </span>
                   ) : (
                     <button
-                      onClick={() => handleDelete(cs.id, cs.isLocked)}
+                      onClick={(e) => handleDelete(e, cs.id, cs.isLocked)}
                       className="text-xs text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 px-2.5 py-1 rounded border border-red-500/20 transition-colors"
                     >
                       🗑️ Delete
@@ -179,17 +187,86 @@ export default function AdminCaseStudiesPage() {
                   )}
                 </div>
 
-                <h3 className="font-bold text-base text-white mb-2 leading-tight">
-                  {cs.headline}
+                <h3 className="font-display font-extrabold text-xl text-white mb-1.5 leading-tight group-hover:text-[#F59A57] transition-colors">
+                  {cs.clientName}
                 </h3>
-                <p className="text-xs text-white/70 mb-4 line-clamp-2">{cs.problem}</p>
+                <p className="text-xs text-[#F59A57] font-semibold mb-2 leading-snug">
+                  {cs.headline}
+                </p>
+                <p className="text-xs text-white/60 mb-4 line-clamp-2">{cs.problem}</p>
 
                 <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
                   <span className="font-extrabold text-[#F59A57]">{cs.metric}</span>
-                  <span className="text-white/50">{cs.clientName}</span>
+                  <span className="text-white/40 font-mono text-[11px]">Click to view details &rarr;</span>
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Modal for Viewing Full Details */}
+        {selectedViewItem && (
+          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+            <div className="bg-[#14141a] border border-white/15 rounded-3xl p-6 sm:p-8 max-w-2xl w-full text-white my-8 max-h-[90vh] overflow-y-auto relative">
+              <button
+                onClick={() => setSelectedViewItem(null)}
+                className="absolute top-6 right-6 text-white/60 hover:text-white text-lg font-bold"
+              >
+                ✕
+              </button>
+
+              <div className="mb-4">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-[#F59A57] bg-[#F59A57]/10 px-2.5 py-1 rounded-full border border-[#F59A57]/20">
+                  {selectedViewItem.industry}
+                </span>
+                <h2 className="font-display font-extrabold text-2xl text-white mt-3 mb-1">
+                  {selectedViewItem.clientName}
+                </h2>
+                <p className="text-[#F59A57] font-semibold text-sm">
+                  {selectedViewItem.headline}
+                </p>
+              </div>
+
+              <div className="space-y-4 text-xs text-white/80 bg-white/5 p-4 rounded-2xl border border-white/10 mb-6">
+                <div>
+                  <strong className="text-white block mb-1">Highlight Metric:</strong>
+                  <span className="text-[#F59A57] font-bold text-base">{selectedViewItem.metric}</span>
+                </div>
+                <div>
+                  <strong className="text-white block mb-1">Problem / Challenge:</strong>
+                  <p>{selectedViewItem.problem}</p>
+                </div>
+                <div>
+                  <strong className="text-white block mb-1">Strategy & Execution:</strong>
+                  <p>{selectedViewItem.strategy}</p>
+                </div>
+                <div>
+                  <strong className="text-white block mb-1">Results:</strong>
+                  <p>{selectedViewItem.results}</p>
+                </div>
+                {selectedViewItem.testimonialQuote && (
+                  <div>
+                    <strong className="text-white block mb-1">Testimonial Quote:</strong>
+                    <p className="italic text-[#F59A57]">&ldquo;{selectedViewItem.testimonialQuote}&rdquo;</p>
+                  </div>
+                )}
+                {(selectedViewItem.imageUrl || selectedViewItem.videoUrl) && (
+                  <div className="pt-2 border-t border-white/10 space-y-1 font-mono text-[11px] text-white/50">
+                    {selectedViewItem.imageUrl && <div>Poster Path: {selectedViewItem.imageUrl}</div>}
+                    {selectedViewItem.videoUrl && <div>Video Path: {selectedViewItem.videoUrl}</div>}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  onClick={() => setSelectedViewItem(null)}
+                  className="px-5 py-2.5 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-white transition-colors text-xs"
+                >
+                  Close Preview
+                </button>
+              </div>
+            </div>
           </div>
         )}
 
@@ -235,7 +312,7 @@ export default function AdminCaseStudiesPage() {
                       required
                       value={formData.industry}
                       onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                      placeholder="e.g. Hospitality & Dining"
+                      placeholder="e.g. Jewellery & Luxury"
                       className="w-full p-3 bg-white/5 border border-white/15 rounded-xl text-white focus:outline-none focus:border-[#F59A57]"
                     />
                   </div>
@@ -319,6 +396,29 @@ export default function AdminCaseStudiesPage() {
                       value={formData.testimonialAuthor}
                       onChange={(e) => setFormData({ ...formData, testimonialAuthor: e.target.value })}
                       placeholder="e.g. Vikram Joshi (Owner)"
+                      className="w-full p-3 bg-white/5 border border-white/15 rounded-xl text-white focus:outline-none focus:border-[#F59A57]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold mb-1 text-white/80">Poster Image URL (Optional)</label>
+                    <input
+                      type="text"
+                      value={formData.imageUrl}
+                      onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                      placeholder="/vedios/business client testimonial/poster.jpg"
+                      className="w-full p-3 bg-white/5 border border-white/15 rounded-xl text-white focus:outline-none focus:border-[#F59A57]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-bold mb-1 text-white/80">Video MP4 URL (Optional)</label>
+                    <input
+                      type="text"
+                      value={formData.videoUrl}
+                      onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })}
+                      placeholder="/vedios/business client testimonial/video.mp4"
                       className="w-full p-3 bg-white/5 border border-white/15 rounded-xl text-white focus:outline-none focus:border-[#F59A57]"
                     />
                   </div>

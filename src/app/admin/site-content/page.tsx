@@ -53,6 +53,11 @@ const TEXTAREA_KEYS = new Set([
   'compare_3_new', 'compare_3_old', 'compare_4_new', 'compare_4_old',
 ]);
 
+const DEVELOPER_LOCKED_KEYS: Record<string, Set<string>> = {
+  hero: new Set(['headline_line1', 'headline_line2']),
+  navbar: new Set(['cta_link']),
+};
+
 type DeviceMode = 'desktop' | 'tablet' | 'mobile';
 
 export default function VisualSiteEditorPage() {
@@ -66,6 +71,7 @@ export default function VisualSiteEditorPage() {
   const [publishing, setPublishing] = useState(false);
   const [publishStatus, setPublishStatus] = useState<string>('');
   const [hasUnsavedEdits, setHasUnsavedEdits] = useState(false);
+  const [lockedNoticeKey, setLockedNoticeKey] = useState<string | null>(null);
 
   // Modal / inline adding states
   const [showAddBrandModal, setShowAddBrandModal] = useState(false);
@@ -134,7 +140,7 @@ export default function VisualSiteEditorPage() {
     }
   }, []);
 
-  // Handle Text Input Changes with smooth local state + debounced iframe preview update
+  // Handle Text Input Changes with instant local state + instant iframe preview update
   const handleTextChange = (section: string, key: string, value: string) => {
     const updated = {
       ...allContent,
@@ -145,11 +151,7 @@ export default function VisualSiteEditorPage() {
     };
     setAllContent(updated);
     setHasUnsavedEdits(true);
-
-    if (postTimerRef.current) clearTimeout(postTimerRef.current);
-    postTimerRef.current = setTimeout(() => {
-      notifyIframe(updated, brands, portfolio);
-    }, 150);
+    notifyIframe(updated, brands, portfolio);
   };
 
   // Scroll preview iframe to selected section
@@ -521,20 +523,36 @@ export default function VisualSiteEditorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.keys(SITE_CONTENT_DEFAULTS[activeSection] || {}).map((key) => {
                 const isTextarea = TEXTAREA_KEYS.has(key);
+                const isLocked = DEVELOPER_LOCKED_KEYS[activeSection]?.has(key);
                 const value = allContent[activeSection]?.[key] ?? '';
 
                 return (
                   <div
                     key={key}
-                    className={`bg-[#14141a] border border-white/10 rounded-2xl p-5 space-y-2 ${
-                      isTextarea ? 'md:col-span-2' : ''
-                    }`}
+                    className={`border rounded-2xl p-5 space-y-2 ${
+                      isLocked ? 'border-amber-500/30 bg-amber-500/5' : 'bg-[#14141a] border-white/10'
+                    } ${isTextarea ? 'md:col-span-2' : ''}`}
                   >
-                    <label className="block text-xs font-extrabold uppercase tracking-wider text-[#F59A57]">
-                      {keyLabel(key)}
-                    </label>
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-extrabold uppercase tracking-wider text-[#F59A57]">
+                        {keyLabel(key)}
+                      </label>
+                      {isLocked && (
+                        <span className="text-[10px] font-bold text-amber-400 bg-amber-500/20 border border-amber-500/40 px-2 py-0.5 rounded-full flex items-center gap-1">
+                          🔒 Developer Locked
+                        </span>
+                      )}
+                    </div>
 
-                    {isTextarea ? (
+                    {isLocked ? (
+                      <div
+                        onClick={() => setLockedNoticeKey(keyLabel(key))}
+                        className="w-full bg-[#0A0A0C]/80 border border-amber-500/30 rounded-xl px-4 py-3 text-sm text-white/60 cursor-pointer select-none flex items-center justify-between hover:border-amber-500 transition-colors"
+                      >
+                        <span className="truncate">{value}</span>
+                        <span className="text-xs text-amber-400 font-bold shrink-0 ml-2">🔒 Click for notice</span>
+                      </div>
+                    ) : isTextarea ? (
                       <textarea
                         rows={4}
                         value={value}
@@ -559,8 +577,8 @@ export default function VisualSiteEditorPage() {
         /* ✨ SPLIT VIEW BODY (Original live iframe preview view) */
         <div className="flex-1 flex min-h-0 overflow-hidden relative">
 
-          {/* ─── LEFT PANEL: EDIT CONTROLS / INSPECTOR (~420px) ─────────────── */}
-          <aside className="w-full md:w-[420px] lg:w-[450px] bg-[#141419] border-r border-white/10 flex flex-col shrink-0 z-20">
+          {/* ─── LEFT PANEL: EDIT CONTROLS / INSPECTOR (50% Split) ─────────────── */}
+          <aside className="w-full lg:w-1/2 bg-[#141419] border-r border-white/10 flex flex-col shrink-0 z-20 h-full min-h-0">
             
             {/* Section Picker Ribbon */}
             <div className="p-3 border-b border-white/10 bg-[#17171e] flex items-center gap-2 overflow-x-auto scrollbar-none">
@@ -581,7 +599,7 @@ export default function VisualSiteEditorPage() {
             </div>
 
             {/* Form Scroll Area */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
 
               {/* Special Section Control: BRAND LOGOS */}
               {activeSection === 'brands' && (
@@ -603,7 +621,7 @@ export default function VisualSiteEditorPage() {
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 max-h-44 overflow-y-auto pr-1">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-44 overflow-y-auto pr-1">
                     {brands.map((b) => (
                       <div
                         key={b.id}
@@ -668,15 +686,36 @@ export default function VisualSiteEditorPage() {
 
                 {Object.keys(SITE_CONTENT_DEFAULTS[activeSection] || {}).map((key) => {
                   const isTextarea = TEXTAREA_KEYS.has(key);
+                  const isLocked = DEVELOPER_LOCKED_KEYS[activeSection]?.has(key);
                   const value = allContent[activeSection]?.[key] ?? '';
 
                   return (
-                    <div key={key} className="bg-[#1A1A20] border border-white/10 rounded-xl p-3.5 space-y-1.5">
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-white/70">
-                        {keyLabel(key)}
-                      </label>
+                    <div
+                      key={key}
+                      className={`border rounded-xl p-3.5 space-y-1.5 ${
+                        isLocked ? 'bg-amber-500/5 border-amber-500/30' : 'bg-[#1A1A20] border-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <label className="block text-[10px] font-bold uppercase tracking-wider text-white/70">
+                          {keyLabel(key)}
+                        </label>
+                        {isLocked && (
+                          <span className="text-[9px] font-bold text-amber-400 bg-amber-500/20 border border-amber-500/30 px-1.5 py-0.5 rounded">
+                            🔒 Locked
+                          </span>
+                        )}
+                      </div>
 
-                      {isTextarea ? (
+                      {isLocked ? (
+                        <div
+                          onClick={() => setLockedNoticeKey(keyLabel(key))}
+                          className="w-full bg-[#0A0A0C]/80 border border-amber-500/30 rounded-lg px-3 py-2 text-xs text-white/60 cursor-pointer select-none flex items-center justify-between hover:border-amber-500 transition-colors"
+                        >
+                          <span className="truncate">{value}</span>
+                          <span className="text-[10px] text-amber-400 font-bold shrink-0 ml-2">🔒 Locked</span>
+                        </div>
+                      ) : isTextarea ? (
                         <textarea
                           rows={3}
                           value={value}
@@ -695,6 +734,28 @@ export default function VisualSiteEditorPage() {
                   );
                 })}
               </div>
+            </div>
+
+            {/* Sticky Bottom Save & Publish Bar inside Edit Panel */}
+            <div className="p-4 bg-[#17171e] border-t border-white/10 shrink-0 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                {hasUnsavedEdits ? (
+                  <span className="text-xs font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-lg">
+                    ● Unsaved Edits
+                  </span>
+                ) : (
+                  <span className="text-xs font-semibold text-white/50">
+                    All edits synchronized
+                  </span>
+                )}
+              </div>
+              <button
+                onClick={handlePublishAll}
+                disabled={publishing}
+                className="px-6 py-2.5 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-md shadow-[#F59A57]/20 disabled:opacity-50"
+              >
+                {publishing ? 'Publishing…' : '🚀 Save & Publish'}
+              </button>
             </div>
           </aside>
 
@@ -855,6 +916,29 @@ export default function VisualSiteEditorPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* ─── DEVELOPER-LOCKED TEXT NOTICE MODAL ────────────────────────────── */}
+      {lockedNoticeKey && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-[#14141a] border border-amber-500/30 rounded-3xl p-6 md:p-8 max-w-md w-full text-white space-y-4 text-center shadow-2xl animate-fadeIn">
+            <div className="w-14 h-14 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center justify-center text-2xl mx-auto">
+              🔒
+            </div>
+            <h3 className="font-extrabold text-lg text-white">Developer-Locked Text Field</h3>
+            <p className="text-xs text-white/70 leading-relaxed">
+              The field <strong className="text-amber-400 font-bold">{lockedNoticeKey}</strong> contains custom SVG graphics, animations, or core coding touch.
+              <br /><br />
+              To protect the website design and graphical layout from breaking, this field cannot be edited from the dashboard. It can only be modified directly by the developer.
+            </p>
+            <button
+              onClick={() => setLockedNoticeKey(null)}
+              className="w-full py-3 bg-[#F59A57] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-md"
+            >
+              Understood
+            </button>
           </div>
         </div>
       )}

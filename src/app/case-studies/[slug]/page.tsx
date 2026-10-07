@@ -25,80 +25,156 @@ interface CaseStudyData {
 }
 
 const caseStudiesMap: Record<string, CaseStudyData> = {
-  "restaurant-revenue-growth": {
-    slug: "restaurant-revenue-growth",
-    clientName: "Rahul Mehta (Restaurant)",
-    industry: "Hospitality & Dining",
-    headline: "How a Mumbai Restaurant Scaled Revenue by +240% in 90 Days",
-    metric: "+240% Revenue Growth",
-    problem: "The restaurant was struggling with low weekday foot traffic and low online visibility despite great food quality.",
-    strategy: "Implemented a 3-tier video content strategy combining mouth-watering cinematic food reels, food blogger tastings, and geo-targeted Meta ads.",
-    contentCreated: "45 high-definition video reels showcasing chef specialties, cheese pulls, cocktail craft, and weekend ambiance.",
-    shoots: "3 full-day on-location content shoots at the restaurant featuring professional lighting and food styling.",
-    influencerMarketing: "Partnered with 12 top Mumbai food bloggers and Instagram food influencers for hosted tasting sessions.",
-    ads: "Ran hyper-local Meta ad campaigns targeting food enthusiasts within a 7km radius offering weekend tasting reservations.",
-    results: "Achieved +240% increase in monthly revenue, over 1.2M video views, and a consistent 3-week waiting list for weekend dinners.",
+  "shree-mahalaxmi": {
+    slug: "shree-mahalaxmi",
+    clientName: "Shree Mahalaxmi Jewellers",
+    industry: "Jewellery & Luxury",
+    headline: "One store became three. Small pages became a 36K+ combined audience.",
+    metric: "36K+ Audience Growth",
+    problem: "Each store page had only 500 to 1,000 followers and relied on passive footfall without any active social media brand presence.",
+    strategy: "Rebuilt social media strategy around jewellery collections, festival campaigns, founder & staff content, vertical Reels, and Meta Ads.",
+    contentCreated: "High-converting vertical Reels and collection launch assets.",
+    shoots: "On-location store and collection shoots.",
+    influencerMarketing: "Targeted local influencer amplification.",
+    ads: "Meta Ads for key collection launches.",
+    results: "Expanded to 3 stores, growing pages to 15K+ (Kurla), 12K+ (Chembur), and 9K+ (Mahalaxmi) — creating 36K+ combined followers and continuous footfall.",
     testimonial: {
-      quote: "Famebros Studio transformed our restaurant. Our tables are booked every single weekend now!",
-      author: "Rahul Mehta",
-      role: "Restaurant Owner"
+      quote: "The goal was never only to make the Instagram pages bigger. The bigger goal was to use social media to help make the businesses bigger.",
+      author: "Shree Mahalaxmi Owner",
+      role: "Jewellery Business Owner"
     }
   },
-  "retail-enquiries-surge": {
-    slug: "retail-enquiries-surge",
-    clientName: "Neha Sharma (Retail)",
-    industry: "Retail & Boutique",
-    headline: "3.2X Enquiry Surge for Retail Brand via Instagram Reels",
-    metric: "3.2X More Enquiries",
-    problem: "Outdated social media presence yielding zero direct sales inquiries or walk-in customers.",
-    strategy: "Revamped Instagram brand aesthetic with model lookbooks, product detail reels, and direct WhatsApp customer funnels.",
-    contentCreated: "30 trendy outfit try-on reels, styling guides, and customer transformation videos.",
-    shoots: "2 full fashion shoots with studio lighting and professional models.",
-    influencerMarketing: "Collaborated with 8 micro-fashion influencers across Mumbai for unboxing and styling reels.",
-    ads: "Click-to-WhatsApp Meta Ads targeting fashion-conscious women aged 22-40 in Mumbai.",
-    results: "Generated 3.2X more direct sales enquiries in 30 days than the store received in the previous 6 months.",
+  "hazel-dryfruit": {
+    slug: "hazel-dryfruit",
+    clientName: "Hazel Dryfruit & Sweets",
+    industry: "F&B & Festive",
+    headline: "The campaign where the owner asked us to stop boosting.",
+    metric: "+240% Festive Sales Uplift",
+    problem: "Reaching local buyers outside Mumbai and converting digital views into physical store visits during peak Raksha Bandhan festival window.",
+    strategy: "Arranged local production team, festive concept scripts with owner, coordinated shoots, influencer marketing, and hyper-targeted Meta Ads.",
+    contentCreated: "Festive concept Reels & gift unboxing content.",
+    shoots: "Local festive product & store shoots.",
+    influencerMarketing: "Local foodie & lifestyle influencer collaborations.",
+    ads: "Local footfall targeted Meta Ads.",
+    results: "Overcrowded store 1 day before Raksha Bandhan, prompting owner to request pausing ads due to extreme customer volume.",
     testimonial: {
-      quote: "We got more customer enquiries in 30 days with Famebros Studio than we got in 6 months prior.",
-      author: "Neha Sharma",
-      role: "Retail Store Owner"
+      quote: "Stop boosting. It's overcrowded.",
+      author: "Hazel Sweets Owner",
+      role: "F&B Retail Owner"
     }
   },
-  "gym-membership-boost": {
-    slug: "gym-membership-boost",
-    clientName: "Amit Verma (Gym)",
-    industry: "Fitness & Wellness",
-    headline: "+180% Annual Gym Membership Growth Through Founder Videos",
-    metric: "+180% Membership Growth",
-    problem: "High competition from neighborhood gyms and stagnant new member sign-ups.",
-    strategy: "Positioned the gym trainers as fitness authorities using transformation stories, workout reels, and trial pass ads.",
-    contentCreated: "24 high-energy gym reels, member transformation stories, and trainer tip videos.",
-    shoots: "2 action-packed shoots capturing morning and evening workout energy, equipment, and personal coaching.",
-    influencerMarketing: "Engaged local Mumbai fitness creators to host workout challenges at the gym.",
-    ads: "Free 3-Day Trial Pass campaigns targeting local fitness enthusiasts within 5km.",
-    results: "+180% increase in annual gym memberships signed within 60 days.",
+  "raj-laxmi": {
+    slug: "raj-laxmi",
+    clientName: "Raj Laxmi Jewellers",
+    industry: "Jewellery & Luxury",
+    headline: "A struggling page. Then 300K+ views on the first business reel.",
+    metric: "300K+ Views on 1st Reel",
+    problem: "Generating organic reach in a competitive jewellery niche while operating outside Mumbai with a struggling Instagram page.",
+    strategy: "Arranged local videography, studied customer profile, developed customized content concepts and hook-first reels with high-retention editing.",
+    contentCreated: "Hook-first vertical video reels and collection highlights.",
+    shoots: "Local videography at client showroom.",
+    influencerMarketing: "Niche jewellery creator tagging.",
+    ads: "Engagement boost campaigns.",
+    results: "First new business reel crossed 300,000+ views, instantly transforming page reach and customer engagement.",
     testimonial: {
-      quote: "Our membership base grew consistently every month after Famebros Studio took over our social media.",
-      author: "Amit Verma",
-      role: "Gym Owner"
+      quote: "The first result showed us what our page could achieve with structured hooks and execution.",
+      author: "Raj Laxmi Owner",
+      role: "Jewellery Store Owner"
     }
   },
-  "resort-booking-scale": {
-    slug: "resort-booking-scale",
-    clientName: "Karan Malhotra (Resort)",
-    industry: "Travel & Hospitality",
-    headline: "+3.7X Direct Resort Bookings via Immersive Drone & Travel Reels",
-    metric: "+3.7X Direct Bookings",
-    problem: "Heavy reliance on third-party OTAs paying high commissions for weekend resort bookings.",
-    strategy: "Built a direct-to-resort social media engine using drone walkthrough reels and travel creator staycations.",
-    contentCreated: "18 cinematic travel reels highlighting pool villas, sunsets, dining, and weekend getaways.",
-    shoots: "2-day on-site drone and video production capturing the full resort experience.",
-    influencerMarketing: "Hosted 5 top travel couples for weekend getaway staycation reviews.",
-    ads: "Targeted weekend getaway Meta Ads aimed at Mumbai couples and corporate teams.",
-    results: "+3.7X increase in direct resort bookings, saving over ₹2.5L in third-party OTA commissions.",
+  "devi-company": {
+    slug: "devi-company",
+    clientName: "Devi & Company, Kanpur",
+    industry: "Fashion & Retail",
+    headline: "Two established stores. A third store opening. A new campaign underway.",
+    metric: "3rd Store Grand Opening",
+    problem: "Launching their 3rd store in Kanpur with maximum local awareness and driving heavy footfall on opening week.",
+    strategy: "Built store launch strategy, planned promotional creatives & offer communication, executed digital distribution and targeted campaign marketing across Kanpur.",
+    contentCreated: "Grand opening promo reels and collection lookbooks.",
+    shoots: "Store opening coverage and model lookbook shoots.",
+    influencerMarketing: "Kanpur city fashion creators.",
+    ads: "Geo-targeted city awareness Meta Ads.",
+    results: "Successfully established launch momentum and built massive digital buzz across Kanpur for the new store opening.",
     testimonial: {
-      quote: "Famebros Studio brought us direct high-paying guests every single week.",
-      author: "Karan Malhotra",
-      role: "Resort Owner"
+      quote: "Famebros Studio gave our 3rd store opening the exact buzz and footfall we needed.",
+      author: "Devi & Co Team",
+      role: "Fashion Retail Founder"
+    }
+  },
+  "ali-salon": {
+    slug: "ali-salon",
+    clientName: "Ali Salon",
+    industry: "Salon & Services",
+    headline: "25 Years in business. No social presence. 10X more inquiries with us.",
+    metric: "10X Booking Inquiries",
+    problem: "25 years of local goodwill but zero active social media presence or digital booking system.",
+    strategy: "Captured transformation reels, produced authentic founder & stylist videos explaining hair care, optimized Instagram DMs and WhatsApp routing for direct booking.",
+    contentCreated: "Stylist transformations and client hair care reels.",
+    shoots: "In-salon styling and transformation shoots.",
+    influencerMarketing: "Local salon guest collaborations.",
+    ads: "Hyper-local city grooming ad campaigns.",
+    results: "Generated 10X more customer inquiries per month, attracting new clients from across the city.",
+    testimonial: {
+      quote: "After 25 years of word of mouth, Famebros Studio brought us a whole new stream of younger customers.",
+      author: "Ali Salon Founder",
+      role: "Salon Business Owner"
+    }
+  },
+  "sk-furniture": {
+    slug: "sk-furniture",
+    clientName: "SK Furniture",
+    industry: "Fashion & Retail",
+    headline: "10K+ followers in 6 months + customer queues despite an offbeat location.",
+    metric: "10K+ Followers in 6 Months",
+    problem: "Offbeat market location with slow footfall, dependent heavily on word-of-mouth.",
+    strategy: "Filmed showroom walkthroughs, durability tests, pricing transparency reels, localized video campaigns highlighting unique designs.",
+    contentCreated: "Showroom walkthroughs and product durability test reels.",
+    shoots: "Showroom video production sessions.",
+    influencerMarketing: "Home decor creators.",
+    ads: "Local furniture buyer targeted Meta Ads.",
+    results: "Grew to 10K+ followers in 6 months, creating regular customer queues inside the store despite offbeat location.",
+    testimonial: {
+      quote: "Customers now travel directly to our showroom after seeing our reels.",
+      author: "SK Furniture Owner",
+      role: "Furniture Business Owner"
+    }
+  },
+  "arabian-collection": {
+    slug: "arabian-collection",
+    clientName: "Arabian Collection",
+    industry: "Fashion & Retail",
+    headline: "600K+ Followers | Mumbai, Dubai & Hyderabad | 3 Years With Us.",
+    metric: "600K+ Followers Across Brands",
+    problem: "Maintaining premium brand consistency and high content standards across international branches (Mumbai, Dubai, Hyderabad).",
+    strategy: "Produced high-production luxury reels and fabric detail videos, managed ongoing branding, campaign shoots, and influencer collaborations across 3 years.",
+    contentCreated: "Luxury ethnic wear reels and couture launch films.",
+    shoots: "Multi-city high-end fashion shoots.",
+    influencerMarketing: "Pan-India and UAE fashion influencers.",
+    ads: "High-ROI luxury fashion Meta Ads.",
+    results: "Crossed 600,000+ combined followers across accounts, establishing brand authority in India & UAE.",
+    testimonial: {
+      quote: "3 years of continuous growth with Famebros Studio elevated our brand to an international level.",
+      author: "Arabian Collection Management",
+      role: "Brand Director"
+    }
+  },
+  "al-ahmed": {
+    slug: "al-ahmed",
+    clientName: "Al Ahmed Perfumes",
+    industry: "D2C Brands",
+    headline: "India's Top Perfume Brand | 3 Years With Us.",
+    metric: "Top Attar & Perfume Brand",
+    problem: "Conveying fragrance notes, luxury packaging, and brand prestige through digital video content.",
+    strategy: "Shot cinematic product films, fragrance breakdown reels, founder-led storytelling highlighting traditional perfume craft, monthly campaigns.",
+    contentCreated: "Cinematic fragrance reels and founder craft stories.",
+    shoots: "Product cinematography & luxury packaging shoots.",
+    influencerMarketing: "Top lifestyle and fragrance reviewers.",
+    ads: "E-commerce conversion & D2C Meta Ads.",
+    results: "Maintained a 3-year continuous growth partnership, strengthening Al Ahmed's position as India's top perfume brand.",
+    testimonial: {
+      quote: "Famebros Studio helped us build the online presence that made us India's top perfume brand.",
+      author: "Al Ahmed Perfumes Founder",
+      role: "D2C Brand Founder"
     }
   }
 };

@@ -16,6 +16,8 @@ export default function Navbar() {
   const ctaLabel = getContent("navbar", "cta_label") || "Let's Talk";
   const ctaLink = getContent("navbar", "cta_link") || "#contact";
 
+  if (pathname?.startsWith("/admin")) return null;
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
