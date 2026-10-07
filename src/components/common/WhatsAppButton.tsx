@@ -1,6 +1,27 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
 export default function WhatsAppButton() {
+  const pathname = usePathname();
+  const [isPreview, setIsPreview] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsPreview(window.location.search.includes("preview=true"));
+    }
+  }, []);
+
+  // Hide floating WhatsApp button on admin panel and in live preview iframe
+  if (
+    pathname?.startsWith("/admin") ||
+    isPreview ||
+    (typeof window !== "undefined" && window.location.pathname.startsWith("/admin"))
+  ) {
+    return null;
+  }
+
   return (
     <a
       href="https://wa.me/919833596409?text=Hi%20Famebros%20Studio%2C%20I%20want%20to%20grow%20my%20business%20through%20social%20media."

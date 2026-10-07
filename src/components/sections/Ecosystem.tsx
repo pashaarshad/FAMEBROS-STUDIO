@@ -1,5 +1,7 @@
 "use client";
 
+import { useSiteContent } from "@/context/SiteContentContext";
+
 const foundationChips = [
   "Brand Strategy & Creative",
   "Social Media Management & Marketing",
@@ -14,6 +16,12 @@ const amplifierChips = [
 ];
 
 export default function Ecosystem() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("ecosystem", "eyebrow") || "THE FAMEBROS ECOSYSTEM";
+  const headline = getContent("ecosystem", "headline") || "Everything You Need. One Team.";
+  const body = getContent("ecosystem", "body") || "From concept to camera, from posting to paid campaigns — we are your complete social media and content partner, so you never need to juggle multiple vendors again.";
+
   return (
     <section id="ecosystem" className="bg-[#FFFFFF] py-24 border-t border-black/5 relative overflow-hidden">
       
@@ -26,14 +34,13 @@ export default function Ecosystem() {
         {/* Header Block */}
         <div className="head mb-16 text-center max-w-2xl mx-auto">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
-            THE FAMEBROS ECOSYSTEM
+            {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
-            Everything your brand needs to grow.<br />
-            <span className="text-[#249E98]">Working as one system.</span>
+            {headline}
           </h2>
           <p className="text-[#55555A] text-sm md:text-base leading-relaxed">
-            From strategy and content to performance, creators, search and websites, we bring every growth channel together to build stronger brands and drive business growth.
+            {body}
           </p>
         </div>
 

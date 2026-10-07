@@ -4,12 +4,17 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const [activeItem, setActiveItem] = useState("Home");
+  const { getContent } = useSiteContent();
+
+  const ctaLabel = getContent("navbar", "cta_label") || "Let's Talk";
+  const ctaLink = getContent("navbar", "cta_link") || "#contact";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -118,10 +123,10 @@ export default function Navbar() {
         {/* CTA Let's Talk */}
         <div className="flex items-center gap-3 flex-shrink-0">
           <Link
-            href="#contact"
+            href={ctaLink}
             className="hidden md:inline-flex items-center gap-2.5 px-5 py-2.5 bg-[#F59A57] text-white hover:bg-[#FF8A3D] rounded-lg text-[13px] font-extrabold tracking-wider transition-all shadow-[0_4px_15px_rgba(245,154,87,0.2)]"
           >
-            Let&apos;s Talk
+            {ctaLabel}
             <span className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center text-white font-extrabold text-[10px]">
               &rarr;
             </span>
@@ -164,11 +169,11 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href={ctaLink}
             className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#F59A57] text-white rounded-lg text-[14px] font-bold shadow-[0_4px_15px_rgba(245,154,87,0.2)]"
             onClick={() => setMenuOpen(false)}
           >
-            Let&apos;s Talk &rarr;
+            {ctaLabel} &rarr;
           </Link>
         </div>
       )}

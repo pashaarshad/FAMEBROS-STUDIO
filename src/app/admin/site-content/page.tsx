@@ -87,6 +87,8 @@ export default function VisualSiteEditorPage() {
   const brandFileRef = useRef<HTMLInputElement>(null);
   const videoThumbRef = useRef<HTMLInputElement>(null);
   const videoFileRef = useRef<HTMLInputElement>(null);
+  const postTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const [editorViewMode, setEditorViewMode] = useState<'split' | 'direct'>('split');
 
   // 1. Initial Load of DB Data
   useEffect(() => {
@@ -132,7 +134,7 @@ export default function VisualSiteEditorPage() {
     }
   }, []);
 
-  // Handle Text Input Changes
+  // Handle Text Input Changes with smooth local state + debounced iframe preview update
   const handleTextChange = (section: string, key: string, value: string) => {
     const updated = {
       ...allContent,
@@ -143,7 +145,11 @@ export default function VisualSiteEditorPage() {
     };
     setAllContent(updated);
     setHasUnsavedEdits(true);
-    notifyIframe(updated, brands, portfolio);
+
+    if (postTimerRef.current) clearTimeout(postTimerRef.current);
+    postTimerRef.current = setTimeout(() => {
+      notifyIframe(updated, brands, portfolio);
+    }, 150);
   };
 
   // Scroll preview iframe to selected section
@@ -355,50 +361,65 @@ export default function VisualSiteEditorPage() {
             ← Overview
           </Link>
           <div className="h-4 w-[1px] bg-white/15 hidden sm:block" />
-          <div className="flex items-center gap-2">
-            <span className="text-xl">✨</span>
-            <span className="font-display font-extrabold text-sm uppercase tracking-wider text-white">
-              Visual Site Editor
-            </span>
-            <span className="hidden md:inline-block text-[10px] font-mono bg-[#F59A57]/20 text-[#F59A57] border border-[#F59A57]/30 px-2 py-0.5 rounded-full">
-              Live Preview
-            </span>
+          <div className="flex items-center gap-1 bg-black/40 border border-white/10 p-1 rounded-xl">
+            <button
+              onClick={() => setEditorViewMode('split')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                editorViewMode === 'split'
+                  ? 'bg-[#F59A57] text-black shadow-md'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              ✨ Split Live Editor
+            </button>
+            <button
+              onClick={() => setEditorViewMode('direct')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                editorViewMode === 'direct'
+                  ? 'bg-[#249E98] text-white shadow-md'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              📝 Direct Text Form
+            </button>
           </div>
         </div>
 
-        {/* Center: Device Mode Switcher */}
-        <div className="hidden md:flex items-center bg-[#1A1A20] border border-white/10 p-1 rounded-xl gap-1">
-          <button
-            onClick={() => setDeviceMode('desktop')}
-            className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
-              deviceMode === 'desktop'
-                ? 'bg-[#F59A57] text-black shadow-md'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            💻 Desktop
-          </button>
-          <button
-            onClick={() => setDeviceMode('tablet')}
-            className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
-              deviceMode === 'tablet'
-                ? 'bg-[#F59A57] text-black shadow-md'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            📱 Tablet
-          </button>
-          <button
-            onClick={() => setDeviceMode('mobile')}
-            className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
-              deviceMode === 'mobile'
-                ? 'bg-[#F59A57] text-black shadow-md'
-                : 'text-white/60 hover:text-white'
-            }`}
-          >
-            📲 Mobile
-          </button>
-        </div>
+        {/* Center: Device Mode Switcher (only in Split mode) */}
+        {editorViewMode === 'split' && (
+          <div className="hidden md:flex items-center bg-[#1A1A20] border border-white/10 p-1 rounded-xl gap-1">
+            <button
+              onClick={() => setDeviceMode('desktop')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+                deviceMode === 'desktop'
+                  ? 'bg-[#F59A57] text-black shadow-md'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              💻 Desktop
+            </button>
+            <button
+              onClick={() => setDeviceMode('tablet')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+                deviceMode === 'tablet'
+                  ? 'bg-[#F59A57] text-black shadow-md'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              📱 Tablet
+            </button>
+            <button
+              onClick={() => setDeviceMode('mobile')}
+              className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+                deviceMode === 'mobile'
+                  ? 'bg-[#F59A57] text-black shadow-md'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              📲 Mobile
+            </button>
+          </div>
+        )}
 
         {/* Right: Publish Actions */}
         <div className="flex items-center gap-3">
@@ -424,139 +445,108 @@ export default function VisualSiteEditorPage() {
         </div>
       </header>
 
-      {/* ─── SPLIT VIEW BODY ────────────────────────────────────────────────── */}
-      <div className="flex-1 flex min-h-0 overflow-hidden relative">
-
-        {/* ─── LEFT PANEL: EDIT CONTROLS / INSPECTOR (~420px) ─────────────── */}
-        <aside className="w-full md:w-[420px] lg:w-[450px] bg-[#141419] border-r border-white/10 flex flex-col shrink-0 z-20">
-          
-          {/* Section Picker Ribbon */}
-          <div className="p-3 border-b border-white/10 bg-[#17171e] flex items-center gap-2 overflow-x-auto scrollbar-none">
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest shrink-0 pl-1">
-              Section:
-            </span>
-            <select
-              value={activeSection}
-              onChange={(e) => handleSectionSelect(e.target.value)}
-              className="w-full bg-[#0A0A0C] border border-white/20 text-white text-xs font-bold rounded-xl px-3 py-2 focus:outline-none focus:border-[#F59A57]"
-            >
-              {SECTION_LIST.map((sec) => (
-                <option key={sec.id} value={sec.id}>
-                  {sec.emoji} {sec.label}
-                </option>
-              ))}
-            </select>
+      {/* ─── BODY VIEW MODES ────────────────────────────────────────────────── */}
+      {editorViewMode === 'direct' ? (
+        /* 📝 DIRECT TEXT FORM EDITOR (Full-width clean text management) */
+        <div className="flex-1 flex overflow-hidden bg-[#0A0A0C]">
+          {/* Section Sidebar */}
+          <div className="w-64 bg-[#121216] border-r border-white/10 overflow-y-auto p-3 space-y-1 shrink-0">
+            <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest px-3 py-2">
+              Website Sections
+            </p>
+            {SECTION_LIST.map((sec) => (
+              <button
+                key={sec.id}
+                onClick={() => setActiveSection(sec.id)}
+                className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2.5 ${
+                  activeSection === sec.id
+                    ? 'bg-[#249E98] text-white shadow-md'
+                    : 'text-white/70 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                <span>{sec.emoji}</span>
+                <span>{sec.label}</span>
+              </button>
+            ))}
           </div>
 
-          {/* Form Scroll Area */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-6">
+          {/* Direct Input Form Panel */}
+          <div className="flex-1 overflow-y-auto p-6 md:p-10 max-w-5xl mx-auto">
+            <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
+                  <span>{SECTION_LIST.find((s) => s.id === activeSection)?.emoji}</span>
+                  <span>{SECTION_LIST.find((s) => s.id === activeSection)?.label}</span>
+                </h2>
+                <p className="text-xs text-white/50 mt-1">
+                  Direct text editor — Type or backspace directly. Changes persist on Save &amp; Publish.
+                </p>
+              </div>
+              <button
+                onClick={handlePublishAll}
+                disabled={publishing}
+                className="px-5 py-2 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-md"
+              >
+                {publishing ? 'Publishing…' : '🚀 Save & Publish'}
+              </button>
+            </div>
 
-            {/* Special Section Control: BRAND LOGOS */}
+            {/* Special Brand Logos in Direct Mode */}
             {activeSection === 'brands' && (
-              <div className="bg-[#1A1A22] border border-[#F59A57]/30 rounded-2xl p-4 space-y-4">
+              <div className="mb-8 bg-[#14141a] border border-[#F59A57]/30 rounded-2xl p-6 space-y-4">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                      <span>🏷️</span> Brand Logos
-                    </h3>
-                    <p className="text-xs text-white/50">
-                      {brands.length} logos configured
-                    </p>
+                    <h3 className="font-bold text-base text-white">Brand Logos Management</h3>
+                    <p className="text-xs text-white/50">{brands.length} logos configured</p>
                   </div>
                   <button
                     onClick={() => setShowAddBrandModal(true)}
-                    className="px-3 py-1.5 bg-[#F59A57] text-black font-extrabold text-xs rounded-lg hover:scale-105 transition-all"
+                    className="px-4 py-2 bg-[#F59A57] text-black font-extrabold text-xs rounded-xl"
                   >
-                    + Add Logo
+                    + Add New Logo
                   </button>
                 </div>
-
-                <div className="grid grid-cols-3 gap-2 max-h-44 overflow-y-auto pr-1">
+                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
                   {brands.map((b) => (
-                    <div
-                      key={b.id}
-                      className="bg-[#0A0A0C] border border-white/10 p-2 rounded-xl flex flex-col items-center justify-center text-center"
-                    >
-                      <img src={b.logoUrl} alt={b.name} className="h-8 max-w-full object-contain mb-1" />
-                      <span className="text-[9px] text-white/50 truncate w-full">{b.name}</span>
+                    <div key={b.id} className="bg-[#0A0A0C] border border-white/10 p-3 rounded-xl text-center">
+                      <img src={b.logoUrl} alt={b.name} className="h-10 max-w-full object-contain mx-auto mb-2" />
+                      <p className="text-xs font-bold text-white truncate">{b.name}</p>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Special Section Control: PORTFOLIO & VIDEOS */}
-            {activeSection === 'portfolio' && (
-              <div className="bg-[#1A1A22] border border-[#F59A57]/30 rounded-2xl p-4 space-y-4">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="font-bold text-sm text-white flex items-center gap-2">
-                      <span>🎬</span> Shoot Videos & Testimonials
-                    </h3>
-                    <p className="text-xs text-white/50">
-                      {portfolio.length} videos configured
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setShowAddVideoModal(true)}
-                    className="px-3 py-1.5 bg-[#F59A57] text-black font-extrabold text-xs rounded-lg hover:scale-105 transition-all"
-                  >
-                    + Add Video
-                  </button>
-                </div>
-
-                <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
-                  {portfolio.map((p) => (
-                    <div
-                      key={p.id}
-                      className="bg-[#0A0A0C] border border-white/10 p-2.5 rounded-xl flex items-center gap-3"
-                    >
-                      <img src={p.thumbnailUrl} alt={p.title} className="w-12 h-9 object-cover rounded-lg bg-black" />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-bold text-white truncate">{p.title}</p>
-                        <p className="text-[10px] text-white/50">{p.category} &bull; {p.clientName}</p>
-                      </div>
-                      {p.isLocked && <span className="text-[9px] text-amber-400 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded">Locked</span>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Text Inputs for Active Section */}
-            <div className="space-y-4">
-              <div className="flex justify-between items-center pb-2 border-b border-white/10">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#F59A57]">
-                  Text Controls
-                </span>
-                <span className="text-[10px] text-white/40">
-                  Edits update live in preview →
-                </span>
-              </div>
-
+            {/* Text Inputs Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.keys(SITE_CONTENT_DEFAULTS[activeSection] || {}).map((key) => {
                 const isTextarea = TEXTAREA_KEYS.has(key);
                 const value = allContent[activeSection]?.[key] ?? '';
 
                 return (
-                  <div key={key} className="bg-[#1A1A20] border border-white/10 rounded-xl p-3.5 space-y-1.5">
-                    <label className="block text-[10px] font-bold uppercase tracking-wider text-white/70">
+                  <div
+                    key={key}
+                    className={`bg-[#14141a] border border-white/10 rounded-2xl p-5 space-y-2 ${
+                      isTextarea ? 'md:col-span-2' : ''
+                    }`}
+                  >
+                    <label className="block text-xs font-extrabold uppercase tracking-wider text-[#F59A57]">
                       {keyLabel(key)}
                     </label>
 
                     {isTextarea ? (
                       <textarea
-                        rows={3}
+                        rows={4}
                         value={value}
                         onChange={(e) => handleTextChange(activeSection, key, e.target.value)}
-                        className="w-full bg-[#0A0A0C] border border-white/15 rounded-lg px-3 py-2 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#F59A57] resize-y"
+                        className="w-full bg-[#0A0A0C] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#F59A57] resize-y"
                       />
                     ) : (
                       <input
                         type="text"
                         value={value}
                         onChange={(e) => handleTextChange(activeSection, key, e.target.value)}
-                        className="w-full bg-[#0A0A0C] border border-white/15 rounded-lg px-3 py-2 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#F59A57]"
+                        className="w-full bg-[#0A0A0C] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#F59A57]"
                       />
                     )}
                   </div>
@@ -564,30 +554,173 @@ export default function VisualSiteEditorPage() {
               })}
             </div>
           </div>
-        </aside>
+        </div>
+      ) : (
+        /* ✨ SPLIT VIEW BODY (Original live iframe preview view) */
+        <div className="flex-1 flex min-h-0 overflow-hidden relative">
 
-        {/* ─── RIGHT PANEL: LIVE WEBSITE PREVIEW ──────────────────────────────── */}
-        <main className="flex-1 bg-[#050507] flex items-center justify-center relative overflow-auto p-4 md:p-8">
-          
-          {loading ? (
-            <div className="flex flex-col items-center gap-3 text-sm text-[#F59A57]">
-              <span className="w-8 h-8 border-3 border-[#F59A57] border-t-transparent rounded-full animate-spin" />
-              Loading Visual Editor…
+          {/* ─── LEFT PANEL: EDIT CONTROLS / INSPECTOR (~420px) ─────────────── */}
+          <aside className="w-full md:w-[420px] lg:w-[450px] bg-[#141419] border-r border-white/10 flex flex-col shrink-0 z-20">
+            
+            {/* Section Picker Ribbon */}
+            <div className="p-3 border-b border-white/10 bg-[#17171e] flex items-center gap-2 overflow-x-auto scrollbar-none">
+              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest shrink-0 pl-1">
+                Section:
+              </span>
+              <select
+                value={activeSection}
+                onChange={(e) => handleSectionSelect(e.target.value)}
+                className="w-full bg-[#0A0A0C] border border-white/20 text-white text-xs font-bold rounded-xl px-3 py-2 focus:outline-none focus:border-[#F59A57]"
+              >
+                {SECTION_LIST.map((sec) => (
+                  <option key={sec.id} value={sec.id}>
+                    {sec.emoji} {sec.label}
+                  </option>
+                ))}
+              </select>
             </div>
-          ) : (
-            <div className={`transition-all duration-300 ${iframeWidthClass} bg-black overflow-hidden flex items-center justify-center relative`}>
-              <iframe
-                ref={iframeRef}
-                id="website-preview-frame"
-                src="/?preview=true"
-                className="w-full h-full border-none"
-                title="Live Website Preview"
-              />
-            </div>
-          )}
 
-        </main>
-      </div>
+            {/* Form Scroll Area */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-6">
+
+              {/* Special Section Control: BRAND LOGOS */}
+              {activeSection === 'brands' && (
+                <div className="bg-[#1A1A22] border border-[#F59A57]/30 rounded-2xl p-4 space-y-4">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-bold text-sm text-white flex items-center gap-2">
+                        <span>🏷️</span> Brand Logos
+                      </h3>
+                      <p className="text-xs text-white/50">
+                        {brands.length} logos configured
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setShowAddBrandModal(true)}
+                      className="px-3 py-1.5 bg-[#F59A57] text-black font-extrabold text-xs rounded-lg hover:scale-105 transition-all"
+                    >
+                      + Add Logo
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 max-h-44 overflow-y-auto pr-1">
+                    {brands.map((b) => (
+                      <div
+                        key={b.id}
+                        className="bg-[#0A0A0C] border border-white/10 p-2 rounded-xl flex flex-col items-center justify-center text-center"
+                      >
+                        <img src={b.logoUrl} alt={b.name} className="h-8 max-w-full object-contain mb-1" />
+                        <span className="text-[9px] text-white/50 truncate w-full">{b.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Special Section Control: PORTFOLIO & VIDEOS */}
+              {activeSection === 'portfolio' && (
+                <div className="bg-[#1A1A22] border border-[#F59A57]/30 rounded-2xl p-4 space-y-4">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-bold text-sm text-white flex items-center gap-2">
+                        <span>🎬</span> Shoot Videos & Testimonials
+                      </h3>
+                      <p className="text-xs text-white/50">
+                        {portfolio.length} videos configured
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setShowAddVideoModal(true)}
+                      className="px-3 py-1.5 bg-[#F59A57] text-black font-extrabold text-xs rounded-lg hover:scale-105 transition-all"
+                    >
+                      + Add Video
+                    </button>
+                  </div>
+
+                  <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                    {portfolio.map((p) => (
+                      <div
+                        key={p.id}
+                        className="bg-[#0A0A0C] border border-white/10 p-2.5 rounded-xl flex items-center gap-3"
+                      >
+                        <img src={p.thumbnailUrl} alt={p.title} className="w-12 h-9 object-cover rounded-lg bg-black" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-white truncate">{p.title}</p>
+                          <p className="text-[10px] text-white/50">{p.category} &bull; {p.clientName}</p>
+                        </div>
+                        {p.isLocked && <span className="text-[9px] text-amber-400 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded">Locked</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Text Inputs for Active Section */}
+              <div className="space-y-4">
+                <div className="flex justify-between items-center pb-2 border-b border-white/10">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#F59A57]">
+                    Text Controls
+                  </span>
+                  <span className="text-[10px] text-white/40">
+                    Edits update live in preview →
+                  </span>
+                </div>
+
+                {Object.keys(SITE_CONTENT_DEFAULTS[activeSection] || {}).map((key) => {
+                  const isTextarea = TEXTAREA_KEYS.has(key);
+                  const value = allContent[activeSection]?.[key] ?? '';
+
+                  return (
+                    <div key={key} className="bg-[#1A1A20] border border-white/10 rounded-xl p-3.5 space-y-1.5">
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-white/70">
+                        {keyLabel(key)}
+                      </label>
+
+                      {isTextarea ? (
+                        <textarea
+                          rows={3}
+                          value={value}
+                          onChange={(e) => handleTextChange(activeSection, key, e.target.value)}
+                          className="w-full bg-[#0A0A0C] border border-white/15 rounded-lg px-3 py-2 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#F59A57] resize-y"
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={(e) => handleTextChange(activeSection, key, e.target.value)}
+                          className="w-full bg-[#0A0A0C] border border-white/15 rounded-lg px-3 py-2 text-xs text-white placeholder-white/20 focus:outline-none focus:border-[#F59A57]"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </aside>
+
+          {/* ─── RIGHT PANEL: LIVE WEBSITE PREVIEW ──────────────────────────────── */}
+          <main className="flex-1 bg-[#050507] flex items-center justify-center relative overflow-auto p-4 md:p-8">
+            
+            {loading ? (
+              <div className="flex flex-col items-center gap-3 text-sm text-[#F59A57]">
+                <span className="w-8 h-8 border-3 border-[#F59A57] border-t-transparent rounded-full animate-spin" />
+                Loading Visual Editor…
+              </div>
+            ) : (
+              <div className={`transition-all duration-300 ${iframeWidthClass} bg-black overflow-hidden flex items-center justify-center relative`}>
+                <iframe
+                  ref={iframeRef}
+                  id="website-preview-frame"
+                  src="/?preview=true"
+                  className="w-full h-full border-none"
+                  title="Live Website Preview"
+                />
+              </div>
+            )}
+
+          </main>
+        </div>
+      )}
 
       {/* ─── ADD BRAND MODAL ───────────────────────────────────────────────── */}
       {showAddBrandModal && (

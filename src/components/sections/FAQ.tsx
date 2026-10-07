@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useSiteContent } from "@/context/SiteContentContext";
 
-const faqItems = [
+const defaultFaqItems = [
   {
     q: "How much of my time is required for shoots?",
     a: "Usually just one planned shoot day per month, depending on your package. We prepare concepts, scripts and shot plans in advance, while our team handles direction, filming and production so the process stays efficient for you."
@@ -34,7 +35,23 @@ const faqItems = [
 ];
 
 export default function FAQ() {
+  const { getContent } = useSiteContent();
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+
+  const eyebrow = getContent("faq", "eyebrow") || "QUESTIONS & ANSWERS";
+  const headline = getContent("faq", "headline") || "Frequently asked by business owners.";
+
+  // Build dynamic FAQ items list
+  const dynamicItems = [];
+  for (let i = 1; i <= 5; i++) {
+    const q = getContent("faq", `q${i}`);
+    const a = getContent("faq", `a${i}`);
+    if (q && a) {
+      dynamicItems.push({ q, a });
+    }
+  }
+
+  const faqItems = dynamicItems.length > 0 ? dynamicItems : defaultFaqItems;
 
   const toggleFAQ = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
@@ -48,11 +65,10 @@ export default function FAQ() {
           {/* Left Block */}
           <div>
             <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#F59A57] mb-5">
-              QUESTIONS &amp; ANSWERS
+              {eyebrow}
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-6">
-              Frequently asked<br />
-              by business owners.
+              {headline}
             </h2>
             <p className="text-[#55555A] text-sm leading-relaxed max-w-sm">
               Can&apos;t find what you&apos;re looking for? Speak with our team directly on WhatsApp or send us an email.

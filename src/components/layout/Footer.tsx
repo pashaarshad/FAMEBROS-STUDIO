@@ -1,8 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function Footer() {
+  const { getContent } = useSiteContent();
+
+  const tagline = getContent("footer", "tagline") || "We don't just grow views. We grow businesses.";
+  const address = getContent("footer", "address") || getContent("contact", "address") || "Mulund West, Mumbai - 400080";
+  const phone = getContent("footer", "phone") || getContent("contact", "phone") || "+91 91379 23145";
+  const email = getContent("footer", "email") || getContent("contact", "email") || "growth@famebrosstudio.com";
+  const copyright = getContent("footer", "copyright") || "© 2026 Famebros Studio. All rights reserved.";
+
   return (
     <footer className="bg-[#0A0A0C] text-white/80 pt-20 pb-8 border-t border-white/10 relative overflow-hidden">
       
@@ -24,11 +33,11 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[13px] text-white/70 leading-relaxed max-w-sm">
-              <strong className="text-white">Famebros Studio</strong> is a social media marketing and content production agency based in Mulund, Mumbai. We provide social media management, content creation, influencer marketing, Meta Ads, brand shoots and performance marketing to turn attention into real business growth.
+              <strong className="text-white">Famebros Studio</strong> is a social media marketing and content production agency based in Mulund, Mumbai. {tagline}
             </p>
             <div className="text-[12px] text-white/60 flex flex-col gap-1 pt-1">
               <span className="text-[#F59A57] font-semibold">📍 Location:</span>
-              <span>Mulund West, Mumbai, Maharashtra 400080, India</span>
+              <span>{address}</span>
             </div>
           </div>
 
@@ -120,22 +129,16 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-2 text-[12px] text-white/70">
               <a 
-                href="tel:+919137923145" 
+                href={`tel:${phone}`} 
                 className="hover:text-[#F59A57] transition-colors"
               >
-                📞 +91 91379 23145
+                📞 {phone}
               </a>
               <a 
-                href="tel:+919324076369" 
-                className="hover:text-[#F59A57] transition-colors"
-              >
-                📞 +91 93240 76369
-              </a>
-              <a 
-                href="mailto:growth@famebrosstudio.com" 
+                href={`mailto:${email}`} 
                 className="hover:text-[#F59A57] transition-colors break-all"
               >
-                ✉️ growth@famebrosstudio.com
+                ✉️ {email}
               </a>
 
               {/* WhatsApp Quick Link */}
@@ -191,7 +194,7 @@ export default function Footer() {
 
         {/* Bottom copyright and location indicator bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-white/50">
-          <p>© 2026 Famebros Studio. Social Media Marketing & Content Agency in Mulund, Mumbai.</p>
+          <p>{copyright}</p>
           <div className="flex gap-4">
             <Link href="/" className="hover:text-white transition-colors">
               Mulund Office

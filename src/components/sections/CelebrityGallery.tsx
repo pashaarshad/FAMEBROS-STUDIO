@@ -1,5 +1,7 @@
 "use client";
 
+import { useSiteContent } from "@/context/SiteContentContext";
+
 interface CelebrityGalleryProps {
   isDark?: boolean;
 }
@@ -32,6 +34,12 @@ const row2Photos = [
 ];
 
 export default function CelebrityGallery({ isDark = false }: CelebrityGalleryProps) {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("influencer", "eyebrow") || "ON LOCATION • CELEBRITY COLLABORATIONS";
+  const headline = getContent("influencer", "headline") || "Behind the scenes with India's biggest icons.";
+  const subheadline = getContent("influencer", "subheadline") || "We produce content for stars, singers, actors and top-tier influencers. The same camera rigs, production values, and creative standards go into every business brand we grow.";
+
   return (
     <section 
       id="celebrity-shoots" 
@@ -66,13 +74,13 @@ export default function CelebrityGallery({ isDark = false }: CelebrityGalleryPro
         {/* Header Block */}
         <div className="max-w-2xl">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
-            ON LOCATION &bull; CELEBRITY COLLABORATIONS
+            {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-inherit text-[32px] md:text-[42px] leading-[1.1] mb-5">
-            Behind the scenes with <span className="text-[#249E98]">India&apos;s biggest icons.</span>
+            {headline}
           </h2>
           <p className={`text-sm md:text-base leading-relaxed ${isDark ? "text-white/70" : "text-[#55555A]"}`}>
-            We produce content for stars, singers, actors and top-tier influencers. The same camera rigs, production values, and creative standards go into every business brand we grow.
+            {subheadline}
           </p>
         </div>
       </div>

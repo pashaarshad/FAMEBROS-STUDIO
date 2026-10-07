@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export const clientLogos = [
   { name: "Audi", src: "/clients-logo/Audi.webp" },
@@ -71,8 +72,18 @@ const businessHeroCards = [
 ];
 
 export default function Hero() {
+  const { getContent, brands } = useSiteContent();
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
+
+  const displayLogos = brands && brands.length > 0
+    ? brands.map(b => ({ name: b.name, src: b.logoUrl }))
+    : clientLogos;
+
+  const eyebrowText = getContent("hero", "eyebrow") || "MULUND • MUMBAI • SOCIAL MEDIA & CONTENT AGENCY";
+  const subheadlineText = getContent("hero", "subheadline") || "Social media strategy, content production, influencer marketing and performance campaigns — designed to turn attention into trust, enquiries and growth.";
+  const ctaPrimary = getContent("hero", "cta_primary") || "Grow My Business";
+  const ctaSecondary = getContent("hero", "cta_secondary") || "What Our Clients Say";
 
   const handleCardClick = (idx: number) => {
     setActiveVideoIdx((prev) => (prev === idx ? null : idx));
@@ -109,7 +120,7 @@ export default function Hero() {
           <div className="h-[1px] bg-black/10 flex-grow hidden xs:block" />
           <div className="inline-flex items-center justify-center px-4 sm:px-6 py-1.5 rounded-full bg-white border border-black/10 shadow-xs">
             <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.18em] font-extrabold text-[#F59A57] uppercase">
-              MULUND &bull; MUMBAI &bull; SOCIAL MEDIA & CONTENT AGENCY
+              {eyebrowText}
             </span>
           </div>
           <div className="h-[1px] bg-black/10 flex-grow hidden xs:block" />
@@ -147,14 +158,11 @@ export default function Hero() {
               </span>
             </span>
           </h1>
-          <h2 className="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-widest text-[#F59A57] mt-3">
-            Social Media Marketing & Content Agency in Mulund, Mumbai
-          </h2>
         </div>
 
         {/* Factual Introduction Paragraph for Users & AI Crawlers */}
         <p className="text-[#333339] text-sm sm:text-base md:text-lg max-w-3xl mx-auto font-medium leading-relaxed mb-8 text-center">
-          <strong>Famebros Studio</strong> is a social media marketing and content production agency based in Mulund, Mumbai, providing social media management, content creation, reels production, influencer marketing, Meta Ads, brand shoots and performance marketing.
+          {subheadlineText}
         </p>
 
 
@@ -167,7 +175,7 @@ export default function Hero() {
             <span className="w-7 h-7 rounded-full bg-[#0A0A0C] text-[#FAF9F6] flex items-center justify-center text-xs font-bold group-hover:translate-x-0.5 transition-transform">
               →
             </span>
-            <span>Grow My Business</span>
+            <span>{ctaPrimary}</span>
           </Link>
           
           <Link
@@ -177,7 +185,7 @@ export default function Hero() {
             <span className="w-7 h-7 rounded-full bg-[#FAF6F0] border border-black/10 flex items-center justify-center text-[#F59A57] font-bold text-xs">
               ▶
             </span>
-            <span>What Our Clients Say</span>
+            <span>{ctaSecondary}</span>
           </Link>
         </div>
 
@@ -299,7 +307,7 @@ export default function Hero() {
           <div className="w-full overflow-hidden relative py-4">
             <div className="flex animate-marquee gap-14 sm:gap-20 items-center">
               {/* Loop 1 */}
-              {clientLogos.map((logo, idx) => {
+              {displayLogos.map((logo, idx) => {
                 const isJioMart = logo.name === "JioMart";
                 const isRealme = logo.name === "Realme";
                 return (
@@ -319,7 +327,7 @@ export default function Hero() {
                 );
               })}
               {/* Loop 2 */}
-              {clientLogos.map((logo, idx) => {
+              {displayLogos.map((logo, idx) => {
                 const isJioMart = logo.name === "JioMart";
                 const isRealme = logo.name === "Realme";
                 return (

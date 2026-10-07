@@ -1,8 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function Founder() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("founder", "eyebrow") || "BEHIND FAMEBROS";
+  const headline = getContent("founder", "headline") || "The people who turn your brand into a story.";
+  const founder1Name = getContent("founder", "founder_1_name") || "Sultan Sayed";
+  const founder1Role = getContent("founder", "founder_1_role") || "Founder & CEO";
+  const founder2Name = getContent("founder", "founder_2_name") || "Bilal Sayed";
+  const founder2Role = getContent("founder", "founder_2_role") || "Co-Founder & Head of Content";
+
   return (
     <section id="founder" className="bg-bg-primary py-24 border-t border-black/5 relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
@@ -11,12 +21,10 @@ export default function Founder() {
           {/* Left Column */}
           <div>
             <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#249E98] mb-5">
-              BEHIND FAMEBROS
+              {eyebrow}
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-6">
-              The people who<br />
-              turn your brand<br />
-              into a <span className="text-[#249E98]">story.</span>
+              {headline}
             </h2>
             <Link 
               href="#about"
@@ -39,7 +47,7 @@ export default function Founder() {
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
                   src="/Sultan photos-with-png.png" 
-                  alt="Sultan Sayed - Founder of Famebros Studio Social Media Agency Mulund Mumbai" 
+                  alt={`${founder1Name} - ${founder1Role} of Famebros Studio Social Media Agency Mulund Mumbai`}
                   className="absolute left-0 bottom-0 w-full h-full object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -59,10 +67,10 @@ export default function Founder() {
                 </div>
 
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
-                  Sultan Sayed
+                  {founder1Name}
                 </h3>
                 <span className="text-[11px] md:text-[12px] text-[#249E98] font-bold block mb-3 md:mb-4">
-                  Founder
+                  {founder1Role}
                 </span>
 
                 {/* Social icons: Instagram only */}
@@ -89,7 +97,7 @@ export default function Founder() {
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
                   src="/Bilal Sayed.png" 
-                  alt="Bilal Sayed - Co-Founder of Famebros Studio Social Media Agency Mulund Mumbai" 
+                  alt={`${founder2Name} - ${founder2Role} of Famebros Studio Social Media Agency Mulund Mumbai`}
                   className="absolute left-[-16px] md:left-[-20px] bottom-0 w-full h-[84%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
                 />
               </div>
@@ -109,10 +117,10 @@ export default function Founder() {
                 </div>
 
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
-                  Bilal Sayed
+                  {founder2Name}
                 </h3>
                 <span className="text-[11px] md:text-[12px] text-[#F59A57] font-bold block mb-3 md:mb-4">
-                  Co-Founder
+                  {founder2Role}
                 </span>
 
                 {/* Social icons: Instagram + YouTube only */}

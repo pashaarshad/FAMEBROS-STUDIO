@@ -1,5 +1,7 @@
 "use client";
 
+import { useSiteContent } from "@/context/SiteContentContext";
+
 const existPillars = [
   {
     title: "Transparency",
@@ -41,6 +43,12 @@ const existPillars = [
 ];
 
 export default function WhyWeExist() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("why_we_exist", "eyebrow") || "WHY WE EXIST";
+  const headline = getContent("why_we_exist", "headline") || "Most brands come to us after being let down.";
+  const body = getContent("why_we_exist", "body") || "Too many businesses have paid an agency for months and received nothing they can point to. No strategy, no reporting, no growth — just invoices, screenshots and excuses. Some feel they were quietly looted.";
+
   return (
     <section className="bg-[#0A0A0C] text-white py-24 border-t border-white/10 relative overflow-hidden">
       
@@ -55,14 +63,13 @@ export default function WhyWeExist() {
           <div className="space-y-8">
             <div>
               <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-5">
-                WHY WE EXIST
+                {eyebrow}
               </p>
               <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] mb-6">
-                Most brands come to us <br />
-                after being <span className="text-[#249E98]">let down.</span>
+                {headline}
               </h2>
               <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-lg">
-                Too many businesses have paid an agency for months and received nothing they can point to. No strategy, no reporting, no growth — just invoices, screenshots and excuses. Some feel they were quietly looted.
+                {body}
               </p>
             </div>
             

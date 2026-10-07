@@ -1,8 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function Contact() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("contact", "eyebrow") || "GET IN TOUCH";
+  const headline = getContent("contact", "headline") || "Let's grow your business.";
+  const subheadline = getContent("contact", "subheadline") || "Connect directly with our team on WhatsApp, or leave your details below and we'll get in touch.";
+  const whatsappNumber = getContent("contact", "whatsapp_number") || "919892384424";
+  const address = getContent("contact", "address") || "Mulund West, Mumbai - 400080";
+  const phone = getContent("contact", "phone") || "+91 91379 23145";
+  const email = getContent("contact", "email") || "growth@famebrosstudio.com";
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -17,6 +28,8 @@ export default function Contact() {
     setIsSubmitted(true);
   };
 
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}?text=Hi%2C%20I%20visited%20your%20website.%20I%20want%20to%20grow%20my%20business.%20Please%20contact%20me%20back.`;
+
   return (
     <section id="contact" className="bg-[#FFFFFF] py-24 border-t border-black/5 relative overflow-hidden">
       <div className="max-w-[640px] mx-auto px-5">
@@ -24,14 +37,19 @@ export default function Contact() {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
-            GET IN TOUCH
+            {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[42px] leading-[1.1] mb-4">
-            Let&apos;s grow your business.
+            {headline}
           </h2>
           <p className="text-[#55555A] text-sm md:text-base max-w-md mx-auto leading-relaxed">
-            Connect directly with our team on WhatsApp, or leave your details below and we&apos;ll get in touch.
+            {subheadline}
           </p>
+          <div className="mt-3 text-xs text-[#55555A] flex flex-wrap justify-center gap-4">
+            <span>📍 {address}</span>
+            <span>📞 {phone}</span>
+            <span>✉️ {email}</span>
+          </div>
         </div>
 
         {/* Form Container */}
@@ -50,7 +68,7 @@ export default function Contact() {
                 </h3>
                 
                 <a 
-                  href="https://wa.me/919892384424?text=Hi%2C%20I%20visited%20your%20website.%20I%20want%20to%20grow%20my%20business.%20Please%20contact%20me%20back." 
+                  href={whatsappLink}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-3 py-3.5 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-xl font-extrabold text-[15px] transition-all hover:scale-[1.02] shadow-[0_6px_20px_rgba(37,211,102,0.25)] select-none"
@@ -83,7 +101,6 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
-                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -95,7 +112,6 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
-                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -110,7 +126,6 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
-                      suppressHydrationWarning
                     />
                   </div>
                   <div>
@@ -122,7 +137,6 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
                       required
-                      suppressHydrationWarning
                     />
                   </div>
                 </div>
@@ -135,14 +149,12 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={3}
                     className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all resize-none placeholder:text-gray-400"
-                    suppressHydrationWarning
                   />
                 </div>
 
                 <button 
                   type="submit"
                   className="w-full py-3.5 bg-[#0A0A0B] hover:bg-[#1C1C21] text-white rounded-xl font-bold text-sm transition-all hover:scale-[1.01]"
-                  suppressHydrationWarning
                 >
                   Send My Enquiry &rarr;
                 </button>
@@ -163,7 +175,7 @@ export default function Contact() {
               </div>
               <div className="flex flex-col gap-3 max-w-xs mx-auto pt-4">
                 <a 
-                  href="https://wa.me/919892384424?text=Hi%2C%20I%20visited%20your%20website.%20I%20want%20to%20grow%20my%20business.%20Please%20contact%20me%20back." 
+                  href={whatsappLink}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-xl font-bold text-sm text-center shadow-lg transition-all"

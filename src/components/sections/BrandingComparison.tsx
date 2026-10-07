@@ -1,20 +1,6 @@
 "use client";
 
-const withoutItems = [
-  "People negotiate your price",
-  "Low visibility",
-  "No trust or recognition",
-  "Constant price comparison",
-  "No customer loyalty"
-];
-
-const withItems = [
-  "People pay what you're worth",
-  "High visibility",
-  "Instant trust & recognition",
-  "Premium positioning",
-  "Loyal customers & repeat business"
-];
+import { useSiteContent } from "@/context/SiteContentContext";
 
 const flowSteps = [
   { label: "Visibility", accent: false },
@@ -27,6 +13,26 @@ const flowSteps = [
 ];
 
 export default function BrandingComparison() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("branding_comparison", "eyebrow") || "THE POINT OF BRANDING";
+  const headline = getContent("branding_comparison", "headline") || "What Makes Us Different";
+  const oldLabel = getContent("branding_comparison", "old_label") || "WITHOUT BRANDING";
+  const newLabel = getContent("branding_comparison", "new_label") || "WITH STRONG BRANDING";
+
+  const compare1Old = getContent("branding_comparison", "compare_1_old") || "People negotiate your price";
+  const compare2Old = getContent("branding_comparison", "compare_2_old") || "Low visibility";
+  const compare3Old = getContent("branding_comparison", "compare_3_old") || "No trust or recognition";
+  const compare4Old = getContent("branding_comparison", "compare_4_old") || "Constant price comparison";
+
+  const compare1New = getContent("branding_comparison", "compare_1_new") || "People pay what you're worth";
+  const compare2New = getContent("branding_comparison", "compare_2_new") || "High visibility";
+  const compare3New = getContent("branding_comparison", "compare_3_new") || "Instant trust & recognition";
+  const compare4New = getContent("branding_comparison", "compare_4_new") || "Premium positioning";
+
+  const withoutItems = [compare1Old, compare2Old, compare3Old, compare4Old];
+  const withItems = [compare1New, compare2New, compare3New, compare4New];
+
   return (
     <section className="bg-[#0A0A0C] text-white py-24 border-t border-white/10 relative overflow-hidden">
       
@@ -47,11 +53,10 @@ export default function BrandingComparison() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
-            THE POINT OF BRANDING
+            {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] max-w-3xl mx-auto">
-            Stop competing on price. <br className="hidden sm:inline" />
-            Start competing on <span className="text-[#249E98]">trust.</span>
+            {headline}
           </h2>
         </div>
 
@@ -65,7 +70,7 @@ export default function BrandingComparison() {
             </div>
             <div>
               <span className="font-mono-custom text-[11px] tracking-[0.2em] text-[#A7A7A2] font-extrabold uppercase block mb-6">
-                WITHOUT BRANDING
+                {oldLabel}
               </span>
               <ul className="space-y-4">
                 {withoutItems.map((item, idx) => (
@@ -93,7 +98,7 @@ export default function BrandingComparison() {
             </div>
             <div>
               <span className="font-mono-custom text-[11px] tracking-[0.2em] text-[#249E98] font-extrabold uppercase block mb-6">
-                WITH STRONG BRANDING
+                {newLabel}
               </span>
               <ul className="space-y-4">
                 {withItems.map((item, idx) => (

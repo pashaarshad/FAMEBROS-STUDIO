@@ -1,27 +1,25 @@
 "use client";
 
-const pillars = [
-  {
-    num: "01",
-    title: "Brand Authority",
-    desc: "Premium content that makes your business impossible to overlook and easier to trust.",
-    color: "border-[#F59A57]"
-  },
-  {
-    num: "02",
-    title: "Organic + Paid Growth",
-    desc: "Content and campaigns designed to consistently reach the right people and generate demand.",
-    color: "border-[#249E98]"
-  },
-  {
-    num: "03",
-    title: "Attention-to-Sales Systems",
-    desc: "DMs, WhatsApp, landing pages and automation that help turn attention into actual business.",
-    color: "border-[#F59A57]"
-  }
-];
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function WhyChooseUs() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("why_choose_us", "eyebrow") || "WHY FAMEBROS";
+  const headline = getContent("why_choose_us", "headline") || "Not Just Another Agency";
+  const r1Title = getContent("why_choose_us", "reason_1_title") || "In-House Content Production";
+  const r1Body = getContent("why_choose_us", "reason_1_body") || "Full studio setup with videographers, editors and creative directors — no outsourcing, no delays.";
+  const r2Title = getContent("why_choose_us", "reason_2_title") || "Influencer Network of 500+";
+  const r2Body = getContent("why_choose_us", "reason_2_body") || "Niche-specific creators across Mumbai and Pan-India for authentic brand amplification.";
+  const r3Title = getContent("why_choose_us", "reason_3_title") || "Growth-Focused Strategy";
+  const r3Body = getContent("why_choose_us", "reason_3_body") || "Every piece of content is tied to a business goal — enquiries, footfall, or direct sales.";
+
+  const pillars = [
+    { num: "01", title: r1Title, desc: r1Body },
+    { num: "02", title: r2Title, desc: r2Body },
+    { num: "03", title: r3Title, desc: r3Body },
+  ];
+
   return (
     <section id="why-choose-us" className="bg-[#FAF6F0] py-24 border-t border-black/5 relative overflow-hidden">
       {/* Accent vector swirl */}
@@ -38,11 +36,10 @@ export default function WhyChooseUs() {
           <div className="space-y-8">
             <div>
               <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#249E98] mb-4">
-                WHY FAMEBROS
+                {eyebrow}
               </p>
               <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[44px] leading-[1.1]">
-                We don&apos;t just grow views.<br />
-                We grow <span className="text-[#F59A57]">businesses.</span>
+                {headline}
               </h2>
             </div>
             

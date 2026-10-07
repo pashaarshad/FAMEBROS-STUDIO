@@ -1,8 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useSiteContent } from "@/context/SiteContentContext";
 
 export default function About() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("about", "eyebrow") || "ABOUT FAMEBROS STUDIO";
+  const headline = getContent("about", "headline") || "We Build Brands That Actually Grow";
+  const body = getContent("about", "body") || "Famebros Studio is a social media marketing and content production agency based in Mulund, Mumbai. We combine strategy, creativity and performance marketing to grow real businesses — not just follower counts.";
+  const ctaLabel = getContent("about", "cta_label") || "Our Story";
+
   return (
     <section id="about" className="bg-[#FAF6F0] text-[#0A0A0A] py-24 border-t border-black/5 relative overflow-hidden">
       
@@ -15,18 +23,14 @@ export default function About() {
         {/* Top Header Block */}
         <div className="max-w-3xl mb-16">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
-            ABOUT FAMEBROS STUDIO
+            {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[36px] sm:text-[46px] md:text-[54px] leading-[1.08] mb-6">
-            We help businesses grow <br />
-            through <span className="text-[#249E98]">social media.</span>
+            {headline}
           </h2>
           <div className="space-y-4 text-[#55555A] text-base md:text-lg leading-relaxed">
             <p className="font-medium text-[#0A0A0A]">
-              Famebros Studio is a social media marketing and growth agency helping brands with strategy, content, social media management, influencer marketing and performance marketing.
-            </p>
-            <p>
-              We focus on more than likes and followers. Our goal is to help businesses build visibility, trust, enquiries and long-term growth.
+              {body}
             </p>
           </div>
         </div>

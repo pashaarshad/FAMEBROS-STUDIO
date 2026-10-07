@@ -7,9 +7,7 @@ import { isAuthenticated } from '@/lib/auth';
 const MAX_IMAGE_MB = 5;
 const MAX_VIDEO_MB = 15;
 
-export const config = {
-  api: { bodyParser: false },
-};
+
 
 export async function POST(request: NextRequest) {
   // Admin auth check

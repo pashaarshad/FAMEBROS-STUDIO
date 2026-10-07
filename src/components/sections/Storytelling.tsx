@@ -1,5 +1,7 @@
 "use client";
 
+import { useSiteContent } from "@/context/SiteContentContext";
+
 const storyTimeline = [
   "The Beginning",
   "Behind the Scenes",
@@ -41,6 +43,12 @@ const storyPillars = [
 ];
 
 export default function Storytelling() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("storytelling", "eyebrow") || "BUSINESS STORYTELLING";
+  const headline = getContent("storytelling", "headline") || "Every Brand Has a Story Worth Telling";
+  const body = getContent("storytelling", "body") || "We turn your brand's journey, values, and products into compelling visual content that connects emotionally with your audience and drives real business results.";
+
   return (
     <section className="bg-[#FAF6F0] py-24 border-t border-black/5 relative overflow-hidden">
       
@@ -52,14 +60,13 @@ export default function Storytelling() {
         {/* Header Block */}
         <div className="head mb-16">
           <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#249E98] font-bold mb-4">
-            BUSINESS STORYTELLING
+            {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
-            We don&apos;t just post content.<br />
-            We turn your business into a <span className="text-[#F59A57]">story people follow.</span>
+            {headline}
           </h2>
           <p className="text-[#55555A] text-sm md:text-base leading-relaxed max-w-2xl">
-            Every business has a story worth telling: how it started, the people behind it, the challenges, the progress and everything it took to grow. We turn those real moments into content people remember, connect with and keep coming back for.
+            {body}
           </p>
         </div>
 

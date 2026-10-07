@@ -1,5 +1,7 @@
 "use client";
 
+import { useSiteContent } from "@/context/SiteContentContext";
+
 const organicCheckmarks = [
   "A strong, consistent social media presence",
   "Followers who are actually your customers",
@@ -14,6 +16,12 @@ const organicCheckmarks = [
 ];
 
 export default function OrganicGrowth() {
+  const { getContent } = useSiteContent();
+
+  const eyebrow = getContent("organic_growth", "eyebrow") || "ORGANIC GROWTH — OUR FOUNDATION";
+  const headline = getContent("organic_growth", "headline") || "Content That Compounds Over Time";
+  const body = getContent("organic_growth", "body") || "Unlike paid ads that stop the moment you stop paying, our content strategy builds long-term brand authority. Every post, reel, and story adds to your brand equity.";
+
   return (
     <section className="bg-[#0A0A0C] text-white py-24 border-t border-white/10 relative overflow-hidden">
       
@@ -36,15 +44,13 @@ export default function OrganicGrowth() {
           <div className="space-y-8">
             <div>
               <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-5">
-                ORGANIC GROWTH — OUR FOUNDATION
+                {eyebrow}
               </p>
               <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] mb-6">
-                Ads stop the day <br />
-                you stop paying. <br />
-                <span className="text-[#249E98]">A brand doesn&apos;t.</span>
+                {headline}
               </h2>
               <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-md">
-                Anyone can buy attention. What we build is the kind that stays &mdash; an audience that follows you, content people share, and a name customers recognise before they ever see an advertisement.
+                {body}
               </p>
             </div>
             
