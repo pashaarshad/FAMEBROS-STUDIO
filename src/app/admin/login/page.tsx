@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
               value={passcode}
               onChange={(e) => setPasscode(e.target.value)}
               placeholder="Enter passcode..."
-              className="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#F59A57] text-sm font-mono tracking-widest"
+              className="w-full px-4 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#F59A57] text-sm font-mono tracking-widest [&::-ms-reveal]:hidden [&::-ms-clear]:hidden"
             />
           </div>
 
@@ -82,10 +82,6 @@ export default function AdminLoginPage() {
             {loading ? 'Authenticating...' : 'Access Dashboard →'}
           </button>
         </form>
-
-        <div className="mt-8 text-center text-[11px] text-white/40">
-          Default Passcode: <code className="text-[#F59A57] bg-white/10 px-2 py-0.5 rounded">famebros2026</code>
-        </div>
       </div>
     </div>
   );
