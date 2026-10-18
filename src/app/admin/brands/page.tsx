@@ -126,9 +126,6 @@ export default function AdminBrandsPage() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  const lockedBrands = brands.filter((b) => b.isLocked);
-  const newBrands = brands.filter((b) => !b.isLocked);
-
   return (
     <AdminLayout>
       <div className="space-y-8">
@@ -137,10 +134,10 @@ export default function AdminBrandsPage() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="font-display font-black text-2xl uppercase tracking-wider text-white">
-              🏷️ Brand Logos
+              🏷️ Brand Logos Manager
             </h1>
             <p className="text-xs text-white/50 mt-1">
-              {lockedBrands.length} baseline brands (locked) · {newBrands.length} added by you
+              Full CMS Control — {brands.length} brand logos in moving marquee. Add or remove any brand freely.
             </p>
           </div>
           <button
@@ -161,65 +158,40 @@ export default function AdminBrandsPage() {
         {loading ? (
           <div className="text-center py-16 text-xs text-white/40">Loading brands…</div>
         ) : (
-          <>
-            {/* ─── Newly Added Brands ─── */}
-            {newBrands.length > 0 && (
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-[#F59A57] mb-4">
-                  ✅ Your Added Brands ({newBrands.length})
-                </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                  {newBrands.map((brand) => (
-                    <div
-                      key={brand.id}
-                      className="bg-[#141419] border border-[#F59A57]/30 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[120px] group relative"
-                    >
-                      <img
-                        src={brand.logoUrl}
-                        alt={brand.name}
-                        className="max-h-12 max-w-full object-contain mb-3"
-                      />
-                      <span className="text-[10px] text-white/60 font-mono text-center">
-                        {brand.name}
-                      </span>
-                      <button
-                        onClick={() => handleDelete(brand.id, brand.name)}
-                        className="absolute top-2 right-2 w-6 h-6 rounded-full bg-red-500/20 text-red-400 text-[10px] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500/40"
-                        title="Remove brand"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* ─── Baseline Locked Brands ─── */}
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-4">
-                🔒 Baseline Brands — Locked ({lockedBrands.length})
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-[#F59A57]">
+                Live Marquee Brand Logos ({brands.length})
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                {lockedBrands.map((brand) => (
-                  <div
-                    key={brand.id}
-                    className="bg-[#141419] border border-white/8 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[120px] opacity-70"
-                  >
-                    <img
-                      src={brand.logoUrl}
-                      alt={brand.name}
-                      className="max-h-12 max-w-full object-contain mb-3"
-                    />
-                    <span className="text-[10px] text-white/40 font-mono text-center">
-                      {brand.name}
-                    </span>
-                    <span className="text-[9px] text-amber-400/60 mt-1">🔒 Locked</span>
-                  </div>
-                ))}
-              </div>
+              <span className="text-[11px] text-white/40">
+                Hover any brand to delete ✕
+              </span>
             </div>
-          </>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+              {brands.map((brand) => (
+                <div
+                  key={brand.id}
+                  className="bg-[#141419] border border-white/10 hover:border-[#F59A57]/60 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[120px] group relative transition-all"
+                >
+                  <img
+                    src={brand.logoUrl}
+                    alt={brand.name}
+                    className="max-h-12 max-w-full object-contain mb-3"
+                  />
+                  <span className="text-[10px] text-white/70 font-mono text-center">
+                    {brand.name}
+                  </span>
+                  <button
+                    onClick={() => handleDelete(brand.id, brand.name)}
+                    className="absolute top-2 right-2 w-7 h-7 rounded-full bg-red-500/20 text-red-400 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500 hover:text-white"
+                    title={`Delete ${brand.name}`}
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
 
         {/* ─── Add Brand Modal ─────────────────────────────────────── */}

@@ -5,7 +5,6 @@ import { isAuthenticated } from '@/lib/auth';
 
 const baselineCreators = [
   {
-    id: 'locked-c1',
     name: 'Aanya Shah',
     handle: '@aanyastyle',
     niche: 'Fashion & Lifestyle',
@@ -13,10 +12,9 @@ const baselineCreators = [
     avatarUrl: '/professional photos for profile picture.jpg.jpeg',
     platform: 'Instagram',
     location: 'Mumbai',
-    isLocked: true,
+    isCustom: true,
   },
   {
-    id: 'locked-c2',
     name: 'Rohan Deshmukh',
     handle: '@rohanfoodie',
     niche: 'Food & Culinary',
@@ -24,10 +22,9 @@ const baselineCreators = [
     avatarUrl: '/camera.jpg',
     platform: 'Instagram',
     location: 'Mumbai',
-    isLocked: true,
+    isCustom: true,
   },
   {
-    id: 'locked-c3',
     name: 'Priya Verma',
     handle: '@priyabeauty',
     niche: 'Beauty & Skincare',
@@ -35,29 +32,44 @@ const baselineCreators = [
     avatarUrl: '/imp-doc/logo.png',
     platform: 'Instagram',
     location: 'Mumbai',
-    isLocked: true,
+    isCustom: true,
   },
 ];
 
 export async function GET() {
   try {
     const conn = await connectToDatabase();
-    let mongoCreators: Array<Record<string, unknown>> = [];
 
     if (conn) {
+      const count = await Creator.countDocuments();
+      if (count === 0) {
+        await Creator.insertMany(baselineCreators);
+      }
+
       const docs = await Creator.find({}).sort({ createdAt: -1 }).lean();
-      mongoCreators = docs.map((doc) => ({
+      const mongoCreators = docs.map((doc) => ({
         ...doc,
         id: doc._id.toString(),
         isLocked: false,
       }));
+
+      return NextResponse.json({ success: true, data: mongoCreators });
     }
 
-    const combined = [...baselineCreators, ...mongoCreators];
-    return NextResponse.json({ success: true, data: combined });
+    const fallback = baselineCreators.map((c, i) => ({
+      ...c,
+      id: `c_${i}`,
+      isLocked: false,
+    }));
+    return NextResponse.json({ success: true, data: fallback });
   } catch (error) {
     console.error('GET Creators Error:', error);
-    return NextResponse.json({ success: true, data: baselineCreators });
+    const fallback = baselineCreators.map((c, i) => ({
+      ...c,
+      id: `c_${i}`,
+      isLocked: false,
+    }));
+    return NextResponse.json({ success: true, data: fallback });
   }
 }
 

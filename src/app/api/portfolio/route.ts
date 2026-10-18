@@ -5,7 +5,6 @@ import { isAuthenticated } from '@/lib/auth';
 
 const baselinePortfolio = [
   {
-    id: 'locked-p1',
     title: 'Restaurant Sizzle Shoot',
     category: 'Restaurant & Hospitality',
     clientName: 'Gourmet Bistro Mulund',
@@ -14,10 +13,10 @@ const baselinePortfolio = [
     description: 'High-energy 4K food sizzle reel highlighting chef signature dishes.',
     metricLabel: 'Revenue Boost',
     metricValue: '+240%',
-    isLocked: true,
+    sections: ['what-our-clients-say', 'work'],
+    isCustom: true,
   },
   {
-    id: 'locked-p2',
     title: 'Boutique Apparel Lookbook',
     category: 'Fashion & Retail',
     clientName: 'StyleStudio Mumbai',
@@ -26,10 +25,10 @@ const baselinePortfolio = [
     description: 'Model try-on reel featuring new seasonal festive collection.',
     metricLabel: 'Sales Inquiries',
     metricValue: '3.2X',
-    isLocked: true,
+    sections: ['what-our-clients-say', 'work'],
+    isCustom: true,
   },
   {
-    id: 'locked-p3',
     title: 'Fitness Transformation Campaign',
     category: 'Fitness & Gym',
     clientName: 'Pulse Gym Mumbai',
@@ -38,10 +37,10 @@ const baselinePortfolio = [
     description: 'Trainer tip video and member transformation story.',
     metricLabel: 'Memberships',
     metricValue: '+180%',
-    isLocked: true,
+    sections: ['what-our-clients-say', 'work'],
+    isCustom: true,
   },
   {
-    id: 'locked-p4',
     title: 'Resort Villa Aerial Walkthrough',
     category: 'Travel & Resort',
     clientName: 'Ocean Palms Resort',
@@ -50,29 +49,47 @@ const baselinePortfolio = [
     description: 'Cinematic drone walkthrough of private pool villas.',
     metricLabel: 'Direct Bookings',
     metricValue: '+3.7X',
-    isLocked: true,
+    sections: ['what-our-clients-say', 'work'],
+    isCustom: true,
   },
 ];
 
 export async function GET() {
   try {
     const conn = await connectToDatabase();
-    let mongoItems: Array<Record<string, unknown>> = [];
 
     if (conn) {
+      const count = await PortfolioItem.countDocuments();
+      if (count === 0) {
+        // Seed baseline items to MongoDB so they can be edited or deleted
+        await PortfolioItem.insertMany(baselinePortfolio);
+      }
+
       const docs = await PortfolioItem.find({}).sort({ createdAt: -1 }).lean();
-      mongoItems = docs.map((doc) => ({
+      const mongoItems = docs.map((doc) => ({
         ...doc,
         id: doc._id.toString(),
         isLocked: false,
       }));
+
+      return NextResponse.json({ success: true, data: mongoItems });
     }
 
-    const combined = [...baselinePortfolio, ...mongoItems];
-    return NextResponse.json({ success: true, data: combined });
+    // Fallback if DB offline
+    const fallback = baselinePortfolio.map((p, i) => ({
+      ...p,
+      id: `p_${i}`,
+      isLocked: false,
+    }));
+    return NextResponse.json({ success: true, data: fallback });
   } catch (error) {
     console.error('GET Portfolio Error:', error);
-    return NextResponse.json({ success: true, data: baselinePortfolio });
+    const fallback = baselinePortfolio.map((p, i) => ({
+      ...p,
+      id: `p_${i}`,
+      isLocked: false,
+    }));
+    return NextResponse.json({ success: true, data: fallback });
   }
 }
 

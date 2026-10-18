@@ -53,11 +53,6 @@ const TEXTAREA_KEYS = new Set([
   'compare_3_new', 'compare_3_old', 'compare_4_new', 'compare_4_old',
 ]);
 
-const DEVELOPER_LOCKED_KEYS: Record<string, Set<string>> = {
-  hero: new Set(['headline_line1', 'headline_line2']),
-  navbar: new Set(['cta_link']),
-};
-
 type DeviceMode = 'desktop' | 'tablet' | 'mobile';
 
 export default function VisualSiteEditorPage() {
@@ -71,7 +66,6 @@ export default function VisualSiteEditorPage() {
   const [publishing, setPublishing] = useState(false);
   const [publishStatus, setPublishStatus] = useState<string>('');
   const [hasUnsavedEdits, setHasUnsavedEdits] = useState(false);
-  const [lockedNoticeKey, setLockedNoticeKey] = useState<string | null>(null);
 
   // Modal / inline adding states
   const [showAddBrandModal, setShowAddBrandModal] = useState(false);
@@ -523,36 +517,20 @@ export default function VisualSiteEditorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.keys(SITE_CONTENT_DEFAULTS[activeSection] || {}).map((key) => {
                 const isTextarea = TEXTAREA_KEYS.has(key);
-                const isLocked = DEVELOPER_LOCKED_KEYS[activeSection]?.has(key);
                 const value = allContent[activeSection]?.[key] ?? '';
 
                 return (
                   <div
                     key={key}
-                    className={`border rounded-2xl p-5 space-y-2 ${
-                      isLocked ? 'border-amber-500/30 bg-amber-500/5' : 'bg-[#14141a] border-white/10'
-                    } ${isTextarea ? 'md:col-span-2' : ''}`}
+                    className={`border rounded-2xl p-5 space-y-2 bg-[#14141a] border-white/10 ${isTextarea ? 'md:col-span-2' : ''}`}
                   >
                     <div className="flex items-center justify-between">
                       <label className="block text-xs font-extrabold uppercase tracking-wider text-[#F59A57]">
                         {keyLabel(key)}
                       </label>
-                      {isLocked && (
-                        <span className="text-[10px] font-bold text-amber-400 bg-amber-500/20 border border-amber-500/40 px-2 py-0.5 rounded-full flex items-center gap-1">
-                          🔒 Developer Locked
-                        </span>
-                      )}
                     </div>
 
-                    {isLocked ? (
-                      <div
-                        onClick={() => setLockedNoticeKey(keyLabel(key))}
-                        className="w-full bg-[#0A0A0C]/80 border border-amber-500/30 rounded-xl px-4 py-3 text-sm text-white/60 cursor-pointer select-none flex items-center justify-between hover:border-amber-500 transition-colors"
-                      >
-                        <span className="truncate">{value}</span>
-                        <span className="text-xs text-amber-400 font-bold shrink-0 ml-2">🔒 Click for notice</span>
-                      </div>
-                    ) : isTextarea ? (
+                    {isTextarea ? (
                       <textarea
                         rows={4}
                         value={value}
@@ -666,7 +644,6 @@ export default function VisualSiteEditorPage() {
                           <p className="text-xs font-bold text-white truncate">{p.title}</p>
                           <p className="text-[10px] text-white/50">{p.category} &bull; {p.clientName}</p>
                         </div>
-                        {p.isLocked && <span className="text-[9px] text-amber-400 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded">Locked</span>}
                       </div>
                     ))}
                   </div>
@@ -686,36 +663,20 @@ export default function VisualSiteEditorPage() {
 
                 {Object.keys(SITE_CONTENT_DEFAULTS[activeSection] || {}).map((key) => {
                   const isTextarea = TEXTAREA_KEYS.has(key);
-                  const isLocked = DEVELOPER_LOCKED_KEYS[activeSection]?.has(key);
                   const value = allContent[activeSection]?.[key] ?? '';
 
                   return (
                     <div
                       key={key}
-                      className={`border rounded-xl p-3.5 space-y-1.5 ${
-                        isLocked ? 'bg-amber-500/5 border-amber-500/30' : 'bg-[#1A1A20] border-white/10'
-                      }`}
+                      className="border rounded-xl p-3.5 space-y-1.5 bg-[#1A1A20] border-white/10"
                     >
                       <div className="flex items-center justify-between">
                         <label className="block text-[10px] font-bold uppercase tracking-wider text-white/70">
                           {keyLabel(key)}
                         </label>
-                        {isLocked && (
-                          <span className="text-[9px] font-bold text-amber-400 bg-amber-500/20 border border-amber-500/30 px-1.5 py-0.5 rounded">
-                            🔒 Locked
-                          </span>
-                        )}
                       </div>
 
-                      {isLocked ? (
-                        <div
-                          onClick={() => setLockedNoticeKey(keyLabel(key))}
-                          className="w-full bg-[#0A0A0C]/80 border border-amber-500/30 rounded-lg px-3 py-2 text-xs text-white/60 cursor-pointer select-none flex items-center justify-between hover:border-amber-500 transition-colors"
-                        >
-                          <span className="truncate">{value}</span>
-                          <span className="text-[10px] text-amber-400 font-bold shrink-0 ml-2">🔒 Locked</span>
-                        </div>
-                      ) : isTextarea ? (
+                      {isTextarea ? (
                         <textarea
                           rows={3}
                           value={value}
@@ -916,29 +877,6 @@ export default function VisualSiteEditorPage() {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-      )}
-
-      {/* ─── DEVELOPER-LOCKED TEXT NOTICE MODAL ────────────────────────────── */}
-      {lockedNoticeKey && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#14141a] border border-amber-500/30 rounded-3xl p-6 md:p-8 max-w-md w-full text-white space-y-4 text-center shadow-2xl animate-fadeIn">
-            <div className="w-14 h-14 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center justify-center text-2xl mx-auto">
-              🔒
-            </div>
-            <h3 className="font-extrabold text-lg text-white">Developer-Locked Text Field</h3>
-            <p className="text-xs text-white/70 leading-relaxed">
-              The field <strong className="text-amber-400 font-bold">{lockedNoticeKey}</strong> contains custom SVG graphics, animations, or core coding touch.
-              <br /><br />
-              To protect the website design and graphical layout from breaking, this field cannot be edited from the dashboard. It can only be modified directly by the developer.
-            </p>
-            <button
-              onClick={() => setLockedNoticeKey(null)}
-              className="w-full py-3 bg-[#F59A57] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-md"
-            >
-              Understood
-            </button>
           </div>
         </div>
       )}

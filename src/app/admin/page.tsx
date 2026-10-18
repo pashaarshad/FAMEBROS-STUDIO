@@ -124,7 +124,7 @@ export default function AdminDashboardPage() {
               Case Studies
             </div>
             <p className="text-xs text-white/40 mt-2">
-              8 baseline client entries are locked. Add new case studies here.
+              Full access — view, edit, add, or delete any case study on the website.
             </p>
           </Link>
 
@@ -145,7 +145,7 @@ export default function AdminDashboardPage() {
               Portfolio & Shoot Videos
             </div>
             <p className="text-xs text-white/40 mt-2">
-              Existing videos are locked. Add new videos (max 15 MB) here.
+              Full access — edit details, toggle section placements, upload new, or delete any video.
             </p>
           </Link>
 
@@ -159,33 +159,36 @@ export default function AdminDashboardPage() {
                 Manage →
               </span>
             </div>
-            <div className="font-display font-black text-3xl text-white mb-1">17+</div>
+            <div className="font-display font-black text-3xl text-white mb-1">Live</div>
             <div className="text-xs font-bold text-white/60 uppercase tracking-wider">
               Brand Logos
             </div>
             <p className="text-xs text-white/40 mt-2">
-              17 baseline brands locked. Add new client logos here.
+              Full access — add or remove client logos displayed in the marquee.
             </p>
           </Link>
         </div>
 
-        {/* ─── Lock Policy Info ─────────────────────────────────────────── */}
+        {/* ─── Full Access CMS Info ─────────────────────────────────────── */}
         <div className="p-6 rounded-2xl bg-[#16161d] border border-white/10 space-y-3">
           <div className="flex items-center gap-3">
-            <span className="text-xl">🔒</span>
+            <span className="text-xl">⚡</span>
             <h2 className="font-bold text-sm uppercase tracking-wider text-white">
-              Content Protection Policy
+              Full Access CMS Control
             </h2>
           </div>
           <ul className="text-xs text-white/60 leading-relaxed space-y-1.5">
             <li>
-              <strong className="text-white/80">Baseline Case Studies</strong> — The 8 original client case studies (Shree Mahalaxmi, Hazel Sweets, Raj Laxmi, Devi & Co, Ali Salon, SK Furniture, Arabian Collection, Al Ahmed) are <span className="text-amber-400 font-bold">locked</span>. They display as baseline entries and cannot be deleted.
+              <strong className="text-white/80">Site Content &amp; Headlines</strong> — 100% of text across every section (Hero, About, Why Choose Us, Storytelling, FAQ, Navbar, etc.) is fully customizable in both direct and live split-screen editor modes.
             </li>
             <li>
-              <strong className="text-white/80">Existing Portfolio Videos</strong> — Videos already embedded in the website code are <span className="text-amber-400 font-bold">locked</span>. You can add new ones (max 15 MB each).
+              <strong className="text-white/80">Case Studies &amp; Clients</strong> — All case studies can be edited, customized, added, or deleted directly by the admin.
             </li>
             <li>
-              <strong className="text-white/80">Text Content</strong> — All website text is <span className="text-emerald-400 font-bold">editable</span> via the Site Content Editor. If no edits are saved, the website shows the built-in default text.
+              <strong className="text-white/80">Videos &amp; Section Placement</strong> — Play preview, edit title/client, toggle checkboxes to assign videos to sections (such as &ldquo;What Our Clients Say&rdquo; or &ldquo;Portfolio Work&rdquo;), or delete videos anytime.
+            </li>
+            <li>
+              <strong className="text-white/80">Brand Marquee &amp; Creator Network</strong> — Upload new partner logos and creator profiles or remove existing ones with single-click deletion.
             </li>
           </ul>
         </div>

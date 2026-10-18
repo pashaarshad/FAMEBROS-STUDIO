@@ -7,24 +7,59 @@ import { isAuthenticated } from '@/lib/auth';
 export async function GET() {
   try {
     const conn = await connectToDatabase();
-    let mongoCaseStudies: Array<Record<string, unknown>> = [];
 
     if (conn) {
-      const docs = await CaseStudy.find({}).sort({ createdAt: -1 }).lean();
-      mongoCaseStudies = docs.map((doc) => ({
+      const existingDocs = await CaseStudy.find({}).sort({ createdAt: -1 }).lean();
+      const existingSlugs = new Set(existingDocs.map((d) => d.slug));
+
+      // Seed baseline case studies into DB if they do not exist yet
+      for (const b of baselineCaseStudies) {
+        if (!existingSlugs.has(b.slug)) {
+          try {
+            await CaseStudy.create({
+              slug: b.slug,
+              clientName: b.clientName,
+              industry: b.industry,
+              headline: b.headline,
+              metric: b.metric,
+              problem: b.problem,
+              strategy: b.strategy,
+              contentCreated: b.contentCreated || '',
+              shoots: b.shoots || '',
+              influencerMarketing: b.influencerMarketing || '',
+              ads: b.ads || '',
+              results: b.results,
+              testimonialQuote: b.testimonialQuote || '',
+              testimonialAuthor: b.testimonialAuthor || b.clientName,
+              testimonialRole: b.testimonialRole || 'Owner',
+              imageUrl: b.imageUrl || '',
+              videoUrl: b.videoUrl || '',
+              isCustom: false,
+            });
+          } catch (seedErr) {
+            console.error('Seed case study error:', seedErr);
+          }
+        }
+      }
+
+      // Re-fetch all documents from MongoDB so all have real IDs and are editable
+      const allDocs = await CaseStudy.find({}).sort({ createdAt: 1 }).lean();
+      const mongoCaseStudies = allDocs.map((doc) => ({
         ...doc,
         id: doc._id.toString(),
         isLocked: false,
       }));
+
+      return NextResponse.json({ success: true, data: mongoCaseStudies });
     }
 
-    // Merge baseline locked case studies with dynamic MongoDB entries
-    const combined = [...baselineCaseStudies, ...mongoCaseStudies];
-    return NextResponse.json({ success: true, data: combined });
+    // Fallback to baseline data on error or no connection
+    const unlocked = baselineCaseStudies.map((b) => ({ ...b, isLocked: false }));
+    return NextResponse.json({ success: true, data: unlocked });
   } catch (error) {
     console.error('GET CaseStudies Error:', error);
-    // Fallback to baseline data on error
-    return NextResponse.json({ success: true, data: baselineCaseStudies });
+    const unlocked = baselineCaseStudies.map((b) => ({ ...b, isLocked: false }));
+    return NextResponse.json({ success: true, data: unlocked });
   }
 }
 

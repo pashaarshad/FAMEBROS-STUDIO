@@ -25,6 +25,7 @@ export default function AdminCaseStudiesPage() {
   const [caseStudies, setCaseStudies] = useState<CaseStudyItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [editingItem, setEditingItem] = useState<CaseStudyItem | null>(null);
   const [selectedViewItem, setSelectedViewItem] = useState<CaseStudyItem | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -63,14 +64,59 @@ export default function AdminCaseStudiesPage() {
     fetchCaseStudies();
   }, []);
 
-  const handleCreate = async (e: React.FormEvent) => {
+  const openCreateModal = () => {
+    setEditingItem(null);
+    setFormData({
+      clientName: '',
+      industry: 'Jewellery & Luxury',
+      headline: '',
+      metric: '',
+      problem: '',
+      strategy: '',
+      results: '',
+      testimonialQuote: '',
+      testimonialAuthor: '',
+      testimonialRole: 'Owner',
+      imageUrl: '',
+      videoUrl: '',
+    });
+    setError('');
+    setShowModal(true);
+  };
+
+  const openEditModal = (item: CaseStudyItem) => {
+    setEditingItem(item);
+    setFormData({
+      clientName: item.clientName || '',
+      industry: item.industry || 'Jewellery & Luxury',
+      headline: item.headline || '',
+      metric: item.metric || '',
+      problem: item.problem || '',
+      strategy: item.strategy || '',
+      results: item.results || '',
+      testimonialQuote: item.testimonialQuote || '',
+      testimonialAuthor: item.testimonialAuthor || '',
+      testimonialRole: item.testimonialRole || 'Owner',
+      imageUrl: item.imageUrl || '',
+      videoUrl: item.videoUrl || '',
+    });
+    setError('');
+    setShowModal(true);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
     setError('');
 
     try {
-      const res = await fetch('/api/case-studies', {
-        method: 'POST',
+      const url = editingItem
+        ? `/api/case-studies/${editingItem.id || editingItem.slug}`
+        : '/api/case-studies';
+      const method = editingItem ? 'PUT' : 'POST';
+
+      const res = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
@@ -78,20 +124,7 @@ export default function AdminCaseStudiesPage() {
       const data = await res.json();
       if (res.ok && data.success) {
         setShowModal(false);
-        setFormData({
-          clientName: '',
-          industry: 'Jewellery & Luxury',
-          headline: '',
-          metric: '',
-          problem: '',
-          strategy: '',
-          results: '',
-          testimonialQuote: '',
-          testimonialAuthor: '',
-          testimonialRole: 'Owner',
-          imageUrl: '',
-          videoUrl: '',
-        });
+        setEditingItem(null);
         fetchCaseStudies();
       } else {
         setError(data.message || 'Failed to save case study');
@@ -104,12 +137,8 @@ export default function AdminCaseStudiesPage() {
     }
   };
 
-  const handleDelete = async (e: React.MouseEvent, id: string, isLocked?: boolean) => {
+  const handleDelete = async (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
-    if (isLocked) {
-      alert('This baseline case study is locked and cannot be deleted.');
-      return;
-    }
 
     if (!confirm('Are you sure you want to delete this case study?')) return;
 
@@ -118,6 +147,9 @@ export default function AdminCaseStudiesPage() {
       const data = await res.json();
       if (res.ok && data.success) {
         fetchCaseStudies();
+        if (selectedViewItem?.id === id) {
+          setSelectedViewItem(null);
+        }
       } else {
         alert(data.message || 'Failed to delete');
       }
@@ -137,12 +169,12 @@ export default function AdminCaseStudiesPage() {
               Case Studies Manager
             </h1>
             <p className="text-xs text-white/60">
-              Manage website case studies. Add new dynamic case studies or view baseline case studies.
+              Full CMS Control — Add, edit, customize, or delete any case study on the website.
             </p>
           </div>
 
           <button
-            onClick={() => setShowModal(true)}
+            onClick={openCreateModal}
             className="px-5 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-lg"
           >
             + Add New Case Study
@@ -158,11 +190,7 @@ export default function AdminCaseStudiesPage() {
               <div
                 key={cs.id || cs.slug}
                 onClick={() => setSelectedViewItem(cs)}
-                className={`p-6 rounded-2xl border transition-all cursor-pointer group hover:shadow-xl ${
-                  cs.isLocked
-                    ? 'bg-[#141418] border-white/10 hover:border-[#F59A57]/50'
-                    : 'bg-[#1a1a22] border-[#F59A57]/30 hover:border-[#F59A57]'
-                }`}
+                className="p-6 rounded-2xl border transition-all cursor-pointer group hover:shadow-xl bg-[#141418] border-white/10 hover:border-[#F59A57]"
               >
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-2">
@@ -173,18 +201,23 @@ export default function AdminCaseStudiesPage() {
                       {cs.industry}
                     </span>
                   </div>
-                  {cs.isLocked ? (
-                    <span className="text-xs font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded flex items-center gap-1 border border-amber-400/20">
-                      🔒 Baseline Locked
-                    </span>
-                  ) : (
+                  <div className="flex items-center gap-2">
                     <button
-                      onClick={(e) => handleDelete(e, cs.id, cs.isLocked)}
-                      className="text-xs text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 px-2.5 py-1 rounded border border-red-500/20 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openEditModal(cs);
+                      }}
+                      className="text-xs text-[#F59A57] hover:text-[#FFAE70] bg-[#F59A57]/10 hover:bg-[#F59A57]/20 px-2.5 py-1 rounded border border-[#F59A57]/20 transition-colors font-semibold"
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button
+                      onClick={(e) => handleDelete(e, cs.id || cs.slug)}
+                      className="text-xs text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 px-2.5 py-1 rounded border border-red-500/20 transition-colors font-semibold"
                     >
                       🗑️ Delete
                     </button>
-                  )}
+                  </div>
                 </div>
 
                 <h3 className="font-display font-extrabold text-xl text-white mb-1.5 leading-tight group-hover:text-[#F59A57] transition-colors">
@@ -197,7 +230,7 @@ export default function AdminCaseStudiesPage() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
                   <span className="font-extrabold text-[#F59A57]">{cs.metric}</span>
-                  <span className="text-white/40 font-mono text-[11px]">Click to view details &rarr;</span>
+                  <span className="text-white/40 font-mono text-[11px]">Click to view / edit &rarr;</span>
                 </div>
               </div>
             ))}
@@ -258,7 +291,17 @@ export default function AdminCaseStudiesPage() {
                 )}
               </div>
 
-              <div className="flex justify-end">
+              <div className="flex justify-between items-center">
+                <button
+                  onClick={() => {
+                    const item = selectedViewItem;
+                    setSelectedViewItem(null);
+                    openEditModal(item);
+                  }}
+                  className="px-5 py-2.5 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold rounded-xl transition-all text-xs"
+                >
+                  ✏️ Edit This Case Study
+                </button>
                 <button
                   onClick={() => setSelectedViewItem(null)}
                   className="px-5 py-2.5 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-white transition-colors text-xs"
@@ -270,16 +313,19 @@ export default function AdminCaseStudiesPage() {
           </div>
         )}
 
-        {/* Modal for Creating New Case Study */}
+        {/* Modal for Creating/Editing Case Study */}
         {showModal && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
             <div className="bg-[#14141a] border border-white/15 rounded-3xl p-6 sm:p-8 max-w-2xl w-full text-white my-8 max-h-[90vh] overflow-y-auto">
               <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                 <h2 className="font-display font-extrabold text-xl uppercase tracking-wider text-white">
-                  Add New Case Study
+                  {editingItem ? 'Edit Case Study' : 'Add New Case Study'}
                 </h2>
                 <button
-                  onClick={() => setShowModal(false)}
+                  onClick={() => {
+                    setShowModal(false);
+                    setEditingItem(null);
+                  }}
                   className="text-white/60 hover:text-white text-lg font-bold"
                 >
                   ✕
@@ -292,7 +338,7 @@ export default function AdminCaseStudiesPage() {
                 </div>
               )}
 
-              <form onSubmit={handleCreate} className="space-y-4 text-xs">
+              <form onSubmit={handleSubmit} className="space-y-4 text-xs">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block font-bold mb-1 text-white/80">Client / Brand Name *</label>
@@ -437,7 +483,7 @@ export default function AdminCaseStudiesPage() {
                     disabled={saving}
                     className="px-6 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold rounded-xl hover:scale-105 transition-all shadow-lg disabled:opacity-50"
                   >
-                    {saving ? 'Saving...' : 'Save Case Study'}
+                    {saving ? 'Saving...' : editingItem ? 'Save Changes' : 'Save Case Study'}
                   </button>
                 </div>
               </form>

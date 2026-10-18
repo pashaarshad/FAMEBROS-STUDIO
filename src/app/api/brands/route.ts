@@ -24,38 +24,51 @@ const BASELINE_BRANDS = [
   { name: 'Realme',                    logoUrl: '/clients-logo/realme_logo.png' },
 ];
 
-/** GET /api/brands  — returns locked baselines + DB-added brands */
+/** GET /api/brands — returns all brands from MongoDB (auto-seeds baseline brands if empty) */
 export async function GET() {
-  await connectToDatabase();
+  const conn = await connectToDatabase();
 
   try {
-    const dbBrands = await Brand.find({}).sort({ order: 1, createdAt: 1 }).lean();
+    if (conn) {
+      const count = await Brand.countDocuments();
+      if (count === 0) {
+        // Seed baseline brands as full DB records so they can be modified/deleted
+        await Brand.insertMany(
+          BASELINE_BRANDS.map((b, i) => ({
+            name: b.name,
+            logoUrl: b.logoUrl,
+            isLocked: false,
+            order: i,
+          }))
+        );
+      }
 
-    // Merge: baselines first (locked), then DB-added
-    const baselines = BASELINE_BRANDS.map((b, i) => ({
-      ...b,
-      id: `baseline_${i}`,
-      isLocked: true,
-      order: i,
-    }));
-
-    const added = dbBrands
-      .filter((b) => !b.isLocked)
-      .map((b) => ({
+      const dbBrands = await Brand.find({}).sort({ order: 1, createdAt: 1 }).lean();
+      const allBrands = dbBrands.map((b) => ({
         id: String(b._id),
         name: b.name,
         logoUrl: b.logoUrl,
         isLocked: false,
-        order: b.order,
+        order: b.order ?? 0,
       }));
 
-    return NextResponse.json({ success: true, data: [...baselines, ...added] });
-  } catch {
-    // Fallback: return just baselines
+      return NextResponse.json({ success: true, data: allBrands });
+    }
+
+    // Fallback if no db connection
     const baselines = BASELINE_BRANDS.map((b, i) => ({
       ...b,
       id: `baseline_${i}`,
-      isLocked: true,
+      isLocked: false,
+      order: i,
+    }));
+    return NextResponse.json({ success: true, data: baselines });
+  } catch (error) {
+    console.error('GET /api/brands error:', error);
+    const baselines = BASELINE_BRANDS.map((b, i) => ({
+      ...b,
+      id: `baseline_${i}`,
+      isLocked: false,
       order: i,
     }));
     return NextResponse.json({ success: true, data: baselines });
@@ -115,9 +128,6 @@ export async function DELETE(request: NextRequest) {
     const brand = await Brand.findById(id);
     if (!brand) {
       return NextResponse.json({ success: false, error: 'Not found' }, { status: 404 });
-    }
-    if (brand.isLocked) {
-      return NextResponse.json({ success: false, error: 'Cannot delete a locked brand' }, { status: 403 });
     }
 
     await brand.deleteOne();

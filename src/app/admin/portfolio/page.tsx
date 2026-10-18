@@ -17,28 +17,6 @@ interface PortfolioItem {
   isLocked?: boolean;
 }
 
-// Locked baseline videos already embedded in the website
-const LOCKED_VIDEOS: PortfolioItem[] = [
-  {
-    id: 'locked_1', title: 'Restaurant Growth Reel', category: 'Restaurant',
-    clientName: 'Rahul Mehta', thumbnailUrl: '/vedios-hero/1st__poster.jpg',
-    videoUrl: '/vedios-hero/1st_.mp4', description: 'Restaurant business transformation reel.',
-    metricValue: '+240%', metricLabel: 'Revenue', sections: ['what-our-clients-say', 'work'], isLocked: true,
-  },
-  {
-    id: 'locked_2', title: 'Retail Business Campaign', category: 'Retail',
-    clientName: 'Neha Sharma', thumbnailUrl: '/vedios-hero/2nd_poster.jpg',
-    videoUrl: '/vedios-hero/2nd.mp4', description: 'Retail brand enquiry generation campaign.',
-    metricValue: '3.2X', metricLabel: 'Enquiries', sections: ['what-our-clients-say', 'work'], isLocked: true,
-  },
-  {
-    id: 'locked_3', title: 'Gym Membership Growth', category: 'Fitness',
-    clientName: 'Amit Verma', thumbnailUrl: '/vedios-hero/3rd_poster.jpg',
-    videoUrl: '/vedios-hero/3rd.mp4', description: 'Gym membership growth through reels.',
-    metricValue: '+180%', metricLabel: 'Memberships', sections: ['what-our-clients-say', 'work'], isLocked: true,
-  },
-];
-
 const AVAILABLE_SECTIONS = [
   { id: 'what-our-clients-say', label: 'What Our Clients Say (Testimonials)' },
   { id: 'work', label: 'Work & Portfolio Showcase' },
@@ -51,6 +29,7 @@ export default function AdminPortfolioPage() {
   const [items, setItems] = useState<PortfolioItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [editingItem, setEditingItem] = useState<PortfolioItem | null>(null);
   const [playingVideo, setPlayingVideo] = useState<PortfolioItem | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -96,6 +75,41 @@ export default function AdminPortfolioPage() {
 
   useEffect(() => { fetchPortfolio(); }, []);
 
+  // ── Handle open modal ──────────────────────────────────────────
+  const openCreateModal = () => {
+    setEditingItem(null);
+    setFormData({ title: '', category: 'Client Testimonial', clientName: '', description: '', metricLabel: 'Growth Result', metricValue: '' });
+    setSelectedSections(['what-our-clients-say', 'work']);
+    setThumbFile(null); setThumbPreview(''); setThumbUrl(''); setThumbState('idle');
+    setVideoFile(null); setVideoName(''); setVideoUrl(''); setVideoState('idle'); setVideoProgress('');
+    setError('');
+    setShowModal(true);
+  };
+
+  const openEditModal = (item: PortfolioItem) => {
+    setEditingItem(item);
+    setFormData({
+      title: item.title || '',
+      category: item.category || 'Client Testimonial',
+      clientName: item.clientName || '',
+      description: item.description || '',
+      metricLabel: item.metricLabel || 'Growth Result',
+      metricValue: item.metricValue || '',
+    });
+    setSelectedSections(item.sections || ['what-our-clients-say', 'work']);
+    setThumbFile(null);
+    setThumbPreview(item.thumbnailUrl || '');
+    setThumbUrl(item.thumbnailUrl || '');
+    setThumbState(item.thumbnailUrl ? 'done' : 'idle');
+    setVideoFile(null);
+    setVideoName(item.videoUrl ? item.videoUrl.split('/').pop() || 'Video' : '');
+    setVideoUrl(item.videoUrl || '');
+    setVideoState(item.videoUrl ? 'done' : 'idle');
+    setVideoProgress('');
+    setError('');
+    setShowModal(true);
+  };
+
   // ── Handle section toggle in form ───────────────────────────────
   const toggleFormSection = (secId: string) => {
     setSelectedSections((prev) =>
@@ -105,11 +119,6 @@ export default function AdminPortfolioPage() {
 
   // ── Handle section toggle on existing card in real-time ──────────
   const toggleCardSection = async (item: PortfolioItem, secId: string) => {
-    if (item.isLocked) {
-      alert('Baseline videos are locked and pre-assigned.');
-      return;
-    }
-
     const currentSecs = item.sections || ['what-our-clients-say', 'work'];
     const newSecs = currentSecs.includes(secId)
       ? currentSecs.filter((s) => s !== secId)
@@ -130,11 +139,7 @@ export default function AdminPortfolioPage() {
     }
   };
 
-  const handleDelete = async (id: string, isLocked?: boolean) => {
-    if (isLocked) {
-      alert('Baseline videos are locked and cannot be deleted.');
-      return;
-    }
+  const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this video?')) return;
 
     try {
@@ -200,8 +205,8 @@ export default function AdminPortfolioPage() {
     }
   };
 
-  // ── Save form to DB ─────────────────────────────────────────────
-  const handleCreate = async (e: React.FormEvent) => {
+  // ── Save form to DB (Create or Update) ─────────────────────────
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!thumbUrl) { setError('Please upload a thumbnail image'); return; }
     if (!formData.title) { setError('Title is required'); return; }
@@ -209,8 +214,11 @@ export default function AdminPortfolioPage() {
     setSaving(true);
     setError('');
     try {
-      const res = await fetch('/api/portfolio', {
-        method: 'POST',
+      const url = editingItem ? `/api/portfolio/${editingItem.id}` : '/api/portfolio';
+      const method = editingItem ? 'PUT' : 'POST';
+
+      const res = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
@@ -221,7 +229,7 @@ export default function AdminPortfolioPage() {
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        setSuccessMsg('✅ Video added and assigned to selected sections!');
+        setSuccessMsg(editingItem ? '✅ Video updated successfully!' : '✅ Video added and assigned to selected sections!');
         resetModal();
         fetchPortfolio();
         setTimeout(() => setSuccessMsg(''), 4000);
@@ -234,6 +242,7 @@ export default function AdminPortfolioPage() {
 
   const resetModal = () => {
     setShowModal(false);
+    setEditingItem(null);
     setFormData({ title: '', category: 'Client Testimonial', clientName: '', description: '', metricLabel: 'Growth Result', metricValue: '' });
     setSelectedSections(['what-our-clients-say', 'work']);
     setThumbFile(null); setThumbPreview(''); setThumbUrl(''); setThumbState('idle');
@@ -242,8 +251,6 @@ export default function AdminPortfolioPage() {
     if (thumbRef.current) thumbRef.current.value = '';
     if (videoRef.current) videoRef.current.value = '';
   };
-
-  const allItems = [...LOCKED_VIDEOS, ...items];
 
   return (
     <AdminLayout>
@@ -256,11 +263,11 @@ export default function AdminPortfolioPage() {
               🎬 Portfolio & Videos Manager
             </h1>
             <p className="text-xs text-white/60 mt-1">
-              Upload videos, assign them to website sections (e.g. &quot;What Our Clients Say&quot;), and click to play &amp; verify.
+              Full CMS Control — Upload, edit, reassign, or delete any video on the website ({items.length} total).
             </p>
           </div>
           <button
-            onClick={() => { setShowModal(true); setError(''); }}
+            onClick={openCreateModal}
             className="px-5 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-lg"
           >
             + Add New Video
@@ -278,15 +285,13 @@ export default function AdminPortfolioPage() {
           <div className="text-center py-12 text-xs text-white/40">Loading portfolio &amp; video data…</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allItems.map((item) => {
+            {items.map((item) => {
               const activeSecs = item.sections || ['what-our-clients-say', 'work'];
 
               return (
                 <div
                   key={item.id}
-                  className={`bg-[#141419] border rounded-2xl overflow-hidden flex flex-col transition-all hover:border-[#F59A57]/60 ${
-                    item.isLocked ? 'border-white/10 opacity-90' : 'border-[#F59A57]/30'
-                  }`}
+                  className="bg-[#141419] border border-[#F59A57]/30 hover:border-[#F59A57] rounded-2xl overflow-hidden flex flex-col transition-all"
                 >
                   {/* Thumbnail & Interactive Video Play Overlay */}
                   <div
@@ -313,21 +318,26 @@ export default function AdminPortfolioPage() {
                       Click to Play Video
                     </span>
 
-                    {item.isLocked ? (
-                      <span className="absolute top-2 right-2 text-[10px] font-bold text-amber-400 bg-black/80 px-2 py-1 rounded-lg border border-amber-400/30">
-                        🔒 Baseline Locked
-                      </span>
-                    ) : (
+                    <div className="absolute top-2 right-2 flex items-center gap-1.5 z-20">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDelete(item.id, item.isLocked);
+                          openEditModal(item);
                         }}
-                        className="absolute top-2 right-2 text-[10px] font-bold text-red-400 bg-black/80 hover:bg-red-500 hover:text-white px-2 py-1 rounded-lg border border-red-500/30 transition-colors"
+                        className="text-[10px] font-bold text-[#F59A57] bg-black/80 hover:bg-[#F59A57] hover:text-black px-2 py-1 rounded-lg border border-[#F59A57]/30 transition-colors"
+                      >
+                        ✏️ Edit
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(item.id);
+                        }}
+                        className="text-[10px] font-bold text-red-400 bg-black/80 hover:bg-red-500 hover:text-white px-2 py-1 rounded-lg border border-red-500/30 transition-colors"
                       >
                         🗑️ Delete
                       </button>
-                    )}
+                    </div>
                   </div>
 
                   {/* Card Content & Section Tick-Boxes */}
@@ -435,7 +445,7 @@ export default function AdminPortfolioPage() {
             <div className="bg-[#14141a] border border-white/15 rounded-3xl p-6 sm:p-8 max-w-xl w-full text-white my-8">
               <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                 <h2 className="font-display font-extrabold text-xl uppercase tracking-wider">
-                  Add New Video to Website
+                  {editingItem ? 'Edit Video Details' : 'Add New Video to Website'}
                 </h2>
                 <button onClick={resetModal} className="text-white/50 hover:text-white text-xl font-bold">✕</button>
               </div>
@@ -446,7 +456,7 @@ export default function AdminPortfolioPage() {
                 </div>
               )}
 
-              <form onSubmit={handleCreate} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
 
                 {/* Title + Category */}
                 <div className="grid grid-cols-2 gap-4">
@@ -626,7 +636,7 @@ export default function AdminPortfolioPage() {
                   </button>
                   <button type="submit" disabled={saving || thumbState === 'uploading' || videoState === 'uploading'}
                     className="px-6 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-sm rounded-xl hover:scale-105 transition-all shadow-lg disabled:opacity-40 disabled:scale-100">
-                    {saving ? 'Saving…' : '+ Add Video'}
+                    {saving ? 'Saving…' : editingItem ? 'Save Changes' : '+ Add Video'}
                   </button>
                 </div>
               </form>

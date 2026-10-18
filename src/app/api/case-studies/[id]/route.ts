@@ -16,20 +16,20 @@ export async function PUT(
     const params = await props.params;
     const { id } = params;
 
-    if (id.startsWith('locked-')) {
-      return NextResponse.json(
-        { success: false, message: 'Baseline case studies are locked and cannot be edited.' },
-        { status: 403 }
-      );
-    }
-
     const conn = await connectToDatabase();
     if (!conn) {
       return NextResponse.json({ success: false, message: 'MongoDB not connected' }, { status: 503 });
     }
 
     const body = await request.json();
-    const updatedDoc = await CaseStudy.findByIdAndUpdate(id, body, { new: true });
+
+    let updatedDoc = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      updatedDoc = await CaseStudy.findByIdAndUpdate(id, body, { new: true });
+    }
+    if (!updatedDoc) {
+      updatedDoc = await CaseStudy.findOneAndUpdate({ slug: id }, body, { new: true });
+    }
 
     if (!updatedDoc) {
       return NextResponse.json({ success: false, message: 'Case study not found' }, { status: 404 });
@@ -43,7 +43,7 @@ export async function PUT(
 }
 
 export async function DELETE(
-  request: Request,
+  _request: Request,
   props: { params: Promise<{ id: string }> }
 ) {
   try {
@@ -55,19 +55,18 @@ export async function DELETE(
     const params = await props.params;
     const { id } = params;
 
-    if (id.startsWith('locked-')) {
-      return NextResponse.json(
-        { success: false, message: 'Baseline case studies are locked and cannot be deleted.' },
-        { status: 403 }
-      );
-    }
-
     const conn = await connectToDatabase();
     if (!conn) {
       return NextResponse.json({ success: false, message: 'MongoDB not connected' }, { status: 503 });
     }
 
-    const deletedDoc = await CaseStudy.findByIdAndDelete(id);
+    let deletedDoc = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      deletedDoc = await CaseStudy.findByIdAndDelete(id);
+    }
+    if (!deletedDoc) {
+      deletedDoc = await CaseStudy.findOneAndDelete({ slug: id });
+    }
 
     if (!deletedDoc) {
       return NextResponse.json({ success: false, message: 'Case study not found' }, { status: 404 });
