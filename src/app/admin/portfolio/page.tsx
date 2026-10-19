@@ -43,25 +43,19 @@ export default function AdminPortfolioPage() {
     description: '',
     metricLabel: 'Growth Result',
     metricValue: '',
+    videoUrl: '',
+    thumbnailUrl: '',
   });
 
   const [selectedSections, setSelectedSections] = useState<string[]>(['what-our-clients-say', 'work']);
 
-  // Upload state for thumbnail
+  // Upload state for thumbnail only (video upload is locked)
   const [thumbFile, setThumbFile] = useState<File | null>(null);
   const [thumbPreview, setThumbPreview] = useState('');
   const [thumbUrl, setThumbUrl] = useState('');
   const [thumbState, setThumbState] = useState<UploadState>('idle');
 
-  // Upload state for video
-  const [videoFile, setVideoFile] = useState<File | null>(null);
-  const [videoName, setVideoName] = useState('');
-  const [videoUrl, setVideoUrl] = useState('');
-  const [videoState, setVideoState] = useState<UploadState>('idle');
-  const [videoProgress, setVideoProgress] = useState('');
-
   const thumbRef = useRef<HTMLInputElement>(null);
-  const videoRef = useRef<HTMLInputElement>(null);
 
   // ── Fetch portfolio items from DB ──────────────────────────────
   const fetchPortfolio = async () => {
@@ -78,10 +72,21 @@ export default function AdminPortfolioPage() {
   // ── Handle open modal ──────────────────────────────────────────
   const openCreateModal = () => {
     setEditingItem(null);
-    setFormData({ title: '', category: 'Client Testimonial', clientName: '', description: '', metricLabel: 'Growth Result', metricValue: '' });
+    setFormData({
+      title: '',
+      category: 'Client Testimonial',
+      clientName: '',
+      description: '',
+      metricLabel: 'Growth Result',
+      metricValue: '',
+      videoUrl: items[0]?.videoUrl || '/vedios/business client testimonial/Video-60156.mp4',
+      thumbnailUrl: items[0]?.thumbnailUrl || '/vedios/business client testimonial/Video-60156_poster.jpg',
+    });
     setSelectedSections(['what-our-clients-say', 'work']);
-    setThumbFile(null); setThumbPreview(''); setThumbUrl(''); setThumbState('idle');
-    setVideoFile(null); setVideoName(''); setVideoUrl(''); setVideoState('idle'); setVideoProgress('');
+    setThumbFile(null);
+    setThumbPreview('');
+    setThumbUrl('');
+    setThumbState('idle');
     setError('');
     setShowModal(true);
   };
@@ -95,17 +100,14 @@ export default function AdminPortfolioPage() {
       description: item.description || '',
       metricLabel: item.metricLabel || 'Growth Result',
       metricValue: item.metricValue || '',
+      videoUrl: item.videoUrl || '',
+      thumbnailUrl: item.thumbnailUrl || '',
     });
     setSelectedSections(item.sections || ['what-our-clients-say', 'work']);
     setThumbFile(null);
     setThumbPreview(item.thumbnailUrl || '');
     setThumbUrl(item.thumbnailUrl || '');
     setThumbState(item.thumbnailUrl ? 'done' : 'idle');
-    setVideoFile(null);
-    setVideoName(item.videoUrl ? item.videoUrl.split('/').pop() || 'Video' : '');
-    setVideoUrl(item.videoUrl || '');
-    setVideoState(item.videoUrl ? 'done' : 'idle');
-    setVideoProgress('');
     setError('');
     setShowModal(true);
   };
@@ -140,7 +142,7 @@ export default function AdminPortfolioPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this video?')) return;
+    if (!confirm('Are you sure you want to delete this video item?')) return;
 
     try {
       const res = await fetch(`/api/portfolio/${id}`, { method: 'DELETE' });
@@ -173,42 +175,9 @@ export default function AdminPortfolioPage() {
     } catch { setError('Thumbnail upload failed'); setThumbState('error'); }
   };
 
-  // ── Handle video file select & auto-upload ─────────────────────
-  const handleVideoSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setVideoFile(file);
-    setVideoName(file.name);
-    setVideoUrl('');
-    setVideoState('uploading');
-    setVideoProgress(`Uploading ${(file.size / 1024 / 1024).toFixed(1)} MB…`);
-
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('type', 'video');
-    try {
-      const res = await fetch('/api/upload', { method: 'POST', body: fd });
-      const json = await res.json();
-      if (json.success) {
-        setVideoUrl(json.url);
-        setVideoState('done');
-        setVideoProgress(`✅ ${json.sizeMB} MB uploaded`);
-      } else {
-        setError(json.error || 'Video upload failed');
-        setVideoState('error');
-        setVideoProgress('');
-      }
-    } catch {
-      setError('Video upload failed');
-      setVideoState('error');
-      setVideoProgress('');
-    }
-  };
-
-  // ── Save form to DB (Create or Update) ─────────────────────────
+  // ── Save form to DB (Create or Update textual info) ────────────
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!thumbUrl) { setError('Please upload a thumbnail image'); return; }
     if (!formData.title) { setError('Title is required'); return; }
 
     setSaving(true);
@@ -217,19 +186,27 @@ export default function AdminPortfolioPage() {
       const url = editingItem ? `/api/portfolio/${editingItem.id}` : '/api/portfolio';
       const method = editingItem ? 'PUT' : 'POST';
 
+      const finalThumb = thumbUrl || formData.thumbnailUrl || editingItem?.thumbnailUrl || '/vedios-hero/1st__poster.jpg';
+      const finalVideo = formData.videoUrl || editingItem?.videoUrl || '';
+
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
-          thumbnailUrl: thumbUrl,
-          videoUrl: videoUrl || '',
+          title: formData.title,
+          category: formData.category,
+          clientName: formData.clientName,
+          description: formData.description,
+          metricLabel: formData.metricLabel,
+          metricValue: formData.metricValue,
+          thumbnailUrl: finalThumb,
+          videoUrl: finalVideo,
           sections: selectedSections,
         }),
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        setSuccessMsg(editingItem ? '✅ Video updated successfully!' : '✅ Video added and assigned to selected sections!');
+        setSuccessMsg(editingItem ? '✅ Video details updated successfully!' : '✅ Video entry created!');
         resetModal();
         fetchPortfolio();
         setTimeout(() => setSuccessMsg(''), 4000);
@@ -243,13 +220,20 @@ export default function AdminPortfolioPage() {
   const resetModal = () => {
     setShowModal(false);
     setEditingItem(null);
-    setFormData({ title: '', category: 'Client Testimonial', clientName: '', description: '', metricLabel: 'Growth Result', metricValue: '' });
+    setFormData({
+      title: '',
+      category: 'Client Testimonial',
+      clientName: '',
+      description: '',
+      metricLabel: 'Growth Result',
+      metricValue: '',
+      videoUrl: '',
+      thumbnailUrl: '',
+    });
     setSelectedSections(['what-our-clients-say', 'work']);
     setThumbFile(null); setThumbPreview(''); setThumbUrl(''); setThumbState('idle');
-    setVideoFile(null); setVideoName(''); setVideoUrl(''); setVideoState('idle'); setVideoProgress('');
     setError('');
     if (thumbRef.current) thumbRef.current.value = '';
-    if (videoRef.current) videoRef.current.value = '';
   };
 
   return (
@@ -263,14 +247,14 @@ export default function AdminPortfolioPage() {
               🎬 Portfolio & Videos Manager
             </h1>
             <p className="text-xs text-white/60 mt-1">
-              Full CMS Control — Upload, edit, reassign, or delete any video on the website ({items.length} total).
+              Full CMS Control — All {items.length} codebase videos displayed. Video uploads are locked; textual info and section assignments are 100% editable.
             </p>
           </div>
           <button
             onClick={openCreateModal}
             className="px-5 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-lg"
           >
-            + Add New Video
+            + Add / Configure Video
           </button>
         </div>
 
@@ -282,7 +266,7 @@ export default function AdminPortfolioPage() {
 
         {/* ─── Videos Grid ───────────────────────────────────────── */}
         {loading ? (
-          <div className="text-center py-12 text-xs text-white/40">Loading portfolio &amp; video data…</div>
+          <div className="text-center py-12 text-xs text-white/40">Loading all codebase videos…</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item) => {
@@ -291,20 +275,20 @@ export default function AdminPortfolioPage() {
               return (
                 <div
                   key={item.id}
-                  className="bg-[#141419] border border-[#F59A57]/30 hover:border-[#F59A57] rounded-2xl overflow-hidden flex flex-col transition-all"
+                  className="bg-[#141419] border border-[#F59A57]/30 hover:border-[#F59A57] rounded-2xl overflow-hidden flex flex-col transition-all group"
                 >
                   {/* Thumbnail & Interactive Video Play Overlay */}
                   <div
                     onClick={() => {
                       if (item.videoUrl) setPlayingVideo(item);
                     }}
-                    className="relative aspect-video bg-black cursor-pointer group overflow-hidden"
+                    className="relative aspect-video bg-black cursor-pointer overflow-hidden"
                   >
                     <img
                       src={item.thumbnailUrl}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      onError={(e) => { (e.target as HTMLImageElement).src = '/imp-doc/logo.png'; }}
+                      onError={(e) => { (e.target as HTMLImageElement).src = '/vedios-hero/1st__poster.jpg'; }}
                     />
                     
                     {/* Play Button */}
@@ -324,16 +308,16 @@ export default function AdminPortfolioPage() {
                           e.stopPropagation();
                           openEditModal(item);
                         }}
-                        className="text-[10px] font-bold text-[#F59A57] bg-black/80 hover:bg-[#F59A57] hover:text-black px-2 py-1 rounded-lg border border-[#F59A57]/30 transition-colors"
+                        className="text-[10px] font-bold text-[#F59A57] bg-black/80 hover:bg-[#F59A57] hover:text-black px-2.5 py-1 rounded-lg border border-[#F59A57]/40 transition-colors shadow-lg"
                       >
-                        ✏️ Edit
+                        ✏️ Edit Details
                       </button>
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleDelete(item.id);
                         }}
-                        className="text-[10px] font-bold text-red-400 bg-black/80 hover:bg-red-500 hover:text-white px-2 py-1 rounded-lg border border-red-500/30 transition-colors"
+                        className="text-[10px] font-bold text-red-400 bg-black/80 hover:bg-red-500 hover:text-white px-2.5 py-1 rounded-lg border border-red-500/40 transition-colors shadow-lg"
                       >
                         🗑️ Delete
                       </button>
@@ -343,7 +327,7 @@ export default function AdminPortfolioPage() {
                   {/* Card Content & Section Tick-Boxes */}
                   <div className="p-5 flex-grow flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-1">
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
                         <span className="text-[10px] font-extrabold text-[#F59A57] uppercase tracking-wider block">
                           {item.category}
                         </span>
@@ -353,7 +337,14 @@ export default function AdminPortfolioPage() {
                       </div>
 
                       <h3 className="font-bold text-base text-white mb-1 leading-tight">{item.title}</h3>
-                      <p className="text-xs text-white/60 mb-4 line-clamp-2">{item.description}</p>
+                      <p className="text-xs text-white/60 mb-3 line-clamp-2">{item.description}</p>
+
+                      {item.metricValue && (
+                        <div className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg mb-3">
+                          <span className="text-xs font-extrabold text-[#F59A57]">{item.metricValue}</span>
+                          {item.metricLabel && <span className="text-[10px] text-white/50">{item.metricLabel}</span>}
+                        </div>
+                      )}
                     </div>
 
                     {/* Section Assignment Checkboxes / Pills */}
@@ -409,19 +400,18 @@ export default function AdminPortfolioPage() {
                 </h2>
               </div>
 
-              <div className="aspect-video bg-black rounded-2xl overflow-hidden mb-4 relative border border-white/10 shadow-inner">
+              {/* HTML5 Video Element */}
+              <div className="aspect-video bg-black rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center">
                 {playingVideo.videoUrl ? (
                   <video
                     src={playingVideo.videoUrl}
                     controls
                     autoPlay
-                    playsInline
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center text-white/50 text-xs">
-                    <p className="text-2xl mb-2">⚠️</p>
-                    No video file URL attached. Poster thumbnail only.
+                  <div className="text-center p-8 text-white/40 text-xs">
+                    No video file attached
                   </div>
                 )}
               </div>
@@ -439,14 +429,19 @@ export default function AdminPortfolioPage() {
           </div>
         )}
 
-        {/* ─── Add Video Modal ─────────────────────────────────────── */}
+        {/* ─── Edit / Configure Video Modal ───────────────────────── */}
         {showModal && (
           <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-start justify-center p-4 overflow-y-auto">
             <div className="bg-[#14141a] border border-white/15 rounded-3xl p-6 sm:p-8 max-w-xl w-full text-white my-8">
               <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-                <h2 className="font-display font-extrabold text-xl uppercase tracking-wider">
-                  {editingItem ? 'Edit Video Details' : 'Add New Video to Website'}
-                </h2>
+                <div>
+                  <h2 className="font-display font-extrabold text-xl uppercase tracking-wider">
+                    {editingItem ? 'Edit Video Details' : 'Configure Video Entry'}
+                  </h2>
+                  <p className="text-xs text-white/50 mt-0.5">
+                    Customize title, client, story description, and section placements.
+                  </p>
+                </div>
                 <button onClick={resetModal} className="text-white/50 hover:text-white text-xl font-bold">✕</button>
               </div>
 
@@ -458,46 +453,110 @@ export default function AdminPortfolioPage() {
 
               <form onSubmit={handleSubmit} className="space-y-5">
 
-                {/* Title + Category */}
+                {/* Video Asset - Locked Indicator */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57]">
+                      Video Media Asset
+                    </label>
+                    <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">
+                      🔒 Video Upload Locked
+                    </span>
+                  </div>
+                  <div className="p-3.5 bg-white/5 border border-white/10 rounded-xl flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2.5 overflow-hidden">
+                      <span className="text-xl">🎬</span>
+                      <div className="overflow-hidden">
+                        <p className="text-xs font-mono font-bold text-white truncate">
+                          {formData.videoUrl || 'Pre-rendered Video Asset in Codebase'}
+                        </p>
+                        <p className="text-[10px] text-white/40">
+                          Pre-rendered HD stream asset in codebase
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono text-amber-300 bg-black/50 px-2 py-1 rounded border border-white/10 shrink-0">
+                      Protected
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-white/40 mt-1">
+                    Direct video uploads are locked. All textual information (title, client, category, story, metrics, and section placement) is fully editable.
+                  </p>
+                </div>
+
+                {/* Title + Client Name */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Title *</label>
                     <input
                       type="text" required value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      placeholder="e.g. Salon Transformation Reel"
+                      placeholder="e.g. Ali Salon"
                       className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Category *</label>
+                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Client / Brand Name *</label>
                     <input
-                      type="text" required value={formData.category}
-                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                      placeholder="e.g. Salon, Jewellery, Dining"
+                      type="text" required value={formData.clientName}
+                      onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
+                      placeholder="e.g. Ali Salon"
                       className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
                     />
                   </div>
                 </div>
 
-                {/* Client Name */}
+                {/* Category */}
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Client Name *</label>
+                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Category / Industry *</label>
                   <input
-                    type="text" required value={formData.clientName}
-                    onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-                    placeholder="e.g. Ali Salon"
+                    type="text" required value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    placeholder="e.g. Salon & Grooming or Restaurant"
                     className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
                   />
                 </div>
 
-                {/* Section Placement Selection (Checkboxes) */}
-                <div className="p-4 bg-white/5 border border-white/10 rounded-2xl space-y-2">
-                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57]">
-                    Select Website Section Placement *
+                {/* Description */}
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Description / Client Story</label>
+                  <textarea
+                    rows={2} value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder="e.g. 25 Years in Business. No Social Presence."
+                    className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
+                  />
+                </div>
+
+                {/* Metric Label + Value */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Metric Label</label>
+                    <input
+                      type="text" value={formData.metricLabel}
+                      onChange={(e) => setFormData({ ...formData, metricLabel: e.target.value })}
+                      placeholder="e.g. Inquiry Growth"
+                      className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Metric Value</label>
+                    <input
+                      type="text" value={formData.metricValue}
+                      onChange={(e) => setFormData({ ...formData, metricValue: e.target.value })}
+                      placeholder="e.g. 10X More Inquiries With Us"
+                      className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
+                    />
+                  </div>
+                </div>
+
+                {/* Section Assignments */}
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">
+                    Target Website Sections
                   </label>
-                  <p className="text-xs text-white/50 mb-3">
-                    Tick the section(s) where this video should automatically appear:
+                  <p className="text-[11px] text-white/50 mb-3">
+                    Tick the section(s) where this video should automatically appear on the website:
                   </p>
 
                   <div className="space-y-2">
@@ -510,7 +569,7 @@ export default function AdminPortfolioPage() {
                         <input
                           type="checkbox"
                           checked={selectedSections.includes(sec.id)}
-                          onChange={() => {}} // Handled by label click
+                          onChange={() => {}}
                           className="w-4 h-4 accent-[#F59A57] rounded cursor-pointer"
                         />
                         <span className="text-xs font-bold text-white">{sec.label}</span>
@@ -519,15 +578,15 @@ export default function AdminPortfolioPage() {
                   </div>
                 </div>
 
-                {/* Thumbnail Upload */}
+                {/* Thumbnail Image */}
                 <div>
                   <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">
-                    Thumbnail Image * <span className="text-white/30 normal-case font-normal">(max 5 MB)</span>
+                    Poster / Thumbnail Image
                   </label>
                   <div
                     onClick={() => thumbRef.current?.click()}
                     className={`border-2 border-dashed rounded-2xl p-4 text-center cursor-pointer transition-all ${
-                      thumbState === 'done'
+                      thumbState === 'done' || thumbPreview
                         ? 'border-emerald-500/50 bg-emerald-500/5'
                         : 'border-white/20 hover:border-[#F59A57]/50'
                     }`}
@@ -536,96 +595,21 @@ export default function AdminPortfolioPage() {
                       <div className="flex items-center gap-4">
                         <img src={thumbPreview} alt="thumb" className="h-16 w-24 object-cover rounded-lg" />
                         <div className="text-left">
-                          <p className="text-xs font-bold text-white">{thumbFile?.name}</p>
+                          <p className="text-xs font-bold text-white">{thumbFile?.name || 'Existing Poster'}</p>
                           {thumbState === 'uploading' && <p className="text-xs text-amber-400 flex items-center gap-1.5 mt-1"><span className="w-3 h-3 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />Uploading…</p>}
-                          {thumbState === 'done' && <p className="text-xs text-emerald-400 mt-1">✅ Uploaded</p>}
+                          {(thumbState === 'done' || !thumbFile) && <p className="text-xs text-emerald-400 mt-1">✅ Ready (Click to change image)</p>}
                           {thumbState === 'error' && <p className="text-xs text-red-400 mt-1">❌ Failed</p>}
                         </div>
                       </div>
                     ) : (
                       <div className="py-3">
                         <p className="text-2xl mb-1">🖼️</p>
-                        <p className="text-xs font-bold text-white/60">Click to upload thumbnail</p>
-                        <p className="text-[10px] text-white/30">PNG, JPG, WebP</p>
+                        <p className="text-xs font-bold text-white/60">Click to upload custom thumbnail</p>
+                        <p className="text-[10px] text-white/30">PNG, JPG, WebP (max 5 MB)</p>
                       </div>
                     )}
                   </div>
                   <input ref={thumbRef} type="file" accept="image/*" onChange={handleThumbSelect} className="hidden" />
-                </div>
-
-                {/* Video Upload */}
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">
-                    Video File <span className="text-white/30 normal-case font-normal">(MP4 · max 15 MB)</span>
-                  </label>
-                  <div
-                    onClick={() => videoRef.current?.click()}
-                    className={`border-2 border-dashed rounded-2xl p-4 text-center cursor-pointer transition-all ${
-                      videoState === 'done'
-                        ? 'border-emerald-500/50 bg-emerald-500/5'
-                        : videoState === 'uploading'
-                        ? 'border-amber-400/50 bg-amber-400/5'
-                        : 'border-white/20 hover:border-[#F59A57]/50'
-                    }`}
-                  >
-                    {videoName ? (
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">🎬</span>
-                        <div className="text-left">
-                          <p className="text-xs font-bold text-white truncate max-w-[240px]">{videoName}</p>
-                          {videoProgress && (
-                            <p className={`text-xs mt-1 flex items-center gap-1.5 ${
-                              videoState === 'uploading' ? 'text-amber-400' :
-                              videoState === 'done' ? 'text-emerald-400' : 'text-red-400'
-                            }`}>
-                              {videoState === 'uploading' && <span className="w-3 h-3 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />}
-                              {videoProgress}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="py-3">
-                        <p className="text-2xl mb-1">🎬</p>
-                        <p className="text-xs font-bold text-white/60">Click to upload video</p>
-                        <p className="text-[10px] text-white/30">MP4 only · max 15 MB</p>
-                      </div>
-                    )}
-                  </div>
-                  <input ref={videoRef} type="file" accept="video/mp4,video/webm" onChange={handleVideoSelect} className="hidden" />
-                </div>
-
-                {/* Description */}
-                <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Description</label>
-                  <textarea
-                    rows={2} value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    placeholder="Brief description of the client video…"
-                    className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57] resize-none"
-                  />
-                </div>
-
-                {/* Metric */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Metric Label</label>
-                    <input
-                      type="text" value={formData.metricLabel}
-                      onChange={(e) => setFormData({ ...formData, metricLabel: e.target.value })}
-                      placeholder="e.g. Growth Result"
-                      className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] font-bold uppercase tracking-widest text-[#F59A57] mb-1.5">Metric Value</label>
-                    <input
-                      type="text" value={formData.metricValue}
-                      onChange={(e) => setFormData({ ...formData, metricValue: e.target.value })}
-                      placeholder="e.g. +240% or 10X Inquiries"
-                      className="w-full px-3 py-2.5 bg-white/5 border border-white/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#F59A57]"
-                    />
-                  </div>
                 </div>
 
                 {/* Actions */}
@@ -634,9 +618,9 @@ export default function AdminPortfolioPage() {
                     className="px-5 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm text-white transition-colors">
                     Cancel
                   </button>
-                  <button type="submit" disabled={saving || thumbState === 'uploading' || videoState === 'uploading'}
+                  <button type="submit" disabled={saving || thumbState === 'uploading'}
                     className="px-6 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-sm rounded-xl hover:scale-105 transition-all shadow-lg disabled:opacity-40 disabled:scale-100">
-                    {saving ? 'Saving…' : editingItem ? 'Save Changes' : '+ Add Video'}
+                    {saving ? 'Saving…' : editingItem ? 'Save Changes' : '+ Save Video'}
                   </button>
                 </div>
               </form>

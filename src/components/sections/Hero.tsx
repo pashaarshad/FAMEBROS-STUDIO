@@ -72,9 +72,24 @@ const businessHeroCards = [
 ];
 
 export default function Hero() {
-  const { getContent, brands } = useSiteContent();
+  const { getContent, brands, portfolio } = useSiteContent();
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
+
+  // Merge any dynamic CMS edits to hero production reels
+  const activeHeroCards = businessHeroCards.map((base) => {
+    const matched = portfolio?.find((p) => p.videoUrl === base.videoSrc);
+    if (!matched) return base;
+    return {
+      ...base,
+      name: matched.clientName || base.name,
+      role: matched.category || base.role,
+      quote: matched.description || base.quote,
+      growth: matched.metricValue || base.growth,
+      growthLabel: matched.metricLabel || base.growthLabel,
+      img: matched.thumbnailUrl || base.img,
+    };
+  });
 
   const displayLogos = brands && brands.length > 0
     ? brands.map(b => ({ name: b.name, src: b.logoUrl }))
@@ -199,7 +214,7 @@ export default function Hero() {
         
         {/* Unified Responsive Tilted Fan Grid (2 cols on mobile, 4 cols on desktop) - Single DOM instance per card */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-4 items-center justify-center py-4 lg:py-6 max-w-lg lg:max-w-none mx-auto lg:mx-0 px-2">
-          {businessHeroCards.map((card, idx) => {
+          {activeHeroCards.map((card, idx) => {
             const isPlaying = activeVideoIdx === idx;
             const isHovered = hoveredIdx === idx;
             

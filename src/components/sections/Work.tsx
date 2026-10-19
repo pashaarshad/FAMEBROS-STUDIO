@@ -83,22 +83,21 @@ export default function Work() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
-  // Dynamic portfolio items added from dashboard
-  const dynamicItems = portfolio
-    .filter((p) => {
-      if (p.isLocked) return false;
-      if (!p.sections || p.sections.length === 0) return true;
-      return p.sections.includes('what-our-clients-say') || p.sections.includes('work');
-    })
-    .map((p) => ({
-      videoUrl: p.videoUrl || '',
-      img: p.thumbnailUrl || '/vedios-hero/1st__poster.jpg',
-      title: p.title,
-      desc: p.description || p.clientName,
-      metric: p.metricValue || 'Growth Partner',
-    }));
+  // Dynamic portfolio items from database / SiteContentContext
+  const assignedPortfolio = portfolio.filter((p) => {
+    if (!p.sections || p.sections.length === 0) return true;
+    return p.sections.includes('what-our-clients-say') || p.sections.includes('work');
+  });
 
-  const displayWorkItems = [...businessWorkItems, ...dynamicItems];
+  const displayWorkItems = assignedPortfolio.length > 0
+    ? assignedPortfolio.map((p) => ({
+        videoUrl: p.videoUrl || '',
+        img: p.thumbnailUrl || '/vedios-hero/1st__poster.jpg',
+        title: p.title,
+        desc: p.description || p.clientName,
+        metric: p.metricValue || 'Growth Partner',
+      }))
+    : businessWorkItems;
 
   const scrollLeft = () => {
     if (containerRef.current) {
