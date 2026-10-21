@@ -125,9 +125,26 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'id is required' }, { status: 400 });
     }
 
-    const brand = await Brand.findById(id);
+    let brand = null;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      brand = await Brand.findById(id);
+    } else if (id.startsWith('baseline_')) {
+      const idx = parseInt(id.replace('baseline_', ''), 10);
+      if (!isNaN(idx) && BASELINE_BRANDS[idx]) {
+        brand = await Brand.findOne({
+          $or: [{ name: BASELINE_BRANDS[idx].name }, { logoUrl: BASELINE_BRANDS[idx].logoUrl }],
+        });
+      }
+    }
+
     if (!brand) {
-      return NextResponse.json({ success: false, error: 'Not found' }, { status: 404 });
+      brand = await Brand.findOne({
+        $or: [{ name: id }, { logoUrl: id }],
+      });
+    }
+
+    if (!brand) {
+      return NextResponse.json({ success: true, message: 'Deleted' });
     }
 
     await brand.deleteOne();

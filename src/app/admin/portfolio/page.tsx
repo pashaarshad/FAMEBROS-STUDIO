@@ -130,7 +130,10 @@ export default function AdminPortfolioPage() {
       const res = await fetch(`/api/portfolio/${item.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sections: newSecs }),
+        body: JSON.stringify({
+          ...item,
+          sections: newSecs,
+        }),
       });
       const data = await res.json();
       if (data.success) {

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import mongoose from 'mongoose';
 import { connectToDatabase } from '@/lib/mongodb';
 import Lead from '@/models/Lead';
 import { isAuthenticated } from '@/lib/auth';
@@ -102,7 +103,12 @@ export async function PUT(request: Request) {
       return NextResponse.json({ success: false, message: 'Missing id or status' }, { status: 400 });
     }
 
-    const updatedLead = await Lead.findByIdAndUpdate(id, { status }, { new: true });
+    let updatedLead = null;
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      updatedLead = await Lead.findByIdAndUpdate(id, { status }, { new: true });
+    } else {
+      return NextResponse.json({ success: true, message: 'Sample lead status updated' });
+    }
     return NextResponse.json({ success: true, data: updatedLead });
   } catch (error) {
     console.error('PUT Lead Error:', error);
