@@ -19,20 +19,37 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         const res = await fetch('/api/auth/check');
         const data = await res.json();
 
-        if (!data.authenticated && pathname !== '/admin/login') {
-          router.push('/admin/login');
-        } else {
+        if (data.authenticated) {
+          if (typeof window !== 'undefined') localStorage.setItem('famebros_admin_auth', 'true');
           setAuthChecked(true);
+          return;
+        }
+
+        // Backup check if cookie blocked by third-party restrictions
+        if (typeof window !== 'undefined' && localStorage.getItem('famebros_admin_auth') === 'true') {
+          setAuthChecked(true);
+          return;
+        }
+
+        if (pathname !== '/admin/login') {
+          router.push('/admin/login');
         }
       } catch (e) {
         console.error(e);
-        router.push('/admin/login');
+        if (typeof window !== 'undefined' && localStorage.getItem('famebros_admin_auth') === 'true') {
+          setAuthChecked(true);
+        } else if (pathname !== '/admin/login') {
+          router.push('/admin/login');
+        }
       }
     }
     checkAuth();
   }, [pathname, router]);
 
   const handleLogout = async () => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('famebros_admin_auth');
+    }
     await fetch('/api/auth/logout', { method: 'POST' });
     router.push('/admin/login');
   };

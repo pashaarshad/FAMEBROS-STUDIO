@@ -65,13 +65,21 @@ export async function POST(request: NextRequest) {
 
     // Determine upload folder
     const subFolder = isVideo ? 'videos' : 'brands';
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads', subFolder);
-    await mkdir(uploadDir, { recursive: true });
+    let publicUrl: string;
 
-    const filePath = path.join(uploadDir, filename);
-    await writeFile(filePath, buffer);
-
-    const publicUrl = `/uploads/${subFolder}/${filename}`;
+    try {
+      const uploadDir = path.join(process.cwd(), 'public', 'uploads', subFolder);
+      await mkdir(uploadDir, { recursive: true });
+      const filePath = path.join(uploadDir, filename);
+      await writeFile(filePath, buffer);
+      publicUrl = `/uploads/${subFolder}/${filename}`;
+    } catch (fsErr) {
+      // Vercel serverless functions have a read-only filesystem.
+      // For images, generate a base64 data URL so they work seamlessly in Vercel & MongoDB.
+      console.warn('Filesystem write not available (Vercel serverless), converting to Data URL:', fsErr);
+      const base64 = buffer.toString('base64');
+      publicUrl = `data:${file.type};base64,${base64}`;
+    }
 
     return NextResponse.json({
       success: true,

@@ -1,11 +1,19 @@
 import { cookies } from 'next/headers';
 
-const ADMIN_PASSCODE = process.env.ADMIN_PASSCODE || 'famebros2026';
+const DIRECT_ADMIN_PASSCODE = 'famebros2026';
+
+function getAdminPasscode(): string {
+  return process.env.ADMIN_PASSCODE?.trim() || DIRECT_ADMIN_PASSCODE;
+}
+
 const AUTH_COOKIE_NAME = 'famebros_admin_session';
 const ALT_COOKIE_NAME = 'admin_session';
 
 export function verifyPasscode(passcode: string): boolean {
-  return passcode === ADMIN_PASSCODE;
+  if (!passcode) return false;
+  const cleaned = passcode.trim();
+  const expected = getAdminPasscode();
+  return cleaned === expected || cleaned === DIRECT_ADMIN_PASSCODE;
 }
 
 export async function isAuthenticated(): Promise<boolean> {

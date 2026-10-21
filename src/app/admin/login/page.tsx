@@ -18,12 +18,15 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ passcode }),
+        body: JSON.stringify({ passcode: passcode.trim() }),
       });
 
       const data = await res.json();
 
       if (res.ok && data.success) {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('famebros_admin_auth', 'true');
+        }
         router.push('/admin');
       } else {
         setError(data.message || 'Incorrect admin passcode.');
