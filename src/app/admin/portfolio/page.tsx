@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
+import { ALL_CODE_VIDEOS } from '@/lib/portfolioConstants';
 
 interface PortfolioItem {
   id: string;
@@ -35,6 +36,13 @@ export default function AdminPortfolioPage() {
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
+  // Emergency PIN Dialog state (PIN: 6565)
+  const [pinModalOpen, setPinModalOpen] = useState(false);
+  const [pinTarget, setPinTarget] = useState<'single' | 'all'>('single');
+  const [pinInput, setPinInput] = useState('');
+  const [pinError, setPinError] = useState('');
+  const [pinLoading, setPinLoading] = useState(false);
+
   // Form state
   const [formData, setFormData] = useState({
     title: '',
@@ -57,17 +65,112 @@ export default function AdminPortfolioPage() {
 
   const thumbRef = useRef<HTMLInputElement>(null);
 
-  // ── Fetch portfolio items from DB ──────────────────────────────
+  // ── Fetch portfolio items from DB with deduplication ───────────
   const fetchPortfolio = async () => {
     try {
       const res = await fetch('/api/portfolio');
       const data = await res.json();
-      if (data.success) setItems(data.data || []);
+      if (data.success && Array.isArray(data.data)) {
+        // Strict deduplication by videoUrl so each video only appears once
+        const seen = new Set<string>();
+        const unique = data.data.filter((item: PortfolioItem) => {
+          const key = item.videoUrl ? item.videoUrl.trim() : item.id;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+        setItems(unique);
+      }
     } catch { /* silent */ }
     finally { setLoading(false); }
   };
 
   useEffect(() => { fetchPortfolio(); }, []);
+
+  // ── Handle Emergency Reset with PIN 6565 ──────────────────────
+  const openResetSingleModal = () => {
+    setPinTarget('single');
+    setPinInput('');
+    setPinError('');
+    setPinModalOpen(true);
+  };
+
+  const openResetAllModal = () => {
+    setPinTarget('all');
+    setPinInput('');
+    setPinError('');
+    setPinModalOpen(true);
+  };
+
+  const handleConfirmPin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pinInput.trim() !== '6565') {
+      setPinError('❌ Incorrect Emergency PIN. Please enter 6565.');
+      return;
+    }
+
+    setPinLoading(true);
+    setPinError('');
+
+    try {
+      if (pinTarget === 'single') {
+        const targetVideoUrl = editingItem?.videoUrl || formData.videoUrl;
+        const res = await fetch('/api/portfolio/reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: '6565', videoUrl: targetVideoUrl }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          const defaultData = ALL_CODE_VIDEOS.find((v) => v.videoUrl === targetVideoUrl);
+          if (defaultData) {
+            setFormData({
+              title: defaultData.title,
+              category: defaultData.category,
+              clientName: defaultData.clientName,
+              description: defaultData.description,
+              metricLabel: defaultData.metricLabel,
+              metricValue: defaultData.metricValue,
+              videoUrl: defaultData.videoUrl,
+              thumbnailUrl: defaultData.thumbnailUrl,
+            });
+            setSelectedSections(defaultData.sections || ['what-our-clients-say', 'work']);
+            setThumbPreview(defaultData.thumbnailUrl);
+            setThumbUrl(defaultData.thumbnailUrl);
+            setThumbState('done');
+          }
+          setSuccessMsg(`✅ "${defaultData?.title || 'Video'}" restored to default content!`);
+          setPinModalOpen(false);
+          fetchPortfolio();
+          setTimeout(() => setSuccessMsg(''), 4000);
+        } else {
+          setPinError(data.message || 'Failed to restore default content');
+        }
+      } else {
+        const res = await fetch('/api/portfolio/reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pin: '6565' }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          setSuccessMsg('✅ All 18 portfolio items restored to pristine defaults!');
+          setPinModalOpen(false);
+          setShowModal(false);
+          fetchPortfolio();
+          setTimeout(() => setSuccessMsg(''), 4000);
+        } else {
+          setPinError(data.message || 'Failed to reset all items');
+        }
+      }
+    } catch {
+      setPinError('Connection error contacting server');
+    } finally {
+      setPinLoading(false);
+    }
+  };
 
   // ── Handle open modal ──────────────────────────────────────────
   const openCreateModal = () => {
@@ -253,12 +356,23 @@ export default function AdminPortfolioPage() {
               Full CMS Control — All {items.length} codebase videos displayed. Video uploads are locked; textual info and section assignments are 100% editable.
             </p>
           </div>
-          <button
-            onClick={openCreateModal}
-            className="px-5 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-lg"
-          >
-            + Add / Configure Video
-          </button>
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={openResetAllModal}
+              className="px-4 py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5"
+              title="Emergency restore all 18 videos back to pristine default content (PIN 6565)"
+            >
+              <span>↺</span>
+              <span>Put All Default Content</span>
+            </button>
+            <button
+              onClick={openCreateModal}
+              className="px-5 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 transition-all shadow-lg"
+            >
+              + Add / Configure Video
+            </button>
+          </div>
         </div>
 
         {successMsg && (
@@ -616,14 +730,94 @@ export default function AdminPortfolioPage() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex justify-end gap-3 pt-2">
-                  <button type="button" onClick={resetModal}
-                    className="px-5 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm text-white transition-colors">
+                <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 pt-2">
+                  {editingItem ? (
+                    <button
+                      type="button"
+                      onClick={openResetSingleModal}
+                      className="px-4 py-2.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-xl font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
+                      title="Reset this video back to baseline default content (PIN 6565)"
+                    >
+                      <span>↺</span>
+                      <span>Put Default Content</span>
+                    </button>
+                  ) : <div />}
+
+                  <div className="flex items-center justify-end gap-3">
+                    <button type="button" onClick={resetModal}
+                      className="px-5 py-3 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm text-white transition-colors">
+                      Cancel
+                    </button>
+                    <button type="submit" disabled={saving || thumbState === 'uploading'}
+                      className="px-6 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-sm rounded-xl hover:scale-105 transition-all shadow-lg disabled:opacity-40 disabled:scale-100">
+                      {saving ? 'Saving…' : editingItem ? 'Save Changes' : '+ Save Video'}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* ─── Emergency PIN Dialog (PIN: 6565) ───────────────────── */}
+        {pinModalOpen && (
+          <div className="fixed inset-0 z-[70] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+            <div className="bg-[#1c1c24] border border-amber-500/40 rounded-3xl p-6 sm:p-7 max-w-sm w-full text-white shadow-2xl relative">
+              <button
+                type="button"
+                onClick={() => { setPinModalOpen(false); setPinInput(''); setPinError(''); }}
+                className="absolute top-4 right-4 text-white/50 hover:text-white font-bold"
+              >
+                ✕
+              </button>
+
+              <div className="text-center mb-5">
+                <div className="w-14 h-14 mx-auto mb-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center text-2xl">
+                  🔐
+                </div>
+                <h3 className="font-display font-extrabold text-lg text-white">
+                  {pinTarget === 'all' ? 'Reset All to Default' : 'Put Default Content'}
+                </h3>
+                <p className="text-xs text-white/60 mt-1">
+                  {pinTarget === 'all'
+                    ? 'Enter emergency PIN to restore all 18 codebase videos to pristine defaults.'
+                    : `Enter emergency PIN to restore original default content for "${editingItem?.title || 'this video'}".`}
+                </p>
+              </div>
+
+              <form onSubmit={handleConfirmPin} className="space-y-4">
+                <div>
+                  <label className="block text-[10px] font-bold uppercase tracking-widest text-amber-400 text-center mb-2">
+                    Enter Emergency PIN (6565)
+                  </label>
+                  <input
+                    type="password"
+                    maxLength={6}
+                    value={pinInput}
+                    onChange={(e) => { setPinInput(e.target.value); setPinError(''); }}
+                    placeholder="Enter PIN"
+                    autoFocus
+                    className="w-full text-center tracking-widest text-xl font-mono px-4 py-3 bg-black/60 border border-white/20 focus:border-amber-400 rounded-xl text-white outline-none"
+                  />
+                  {pinError && (
+                    <p className="text-xs text-red-400 text-center mt-2 font-medium">{pinError}</p>
+                  )}
+                </div>
+
+                <div className="flex gap-2.5 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => { setPinModalOpen(false); setPinInput(''); setPinError(''); }}
+                    className="flex-1 py-3 bg-white/10 hover:bg-white/15 text-white/70 font-bold text-xs rounded-xl transition-colors"
+                  >
                     Cancel
                   </button>
-                  <button type="submit" disabled={saving || thumbState === 'uploading'}
-                    className="px-6 py-3 bg-gradient-to-r from-[#F59A57] to-[#FF8A3D] text-black font-extrabold text-sm rounded-xl hover:scale-105 transition-all shadow-lg disabled:opacity-40 disabled:scale-100">
-                    {saving ? 'Saving…' : editingItem ? 'Save Changes' : '+ Save Video'}
+                  <button
+                    type="submit"
+                    disabled={pinLoading || !pinInput}
+                    className="flex-1 py-3 bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs rounded-xl transition-all shadow-md disabled:opacity-40"
+                  >
+                    {pinLoading ? 'Restoring…' : 'Confirm (6565)'}
                   </button>
                 </div>
               </form>

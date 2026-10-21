@@ -89,8 +89,17 @@ export default function Work() {
     return p.sections.includes('what-our-clients-say') || p.sections.includes('work');
   });
 
-  const displayWorkItems = assignedPortfolio.length > 0
-    ? assignedPortfolio.map((p) => ({
+  // Guarantee each client testimonial video appears only ONCE
+  const seenWorkUrls = new Set<string>();
+  const uniqueAssigned = assignedPortfolio.filter((p) => {
+    const key = p.videoUrl ? p.videoUrl.trim() : p.title;
+    if (seenWorkUrls.has(key)) return false;
+    seenWorkUrls.add(key);
+    return true;
+  });
+
+  const displayWorkItems = uniqueAssigned.length > 0
+    ? uniqueAssigned.map((p) => ({
         videoUrl: p.videoUrl || '',
         img: p.thumbnailUrl || '/vedios-hero/1st__poster.jpg',
         title: p.title,

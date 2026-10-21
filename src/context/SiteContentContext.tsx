@@ -68,8 +68,15 @@ export const SiteContentProvider: React.FC<{ children: React.ReactNode }> = ({ c
         if (brandsJson?.data) {
           setBrands(brandsJson.data);
         }
-        if (portJson?.data) {
-          setPortfolio(portJson.data);
+        if (portJson?.data && Array.isArray(portJson.data)) {
+          const seen = new Set<string>();
+          const uniquePort = portJson.data.filter((item: PortfolioItem) => {
+            const key = item.videoUrl ? item.videoUrl.trim() : item.id || item.title;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+          setPortfolio(uniquePort);
         }
       } catch (e) {
         console.error('Error fetching site content context:', e);

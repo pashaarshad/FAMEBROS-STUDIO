@@ -20,11 +20,31 @@ export async function GET() {
       }
 
       const docs = await PortfolioItem.find({}).sort({ createdAt: 1 }).lean();
-      const mongoItems = docs.map((doc) => ({
-        ...doc,
-        id: doc._id.toString(),
-        isLocked: false,
-      }));
+      
+      const seenUrls = new Set<string>();
+      const mongoItems = [];
+      const duplicateIds: string[] = [];
+
+      for (const doc of docs) {
+        const key = doc.videoUrl ? doc.videoUrl.trim() : doc._id.toString();
+        if (seenUrls.has(key)) {
+          duplicateIds.push(doc._id.toString());
+          continue;
+        }
+        seenUrls.add(key);
+        mongoItems.push({
+          ...doc,
+          id: doc._id.toString(),
+          isLocked: false,
+        });
+      }
+
+      // Automatically prune duplicate records from MongoDB Atlas in background
+      if (duplicateIds.length > 0) {
+        PortfolioItem.deleteMany({ _id: { $in: duplicateIds } }).catch((err) =>
+          console.error('Failed to cleanup duplicate portfolio items:', err)
+        );
+      }
 
       return NextResponse.json({ success: true, data: mongoItems });
     }
