@@ -2,27 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Brand } from '@/models/Brand';
 import { isAuthenticated } from '@/lib/auth';
-
-// Baseline locked brands (from Hero.tsx clientLogos)
-const BASELINE_BRANDS = [
-  { name: 'Audi',                      logoUrl: '/clients-logo/Audi.webp' },
-  { name: 'Cadbury',                   logoUrl: '/clients-logo/Cadbury-logo.png' },
-  { name: 'Cello Writing',             logoUrl: '/clients-logo/Cello Writing-logo.png' },
-  { name: 'Filmfare',                  logoUrl: '/clients-logo/Filmfare-logo.png' },
-  { name: 'Flipkart',                  logoUrl: '/clients-logo/Flipkart-logo.png' },
-  { name: 'Hip-hop',                   logoUrl: '/clients-logo/Hip-hop-logo.jpg' },
-  { name: 'Indian Idol',               logoUrl: '/clients-logo/Indian Idol-logo.png' },
-  { name: 'JioMart',                   logoUrl: '/clients-logo/JioMart-logo.png' },
-  { name: 'Laughter Chefs',            logoUrl: '/clients-logo/Laughter Chefs-logo.png' },
-  { name: 'Launch Control',            logoUrl: '/clients-logo/Launch Control-logo.png' },
-  { name: 'Meta',                      logoUrl: '/clients-logo/Meta-Logo.png' },
-  { name: 'Netflix',                   logoUrl: '/clients-logo/Netflix-logo.webp' },
-  { name: 'Pro Govinda India',         logoUrl: '/clients-logo/Pro Govinda India-logo.png' },
-  { name: 'Red Chillies Entertainment',logoUrl: '/clients-logo/Red Chillies Entertainment-logo.webp' },
-  { name: 'Samsung',                   logoUrl: '/clients-logo/Samsung-logo.png' },
-  { name: 'Baskin Robbins',            logoUrl: '/clients-logo/baskin-robbins-logo.png' },
-  { name: 'Realme',                    logoUrl: '/clients-logo/realme_logo.png' },
-];
+import { BASELINE_BRANDS } from '@/lib/brandsConstants';
 
 /** GET /api/brands — returns all brands from MongoDB (auto-seeds baseline brands if empty) */
 export async function GET() {
@@ -128,8 +108,8 @@ export async function DELETE(request: NextRequest) {
     let brand = null;
     if (id.match(/^[0-9a-fA-F]{24}$/)) {
       brand = await Brand.findById(id);
-    } else if (id.startsWith('baseline_')) {
-      const idx = parseInt(id.replace('baseline_', ''), 10);
+    } else if (id.startsWith('baseline_') || id.startsWith('b_')) {
+      const idx = parseInt(id.replace('baseline_', '').replace('b_', ''), 10);
       if (!isNaN(idx) && BASELINE_BRANDS[idx]) {
         brand = await Brand.findOne({
           $or: [{ name: BASELINE_BRANDS[idx].name }, { logoUrl: BASELINE_BRANDS[idx].logoUrl }],

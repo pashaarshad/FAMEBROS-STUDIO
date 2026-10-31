@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { SITE_CONTENT_DEFAULTS } from '@/lib/siteContentDefaults';
+import { ALL_CODE_VIDEOS } from '@/lib/portfolioConstants';
+import { BASELINE_BRANDS } from '@/lib/brandsConstants';
 
 export interface BrandItem {
   id: string;
@@ -24,6 +26,27 @@ export interface PortfolioItem {
   isLocked?: boolean;
 }
 
+export const INITIAL_PORTFOLIO: PortfolioItem[] = ALL_CODE_VIDEOS.map((item, idx) => ({
+  id: item.id || `p_${idx}`,
+  title: item.title,
+  category: item.category,
+  clientName: item.clientName,
+  thumbnailUrl: item.thumbnailUrl,
+  videoUrl: item.videoUrl,
+  description: item.description,
+  metricLabel: item.metricLabel,
+  metricValue: item.metricValue,
+  sections: item.sections,
+  isLocked: false,
+}));
+
+export const INITIAL_BRANDS: BrandItem[] = BASELINE_BRANDS.map((b) => ({
+  id: b.id,
+  name: b.name,
+  logoUrl: b.logoUrl,
+  isLocked: false,
+}));
+
 interface SiteContentContextType {
   getContent: (section: string, key: string) => string;
   allContent: Record<string, Record<string, string>>;
@@ -35,15 +58,15 @@ interface SiteContentContextType {
 const SiteContentContext = createContext<SiteContentContextType>({
   getContent: (section, key) => SITE_CONTENT_DEFAULTS[section]?.[key] ?? '',
   allContent: SITE_CONTENT_DEFAULTS,
-  brands: [],
-  portfolio: [],
+  brands: INITIAL_BRANDS,
+  portfolio: INITIAL_PORTFOLIO,
   isLivePreview: false,
 });
 
 export const SiteContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [allContent, setAllContent] = useState<Record<string, Record<string, string>>>(SITE_CONTENT_DEFAULTS);
-  const [brands, setBrands] = useState<BrandItem[]>([]);
-  const [portfolio, setPortfolio] = useState<PortfolioItem[]>([]);
+  const [brands, setBrands] = useState<BrandItem[]>(INITIAL_BRANDS);
+  const [portfolio, setPortfolio] = useState<PortfolioItem[]>(INITIAL_PORTFOLIO);
   const [isLivePreview, setIsLivePreview] = useState(false);
 
   // Initial fetch from API routes

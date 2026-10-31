@@ -7,16 +7,16 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-60156.mp4",
     img: "/vedios/business client testimonial/Video-60156_poster.jpg",
-    title: "Ali Salon",
-    desc: "25 Years in Business. No Social Presence.",
+    title: "Ali & Hussain Salon Social Media Growth",
+    desc: "Famebros Studio manages the salon’s complete social media presence, helping build stronger online visibility, consistent content and business growth.",
     metric: "10X More Inquiries With Us"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-68531.mp4",
     img: "/vedios/business client testimonial/Video-68531_poster.jpg",
-    title: "SK Furniture",
-    desc: "Customer Queues Despite an Offbeat Location",
-    metric: "10K+ Followers in 6 Months"
+    title: "SK Furniture Social Media Growth",
+    desc: "Famebros Studio manages SK Furniture’s social media, building stronger online visibility through consistent content and marketing.",
+    metric: "Social Media Management"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-71170.mp4",
@@ -28,51 +28,79 @@ const businessWorkItems = [
   {
     videoUrl: "/vedios/business client testimonial/Video-71381.mp4",
     img: "/vedios/business client testimonial/Video-71381_poster.jpg",
-    title: "Jolly Honest Tailor",
-    desc: "50 Years in Business",
-    metric: "3 Years With Us"
+    title: "Jolly Honest Tailor Social Media Growth",
+    desc: "Famebros Studio manages Jolly Honest Tailor’s social media, building stronger online visibility through consistent content, reels and marketing.",
+    metric: "Social Media Management"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-74493.mp4",
     img: "/vedios/business client testimonial/Video-74493_poster.jpg",
-    title: "Al Ahmed",
-    desc: "India's Top Perfume Brand",
-    metric: "3 Years With Us"
+    title: "Al Ahmed Perfume Social Media & Business Growth",
+    desc: "The owner of Al Ahmed Perfume shares how Famebros Studio manages the brand’s content and social media to strengthen its online presence and support business growth.",
+    metric: "Social Media Growth"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-4099.mp4",
     img: "/vedios/business client testimonial/Video-4099_poster.jpg",
-    title: "Client Story",
-    desc: "Real Growth. Real Results.",
-    metric: "With Famebros"
+    title: "Mirror Salon Social Media Growth",
+    desc: "The owner of Mirror Salon shares how Famebros Studio managed the salon’s social media and grew the account significantly within just a few months.",
+    metric: "Few Months"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-37410.mp4",
     img: "/vedios/business client testimonial/Video-37410_poster.jpg",
-    title: "Client Story",
-    desc: "Real Growth. Real Results.",
-    metric: "With Famebros"
+    title: "Shree Mahalaxmi Jewellers Social Media & Business Growth",
+    desc: "Famebros Studio helped Shree Mahalaxmi Jewellers cross 10K followers while building a stronger online presence and supporting rapid business growth.",
+    metric: "10x Business Growth"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-41182.mp4",
     img: "/vedios/business client testimonial/Video-41182_poster.jpg",
-    title: "Client Story",
-    desc: "Real Growth. Real Results.",
-    metric: "With Famebros"
+    title: "Jolly Honest Tailor Content Production",
+    desc: "Famebros Studio creates and produces content for Jolly Honest Tailor, including brand shoots and campaign videos.",
+    metric: "Social Media Marketing"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-58243.mp4",
     img: "/vedios/business client testimonial/Video-58243_poster.jpg",
-    title: "Client Story",
-    desc: "Real Growth. Real Results.",
-    metric: "With Famebros"
+    title: "IDS Architects Social Media Growth",
+    desc: "Famebros Studio helped IDS Architects grow to 10K followers in just 1 month through strategic social media content, including owner-led rapid-fire reels.",
+    metric: "10K in 1 Month"
   },
   {
     videoUrl: "/vedios/business client testimonial/Video-74649.mp4",
     img: "/vedios/business client testimonial/Video-74649_poster.jpg",
-    title: "SK Furniture",
-    desc: "10K in 6 Months",
-    metric: "10K+ Followers in 6 Months"
+    title: "Kanchanmala Jewellers Social Media Growth",
+    desc: "The owner of Kanchanmala Jewellers shares how Famebros Studio helped the brand reach 10K followers while supporting stronger social media presence and business growth.",
+    metric: "10K+ Followers"
+  },
+  {
+    videoUrl: "/vedios-hero/1st_.mp4",
+    img: "/vedios-hero/1st__poster.jpg",
+    title: "Celebrity Influencer Collaboration with Jay Bhanushali",
+    desc: "Celebrity Jay Bhanushali worked with Famebros Studio for a brand influencer collaboration and content shoot.",
+    metric: "Celebrity Collaboration"
+  },
+  {
+    videoUrl: "/vedios-hero/2nd.mp4",
+    img: "/vedios-hero/2nd_poster.jpg",
+    title: "Mika Singh Reel Content Creation",
+    desc: "Bollywood singer Mika Singh regularly works with Famebros Studio for reel content creation and shoots.",
+    metric: "Ongoing"
+  },
+  {
+    videoUrl: "/vedios-hero/3rd.mp4",
+    img: "/vedios-hero/3rd_poster.jpg",
+    title: "How Famebros Studio Manages Arabian Collection’s Social Media",
+    desc: "Famebros Studio manages social media marketing for Arabian Collection across Mumbai, Hyderabad and Dubai, helping strengthen their online presence and brand growth.",
+    metric: "3 Cities"
+  },
+  {
+    videoUrl: "/vedios-hero/4th.mp4",
+    img: "/vedios-hero/4th_poster.jpg",
+    title: "Mahi Vij Influencer Brand Collaboration",
+    desc: "Famebros Studio managed an influencer marketing collaboration with celebrity Mahi Vij for a brand campaign.",
+    metric: "Celebrity Collaboration"
   }
 ];
 
