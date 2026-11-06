@@ -238,14 +238,16 @@ export default function Work() {
                 {/* Media Card */}
                 <div className={`relative aspect-[9/16] rounded-2xl border transition-all duration-300 overflow-hidden bg-black shadow-lg ${isActive ? 'border-[#F59A57] scale-102 shadow-[0_4px_30px_rgba(245,154,87,0.15)]' : 'border-black/5 group-hover:-translate-y-1.5 group-hover:border-[#F59A57]/40'}`}>
                   
-                  {/* Poster Image Banner (Preload Image) */}
+                  {/* Poster Image Banner */}
                   <img 
                     src={item.img} 
                     alt={item.title} 
+                    loading="lazy"
+                    decoding="async"
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 z-0 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-90'}`}
                   />
 
-                  {/* Video player - only rendered and played when user clicks */}
+                  {/* Video player - only rendered and played on-demand when user clicks */}
                   {isActive && (
                     <video
                       ref={(el) => { videoRefs.current[idx] = el; }}
@@ -253,6 +255,7 @@ export default function Work() {
                       controls
                       autoPlay
                       playsInline
+                      preload="auto"
                       className="absolute inset-0 w-full h-full object-cover z-20"
                     />
                   )}

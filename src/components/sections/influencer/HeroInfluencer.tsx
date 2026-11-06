@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { useDeferredVideos } from "@/hooks/useDeferredVideos";
 import { clientLogos } from "../Hero";
 
 const heroCards = [
@@ -44,6 +45,7 @@ const heroCards = [
 ];
 
 export default function HeroInfluencer() {
+  const canLoadVideos = useDeferredVideos(2500);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [activeVideoIdx, setActiveVideoIdx] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -218,10 +220,11 @@ export default function HeroInfluencer() {
                     }} 
                   />
 
-                  {card.videoSrc && (
+                  {card.videoSrc && (isActive || hoveredIdx === idx || canLoadVideos) && (
                     <video
                       ref={(el) => { videoRefs.current[idx] = el; }}
                       src={card.videoSrc}
+                      preload={isActive ? "auto" : "none"}
                       loop={!isActive}
                       muted={!isActive}
                       controls={isActive}

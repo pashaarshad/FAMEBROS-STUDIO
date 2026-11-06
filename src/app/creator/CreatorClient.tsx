@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import CelebrityGallery from "@/components/sections/CelebrityGallery";
 import ContactCreator from "@/components/sections/ContactCreator";
+import { useDeferredVideos } from "@/hooks/useDeferredVideos";
 
 const journeys = [
   {
@@ -122,10 +123,13 @@ const creatorServices = [
 ];
 
 export default function CreatorClient() {
+  const canLoadVideos = useDeferredVideos(2500);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   const handleMouseEnter = (idx: number) => {
+    setHoveredIdx(idx);
     if (activeIdx === idx) return;
     const video = videoRefs.current[idx];
     if (video) {
@@ -134,6 +138,7 @@ export default function CreatorClient() {
   };
 
   const handleMouseLeave = (idx: number) => {
+    setHoveredIdx(null);
     if (activeIdx === idx) return;
     const video = videoRefs.current[idx];
     if (video) {
@@ -165,11 +170,13 @@ export default function CreatorClient() {
     }
 
     setActiveIdx(idx);
-    const video = videoRefs.current[idx];
-    if (video) {
-      video.muted = false;
-      video.play().catch(() => {});
-    }
+    setTimeout(() => {
+      const video = videoRefs.current[idx];
+      if (video) {
+        video.muted = false;
+        video.play().catch(() => {});
+      }
+    }, 50);
   };
 
   return (
@@ -239,22 +246,27 @@ export default function CreatorClient() {
                       <img 
                         src={item.poster} 
                         alt={item.name} 
+                        loading="lazy"
+                        decoding="async"
                         className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 z-0 ${
                           isActive ? "opacity-0 pointer-events-none" : "opacity-80 group-hover:opacity-30"
                         }`}
                       />
 
-                      <video
-                        ref={(el) => { videoRefs.current[idx] = el; }}
-                        src={item.videoSrc}
-                        loop={!isActive}
-                        muted={!isActive}
-                        controls={isActive}
-                        playsInline
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                          isActive ? "z-20 opacity-100" : "z-10 opacity-0 group-hover:opacity-95 pointer-events-none"
-                        }`}
-                      />
+                      {(isActive || hoveredIdx === idx || canLoadVideos) && (
+                        <video
+                          ref={(el) => { videoRefs.current[idx] = el; }}
+                          src={item.videoSrc}
+                          preload={isActive ? "auto" : "none"}
+                          loop={!isActive}
+                          muted={!isActive}
+                          controls={isActive}
+                          playsInline
+                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                            isActive ? "z-20 opacity-100" : "z-10 opacity-0 group-hover:opacity-95 pointer-events-none"
+                          }`}
+                        />
+                      )}
 
                       <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-20 transition-opacity duration-300 ${isActive ? "opacity-0 pointer-events-none" : "opacity-100"}`} />
 

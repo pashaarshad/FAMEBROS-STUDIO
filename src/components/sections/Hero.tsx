@@ -248,18 +248,21 @@ export default function Hero() {
                   <img
                     src={card.img}
                     alt={card.name}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    decoding="async"
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
                       isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"
                     }`}
                   />
 
-                  {/* Video Element (Only 1 instance in DOM per card! Played only when user explicitly clicks) */}
+                  {/* Video Element (Loaded on-demand only when user forcefully plays) */}
                   {isPlaying && (
                     <video
                       src={card.videoSrc}
                       autoPlay
                       loop
                       playsInline
+                      preload="auto"
                       className="absolute inset-0 w-full h-full object-cover z-10"
                     />
                   )}
@@ -330,6 +333,8 @@ export default function Hero() {
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
+                      loading="lazy"
+                      decoding="async"
                       className={`max-h-11 sm:max-h-15 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
                         isJioMart ? "scale-135 sm:scale-155" : ""
                       }`}
@@ -350,6 +355,8 @@ export default function Hero() {
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
+                      loading="lazy"
+                      decoding="async"
                       className={`max-h-11 sm:max-h-15 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
                         isJioMart ? "scale-135 sm:scale-155" : ""
                       }`}

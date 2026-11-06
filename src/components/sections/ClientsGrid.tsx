@@ -76,6 +76,8 @@ export default function ClientsGrid({ isDark = false }: ClientsGridProps) {
                   <img 
                     src={logo.src} 
                     alt={logo.name} 
+                    loading="lazy"
+                    decoding="async"
                     className={`max-h-full max-w-full object-contain opacity-95 group-hover:opacity-100 transition-all duration-300 ${
                       isJioMart ? "scale-145 md:scale-160" : ""
                     }`}

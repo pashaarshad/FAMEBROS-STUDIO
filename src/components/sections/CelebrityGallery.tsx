@@ -97,7 +97,7 @@ export default function CelebrityGallery({ isDark = false }: CelebrityGalleryPro
                 key={`row1-1-${idx}`} 
                 className="flex-shrink-0 h-56 md:h-80 w-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-white/15 bg-white/5 relative group hover:scale-[1.02] transition-transform duration-300"
               >
-                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" />
+                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
             ))}
             {/* Loop 2 */}
@@ -106,7 +106,7 @@ export default function CelebrityGallery({ isDark = false }: CelebrityGalleryPro
                 key={`row1-2-${idx}`} 
                 className="flex-shrink-0 h-56 md:h-80 w-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-white/15 bg-white/5 relative group hover:scale-[1.02] transition-transform duration-300"
               >
-                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" />
+                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
             ))}
           </div>
@@ -121,7 +121,7 @@ export default function CelebrityGallery({ isDark = false }: CelebrityGalleryPro
                 key={`row2-1-${idx}`} 
                 className="flex-shrink-0 h-56 md:h-80 w-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-white/15 bg-white/5 relative group hover:scale-[1.02] transition-transform duration-300"
               >
-                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" />
+                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
             ))}
             {/* Loop 2 */}
@@ -130,7 +130,7 @@ export default function CelebrityGallery({ isDark = false }: CelebrityGalleryPro
                 key={`row2-2-${idx}`} 
                 className="flex-shrink-0 h-56 md:h-80 w-auto aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border border-white/15 bg-white/5 relative group hover:scale-[1.02] transition-transform duration-300"
               >
-                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" />
+                <img src={src} alt="Celebrity shoot" className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
             ))}
           </div>
