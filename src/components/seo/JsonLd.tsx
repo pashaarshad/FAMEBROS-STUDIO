@@ -25,7 +25,7 @@ export const famebrosOrganizationSchema = {
   "logo": "https://www.famebrosstudio.com/imp-doc/logo.png",
   "image": "https://www.famebrosstudio.com/imp-doc/logo.png",
   "description": "Famebros Studio is a social media marketing and content production agency based in Mulund, Mumbai, providing social media management, content creation, influencer marketing, Meta Ads, brand shoots and performance marketing.",
-  "telephone": "+91-9137923145",
+  "telephone": "+91-9892384424",
   "email": "growth@famebrosstudio.com",
   "priceRange": "₹₹",
   "address": {

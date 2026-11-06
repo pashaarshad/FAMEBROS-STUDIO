@@ -11,7 +11,7 @@ export default function Contact() {
   const subheadline = getContent("contact", "subheadline") || "Connect directly with our team on WhatsApp, or leave your details below and we'll get in touch.";
   const whatsappNumber = getContent("contact", "whatsapp_number") || "919892384424";
   const address = getContent("contact", "address") || "Mulund West, Mumbai - 400080";
-  const phone = getContent("contact", "phone") || "+91 91379 23145";
+  const phone = getContent("contact", "phone") || "+91 98923 84424";
   const email = getContent("contact", "email") || "growth@famebrosstudio.com";
 
   const [formData, setFormData] = useState({

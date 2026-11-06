@@ -24,7 +24,7 @@ export default function WhatsAppButton() {
 
   return (
     <a
-      href="https://wa.me/919833596409?text=Hi%20Famebros%20Studio%2C%20I%20want%20to%20grow%20my%20business%20through%20social%20media."
+      href="https://wa.me/919892384424?text=Hi%20Famebros%20Studio%2C%20I%20want%20to%20grow%20my%20business%20through%20social%20media."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp with Famebros Studio"

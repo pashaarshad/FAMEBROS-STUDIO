@@ -12,7 +12,7 @@ export default function Footer() {
 
   const tagline = getContent("footer", "tagline") || "We don't just grow views. We grow businesses.";
   const address = getContent("footer", "address") || getContent("contact", "address") || "Mulund West, Mumbai - 400080";
-  const phone = getContent("footer", "phone") || getContent("contact", "phone") || "+91 91379 23145";
+  const phone = getContent("footer", "phone") || getContent("contact", "phone") || "+91 98923 84424";
   const email = getContent("footer", "email") || getContent("contact", "email") || "growth@famebrosstudio.com";
   const copyright = getContent("footer", "copyright") || "© 2026 Famebros Studio. All rights reserved.";
 
@@ -147,7 +147,7 @@ export default function Footer() {
 
               {/* WhatsApp Quick Link */}
               <a 
-                href="https://wa.me/919137923145?text=Hi%2C%20I%20found%20Famebros%20Studio%20online.%20I%20want%20to%20grow%20my%20business." 
+                href="https://wa.me/919892384424?text=Hi%2C%20I%20found%20Famebros%20Studio%20online.%20I%20want%20to%20grow%20my%20business." 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center gap-1.5 text-[11px] bg-[#25D366]/15 text-[#25D366] border border-[#25D366]/30 rounded-lg px-2.5 py-1.5 hover:bg-[#25D366]/25 transition-all self-start mt-1 font-semibold"

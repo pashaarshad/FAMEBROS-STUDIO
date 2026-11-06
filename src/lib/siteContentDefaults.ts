@@ -157,11 +157,11 @@ export const SITE_CONTENT_DEFAULTS: SectionDefaults = {
     headline: 'Let\'s Grow Your Business',
     subheadline:
       'Tell us about your brand and goals. We\'ll come back with a strategy that actually works.',
-    phone: '+91 98201 XXXXX',
-    email: 'hello@famebrosstudio.com',
+    phone: '+91 98923 84424',
+    email: 'growth@famebrosstudio.com',
     address: 'Mulund West, Mumbai - 400080',
     cta_label: 'Send Message',
-    whatsapp_number: '919820100000',
+    whatsapp_number: '919892384424',
   },
 
   // ─── FOOTER ──────────────────────────────────────────────────────────────────
@@ -169,8 +169,8 @@ export const SITE_CONTENT_DEFAULTS: SectionDefaults = {
     tagline: 'We don\'t just grow views. We grow businesses.',
     copyright: '© 2025 Famebros Studio. All rights reserved.',
     address: 'Mulund West, Mumbai - 400080',
-    phone: '+91 98201 XXXXX',
-    email: 'hello@famebrosstudio.com',
+    phone: '+91 98923 84424',
+    email: 'growth@famebrosstudio.com',
   },
 
   // ─── INFLUENCER PAGE ─────────────────────────────────────────────────────────
