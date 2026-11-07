@@ -154,6 +154,7 @@
 }
 
 .animate-marquee {
+  will-change: transform;
   display: flex;
   width: max-content;
   animation: marquee 35s linear infinite;
@@ -173,6 +174,7 @@
 }
 
 .animate-marquee-reverse {
+  will-change: transform;
   display: flex;
   width: max-content;
   animation: marquee-reverse 35s linear infinite;

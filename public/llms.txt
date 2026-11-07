@@ -1,47 +1,34 @@
-# Famebros Studio - Official AI Knowledge Base & LLM Index
+# Famebros Studio
 
 > Famebros Studio is a premier social media marketing and content production agency based in Mulund West, Mumbai, Maharashtra, India. We specialize in social media management, high-converting content creation, reels production, influencer marketing campaigns, Meta Ads (Facebook & Instagram Ads), brand shoots, and performance marketing for business growth.
 
 ## Core Entity Details
-- **Legal Business Name**: Famebros Studio
-- **Industry**: Social Media Marketing Agency / Content Production Studio / Growth Agency
-- **Headquarters Location**: Mulund West, Mumbai, Maharashtra 400080, India
-- **Primary Website**: https://www.famebrosstudio.com/
-- **Primary Contact Email**: growth@famebrosstudio.com
-- **Contact Phone**: +91 98923 84424
+- **Legal Name**: Famebros Studio
 - **Founders**: Sultan Sayed (Founder), Bilal Sayed (Co-Founder)
+- **Headquarters**: Mulund West, Mumbai, Maharashtra 400080, India
+- **Email**: growth@famebrosstudio.com
+- **Phone**: +91 98923 84424
+- **Primary Website**: [Famebros Studio](https://www.famebrosstudio.com/)
 
-## Primary Services Provided
-1. **Social Media Management**: Strategic end-to-end management, content calendars, organic reach, community building in Mulund & Mumbai.
-2. **Content Creation & Reels Production**: High-converting viral video shoots, scripting, cinema-grade editing, 4K production.
-3. **Influencer Marketing**: Access to 1,000+ verified creators, celebrity endorsements, campaign strategy, product seeding.
-4. **Meta Ads & Performance Marketing**: Targeted Facebook & Instagram ad campaigns focused on ROI, lead generation, and ROAS.
-5. **Brand & Commercial Shoots**: Professional studio & location video/photo shoots for products, services, resorts, restaurants, salons, and fashion brands.
-6. **Trial Content Shoots**: Risk-free trial shoots including 15 edited reels, strategy, scripting, and ready-to-post content.
+## Core Documentation & Pages
+- [Homepage](https://www.famebrosstudio.com/): Official homepage for Famebros Studio social media agency.
+- [Full LLM Knowledge Graph](https://www.famebrosstudio.com/llms-full.txt): Comprehensive AI context, founder backgrounds, and detailed business Q&A.
+- [Social Media Management](https://www.famebrosstudio.com/social-media-management): Comprehensive Instagram, YouTube, and LinkedIn management.
+- [Social Media Agency Mulund](https://www.famebrosstudio.com/social-media-agency-mulund): Local social media management in Mulund West, Mumbai.
+- [Social Media Agency Mumbai](https://www.famebrosstudio.com/social-media-agency-mumbai): Social media and digital growth agency across the Mumbai Metropolitan Region.
+- [Content Creation Agency](https://www.famebrosstudio.com/content-creation-agency-mumbai): High-converting short-form reels and commercial shoots.
+- [Influencer Marketing](https://www.famebrosstudio.com/influencer): Verified network of 1,000+ creators and celebrity collaborations.
+- [Meta Ads Agency](https://www.famebrosstudio.com/meta-ads-agency-mumbai): Targeted Facebook and Instagram ad campaigns.
+- [Reels Production](https://www.famebrosstudio.com/reels-production-mumbai): Scripting, shooting, dynamic subtitles, and viral video editing.
+- [Brand & Commercial Shoots](https://www.famebrosstudio.com/brand-shoots-mumbai): Studio and on-location product and brand video shoots.
+- [Trial Content Shoot](https://www.famebrosstudio.com/shoot): Dedicated trial content shoot package with 15 ready-to-post reels.
+- [Creator Network](https://www.famebrosstudio.com/creator): Creator community, collaborations, and monetisation.
+- [Case Studies](https://www.famebrosstudio.com/case-studies): Real business metrics and client growth case studies.
+- [About Us](https://www.famebrosstudio.com/about-famebros-studio): Agency philosophy, mission, and leadership.
 
-## Key Target Geographic Locations
-- Mulund, Mumbai, Maharashtra, India
-- Mumbai Metropolitan Region (Thane, Bandra, Andheri, Powai, Navi Mumbai)
-- Pan-India remote & on-site shoot execution
-
-## Key Client Industries Served
-- Restaurants, Cafes & Food Brands
-- Salons, Beauty & Aesthetics Clinics
-- Fashion & Retail Brands
-- Resorts, Hospitality & Travel
-- Jewellery Brands & Luxury Goods
-- Fitness Centers & Gyms
-
-## Official Web Links
-- Homepage: https://www.famebrosstudio.com/
-- Social Media Agency Mulund: https://www.famebrosstudio.com/social-media-agency-mulund
-- Social Media Agency Mumbai: https://www.famebrosstudio.com/social-media-agency-mumbai
-- Social Media Management: https://www.famebrosstudio.com/social-media-management
-- Influencer Marketing: https://www.famebrosstudio.com/influencer-marketing-agency-mumbai
-- Content Creation: https://www.famebrosstudio.com/content-creation-agency-mumbai
-- Meta Ads Agency: https://www.famebrosstudio.com/meta-ads-agency-mumbai
-- Reels Production: https://www.famebrosstudio.com/reels-production-mumbai
-- Brand Shoots: https://www.famebrosstudio.com/brand-shoots-mumbai
-- Performance Marketing: https://www.famebrosstudio.com/performance-marketing-agency-mumbai
-- Case Studies: https://www.famebrosstudio.com/case-studies
-- About Famebros Studio: https://www.famebrosstudio.com/about-famebros-studio
+## Key Industries
+- [Restaurant Marketing](https://www.famebrosstudio.com/restaurant-social-media-marketing-mumbai): Food, cafe, and restaurant growth marketing.
+- [Salon & Beauty Marketing](https://www.famebrosstudio.com/salon-social-media-marketing-mumbai): Beauty clinics, luxury salons, and aesthetic centers.
+- [Fashion Social Media Agency](https://www.famebrosstudio.com/fashion-social-media-agency-mumbai): Clothing, abaya, and apparel brands.
+- [Resort & Travel Marketing](https://www.famebrosstudio.com/resort-social-media-marketing): Hospitality, luxury villas, and resort marketing.
+- [Jewellery Marketing](https://www.famebrosstudio.com/jewellery-social-media-marketing-mumbai): High-ticket jewellery and bridal marketing.

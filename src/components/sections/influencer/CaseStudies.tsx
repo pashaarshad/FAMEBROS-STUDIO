@@ -13,7 +13,7 @@ export default function CaseStudies() {
             REAL CAMPAIGNS.<br />
             REAL GROWTH.
           </h2>
-          <p className="text-[#55555A] text-base md:text-lg leading-relaxed">
+          <p className="text-[#374151] text-base md:text-lg leading-relaxed">
             A collection of client growth stories from Famebros Studio, built around strategy, content, campaigns, referrals and long-term trust.
           </p>
         </div>
@@ -22,15 +22,15 @@ export default function CaseStudies() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
           <div className="bg-[#FAFAFA] border border-black/10 rounded-2xl p-7 text-center shadow-xs">
             <div className="font-display text-4xl font-extrabold text-[#D46213] mb-2">50+</div>
-            <div className="font-mono-custom text-xs uppercase tracking-wider text-[#55555A] font-bold">CLIENTS</div>
+            <div className="font-mono-custom text-xs uppercase tracking-wider text-[#374151] font-bold">CLIENTS</div>
           </div>
           <div className="bg-[#FAFAFA] border border-black/10 rounded-2xl p-7 text-center shadow-xs">
             <div className="font-display text-4xl font-extrabold text-[#0F766E] mb-2">80%</div>
-            <div className="font-mono-custom text-xs uppercase tracking-wider text-[#55555A] font-bold">NEW CLIENTS FROM REFERRALS</div>
+            <div className="font-mono-custom text-xs uppercase tracking-wider text-[#374151] font-bold">NEW CLIENTS FROM REFERRALS</div>
           </div>
           <div className="bg-[#FAFAFA] border border-black/10 rounded-2xl p-7 text-center shadow-xs">
             <div className="font-display text-4xl font-extrabold text-[#D46213] mb-2">36K+</div>
-            <div className="font-mono-custom text-xs uppercase tracking-wider text-[#55555A] font-bold">COMBINED JEWELLERY AUDIENCE</div>
+            <div className="font-mono-custom text-xs uppercase tracking-wider text-[#374151] font-bold">COMBINED JEWELLERY AUDIENCE</div>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export default function CaseStudies() {
               One store became three. Small pages became a 36K+ combined audience. A trial became a long-term partnership.
             </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#55555A] text-sm leading-relaxed">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#374151] text-sm leading-relaxed">
               <div>
                 <h4 className="font-bold text-[#0A0A0A] text-base mb-2">How It Started &amp; Scaled</h4>
                 <p className="mb-4">
@@ -100,7 +100,7 @@ export default function CaseStudies() {
               The campaign where the owner asked us to stop boosting.
             </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#55555A] text-sm leading-relaxed">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#374151] text-sm leading-relaxed">
               <div>
                 <h4 className="font-bold text-[#0A0A0A] text-base mb-2">What Famebros Studio Did</h4>
                 <p className="mb-4">
@@ -115,7 +115,7 @@ export default function CaseStudies() {
                   <div className="font-display font-extrabold text-2xl md:text-3xl text-[#0A0A0A] mb-2">
                     &ldquo;Stop boosting. It&apos;s overcrowded.&rdquo;
                   </div>
-                  <p className="text-xs text-[#55555A]">
+                  <p className="text-xs text-[#374151]">
                     Just one day before Raksha Bandhan, the store experienced extremely heavy footfall, moving people directly from their screens into the physical store.
                   </p>
                 </div>
@@ -136,7 +136,7 @@ export default function CaseStudies() {
               <p className="text-[#0F766E] font-semibold text-sm mb-4">
                 A struggling page. Then 300K+ views on the first business reel.
               </p>
-              <p className="text-[#55555A] text-sm leading-relaxed mb-6">
+              <p className="text-[#374151] text-sm leading-relaxed mb-6">
                 Raj Laxmi Jewellers approached Famebros Studio with a page struggling to get reel reach. We coordinated with a local videographer, restructured the scripting, and optimized the hook &mdash; crossing 300,000+ views on the very first reel.
               </p>
               <div className="inline-block px-4 py-2 bg-[#249E98]/10 text-[#0F766E] font-bold text-xs rounded-lg">
@@ -155,7 +155,7 @@ export default function CaseStudies() {
               <p className="text-[#D46213] font-semibold text-sm mb-4">
                 Two established stores. A third store opening campaign.
               </p>
-              <p className="text-[#55555A] text-sm leading-relaxed mb-6">
+              <p className="text-[#374151] text-sm leading-relaxed mb-6">
                 Devi &amp; Company is a family fashion business in Kanpur. When opening their third store, they trusted Famebros Studio with complete launch strategy, shoot planning, promotional creatives, and digital distribution.
               </p>
               <div className="inline-block px-4 py-2 bg-[#F59A57]/10 text-[#D46213] font-bold text-xs rounded-lg">

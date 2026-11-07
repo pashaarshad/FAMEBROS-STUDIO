@@ -42,10 +42,10 @@ export default function Contact() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[42px] leading-[1.1] mb-4">
             {headline}
           </h2>
-          <p className="text-[#55555A] text-sm md:text-base max-w-md mx-auto leading-relaxed">
+          <p className="text-[#374151] text-sm md:text-base max-w-md mx-auto leading-relaxed">
             {subheadline}
           </p>
-          <div className="mt-3 text-xs text-[#55555A] flex flex-wrap justify-center gap-4">
+          <div className="mt-3 text-xs text-[#374151] flex flex-wrap justify-center gap-4">
             <span>📍 {address}</span>
             <span>📞 {phone}</span>
             <span>✉️ {email}</span>
@@ -83,7 +83,7 @@ export default function Contact() {
               {/* DIVIDER */}
               <div className="flex items-center gap-4">
                 <div className="h-[1px] bg-black/5 flex-grow" />
-                <span className="text-[10px] font-mono-custom tracking-widest text-[#55555A] uppercase font-bold">
+                <span className="text-[10px] font-mono-custom tracking-widest text-[#374151] uppercase font-bold">
                   OR SEND US A QUICK ENQUIRY
                 </span>
                 <div className="h-[1px] bg-black/5 flex-grow" />
@@ -93,27 +93,27 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name" className="block text-xs text-[#55555A] font-semibold mb-2">Your Name*</label>
+                    <label htmlFor="contact-name" className="block text-xs text-[#374151] font-semibold mb-2">Your Name*</label>
                     <input 
                       id="contact-name"
                       type="text" 
                       placeholder="Full name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-phone" className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number*</label>
+                    <label htmlFor="contact-phone" className="block text-xs text-[#374151] font-semibold mb-2">WhatsApp / Phone Number*</label>
                     <input 
                       id="contact-phone"
                       type="tel" 
                       placeholder="Phone number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
@@ -122,27 +122,27 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-brand" className="block text-xs text-[#55555A] font-semibold mb-2">Business / Brand Name*</label>
+                    <label htmlFor="contact-brand" className="block text-xs text-[#374151] font-semibold mb-2">Business / Brand Name*</label>
                     <input 
                       id="contact-brand"
                       type="text" 
                       placeholder="Brand name"
                       value={formData.brandName}
                       onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-location" className="block text-xs text-[#55555A] font-semibold mb-2">Business Location*</label>
+                    <label htmlFor="contact-location" className="block text-xs text-[#374151] font-semibold mb-2">Business Location*</label>
                     <input 
                       id="contact-location"
                       type="text" 
                       placeholder="City / Area"
                       value={formData.location}
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
@@ -150,14 +150,14 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message" className="block text-xs text-[#55555A] font-semibold mb-2">What can we help you with? (Optional)</label>
+                  <label htmlFor="contact-message" className="block text-xs text-[#374151] font-semibold mb-2">What can we help you with? (Optional)</label>
                   <textarea 
                     id="contact-message"
                     placeholder="Briefly tell us what you're looking to achieve"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={3}
-                    className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all resize-none placeholder:text-gray-400"
+                    className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all resize-none placeholder:text-gray-600"
                     suppressHydrationWarning
                   />
                 </div>
@@ -180,7 +180,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl mb-2">Enquiry Sent!</h3>
-                <p className="text-[#55555A] text-sm max-w-sm mx-auto leading-relaxed">
+                <p className="text-[#374151] text-sm max-w-sm mx-auto leading-relaxed">
                   Thank you. We have received your details and will get back to you within 24 hours. For an immediate reply, please click below to connect with us on WhatsApp.
                 </p>
               </div>

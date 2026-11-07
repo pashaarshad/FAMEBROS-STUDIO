@@ -24,7 +24,7 @@ export default function CTA() {
 
           {/* Right Info & CTA Button Block */}
           <div className="relative z-10 flex flex-col md:items-end gap-5">
-            <p className="text-[#55555A] text-[13px] md:text-right leading-relaxed max-w-sm">
+            <p className="text-[#374151] text-[13px] md:text-right leading-relaxed max-w-sm">
               Let&apos;s build content, authority, and funnels that turn social media views into trackable revenue.
             </p>
             

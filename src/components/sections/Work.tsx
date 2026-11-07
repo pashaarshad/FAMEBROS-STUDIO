@@ -196,7 +196,7 @@ export default function Work() {
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-3">
               What Our <span className="text-[#D46213]">Clients Say.</span>
             </h2>
-            <p className="text-[#55555A] text-sm font-semibold">
+            <p className="text-[#374151] text-sm font-semibold">
               Real businesses. Cinematic content. Real bottom line scaling.
             </p>
           </div>

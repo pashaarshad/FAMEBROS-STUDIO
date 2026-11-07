@@ -38,7 +38,7 @@ export default function NetworkTiers() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-5">
             Beyond our own creators.
           </h2>
-          <p className="text-[#55555A] text-base md:text-lg leading-relaxed">
+          <p className="text-[#374151] text-base md:text-lg leading-relaxed">
             We match the tier to the objective. More followers is not automatically more effect &mdash; and it is always more expensive.
           </p>
         </div>
@@ -52,14 +52,14 @@ export default function NetworkTiers() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57]" />
-                  <span className="font-mono-custom text-[10px] text-[#55555A] font-bold tracking-wider">
+                  <span className="font-mono-custom text-[10px] text-[#374151] font-bold tracking-wider">
                     {card.tier}
                   </span>
                 </div>
                 <h3 className="font-display font-bold text-[#0A0A0A] text-xl mb-3">
                   {card.title}
                 </h3>
-                <p className="text-[#55555A] text-sm leading-relaxed mb-6">
+                <p className="text-[#374151] text-sm leading-relaxed mb-6">
                   {card.desc}
                 </p>
               </div>

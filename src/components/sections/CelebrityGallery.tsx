@@ -79,7 +79,7 @@ export default function CelebrityGallery({ isDark = false }: CelebrityGalleryPro
           <h2 className="font-display font-extrabold text-inherit text-[32px] md:text-[42px] leading-[1.1] mb-5">
             {headline}
           </h2>
-          <p className={`text-sm md:text-base leading-relaxed ${isDark ? "text-white/70" : "text-[#55555A]"}`}>
+          <p className={`text-sm md:text-base leading-relaxed ${isDark ? "text-white/70" : "text-[#374151]"}`}>
             {subheadline}
           </p>
         </div>

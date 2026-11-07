@@ -66,7 +66,7 @@ export default function ProblemTwo() {
           </div>
         </div>
 
-        <p className="text-white/60 text-sm md:text-base max-w-3xl leading-relaxed">
+        <p className="text-white/80 text-sm md:text-base max-w-3xl leading-relaxed">
           Only then do we shortlist. The objective isn&apos;t to complete a collaboration &mdash; it&apos;s relevant reach, real trust, usable content and enquiries that actually convert.
         </p>
       </div>

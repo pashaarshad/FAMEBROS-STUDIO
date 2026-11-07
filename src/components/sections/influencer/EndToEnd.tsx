@@ -25,13 +25,13 @@ export default function EndToEnd() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-4">
             You shouldn&apos;t have to chase eleven creators yourself.
           </h2>
-          <p className="text-[#55555A] text-base md:text-lg leading-relaxed">
+          <p className="text-[#374151] text-base md:text-lg leading-relaxed">
             We handle the entire process from research to final reporting. You approve, we run it.
           </p>
         </div>
 
         <div className="bg-[#FAFAFA] border border-black/10 rounded-3xl p-6 md:p-10 mb-10 shadow-sm">
-          <div className="font-mono-custom text-[10.5px] uppercase tracking-[0.2em] text-[#55555A] font-bold mb-6">
+          <div className="font-mono-custom text-[10.5px] uppercase tracking-[0.2em] text-[#374151] font-bold mb-6">
             11-STEP EXECUTION WORKFLOW
           </div>
 
@@ -68,7 +68,7 @@ export default function EndToEnd() {
             <h4 className="font-display font-bold text-base text-[#0A0A0A] mb-1.5">
               Zero Effort for Founders
             </h4>
-            <p className="text-xs text-[#55555A] leading-relaxed">
+            <p className="text-xs text-[#374151] leading-relaxed">
               No endless DMs or follow-ups. We manage briefing, shoot coordination, and timeline tracking.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function EndToEnd() {
             <h4 className="font-display font-bold text-base text-[#0A0A0A] mb-1.5">
               Content Rights &amp; Usage
             </h4>
-            <p className="text-xs text-[#55555A] leading-relaxed">
+            <p className="text-xs text-[#374151] leading-relaxed">
               Clear contracts ensuring you retain digital ad usage and raw assets for repurposing.
             </p>
           </div>
@@ -84,7 +84,7 @@ export default function EndToEnd() {
             <h4 className="font-display font-bold text-base text-[#0A0A0A] mb-1.5">
               Transparent Reporting
             </h4>
-            <p className="text-xs text-[#55555A] leading-relaxed">
+            <p className="text-xs text-[#374151] leading-relaxed">
               Real screenshots, link clicks, impressions, and engagement audits delivered upon campaign completion.
             </p>
           </div>

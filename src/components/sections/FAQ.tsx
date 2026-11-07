@@ -70,7 +70,7 @@ export default function FAQ() {
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-6">
               {headline}
             </h2>
-            <p className="text-[#55555A] text-sm leading-relaxed max-w-sm">
+            <p className="text-[#374151] text-sm leading-relaxed max-w-sm">
               Can&apos;t find what you&apos;re looking for? Speak with our team directly on WhatsApp or send us an email.
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function FAQ() {
                   {isOpen && (
                     <div 
                       id={`faq-answer-${idx}`}
-                      className="px-6 pb-6 text-[13px] text-[#55555A] leading-relaxed border-t border-black/5 pt-4 animate-slideDown"
+                      className="px-6 pb-6 text-[13px] text-[#374151] leading-relaxed border-t border-black/5 pt-4 animate-slideDown"
                     >
                       {item.a}
                     </div>

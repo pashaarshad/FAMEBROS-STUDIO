@@ -105,7 +105,7 @@ export default function Philosophy() {
               you stop paying.<br />
               <span className="text-[#D46213]">A brand doesn&apos;t.</span>
             </h2>
-            <p className="text-[#55555A] text-sm leading-relaxed mb-8 max-w-sm">
+            <p className="text-[#374151] text-sm leading-relaxed mb-8 max-w-sm">
               We build recognition, trust, community and organic reach first. Paid campaigns and influencer
               marketing become amplifiers — not replacements for a strong brand.
             </p>

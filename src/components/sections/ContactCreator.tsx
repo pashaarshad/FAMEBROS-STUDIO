@@ -29,7 +29,7 @@ export default function ContactCreator() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[42px] leading-[1.1] mb-4">
             Let&apos;s grow your creator brand.
           </h2>
-          <p className="text-[#55555A] text-sm md:text-base max-w-md mx-auto leading-relaxed">
+          <p className="text-[#374151] text-sm md:text-base max-w-md mx-auto leading-relaxed">
             Connect directly with our team on WhatsApp, or leave your details below and we&apos;ll get in touch.
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function ContactCreator() {
               {/* DIVIDER */}
               <div className="flex items-center gap-4">
                 <div className="h-[1px] bg-black/5 flex-grow" />
-                <span className="text-[10px] font-mono-custom tracking-widest text-[#55555A] uppercase font-bold">
+                <span className="text-[10px] font-mono-custom tracking-widest text-[#374151] uppercase font-bold">
                   OR SEND US A QUICK ENQUIRY
                 </span>
                 <div className="h-[1px] bg-black/5 flex-grow" />
@@ -75,27 +75,27 @@ export default function ContactCreator() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="creator-name" className="block text-xs text-[#55555A] font-semibold mb-2">Your Name*</label>
+                    <label htmlFor="creator-name" className="block text-xs text-[#374151] font-semibold mb-2">Your Name*</label>
                     <input 
                       id="creator-name"
                       type="text" 
                       placeholder="Full name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
                   </div>
                   <div>
-                    <label htmlFor="creator-phone" className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number*</label>
+                    <label htmlFor="creator-phone" className="block text-xs text-[#374151] font-semibold mb-2">WhatsApp / Phone Number*</label>
                     <input 
                       id="creator-phone"
                       type="tel" 
                       placeholder="Phone number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
@@ -104,27 +104,27 @@ export default function ContactCreator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="creator-handle" className="block text-xs text-[#55555A] font-semibold mb-2">Instagram / Social Media Handle*</label>
+                    <label htmlFor="creator-handle" className="block text-xs text-[#374151] font-semibold mb-2">Instagram / Social Media Handle*</label>
                     <input 
                       id="creator-handle"
                       type="text" 
                       placeholder="@username"
                       value={formData.handle}
                       onChange={(e) => setFormData({ ...formData, handle: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
                   </div>
                   <div>
-                    <label htmlFor="creator-location" className="block text-xs text-[#55555A] font-semibold mb-2">Your Location*</label>
+                    <label htmlFor="creator-location" className="block text-xs text-[#374151] font-semibold mb-2">Your Location*</label>
                     <input 
                       id="creator-location"
                       type="text" 
                       placeholder="City / Area"
                       value={formData.location}
                       onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-400"
+                      className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all placeholder:text-gray-600"
                       required
                       suppressHydrationWarning
                     />
@@ -132,13 +132,13 @@ export default function ContactCreator() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-[#55555A] font-semibold mb-2">What can we help you with? (Optional)</label>
+                  <label className="block text-xs text-[#374151] font-semibold mb-2">What can we help you with? (Optional)</label>
                   <textarea 
                     placeholder="Briefly tell us what you want to grow or improve."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={3}
-                    className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all resize-none placeholder:text-gray-400"
+                    className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#249E98] focus:outline-none transition-all resize-none placeholder:text-gray-600"
                     suppressHydrationWarning
                   />
                 </div>
@@ -161,7 +161,7 @@ export default function ContactCreator() {
               </div>
               <div>
                 <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl mb-2">Enquiry Sent!</h3>
-                <p className="text-[#55555A] text-sm max-w-sm mx-auto leading-relaxed">
+                <p className="text-[#374151] text-sm max-w-sm mx-auto leading-relaxed">
                   Thank you. We have received your details and will get back to you within 24 hours. For an immediate reply, please click below to connect with us on WhatsApp.
                 </p>
               </div>

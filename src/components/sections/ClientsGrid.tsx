@@ -53,7 +53,7 @@ export default function ClientsGrid({ isDark = false }: ClientsGridProps) {
           <h2 className="font-display font-extrabold text-inherit text-[32px] md:text-[42px] leading-[1.1] mb-5">
             Brands we&apos;ve <span className="text-[#0F766E]">worked with.</span>
           </h2>
-          <p className={`text-sm md:text-base leading-relaxed ${isDark ? "text-white/70" : "text-[#55555A]"}`}>
+          <p className={`text-sm md:text-base leading-relaxed ${isDark ? "text-white/70" : "text-[#374151]"}`}>
             From leading brands to entertainment and digital projects, we&apos;ve contributed through content, shoots, campaigns and creative execution.
           </p>
         </div>

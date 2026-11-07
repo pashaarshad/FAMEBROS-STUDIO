@@ -17,7 +17,7 @@ export default function Packages() {
               Social Media<br />
               Growth Packages
             </h2>
-            <p className="text-[#55555A] text-sm leading-relaxed mb-8 max-w-xs">
+            <p className="text-[#374151] text-sm leading-relaxed mb-8 max-w-xs">
               Choose the level of support your brand needs. All packages are customized to your goals.
             </p>
             <a href="#contact"
@@ -86,7 +86,7 @@ export default function Packages() {
                     "Meta Ads Management",
                     "Creatives When Needed",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-[#55555A]">
+                    <li key={item} className="flex items-start gap-3 text-sm text-[#374151]">
                       <span className="text-[#0F766E] mt-0.5">✓</span>
                       <span>{item}</span>
                     </li>
@@ -124,7 +124,7 @@ export default function Packages() {
                     "Meta Ads Management",
                     "Influencer Coordination & Support",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-[#55555A]">
+                    <li key={item} className="flex items-start gap-3 text-sm text-[#374151]">
                       <span className="text-[#D46213] mt-0.5">✓</span>
                       <span>{item}</span>
                     </li>

@@ -115,7 +115,7 @@ export default function BrandingComparison() {
 
         {/* --- HOW BRAND VALUE IS BUILT FLOW --- */}
         <div className="mt-20 border-t border-white/5 pt-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-white/50 text-center mb-8 font-bold">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-white/75 text-center mb-8 font-bold">
             HOW BRAND VALUE IS BUILT
           </p>
 

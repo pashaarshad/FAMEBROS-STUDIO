@@ -28,7 +28,7 @@ export default function About() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[36px] sm:text-[46px] md:text-[54px] leading-[1.08] mb-6">
             {headline}
           </h2>
-          <div className="space-y-4 text-[#55555A] text-base md:text-lg leading-relaxed">
+          <div className="space-y-4 text-[#374151] text-base md:text-lg leading-relaxed">
             <p className="font-medium text-[#0A0A0A]">
               {body}
             </p>
@@ -85,7 +85,7 @@ export default function About() {
               <h4 className="font-display font-extrabold text-[#0A0A0A] text-xl mb-3">
                 Business First
               </h4>
-              <p className="text-[#55555A] text-sm leading-relaxed font-medium">
+              <p className="text-[#374151] text-sm leading-relaxed font-medium">
                 We understand your business before creating content.
               </p>
             </div>
@@ -98,7 +98,7 @@ export default function About() {
               <h4 className="font-display font-extrabold text-[#0A0A0A] text-xl mb-3">
                 Complete Management
               </h4>
-              <p className="text-[#55555A] text-sm leading-relaxed font-medium">
+              <p className="text-[#374151] text-sm leading-relaxed font-medium">
                 Strategy, shoots, editing, posting, influencers and ads under one team.
               </p>
             </div>
@@ -111,7 +111,7 @@ export default function About() {
               <h4 className="font-display font-extrabold text-[#0A0A0A] text-xl mb-3">
                 Built for Growth
               </h4>
-              <p className="text-[#55555A] text-sm leading-relaxed font-medium">
+              <p className="text-[#374151] text-sm leading-relaxed font-medium">
                 We focus on consistent business growth, not just viral views.
               </p>
             </div>

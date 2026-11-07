@@ -44,7 +44,7 @@ export default function ProblemOne() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-5">
             A large following is not the same as a real audience.
           </h2>
-          <p className="text-[#55555A] text-base md:text-lg leading-relaxed">
+          <p className="text-[#374151] text-base md:text-lg leading-relaxed">
             There are thousands of influencers and vloggers on social media. Many of those numbers do not represent people who will ever notice your brand &mdash; let alone buy from it.
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function ProblemOne() {
                 <h3 className="font-display font-bold text-[#0A0A0A] text-xl mb-2.5">
                   {item.title}
                 </h3>
-                <p className="text-[#55555A] text-sm leading-relaxed">
+                <p className="text-[#374151] text-sm leading-relaxed">
                   {item.desc}
                 </p>
               </div>

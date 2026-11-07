@@ -43,7 +43,7 @@ export default function WhyChooseUs() {
               </h2>
             </div>
             
-            <p className="text-[#55555A] text-sm md:text-base leading-relaxed max-w-md">
+            <p className="text-[#374151] text-sm md:text-base leading-relaxed max-w-md">
               Most agencies stop at likes, followers and reach. We go further, combining strategy, content and performance marketing to turn attention into trust, enquiries, customers and measurable business growth.
             </p>
 
@@ -51,11 +51,11 @@ export default function WhyChooseUs() {
             <div className="bg-white/80 backdrop-blur-sm border border-black/5 rounded-2xl p-6 grid grid-cols-2 gap-6 max-w-sm shadow-sm">
               <div>
                 <span className="text-[28px] font-black text-[#D46213] block leading-none">+300%</span>
-                <span className="text-[10px] font-bold text-[#55555A] uppercase tracking-wider mt-1 block">Avg Organic Reach</span>
+                <span className="text-[10px] font-bold text-[#374151] uppercase tracking-wider mt-1 block">Avg Organic Reach</span>
               </div>
               <div className="border-l border-black/5 pl-6">
                 <span className="text-[28px] font-black text-[#0F766E] block leading-none">4.5X</span>
-                <span className="text-[10px] font-bold text-[#55555A] uppercase tracking-wider mt-1 block">Inbound Leads</span>
+                <span className="text-[10px] font-bold text-[#374151] uppercase tracking-wider mt-1 block">Inbound Leads</span>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
                   <h3 className="font-display font-extrabold text-[#0A0A0A] text-lg mb-2.5 group-hover:text-[#D46213] transition-colors">
                     {pillar.title}
                   </h3>
-                  <p className="text-[#55555A] text-[13px] leading-relaxed">
+                  <p className="text-[#374151] text-[13px] leading-relaxed">
                     {pillar.desc}
                   </p>
                 </div>

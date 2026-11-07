@@ -204,7 +204,7 @@ export default function WorkInfluencer() {
               <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-3">
                 Recent collaborations.
               </h2>
-              <p className="text-[#55555A] text-base leading-relaxed">
+              <p className="text-[#374151] text-base leading-relaxed">
                 Every reel below was conceptualised, directed, and produced by our in-house team.
               </p>
             </div>
@@ -295,25 +295,25 @@ export default function WorkInfluencer() {
             <div className="bg-[#FAFAFA] border border-black/10 rounded-2xl p-7">
               <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57] mb-4" />
               <h4 className="font-display font-bold text-[#0A0A0A] text-lg mb-2">D2C Brand Launch</h4>
-              <p className="text-[#55555A] text-sm mb-4">12 verified micro creators over six weeks, all content produced in-house.</p>
+              <p className="text-[#374151] text-sm mb-4">12 verified micro creators over six weeks, all content produced in-house.</p>
               <div className="font-display text-[32px] font-extrabold text-[#D46213] leading-none">1.4M</div>
-              <p className="font-mono-custom text-xs text-[#55555A] mt-1.5">combined organic reach</p>
+              <p className="font-mono-custom text-xs text-[#374151] mt-1.5">combined organic reach</p>
             </div>
 
             <div className="bg-[#FAFAFA] border border-black/10 rounded-2xl p-7">
               <div className="w-2.5 h-2.5 rounded-sm bg-[#249E98] mb-4" />
               <h4 className="font-display font-bold text-[#0A0A0A] text-lg mb-2">Retail Store Campaign</h4>
-              <p className="text-[#55555A] text-sm mb-4">Local creators paired with a founder-led organic content push.</p>
+              <p className="text-[#374151] text-sm mb-4">Local creators paired with a founder-led organic content push.</p>
               <div className="font-display text-[32px] font-extrabold text-[#0F766E] leading-none">3.1&times;</div>
-              <p className="font-mono-custom text-xs text-[#55555A] mt-1.5">increase in weekend footfall</p>
+              <p className="font-mono-custom text-xs text-[#374151] mt-1.5">increase in weekend footfall</p>
             </div>
 
             <div className="bg-[#FAFAFA] border border-black/10 rounded-2xl p-7">
               <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57] mb-4" />
               <h4 className="font-display font-bold text-[#0A0A0A] text-lg mb-2">Celebrity Product Launch</h4>
-              <p className="text-[#55555A] text-sm mb-4">One celebrity collaboration, amplified across owned channels.</p>
+              <p className="text-[#374151] text-sm mb-4">One celebrity collaboration, amplified across owned channels.</p>
               <div className="font-display text-[32px] font-extrabold text-[#D46213] leading-none">18K</div>
-              <p className="font-mono-custom text-xs text-[#55555A] mt-1.5">new followers in 30 days</p>
+              <p className="font-mono-custom text-xs text-[#374151] mt-1.5">new followers in 30 days</p>
             </div>
           </div>
         </div>
@@ -331,7 +331,7 @@ export default function WorkInfluencer() {
               REAL CAMPAIGNS.<br />
               REAL GROWTH.
             </h2>
-            <p className="text-[#55555A] text-base md:text-lg leading-relaxed">
+            <p className="text-[#374151] text-base md:text-lg leading-relaxed">
               A collection of client growth stories from Famebros Studio, built around strategy, content, campaigns, referrals and long-term trust.
             </p>
           </div>
@@ -340,15 +340,15 @@ export default function WorkInfluencer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
             <div className="bg-white border border-black/10 rounded-2xl p-7 text-center shadow-sm">
               <div className="font-display text-4xl font-extrabold text-[#D46213] mb-2">50+</div>
-              <div className="font-mono-custom text-xs uppercase tracking-wider text-[#55555A] font-bold">CLIENTS</div>
+              <div className="font-mono-custom text-xs uppercase tracking-wider text-[#374151] font-bold">CLIENTS</div>
             </div>
             <div className="bg-white border border-black/10 rounded-2xl p-7 text-center shadow-sm">
               <div className="font-display text-4xl font-extrabold text-[#0F766E] mb-2">80%</div>
-              <div className="font-mono-custom text-xs uppercase tracking-wider text-[#55555A] font-bold">NEW CLIENTS FROM REFERRALS</div>
+              <div className="font-mono-custom text-xs uppercase tracking-wider text-[#374151] font-bold">NEW CLIENTS FROM REFERRALS</div>
             </div>
             <div className="bg-white border border-black/10 rounded-2xl p-7 text-center shadow-sm">
               <div className="font-display text-4xl font-extrabold text-[#D46213] mb-2">36K+</div>
-              <div className="font-mono-custom text-xs uppercase tracking-wider text-[#55555A] font-bold">COMBINED JEWELLERY AUDIENCE</div>
+              <div className="font-mono-custom text-xs uppercase tracking-wider text-[#374151] font-bold">COMBINED JEWELLERY AUDIENCE</div>
             </div>
           </div>
 
@@ -377,7 +377,7 @@ export default function WorkInfluencer() {
                 One store became three. Small pages became a 36K+ combined audience. A trial became a long-term partnership.
               </p>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#55555A] text-sm leading-relaxed mb-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#374151] text-sm leading-relaxed mb-8">
                 <div>
                   <h4 className="font-bold text-[#0A0A0A] text-base mb-2">How It Started &amp; Scaled</h4>
                   <p className="mb-4">
@@ -418,7 +418,7 @@ export default function WorkInfluencer() {
                 The campaign where the owner asked us to stop boosting.
               </p>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#55555A] text-sm leading-relaxed">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-[#374151] text-sm leading-relaxed">
                 <div>
                   <h4 className="font-bold text-[#0A0A0A] text-base mb-2">What Famebros Studio Did</h4>
                   <p className="mb-4">
@@ -433,7 +433,7 @@ export default function WorkInfluencer() {
                     <div className="font-display font-extrabold text-2xl md:text-3xl text-[#0A0A0A] mb-2">
                       &ldquo;Stop boosting. It&apos;s overcrowded.&rdquo;
                     </div>
-                    <p className="text-xs text-[#55555A]">
+                    <p className="text-xs text-[#374151]">
                       Just one day before Raksha Bandhan, the store experienced extremely heavy footfall, moving people directly from their screens into the physical store.
                     </p>
                   </div>
@@ -454,7 +454,7 @@ export default function WorkInfluencer() {
                 <p className="text-[#0F766E] font-semibold text-sm mb-4">
                   A struggling page. Then 300K+ views on the first business reel.
                 </p>
-                <p className="text-[#55555A] text-sm leading-relaxed mb-6">
+                <p className="text-[#374151] text-sm leading-relaxed mb-6">
                   Raj Laxmi Jewellers approached Famebros Studio with a page struggling to get reel reach. We coordinated with a local videographer, restructured the scripting, and optimized the hook &mdash; crossing 300,000+ views on the very first reel.
                 </p>
                 <div className="inline-block px-4 py-2 bg-[#249E98]/10 text-[#0F766E] font-bold text-xs rounded-lg">
@@ -473,7 +473,7 @@ export default function WorkInfluencer() {
                 <p className="text-[#D46213] font-semibold text-sm mb-4">
                   Two established stores. A third store opening campaign.
                 </p>
-                <p className="text-[#55555A] text-sm leading-relaxed mb-6">
+                <p className="text-[#374151] text-sm leading-relaxed mb-6">
                   Devi &amp; Company is a family fashion business in Kanpur. When opening their third store, they trusted Famebros Studio with complete launch strategy, shoot planning, promotional creatives, and digital distribution.
                 </p>
                 <div className="inline-block px-4 py-2 bg-[#F59A57]/10 text-[#D46213] font-bold text-xs rounded-lg">
@@ -556,7 +556,7 @@ export default function WorkInfluencer() {
                   <h4 className="font-display font-bold text-white text-lg mb-2">
                     {step.title}
                   </h4>
-                  <p className="text-white/60 text-xs leading-relaxed">
+                  <p className="text-white/80 text-xs leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -570,19 +570,19 @@ export default function WorkInfluencer() {
               <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">
                 Around 80% of our new clients come through referrals.
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed">
+              <p className="text-white/80 text-sm leading-relaxed">
                 One of the strongest signs that clients trust Famebros Studio is how many new businesses reach us through recommendations. A business starts working with us, experiences our execution, and recommends us to another business owner.
               </p>
             </div>
             <div className="flex gap-6 flex-shrink-0 text-center">
               <div>
                 <div className="font-display text-4xl font-extrabold text-[#D46213]">80%</div>
-                <div className="font-mono-custom text-[10px] text-white/50 tracking-wider uppercase mt-1">Via Referrals</div>
+                <div className="font-mono-custom text-[10px] text-white/75 tracking-wider uppercase mt-1">Via Referrals</div>
               </div>
               <div className="w-[1px] bg-white/10" />
               <div>
                 <div className="font-display text-4xl font-extrabold text-[#0F766E]">50+</div>
-                <div className="font-mono-custom text-[10px] text-white/50 tracking-wider uppercase mt-1">Clients</div>
+                <div className="font-mono-custom text-[10px] text-white/75 tracking-wider uppercase mt-1">Clients</div>
               </div>
             </div>
           </div>

@@ -43,7 +43,7 @@ export default function Footer() {
             <p className="text-[13px] text-white/70 leading-relaxed max-w-sm">
               <strong className="text-white">Famebros Studio</strong> is a social media marketing and content production agency based in Mulund, Mumbai. {tagline}
             </p>
-            <div className="text-[12px] text-white/60 flex flex-col gap-1 pt-1">
+            <div className="text-[12px] text-white/80 flex flex-col gap-1 pt-1">
               <span className="text-[#F59A57] font-semibold">📍 Location:</span>
               <span>{address}</span>
             </div>
@@ -165,7 +165,7 @@ export default function Footer() {
                   href="https://www.instagram.com/famebros.studio/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-7 h-7 rounded-full border border-white/15 hover:border-[#F59A57] flex items-center justify-center text-white/60 hover:text-white transition-all bg-white/5"
+                  className="w-7 h-7 rounded-full border border-white/15 hover:border-[#F59A57] flex items-center justify-center text-white/80 hover:text-white transition-all bg-white/5"
                   aria-label="Instagram Profile"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -176,7 +176,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/famebros-studio" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-7 h-7 rounded-full border border-white/15 hover:border-[#F59A57] flex items-center justify-center text-white/60 hover:text-white transition-all bg-white/5"
+                  className="w-7 h-7 rounded-full border border-white/15 hover:border-[#F59A57] flex items-center justify-center text-white/80 hover:text-white transition-all bg-white/5"
                   aria-label="LinkedIn Profile"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -187,7 +187,7 @@ export default function Footer() {
                   href="https://www.youtube.com/@famebrosstudio" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-7 h-7 rounded-full border border-white/15 hover:border-[#F59A57] flex items-center justify-center text-white/60 hover:text-white transition-all bg-white/5"
+                  className="w-7 h-7 rounded-full border border-white/15 hover:border-[#F59A57] flex items-center justify-center text-white/80 hover:text-white transition-all bg-white/5"
                   aria-label="YouTube Channel"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -201,7 +201,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright and location indicator bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-white/50">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[11px] text-white/75">
           <p>{copyright}</p>
           <div className="flex gap-4">
             <Link href="/" className="hover:text-white transition-colors">

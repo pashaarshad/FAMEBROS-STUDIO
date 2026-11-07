@@ -88,7 +88,7 @@ export default function GrowthSystem() {
                 <h4 className="font-display font-bold text-white text-lg mb-2">
                   {step.title}
                 </h4>
-                <p className="text-white/60 text-xs leading-relaxed">
+                <p className="text-white/80 text-xs leading-relaxed">
                   {step.desc}
                 </p>
               </div>
@@ -102,19 +102,19 @@ export default function GrowthSystem() {
             <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">
               Around 80% of our new clients come through referrals.
             </h3>
-            <p className="text-white/60 text-sm leading-relaxed">
+            <p className="text-white/80 text-sm leading-relaxed">
               One of the strongest signs that clients trust Famebros Studio is how many new businesses reach us through recommendations. A business starts working with us, experiences our execution, and recommends us to another business owner.
             </p>
           </div>
           <div className="flex gap-6 flex-shrink-0 text-center">
             <div>
               <div className="font-display text-4xl font-extrabold text-[#D46213]">80%</div>
-              <div className="font-mono-custom text-[10px] text-white/50 tracking-wider uppercase mt-1">Via Referrals</div>
+              <div className="font-mono-custom text-[10px] text-white/75 tracking-wider uppercase mt-1">Via Referrals</div>
             </div>
             <div className="w-[1px] bg-white/10" />
             <div>
               <div className="font-display text-4xl font-extrabold text-[#0F766E]">50+</div>
-              <div className="font-mono-custom text-[10px] text-white/50 tracking-wider uppercase mt-1">Clients</div>
+              <div className="font-mono-custom text-[10px] text-white/75 tracking-wider uppercase mt-1">Clients</div>
             </div>
           </div>
         </div>

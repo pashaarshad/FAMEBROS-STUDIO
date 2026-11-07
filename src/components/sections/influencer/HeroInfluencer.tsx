@@ -252,7 +252,7 @@ export default function HeroInfluencer() {
                   )}
 
                   <div className={`absolute bottom-4 left-4 right-4 transition-all duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-20 opacity-100"}`}>
-                    <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">{card.num}</span>
+                    <span className="font-mono-custom text-[9px] tracking-widest text-white/75 block">{card.num}</span>
                     <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">{card.label}</span>
                     <span className={`text-[10px] transition-colors duration-300 ${isHovered ? "text-[#D46213]" : "text-[#A7A7A2]"}`}>
                       {card.sub}

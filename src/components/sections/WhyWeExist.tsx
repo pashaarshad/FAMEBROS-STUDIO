@@ -93,7 +93,7 @@ export default function WhyWeExist() {
                 <h3 className="font-display font-bold text-white text-base mb-2">
                   {pillar.title}
                 </h3>
-                <p className="text-white/60 text-xs md:text-[13px] leading-relaxed">
+                <p className="text-white/80 text-xs md:text-[13px] leading-relaxed">
                   {pillar.desc}
                 </p>
               </div>

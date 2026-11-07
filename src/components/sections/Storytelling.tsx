@@ -65,14 +65,14 @@ export default function Storytelling() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
             {headline}
           </h2>
-          <p className="text-[#55555A] text-sm md:text-base leading-relaxed max-w-2xl">
+          <p className="text-[#374151] text-sm md:text-base leading-relaxed max-w-2xl">
             {body}
           </p>
         </div>
 
         {/* Timeline Flow Steps */}
         <div className="mb-20 bg-white/60 border border-black/5 rounded-3xl p-6 md:p-8 shadow-[0_4px_25px_rgba(0,0,0,0.01)]">
-          <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#55555A] mb-6 font-bold text-center">
+          <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#374151] mb-6 font-bold text-center">
             THE ANATOMY OF A BRAND STORY
           </p>
           
@@ -135,7 +135,7 @@ export default function Storytelling() {
                 <h3 className="font-display font-bold text-[#0A0A0A] text-base mb-3 group-hover:text-[#D46213] transition-colors">
                   {pillar.title}
                 </h3>
-                <p className="text-[#55555A] text-xs md:text-[13px] leading-relaxed">
+                <p className="text-[#374151] text-xs md:text-[13px] leading-relaxed">
                   {pillar.desc}
                 </p>
               </div>

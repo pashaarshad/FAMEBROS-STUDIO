@@ -295,7 +295,7 @@ export default function CampaignReels() {
           <div className="bg-[#121215] border border-white/10 rounded-2xl p-7 hover:border-[#F59A57]/40 transition-all">
             <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57] mb-4" />
             <h4 className="font-display font-bold text-white text-lg mb-2">D2C Brand Launch</h4>
-            <p className="text-white/60 text-sm mb-4">12 verified micro creators over six weeks, all content produced in-house.</p>
+            <p className="text-white/80 text-sm mb-4">12 verified micro creators over six weeks, all content produced in-house.</p>
             <div className="font-display text-[32px] font-extrabold text-[#D46213] leading-none">1.4M</div>
             <p className="font-mono-custom text-xs text-white/40 mt-1.5">combined organic reach</p>
           </div>
@@ -303,7 +303,7 @@ export default function CampaignReels() {
           <div className="bg-[#121215] border border-white/10 rounded-2xl p-7 hover:border-[#249E98]/40 transition-all">
             <div className="w-2.5 h-2.5 rounded-sm bg-[#249E98] mb-4" />
             <h4 className="font-display font-bold text-white text-lg mb-2">Retail Store Campaign</h4>
-            <p className="text-white/60 text-sm mb-4">Local creators paired with a founder-led organic content push.</p>
+            <p className="text-white/80 text-sm mb-4">Local creators paired with a founder-led organic content push.</p>
             <div className="font-display text-[32px] font-extrabold text-[#0F766E] leading-none">3.1&times;</div>
             <p className="font-mono-custom text-xs text-white/40 mt-1.5">increase in weekend footfall</p>
           </div>
@@ -311,7 +311,7 @@ export default function CampaignReels() {
           <div className="bg-[#121215] border border-white/10 rounded-2xl p-7 hover:border-[#F59A57]/40 transition-all">
             <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57] mb-4" />
             <h4 className="font-display font-bold text-white text-lg mb-2">Celebrity Product Launch</h4>
-            <p className="text-white/60 text-sm mb-4">One celebrity collaboration, amplified across owned channels.</p>
+            <p className="text-white/80 text-sm mb-4">One celebrity collaboration, amplified across owned channels.</p>
             <div className="font-display text-[32px] font-extrabold text-[#D46213] leading-none">18K</div>
             <p className="font-mono-custom text-xs text-white/40 mt-1.5">new followers in 30 days</p>
           </div>

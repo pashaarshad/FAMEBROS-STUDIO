@@ -39,7 +39,7 @@ export default function Ecosystem() {
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
             {headline}
           </h2>
-          <p className="text-[#55555A] text-sm md:text-base leading-relaxed">
+          <p className="text-[#374151] text-sm md:text-base leading-relaxed">
             {body}
           </p>
         </div>
