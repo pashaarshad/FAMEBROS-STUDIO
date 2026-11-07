@@ -9,13 +9,13 @@ export default function FounderInfluencer() {
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_2.1fr] gap-12 lg:gap-16 items-center mb-16">
           
           <div>
-            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#249E98] mb-5">
+            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#0F766E] mb-5">
               BEHIND FAMEBROS
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-6">
               The people who<br />
               turn your brand<br />
-              into a <span className="text-[#249E98]">story.</span>
+              into a <span className="text-[#0F766E]">story.</span>
             </h2>
             <Link 
               href="#about"
@@ -55,7 +55,7 @@ export default function FounderInfluencer() {
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
                   Sultan Sayed
                 </h3>
-                <span className="text-[11px] md:text-[12px] text-[#249E98] font-bold block mb-3 md:mb-4">
+                <span className="text-[11px] md:text-[12px] text-[#0F766E] font-bold block mb-3 md:mb-4">
                   Founder
                 </span>
 
@@ -100,7 +100,7 @@ export default function FounderInfluencer() {
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
                   Bilal Sayed
                 </h3>
-                <span className="text-[11px] md:text-[12px] text-[#F59A57] font-bold block mb-3 md:mb-4">
+                <span className="text-[11px] md:text-[12px] text-[#D46213] font-bold block mb-3 md:mb-4">
                   Co-Founder
                 </span>
 

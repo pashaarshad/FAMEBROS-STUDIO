@@ -7,7 +7,7 @@ const existPillars = [
     title: "Transparency",
     desc: "You see what we're doing, why we're doing it, and what it cost. No hidden work, no vague updates.",
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
@@ -17,7 +17,7 @@ const existPillars = [
     title: "Strategy first",
     desc: "Nothing gets made until we know what it's supposed to achieve. Content without a reason is just expense.",
     icon: (
-      <svg className="w-5 h-5 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#0F766E]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
       </svg>
     )
@@ -26,7 +26,7 @@ const existPillars = [
     title: "Execution",
     desc: "A 25-person team that delivers every month, on schedule. Not promises followed by silence.",
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     )
@@ -35,7 +35,7 @@ const existPillars = [
     title: "Accountability",
     desc: "A monthly report with real numbers. If something isn't working, we tell you before you have to ask.",
     icon: (
-      <svg className="w-5 h-5 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#0F766E]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     )
@@ -62,7 +62,7 @@ export default function WhyWeExist() {
           {/* Left Column: Heading Statement */}
           <div className="space-y-8">
             <div>
-              <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-5">
+              <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-5">
                 {eyebrow}
               </p>
               <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] mb-6">
@@ -74,7 +74,7 @@ export default function WhyWeExist() {
             </div>
             
             <div className="border-l-2 border-[#F59A57] pl-5 py-1">
-              <p className="text-[#F59A57] font-display font-extrabold text-lg md:text-xl">
+              <p className="text-[#D46213] font-display font-extrabold text-lg md:text-xl">
                 We built Famebros Studio to be the opposite of that experience.
               </p>
             </div>

@@ -52,7 +52,7 @@ export default function BrandingComparison() {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-4">
             {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] max-w-3xl mx-auto">
@@ -87,23 +87,23 @@ export default function BrandingComparison() {
           <div className="flex flex-col justify-center items-center text-center px-4 py-8 lg:py-0">
             <h3 className="font-display font-extrabold text-white text-[24px] md:text-[28px] leading-[1.2] max-w-[260px]">
               With strong branding, people are willing to pay what your{" "}
-              <span className="text-[#F59A57]">brand is worth.</span>
+              <span className="text-[#D46213]">brand is worth.</span>
             </h3>
           </div>
 
           {/* 3. RIGHT CARD: WITH STRONG BRANDING */}
           <div className="bg-[#121215] border border-[#249E98]/20 rounded-3xl p-8 flex flex-col justify-center min-h-[280px] shadow-[0_8px_30px_rgb(0,0,0,0.3)] relative group hover:border-[#249E98]/40 transition-all duration-300">
-            <div className="absolute top-4 right-4 bg-[#249E98]/10 text-[#249E98] text-[10px] font-mono-custom px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
+            <div className="absolute top-4 right-4 bg-[#249E98]/10 text-[#0F766E] text-[10px] font-mono-custom px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
               Positive Flow
             </div>
             <div>
-              <span className="font-mono-custom text-[11px] tracking-[0.2em] text-[#249E98] font-extrabold uppercase block mb-6">
+              <span className="font-mono-custom text-[11px] tracking-[0.2em] text-[#0F766E] font-extrabold uppercase block mb-6">
                 {newLabel}
               </span>
               <ul className="space-y-4">
                 {withItems.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3.5 text-[14px] text-white/90 font-medium">
-                    <span className="text-[#249E98] font-bold text-base leading-none mt-0.5">✓</span>
+                    <span className="text-[#0F766E] font-bold text-base leading-none mt-0.5">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -145,7 +145,7 @@ export default function BrandingComparison() {
 
                 {/* Arrow */}
                 {idx < flowSteps.length - 1 && (
-                  <span className="text-[#F59A57] text-[15px] font-black px-2 select-none">
+                  <span className="text-[#D46213] text-[15px] font-black px-2 select-none">
                     →
                   </span>
                 )}
@@ -176,7 +176,7 @@ export default function BrandingComparison() {
                   )}
                 </div>
                 {idx < flowSteps.length - 1 && (
-                  <span className="text-[#F59A57] text-[13px] font-bold select-none">
+                  <span className="text-[#D46213] text-[13px] font-bold select-none">
                     →
                   </span>
                 )}

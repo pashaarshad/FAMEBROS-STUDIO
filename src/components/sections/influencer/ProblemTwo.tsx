@@ -19,7 +19,7 @@ export default function ProblemTwo() {
 
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 relative z-10">
         <div className="max-w-3xl mb-14">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-3">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#D46213] font-bold mb-3">
             PROBLEM TWO
           </p>
           <h2 className="font-display font-extrabold text-white text-[32px] md:text-[44px] leading-[1.1] mb-5">
@@ -28,13 +28,13 @@ export default function ProblemTwo() {
           <p className="text-white/70 text-base md:text-lg leading-relaxed mb-6">
             Whoever is free that week gets offered to whoever is paying that week. Nobody checks whether the creator&apos;s audience has anything to do with the business. The collaboration gets completed, the report looks fine, and nothing happens.
           </p>
-          <p className="font-display font-bold text-[#F59A57] text-xl md:text-2xl">
+          <p className="font-display font-bold text-[#D46213] text-xl md:text-2xl">
             We study your business first. Then we find the influencer.
           </p>
         </div>
 
         <div className="bg-[#121215] border border-white/10 rounded-3xl p-8 md:p-12 mb-10 shadow-2xl">
-          <div className="font-mono-custom text-[11px] uppercase tracking-[0.2em] text-[#249E98] font-bold mb-6">
+          <div className="font-mono-custom text-[11px] uppercase tracking-[0.2em] text-[#0F766E] font-bold mb-6">
             HOW WE MATCH &bull; THE AUDIENCE ALGORITHM
           </div>
 
@@ -56,7 +56,7 @@ export default function ProblemTwo() {
                     {step.label}
                   </div>
                   {!isLast && (
-                    <span className="text-[#F59A57] font-bold text-base select-none">
+                    <span className="text-[#D46213] font-bold text-base select-none">
                       &rarr;
                     </span>
                   )}

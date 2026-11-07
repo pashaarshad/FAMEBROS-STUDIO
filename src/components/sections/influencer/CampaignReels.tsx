@@ -195,7 +195,7 @@ export default function CampaignReels() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-3">
+            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#D46213] font-bold mb-3">
               CAMPAIGN WORK
             </p>
             <h2 className="font-display font-extrabold text-white text-[32px] md:text-[44px] leading-[1.1] mb-3">
@@ -209,7 +209,7 @@ export default function CampaignReels() {
           <div className="flex gap-2">
             <button 
               onClick={scrollLeft}
-              className="w-11 h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#F59A57] hover:bg-white/10 transition-all select-none"
+              className="w-11 h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#D46213] hover:bg-white/10 transition-all select-none"
               aria-label="Scroll left"
               suppressHydrationWarning
             >
@@ -217,7 +217,7 @@ export default function CampaignReels() {
             </button>
             <button 
               onClick={scrollRight}
-              className="w-11 h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#F59A57] hover:bg-white/10 transition-all select-none"
+              className="w-11 h-11 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white hover:border-[#F59A57] hover:text-[#D46213] hover:bg-white/10 transition-all select-none"
               aria-label="Scroll right"
               suppressHydrationWarning
             >
@@ -276,7 +276,7 @@ export default function CampaignReels() {
                   </div>
 
                   <div className={`absolute bottom-4 left-4 right-4 z-20 transition-all duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <span className="font-mono-custom text-[10px] uppercase tracking-wider text-[#F59A57] block font-bold">
+                    <span className="font-mono-custom text-[10px] uppercase tracking-wider text-[#D46213] block font-bold">
                       {item.line1}
                     </span>
                     <h3 className="font-display font-bold text-white text-[15px] leading-tight">
@@ -296,7 +296,7 @@ export default function CampaignReels() {
             <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57] mb-4" />
             <h4 className="font-display font-bold text-white text-lg mb-2">D2C Brand Launch</h4>
             <p className="text-white/60 text-sm mb-4">12 verified micro creators over six weeks, all content produced in-house.</p>
-            <div className="font-display text-[32px] font-extrabold text-[#F59A57] leading-none">1.4M</div>
+            <div className="font-display text-[32px] font-extrabold text-[#D46213] leading-none">1.4M</div>
             <p className="font-mono-custom text-xs text-white/40 mt-1.5">combined organic reach</p>
           </div>
 
@@ -304,7 +304,7 @@ export default function CampaignReels() {
             <div className="w-2.5 h-2.5 rounded-sm bg-[#249E98] mb-4" />
             <h4 className="font-display font-bold text-white text-lg mb-2">Retail Store Campaign</h4>
             <p className="text-white/60 text-sm mb-4">Local creators paired with a founder-led organic content push.</p>
-            <div className="font-display text-[32px] font-extrabold text-[#249E98] leading-none">3.1&times;</div>
+            <div className="font-display text-[32px] font-extrabold text-[#0F766E] leading-none">3.1&times;</div>
             <p className="font-mono-custom text-xs text-white/40 mt-1.5">increase in weekend footfall</p>
           </div>
 
@@ -312,7 +312,7 @@ export default function CampaignReels() {
             <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57] mb-4" />
             <h4 className="font-display font-bold text-white text-lg mb-2">Celebrity Product Launch</h4>
             <p className="text-white/60 text-sm mb-4">One celebrity collaboration, amplified across owned channels.</p>
-            <div className="font-display text-[32px] font-extrabold text-[#F59A57] leading-none">18K</div>
+            <div className="font-display text-[32px] font-extrabold text-[#D46213] leading-none">18K</div>
             <p className="font-mono-custom text-xs text-white/40 mt-1.5">new followers in 30 days</p>
           </div>
         </div>

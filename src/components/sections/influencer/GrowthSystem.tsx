@@ -37,7 +37,7 @@ export default function GrowthSystem() {
 
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 relative z-10">
         <div className="max-w-3xl mb-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#249E98] font-bold mb-3">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#0F766E] font-bold mb-3">
             OUR PHILOSOPHY
           </p>
           <h2 className="font-display font-extrabold text-white text-[34px] md:text-[46px] leading-[1.1] mb-5">
@@ -48,19 +48,19 @@ export default function GrowthSystem() {
           </p>
           <div className="space-y-3 font-display font-semibold text-lg text-white/90">
             <div className="flex items-center gap-3">
-              <span className="text-[#249E98] font-bold">&bull;</span> Did more people discover the business?
+              <span className="text-[#0F766E] font-bold">&bull;</span> Did more people discover the business?
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[#249E98] font-bold">&bull;</span> Did the brand become more trusted?
+              <span className="text-[#0F766E] font-bold">&bull;</span> Did the brand become more trusted?
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[#249E98] font-bold">&bull;</span> Did enquiries increase?
+              <span className="text-[#0F766E] font-bold">&bull;</span> Did enquiries increase?
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[#249E98] font-bold">&bull;</span> Did customers walk into the store?
+              <span className="text-[#0F766E] font-bold">&bull;</span> Did customers walk into the store?
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[#249E98] font-bold">&bull;</span> Did the business grow?
+              <span className="text-[#0F766E] font-bold">&bull;</span> Did the business grow?
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function GrowthSystem() {
 
         {/* 5-Step System */}
         <div className="mb-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-8">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#D46213] font-bold mb-8">
             THE FAMEBROS STUDIO GROWTH SYSTEM
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -82,7 +82,7 @@ export default function GrowthSystem() {
                 key={step.num}
                 className="bg-[#121215] border border-white/10 rounded-2xl p-6 hover:border-[#249E98]/40 transition-all"
               >
-                <span className="font-mono-custom text-xs font-bold text-[#F59A57] block mb-3">
+                <span className="font-mono-custom text-xs font-bold text-[#D46213] block mb-3">
                   {step.num}
                 </span>
                 <h4 className="font-display font-bold text-white text-lg mb-2">
@@ -108,12 +108,12 @@ export default function GrowthSystem() {
           </div>
           <div className="flex gap-6 flex-shrink-0 text-center">
             <div>
-              <div className="font-display text-4xl font-extrabold text-[#F59A57]">80%</div>
+              <div className="font-display text-4xl font-extrabold text-[#D46213]">80%</div>
               <div className="font-mono-custom text-[10px] text-white/50 tracking-wider uppercase mt-1">Via Referrals</div>
             </div>
             <div className="w-[1px] bg-white/10" />
             <div>
-              <div className="font-display text-4xl font-extrabold text-[#249E98]">50+</div>
+              <div className="font-display text-4xl font-extrabold text-[#0F766E]">50+</div>
               <div className="font-mono-custom text-[10px] text-white/50 tracking-wider uppercase mt-1">Clients</div>
             </div>
           </div>

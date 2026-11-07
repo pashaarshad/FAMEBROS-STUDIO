@@ -123,27 +123,27 @@ export default function HowItWorks() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <p className="font-mono-custom text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-3">
+          <p className="font-mono-custom text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-3">
             {eyebrow}
           </p>
           <h2 className="font-display font-black text-[#0A0A0C] text-[36px] sm:text-[48px] md:text-[58px] leading-[1.02] uppercase tracking-tight">
             {headline}
           </h2>
           <p className="text-[#55555C] text-sm sm:text-base md:text-lg mt-3 leading-relaxed font-medium">
-            Our process for <span className="text-[#249E98] font-bold">predictable scaling.</span> A structured 5-step system built to scale your business consistently.
+            Our process for <span className="text-[#0F766E] font-bold">predictable scaling.</span> A structured 5-step system built to scale your business consistently.
           </p>
 
           {/* Final Flow Banner */}
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-black/10 shadow-xs text-[11px] sm:text-xs font-mono font-bold text-[#0A0A0C] flex-wrap justify-center">
             <span>Strategy</span>
-            <span className="text-[#F59A57]">&rarr;</span>
+            <span className="text-[#D46213]">&rarr;</span>
             <span>Content Production</span>
-            <span className="text-[#F59A57]">&rarr;</span>
+            <span className="text-[#D46213]">&rarr;</span>
             <span>Social Media Management</span>
-            <span className="text-[#F59A57]">&rarr;</span>
+            <span className="text-[#D46213]">&rarr;</span>
             <span>Influencer Marketing</span>
-            <span className="text-[#F59A57]">&rarr;</span>
-            <span className="text-[#249E98] font-black">Meta Ads</span>
+            <span className="text-[#D46213]">&rarr;</span>
+            <span className="text-[#0F766E] font-black">Meta Ads</span>
           </div>
         </div>
 
@@ -211,6 +211,10 @@ export default function HowItWorks() {
                       <img
                         src={card.img}
                         alt={card.title}
+                        width={600}
+                        height={450}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

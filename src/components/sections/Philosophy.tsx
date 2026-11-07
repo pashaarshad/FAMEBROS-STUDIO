@@ -5,7 +5,7 @@ import Link from "next/link";
 const row1Nodes = [
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
@@ -14,7 +14,7 @@ const row1Nodes = [
   },
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197" />
       </svg>
     ),
@@ -22,7 +22,7 @@ const row1Nodes = [
   },
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.599-3.75A11.952 11.952 0 0112 2.714z" />
       </svg>
     ),
@@ -30,7 +30,7 @@ const row1Nodes = [
   },
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.109A11.386 11.386 0 0110.089 21c-2.316 0-4.443-.69-6.221-1.873A4.013 4.013 0 018 15.75c1.474 0 2.81.774 3.57 1.968m1.93-2.158a4.966 4.966 0 001-2.935c0-2.268-1.503-4.185-3.57-4.807M15 7.5a3 3 0 11-6 0 3 3 0 016 0zm6.375 2.25a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
       </svg>
     ),
@@ -41,7 +41,7 @@ const row1Nodes = [
 const row2Nodes = [
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l2.25-9 4.5 4.5L12 3l3 4.5 4.5-4.5 2.25 9M2.25 12h19.5M2.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12M12 16.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" />
       </svg>
     ),
@@ -49,7 +49,7 @@ const row2Nodes = [
   },
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197" />
       </svg>
     ),
@@ -57,7 +57,7 @@ const row2Nodes = [
   },
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L12 3l6 9-6 9-6-9z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M6 12h12" />
       </svg>
@@ -66,7 +66,7 @@ const row2Nodes = [
   },
   {
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.59 2.5a14.98 14.98 0 00-6.16 12.12c0 2.29.51 4.46 1.43 6.39L9.59 14.37z" />
       </svg>
     ),
@@ -97,13 +97,13 @@ export default function Philosophy() {
 
           {/* Left Column */}
           <div className="flex flex-col justify-center">
-            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#F59A57] mb-5">
+            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#D46213] mb-5">
               OUR PHILOSOPHY
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] mb-6 leading-[1.1] text-[32px] md:text-[40px]">
               Ads stop when<br />
               you stop paying.<br />
-              <span className="text-[#F59A57]">A brand doesn&apos;t.</span>
+              <span className="text-[#D46213]">A brand doesn&apos;t.</span>
             </h2>
             <p className="text-[#55555A] text-sm leading-relaxed mb-8 max-w-sm">
               We build recognition, trust, community and organic reach first. Paid campaigns and influencer
@@ -210,15 +210,15 @@ export default function Philosophy() {
                   <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Visibility
                   </div>
-                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <span className="text-[#D46213] text-[10px] font-bold">&rarr;</span>
                   <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Followers
                   </div>
-                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <span className="text-[#D46213] text-[10px] font-bold">&rarr;</span>
                   <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Trust
                   </div>
-                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <span className="text-[#D46213] text-[10px] font-bold">&rarr;</span>
                   <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-1.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-1 text-center">
                     Authority
                   </div>
@@ -226,7 +226,7 @@ export default function Philosophy() {
 
                 {/* Transition Arrow down */}
                 <div className="flex justify-end pr-8">
-                  <span className="text-[#F59A57] text-[10px] rotate-90 inline-block font-bold">
+                  <span className="text-[#D46213] text-[10px] rotate-90 inline-block font-bold">
                     &rarr;
                   </span>
                 </div>
@@ -236,11 +236,11 @@ export default function Philosophy() {
                   <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-[1.1] text-center">
                     Community
                   </div>
-                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <span className="text-[#D46213] text-[10px] font-bold">&rarr;</span>
                   <div className="bg-[#FAFAFA] border border-black/5 rounded-lg px-2.5 py-2.5 text-[10px] font-bold text-[#0A0A0A] flex-[1.1] text-center">
                     Brand Value
                   </div>
-                  <span className="text-[#F59A57] text-[10px] font-bold">&rarr;</span>
+                  <span className="text-[#D46213] text-[10px] font-bold">&rarr;</span>
                   <div className="bg-[#F59A57] rounded-lg px-3 py-2.5 text-[10px] font-extrabold text-white flex-[1.5] text-center shadow-[0_4px_15px_rgba(245,154,87,0.15)]">
                     Business Growth
                   </div>

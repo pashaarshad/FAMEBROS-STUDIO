@@ -10,7 +10,7 @@ export default function CTAInfluencer() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 relative z-10">
         <div className="bg-[#121215] border border-white/10 rounded-3xl p-10 md:p-16 text-center relative overflow-hidden shadow-2xl">
           <div className="max-w-2xl mx-auto">
-            <span className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold block mb-4">
+            <span className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold block mb-4">
               START YOUR CAMPAIGN
             </span>
             <h2 className="font-display font-extrabold text-white text-[32px] md:text-[46px] leading-[1.1] mb-5">

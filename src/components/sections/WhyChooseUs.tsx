@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
           {/* Left Column: Heading & Visual */}
           <div className="space-y-8">
             <div>
-              <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#249E98] mb-4">
+              <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#0F766E] mb-4">
                 {eyebrow}
               </p>
               <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[44px] leading-[1.1]">
@@ -50,11 +50,11 @@ export default function WhyChooseUs() {
             {/* Growth Stat Board */}
             <div className="bg-white/80 backdrop-blur-sm border border-black/5 rounded-2xl p-6 grid grid-cols-2 gap-6 max-w-sm shadow-sm">
               <div>
-                <span className="text-[28px] font-black text-[#F59A57] block leading-none">+300%</span>
+                <span className="text-[28px] font-black text-[#D46213] block leading-none">+300%</span>
                 <span className="text-[10px] font-bold text-[#55555A] uppercase tracking-wider mt-1 block">Avg Organic Reach</span>
               </div>
               <div className="border-l border-black/5 pl-6">
-                <span className="text-[28px] font-black text-[#249E98] block leading-none">4.5X</span>
+                <span className="text-[28px] font-black text-[#0F766E] block leading-none">4.5X</span>
                 <span className="text-[10px] font-bold text-[#55555A] uppercase tracking-wider mt-1 block">Inbound Leads</span>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
                   {pillar.num}
                 </div>
                 <div>
-                  <h3 className="font-display font-extrabold text-[#0A0A0A] text-lg mb-2.5 group-hover:text-[#F59A57] transition-colors">
+                  <h3 className="font-display font-extrabold text-[#0A0A0A] text-lg mb-2.5 group-hover:text-[#D46213] transition-colors">
                     {pillar.title}
                   </h3>
                   <p className="text-[#55555A] text-[13px] leading-relaxed">

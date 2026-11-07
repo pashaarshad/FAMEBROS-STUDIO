@@ -47,11 +47,11 @@ export default function ClientsGrid({ isDark = false }: ClientsGridProps) {
         
         {/* Header Block */}
         <div className="max-w-2xl mb-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-4">
             BRANDS &amp; PROJECTS
           </p>
           <h2 className="font-display font-extrabold text-inherit text-[32px] md:text-[42px] leading-[1.1] mb-5">
-            Brands we&apos;ve <span className="text-[#249E98]">worked with.</span>
+            Brands we&apos;ve <span className="text-[#0F766E]">worked with.</span>
           </h2>
           <p className={`text-sm md:text-base leading-relaxed ${isDark ? "text-white/70" : "text-[#55555A]"}`}>
             From leading brands to entertainment and digital projects, we&apos;ve contributed through content, shoots, campaigns and creative execution.
@@ -76,6 +76,8 @@ export default function ClientsGrid({ isDark = false }: ClientsGridProps) {
                   <img 
                     src={logo.src} 
                     alt={logo.name} 
+                    width={120}
+                    height={48}
                     loading="lazy"
                     decoding="async"
                     className={`max-h-full max-w-full object-contain opacity-95 group-hover:opacity-100 transition-all duration-300 ${

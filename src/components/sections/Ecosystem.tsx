@@ -33,7 +33,7 @@ export default function Ecosystem() {
         
         {/* Header Block */}
         <div className="head mb-16 text-center max-w-2xl mx-auto">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-4">
             {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
@@ -49,7 +49,7 @@ export default function Ecosystem() {
           
           {/* 1. LEFT COLUMN: THE FOUNDATION | BRAND + ORGANIC */}
           <div className="flex flex-col gap-3.5">
-            <span className="font-mono-custom text-[10px] tracking-[0.14em] text-[#F59A57] font-extrabold uppercase mb-2 block">
+            <span className="font-mono-custom text-[10px] tracking-[0.14em] text-[#D46213] font-extrabold uppercase mb-2 block">
               THE FOUNDATION &bull; BRAND + ORGANIC
             </span>
             {foundationChips.map((chip, idx) => (
@@ -69,7 +69,7 @@ export default function Ecosystem() {
             <div className="absolute inset-0 bg-[#F59A57]/5 rounded-3xl blur-xl animate-pulse" />
             
             <div className="bg-[#0A0A0C] text-white border border-[#F59A57]/30 rounded-3xl p-8 text-center relative z-10 shadow-[0_12px_40px_rgba(0,0,0,0.25)] min-h-[240px] w-full flex flex-col justify-center items-center group hover:border-[#F59A57] transition-colors duration-300 select-none">
-              <span className="font-mono-custom text-[11px] tracking-[0.16em] text-[#F59A57] font-bold uppercase mb-4 block">
+              <span className="font-mono-custom text-[11px] tracking-[0.16em] text-[#D46213] font-bold uppercase mb-4 block">
                 THE OUTCOME
               </span>
               <h3 className="font-display font-extrabold text-white text-xl md:text-2xl mb-4 leading-snug">
@@ -77,19 +77,19 @@ export default function Ecosystem() {
               </h3>
               <div className="inline-flex items-center gap-1.5 flex-wrap justify-center text-[10px] md:text-[11px] font-mono text-white/70 bg-white/5 border border-white/10 px-3 py-2 rounded-xl">
                 <span>Recognition</span>
-                <span className="text-[#F59A57]">&rarr;</span>
+                <span className="text-[#D46213]">&rarr;</span>
                 <span>Trust</span>
-                <span className="text-[#F59A57]">&rarr;</span>
+                <span className="text-[#D46213]">&rarr;</span>
                 <span>Enquiries</span>
-                <span className="text-[#F59A57]">&rarr;</span>
-                <span className="text-[#249E98] font-bold">Customers</span>
+                <span className="text-[#D46213]">&rarr;</span>
+                <span className="text-[#0F766E] font-bold">Customers</span>
               </div>
             </div>
           </div>
 
           {/* 3. RIGHT COLUMN: THE GROWTH AMPLIFIERS */}
           <div className="flex flex-col gap-3.5">
-            <span className="font-mono-custom text-[10px] tracking-[0.14em] text-[#249E98] font-extrabold uppercase mb-2 block">
+            <span className="font-mono-custom text-[10px] tracking-[0.14em] text-[#0F766E] font-extrabold uppercase mb-2 block">
               THE GROWTH AMPLIFIERS
             </span>
             {amplifierChips.map((chip, idx) => (

@@ -190,11 +190,11 @@ export default function Work() {
         {/* Header */}
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#F59A57] mb-4">
+            <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#D46213] mb-4">
               CLIENT TESTIMONIALS &bull; PROOF OF GROWTH
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-3">
-              What Our <span className="text-[#F59A57]">Clients Say.</span>
+              What Our <span className="text-[#D46213]">Clients Say.</span>
             </h2>
             <p className="text-[#55555A] text-sm font-semibold">
               Real businesses. Cinematic content. Real bottom line scaling.
@@ -204,7 +204,7 @@ export default function Work() {
           <div className="flex gap-2">
             <button 
               onClick={scrollLeft}
-              className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-[#0A0A0A] hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
+              className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-[#0A0A0A] hover:border-[#F59A57] hover:text-[#D46213] transition-all"
               aria-label="Scroll left"
               suppressHydrationWarning
             >
@@ -212,7 +212,7 @@ export default function Work() {
             </button>
             <button 
               onClick={scrollRight}
-              className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-[#0A0A0A] hover:border-[#F59A57] hover:text-[#F59A57] transition-all"
+              className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-[#0A0A0A] hover:border-[#F59A57] hover:text-[#D46213] transition-all"
               aria-label="Scroll right"
               suppressHydrationWarning
             >
@@ -242,6 +242,8 @@ export default function Work() {
                   <img 
                     src={item.img} 
                     alt={item.title} 
+                    width={300}
+                    height={533}
                     loading="lazy"
                     decoding="async"
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 z-0 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-90'}`}

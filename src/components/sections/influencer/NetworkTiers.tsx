@@ -32,7 +32,7 @@ export default function NetworkTiers() {
     <section className="bg-[#FAF6F0] py-24 border-t border-black/5 relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         <div className="max-w-3xl mb-14">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-3">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#D46213] font-bold mb-3">
             THE NETWORK
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-5">
@@ -65,7 +65,7 @@ export default function NetworkTiers() {
               </div>
 
               <div className="pt-4 border-t border-black/5">
-                <span className="inline-block font-mono-custom text-[11px] font-semibold text-[#249E98]">
+                <span className="inline-block font-mono-custom text-[11px] font-semibold text-[#0F766E]">
                   ✓ {card.tag}
                 </span>
               </div>

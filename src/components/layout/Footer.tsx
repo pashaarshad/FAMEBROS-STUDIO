@@ -33,6 +33,10 @@ export default function Footer() {
               <img 
                 src="/imp-doc/logo.png" 
                 alt="Famebros Studio - Social Media Agency in Mulund & Mumbai" 
+                width={180}
+                height={60}
+                loading="lazy"
+                decoding="async"
                 className="h-12 md:h-[60px] w-auto object-contain"
               />
             </Link>

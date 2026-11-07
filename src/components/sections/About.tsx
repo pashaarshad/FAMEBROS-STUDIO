@@ -22,7 +22,7 @@ export default function About() {
         
         {/* Top Header Block */}
         <div className="max-w-3xl mb-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-4">
             {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[36px] sm:text-[46px] md:text-[54px] leading-[1.08] mb-6">
@@ -38,7 +38,7 @@ export default function About() {
         {/* 3 Impact Stats Bar */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           <div className="bg-white border border-black/10 rounded-2xl p-7 shadow-xs">
-            <div className="font-display text-4xl md:text-5xl font-extrabold text-[#F59A57] mb-2">
+            <div className="font-display text-4xl md:text-5xl font-extrabold text-[#D46213] mb-2">
               50+
             </div>
             <div className="font-mono-custom text-xs uppercase tracking-wider text-[#0A0A0A] font-extrabold">
@@ -47,7 +47,7 @@ export default function About() {
           </div>
 
           <div className="bg-white border border-black/10 rounded-2xl p-7 shadow-xs">
-            <div className="font-display text-4xl md:text-5xl font-extrabold text-[#249E98] mb-2">
+            <div className="font-display text-4xl md:text-5xl font-extrabold text-[#0F766E] mb-2">
               80%
             </div>
             <div className="font-mono-custom text-xs uppercase tracking-wider text-[#0A0A0A] font-extrabold">
@@ -56,7 +56,7 @@ export default function About() {
           </div>
 
           <div className="bg-white border border-black/10 rounded-2xl p-7 shadow-xs">
-            <div className="font-display text-4xl md:text-5xl font-extrabold text-[#F59A57] mb-2">
+            <div className="font-display text-4xl md:text-5xl font-extrabold text-[#D46213] mb-2">
               Pan India
             </div>
             <div className="font-mono-custom text-xs uppercase tracking-wider text-[#0A0A0A] font-extrabold">
@@ -68,7 +68,7 @@ export default function About() {
         {/* Sub-section: Why Famebros Studio? */}
         <div className="mb-20">
           <div className="mb-10">
-            <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#249E98] font-bold mb-2">
+            <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#0F766E] font-bold mb-2">
               OUR ADVANTAGE
             </p>
             <h3 className="font-display font-extrabold text-[#0A0A0A] text-2xl md:text-3xl">
@@ -79,7 +79,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
             <div className="bg-white border border-black/10 rounded-3xl p-8 shadow-sm hover:border-[#F59A57]/50 transition-all group">
-              <div className="w-12 h-12 rounded-2xl bg-[#F59A57]/10 flex items-center justify-center text-[#F59A57] font-bold text-xl mb-6 group-hover:bg-[#F59A57] group-hover:text-black transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-[#F59A57]/10 flex items-center justify-center text-[#D46213] font-bold text-xl mb-6 group-hover:bg-[#F59A57] group-hover:text-black transition-all">
                 01
               </div>
               <h4 className="font-display font-extrabold text-[#0A0A0A] text-xl mb-3">
@@ -92,7 +92,7 @@ export default function About() {
 
             {/* Card 2 */}
             <div className="bg-white border border-black/10 rounded-3xl p-8 shadow-sm hover:border-[#249E98]/50 transition-all group">
-              <div className="w-12 h-12 rounded-2xl bg-[#249E98]/10 flex items-center justify-center text-[#249E98] font-bold text-xl mb-6 group-hover:bg-[#249E98] group-hover:text-white transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-[#249E98]/10 flex items-center justify-center text-[#0F766E] font-bold text-xl mb-6 group-hover:bg-[#249E98] group-hover:text-white transition-all">
                 02
               </div>
               <h4 className="font-display font-extrabold text-[#0A0A0A] text-xl mb-3">
@@ -105,7 +105,7 @@ export default function About() {
 
             {/* Card 3 */}
             <div className="bg-white border border-black/10 rounded-3xl p-8 shadow-sm hover:border-[#F59A57]/50 transition-all group">
-              <div className="w-12 h-12 rounded-2xl bg-[#F59A57]/10 flex items-center justify-center text-[#F59A57] font-bold text-xl mb-6 group-hover:bg-[#F59A57] group-hover:text-black transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-[#F59A57]/10 flex items-center justify-center text-[#D46213] font-bold text-xl mb-6 group-hover:bg-[#F59A57] group-hover:text-black transition-all">
                 03
               </div>
               <h4 className="font-display font-extrabold text-[#0A0A0A] text-xl mb-3">
@@ -121,7 +121,7 @@ export default function About() {
         {/* CTA Banner Box */}
         <div className="bg-[#0A0A0C] text-white border border-white/10 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
           <div>
-            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-2">
+            <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#D46213] font-bold mb-2">
               START YOUR JOURNEY
             </p>
             <h3 className="font-display font-extrabold text-white text-2xl md:text-3xl">

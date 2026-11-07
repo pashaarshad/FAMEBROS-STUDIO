@@ -38,7 +38,7 @@ export default function ProblemOne() {
     <section className="bg-[#FAF6F0] py-24 border-t border-black/5 relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         <div className="max-w-3xl mb-14">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#F59A57] font-bold mb-3">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#D46213] font-bold mb-3">
             PROBLEM ONE
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-5">
@@ -58,7 +58,7 @@ export default function ProblemOne() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-2.5 h-2.5 rounded-sm bg-[#F59A57]" />
-                  <span className="font-mono-custom text-[9.5px] font-bold tracking-widest text-[#F59A57] bg-[#F59A57]/10 px-2.5 py-1 rounded">
+                  <span className="font-mono-custom text-[9.5px] font-bold tracking-widest text-[#D46213] bg-[#F59A57]/10 px-2.5 py-1 rounded">
                     {item.tag}
                   </span>
                 </div>

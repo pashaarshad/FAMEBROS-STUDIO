@@ -17,7 +17,7 @@ const storyPillars = [
     title: "The real people",
     desc: "Founders, teams, craftsmen and the people working behind the scenes. Audiences connect with real people before they connect with businesses.",
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     )
@@ -26,7 +26,7 @@ const storyPillars = [
     title: "The honest moments",
     desc: "Challenges, lessons and unexpected moments often create the most relatable content. People connect with real journeys, not perfect ones.",
     icon: (
-      <svg className="w-5 h-5 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#0F766E]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
       </svg>
     )
@@ -35,7 +35,7 @@ const storyPillars = [
     title: "The journey, month after month",
     desc: "Consistent storytelling turns your business from something people simply see into a brand they recognise, remember and want to follow.",
     icon: (
-      <svg className="w-5 h-5 text-[#F59A57]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-[#D46213]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
     )
@@ -59,7 +59,7 @@ export default function Storytelling() {
         
         {/* Header Block */}
         <div className="head mb-16">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#249E98] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#0F766E] font-bold mb-4">
             {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[42px] leading-[1.1] mb-5">
@@ -90,7 +90,7 @@ export default function Storytelling() {
                   {step}
                 </div>
                 {idx < storyTimeline.length - 1 && (
-                  <span className="text-[#F59A57] text-[14px] font-bold px-1 select-none">
+                  <span className="text-[#D46213] text-[14px] font-bold px-1 select-none">
                     →
                   </span>
                 )}
@@ -112,7 +112,7 @@ export default function Storytelling() {
                   {step}
                 </div>
                 {idx < storyTimeline.length - 1 && (
-                  <span className="text-[#F59A57] text-[11px] font-bold select-none">
+                  <span className="text-[#D46213] text-[11px] font-bold select-none">
                     →
                   </span>
                 )}
@@ -132,7 +132,7 @@ export default function Storytelling() {
                 <div className="w-10 h-10 rounded-xl bg-[#FAF6F0] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                   {pillar.icon}
                 </div>
-                <h3 className="font-display font-bold text-[#0A0A0A] text-base mb-3 group-hover:text-[#F59A57] transition-colors">
+                <h3 className="font-display font-bold text-[#0A0A0A] text-base mb-3 group-hover:text-[#D46213] transition-colors">
                   {pillar.title}
                 </h3>
                 <p className="text-[#55555A] text-xs md:text-[13px] leading-relaxed">

@@ -111,6 +111,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preload" as="image" href="/vedios-hero/1st__poster.webp" type="image/webp" fetchPriority="high" />
+        <link rel="alternate" type="text/plain" href="https://www.famebrosstudio.com/llms.txt" title="LLM Context" />
+        <link rel="help" href="https://www.famebrosstudio.com/llms-full.txt" title="Agentic Business Graph" />
         <JsonLd data={[famebrosOrganizationSchema, websiteSchema]} />
       </head>
       <body

@@ -134,14 +134,14 @@ export default function HeroInfluencer() {
 
       <div className="max-w-[1280px] w-full mx-auto px-5 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center relative z-10 flex-1 my-auto">
         <div className="flex flex-col justify-center">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#F59A57] font-bold uppercase mb-6">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] text-[#D46213] font-bold uppercase mb-6">
             INFLUENCER MARKETING
           </p>
           
           <h1 className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.03em] mb-6 text-[40px] md:text-[52px] lg:text-[64px]">
             Most influencer budgets are<br />
-            <span className="text-[#F59A57]">wasted</span> on the<br />
-            <span className="text-[#249E98]">wrong creator.</span>
+            <span className="text-[#D46213]">wasted</span> on the<br />
+            <span className="text-[#0F766E]">wrong creator.</span>
           </h1>
 
           <p className="text-[#A7A7A2] text-sm md:text-base leading-relaxed mb-10 max-w-lg">
@@ -155,7 +155,7 @@ export default function HeroInfluencer() {
                 className="inline-flex items-center justify-center gap-3 px-5 py-3.5 sm:px-7 sm:py-4 bg-[#F59A57] text-[#050505] rounded-xl text-[13px] sm:text-[15px] font-bold hover:bg-[#FF8A3D] hover:-translate-y-[2px] transition-all shadow-[0_4px_20px_rgba(245,154,87,0.25)] w-full sm:w-auto"
               >
                 Grow Your Brand With Influencers
-                <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-[10px] sm:text-xs">
+                <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white flex items-center justify-center text-[#D46213] font-bold text-[10px] sm:text-xs">
                   &rarr;
                 </span>
               </Link>
@@ -254,7 +254,7 @@ export default function HeroInfluencer() {
                   <div className={`absolute bottom-4 left-4 right-4 transition-all duration-300 ${isActive ? "opacity-0 pointer-events-none z-0" : "z-20 opacity-100"}`}>
                     <span className="font-mono-custom text-[9px] tracking-widest text-white/50 block">{card.num}</span>
                     <span className="font-display font-extrabold text-[12px] text-white block uppercase tracking-wide">{card.label}</span>
-                    <span className={`text-[10px] transition-colors duration-300 ${isHovered ? "text-[#F59A57]" : "text-[#A7A7A2]"}`}>
+                    <span className={`text-[10px] transition-colors duration-300 ${isHovered ? "text-[#D46213]" : "text-[#A7A7A2]"}`}>
                       {card.sub}
                     </span>
                   </div>
@@ -339,12 +339,12 @@ export default function HeroInfluencer() {
             <div className="flex items-center gap-4 md:px-6">
               <div className="w-12 h-12 rounded-full border border-[#249E98]/30 flex items-center justify-center flex-shrink-0 relative">
                 <div className="absolute inset-1 rounded-full border border-dashed border-[#249E98]/50" />
-                <svg className="w-5 h-5 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#0F766E]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               <div>
-                <span className="font-display font-extrabold text-[32px] text-[#249E98] leading-none block">50+</span>
+                <span className="font-display font-extrabold text-[32px] text-[#0F766E] leading-none block">50+</span>
                 <span className="text-[12px] text-white/75 font-medium mt-1 block">Brands Partnered</span>
               </div>
             </div>
@@ -352,12 +352,12 @@ export default function HeroInfluencer() {
             <div className="flex items-center gap-4 md:px-6">
               <div className="w-12 h-12 rounded-full border border-[#249E98]/30 flex items-center justify-center flex-shrink-0 relative">
                 <div className="absolute inset-1 rounded-full border border-dashed border-[#249E98]/50" />
-                <svg className="w-5 h-5 text-[#249E98]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#0F766E]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               </div>
               <div>
-                <span className="font-display font-extrabold text-[32px] text-[#249E98] leading-none block">25</span>
+                <span className="font-display font-extrabold text-[32px] text-[#0F766E] leading-none block">25</span>
                 <span className="text-[12px] text-white/75 font-medium mt-1 block">Team Members</span>
               </div>
             </div>

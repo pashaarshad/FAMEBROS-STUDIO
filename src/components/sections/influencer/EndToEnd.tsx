@@ -19,7 +19,7 @@ export default function EndToEnd() {
     <section className="bg-[#FFFFFF] text-[#0A0A0A] py-24 border-t border-black/5 relative overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16">
         <div className="max-w-3xl mb-12">
-          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#249E98] font-bold mb-3">
+          <p className="font-mono-custom text-[11px] tracking-[0.2em] uppercase text-[#0F766E] font-bold mb-3">
             END TO END
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[44px] leading-[1.1] mb-4">
@@ -47,13 +47,13 @@ export default function EndToEnd() {
                         : "bg-white text-[#0A0A0A] border-black/10 hover:border-black/30 shadow-xs"
                     }`}
                   >
-                    <span className="font-mono-custom text-[10px] text-[#F59A57] mr-1.5 font-extrabold">
+                    <span className="font-mono-custom text-[10px] text-[#D46213] mr-1.5 font-extrabold">
                       {i + 1 < 10 ? `0${i + 1}` : i + 1}
                     </span>
                     {node}
                   </div>
                   {!isLast && (
-                    <span className="text-[#249E98] font-bold text-xs select-none">
+                    <span className="text-[#0F766E] font-bold text-xs select-none">
                       &rarr;
                     </span>
                   )}

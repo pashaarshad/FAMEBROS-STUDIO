@@ -36,7 +36,7 @@ export default function Contact() {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-4">
             {eyebrow}
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[42px] leading-[1.1] mb-4">
@@ -93,8 +93,9 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Your Name*</label>
+                    <label htmlFor="contact-name" className="block text-xs text-[#55555A] font-semibold mb-2">Your Name*</label>
                     <input 
+                      id="contact-name"
                       type="text" 
                       placeholder="Full name"
                       value={formData.name}
@@ -105,8 +106,9 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number*</label>
+                    <label htmlFor="contact-phone" className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number*</label>
                     <input 
+                      id="contact-phone"
                       type="tel" 
                       placeholder="Phone number"
                       value={formData.phone}
@@ -120,8 +122,9 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Business / Brand Name*</label>
+                    <label htmlFor="contact-brand" className="block text-xs text-[#55555A] font-semibold mb-2">Business / Brand Name*</label>
                     <input 
+                      id="contact-brand"
                       type="text" 
                       placeholder="Brand name"
                       value={formData.brandName}
@@ -132,8 +135,9 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Business Location*</label>
+                    <label htmlFor="contact-location" className="block text-xs text-[#55555A] font-semibold mb-2">Business Location*</label>
                     <input 
+                      id="contact-location"
                       type="text" 
                       placeholder="City / Area"
                       value={formData.location}
@@ -146,8 +150,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-[#55555A] font-semibold mb-2">What can we help you with? (Optional)</label>
+                  <label htmlFor="contact-message" className="block text-xs text-[#55555A] font-semibold mb-2">What can we help you with? (Optional)</label>
                   <textarea 
+                    id="contact-message"
                     placeholder="Briefly tell us what you're looking to achieve"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -170,7 +175,7 @@ export default function Contact() {
           ) : (
             /* SUCCESS SCREEN */
             <div className="text-center py-10 space-y-6">
-              <div className="w-16 h-16 bg-[#249E98]/10 text-[#249E98] border border-[#249E98]/30 rounded-full flex items-center justify-center text-3xl mx-auto">
+              <div className="w-16 h-16 bg-[#249E98]/10 text-[#0F766E] border border-[#249E98]/30 rounded-full flex items-center justify-center text-3xl mx-auto">
                 ✓
               </div>
               <div>

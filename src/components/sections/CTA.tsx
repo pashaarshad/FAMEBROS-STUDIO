@@ -18,7 +18,7 @@ export default function CTA() {
           <div className="relative z-10 flex-1">
             <h2 className="font-display font-light text-[#0A0A0A] text-[26px] md:text-[34px] leading-tight">
               Ready to scale your <br className="hidden md:inline" />
-              <span className="font-extrabold text-[#F59A57]">business growth?</span>
+              <span className="font-extrabold text-[#D46213]">business growth?</span>
             </h2>
           </div>
 
@@ -33,7 +33,7 @@ export default function CTA() {
               className="inline-flex items-center gap-3 px-6 py-3 bg-[#F59A57] text-[#050505] hover:bg-[#FF8A3D] font-bold rounded-full text-[14px] transition-all self-start md:self-end hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(245,154,87,0.15)]"
             >
               Let&apos;s Talk
-              <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#F59A57] font-bold text-xs">
+              <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[#D46213] font-bold text-xs">
                 →
               </span>
             </Link>

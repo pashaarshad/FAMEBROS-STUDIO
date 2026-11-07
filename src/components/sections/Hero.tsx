@@ -34,7 +34,7 @@ const businessHeroCards = [
     growthLabel: "Campaign Type",
     img: "/vedios-hero/1st__poster.webp",
     videoSrc: "/vedios-hero/1st_.mp4",
-    color: "text-[#F59A57]"
+    color: "text-[#D46213]"
   },
   {
     num: "02",
@@ -45,7 +45,7 @@ const businessHeroCards = [
     growthLabel: "Collaboration",
     img: "/vedios-hero/2nd_poster.webp",
     videoSrc: "/vedios-hero/2nd.mp4",
-    color: "text-[#249E98]"
+    color: "text-[#0F766E]"
   },
   {
     num: "03",
@@ -56,7 +56,7 @@ const businessHeroCards = [
     growthLabel: "Store Locations",
     img: "/vedios-hero/3rd_poster.webp",
     videoSrc: "/vedios-hero/3rd.mp4",
-    color: "text-[#F59A57]"
+    color: "text-[#D46213]"
   },
   {
     num: "04",
@@ -67,7 +67,7 @@ const businessHeroCards = [
     growthLabel: "Campaign Type",
     img: "/vedios-hero/4th_poster.webp",
     videoSrc: "/vedios-hero/4th.mp4",
-    color: "text-[#249E98]"
+    color: "text-[#0F766E]"
   }
 ];
 
@@ -134,7 +134,7 @@ export default function Hero() {
         <div className="w-full flex items-center justify-center gap-4 mb-6 max-w-3xl">
           <div className="h-[1px] bg-black/10 flex-grow hidden xs:block" />
           <div className="inline-flex items-center justify-center px-4 sm:px-6 py-1.5 rounded-full bg-white border border-black/10 shadow-xs">
-            <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.18em] font-extrabold text-[#F59A57] uppercase">
+            <span className="font-mono-custom text-[10px] sm:text-[11px] md:text-xs tracking-[0.18em] font-extrabold text-[#D46213] uppercase">
               {eyebrowText}
             </span>
           </div>
@@ -197,7 +197,7 @@ export default function Hero() {
             href="#what-our-clients-say"
             className="inline-flex items-center justify-center gap-3.5 px-8 py-4 bg-white border border-black/15 text-[#0A0A0C] rounded-full text-sm sm:text-base font-extrabold hover:border-[#F59A57] hover:bg-[#FAF6F0] hover:scale-105 active:scale-95 transition-all shadow-md group"
           >
-            <span className="w-7 h-7 rounded-full bg-[#FAF6F0] border border-black/10 flex items-center justify-center text-[#F59A57] font-bold text-xs">
+            <span className="w-7 h-7 rounded-full bg-[#FAF6F0] border border-black/10 flex items-center justify-center text-[#D46213] font-bold text-xs">
               ▶
             </span>
             <span>{ctaSecondary}</span>
@@ -248,6 +248,8 @@ export default function Hero() {
                   <img
                     src={card.img}
                     alt={card.name}
+                    width={300}
+                    height={533}
                     loading={idx === 0 ? "eager" : "lazy"}
                     fetchPriority={idx === 0 ? "high" : "low"}
                     decoding="async"
@@ -334,6 +336,8 @@ export default function Hero() {
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
+                      width={160}
+                      height={60}
                       loading="lazy"
                       decoding="async"
                       className={`max-h-11 sm:max-h-15 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${
@@ -356,6 +360,8 @@ export default function Hero() {
                     <img 
                       src={logo.src} 
                       alt={logo.name} 
+                      width={160}
+                      height={60}
                       loading="lazy"
                       decoding="async"
                       className={`max-h-11 sm:max-h-15 max-w-full object-contain opacity-95 hover:opacity-100 hover:scale-105 transition-all duration-300 ${

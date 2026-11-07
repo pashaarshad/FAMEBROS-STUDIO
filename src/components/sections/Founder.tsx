@@ -20,7 +20,7 @@ export default function Founder() {
           
           {/* Left Column */}
           <div>
-            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#249E98] mb-5">
+            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#0F766E] mb-5">
               {eyebrow}
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-6">
@@ -48,6 +48,10 @@ export default function Founder() {
                 <img 
                   src="/Sultan photos-with-png.webp" 
                   alt={`${founder1Name} - ${founder1Role} of Famebros Studio Social Media Agency Mulund Mumbai`}
+                  width={155}
+                  height={220}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute left-0 bottom-0 w-full h-full object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -59,6 +63,10 @@ export default function Founder() {
                   <img 
                     src="/Sultan sign.webp" 
                     alt="Sultan Sayed Founder Signature"
+                    width={160}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full object-contain object-left"
                     style={{ 
                       filter: "invert(56%) sepia(44%) saturate(718%) hue-rotate(133deg) brightness(91%) contrast(87%)" 
@@ -69,7 +77,7 @@ export default function Founder() {
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
                   {founder1Name}
                 </h3>
-                <span className="text-[11px] md:text-[12px] text-[#249E98] font-bold block mb-3 md:mb-4">
+                <span className="text-[11px] md:text-[12px] text-[#0F766E] font-bold block mb-3 md:mb-4">
                   {founder1Role}
                 </span>
 
@@ -98,6 +106,10 @@ export default function Founder() {
                 <img 
                   src="/Bilal Sayed.webp" 
                   alt={`${founder2Name} - ${founder2Role} of Famebros Studio Social Media Agency Mulund Mumbai`}
+                  width={155}
+                  height={220}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute left-[-16px] md:left-[-20px] bottom-0 w-full h-[84%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
                 />
               </div>
@@ -109,6 +121,10 @@ export default function Founder() {
                   <img 
                     src="/Bilal Sayed-sings.webp" 
                     alt="Bilal Sayed Signature"
+                    width={160}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full object-contain object-left"
                     style={{ 
                       filter: "invert(72%) sepia(45%) saturate(1377%) hue-rotate(328deg) brightness(101%) contrast(93%)" 
@@ -119,7 +135,7 @@ export default function Founder() {
                 <h3 className="font-display font-extrabold text-[14px] md:text-[16px] text-[#0A0A0A] tracking-wider uppercase mb-0.5">
                   {founder2Name}
                 </h3>
-                <span className="text-[11px] md:text-[12px] text-[#F59A57] font-bold block mb-3 md:mb-4">
+                <span className="text-[11px] md:text-[12px] text-[#D46213] font-bold block mb-3 md:mb-4">
                   {founder2Role}
                 </span>
 

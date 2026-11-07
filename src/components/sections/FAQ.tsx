@@ -64,7 +64,7 @@ export default function FAQ() {
           
           {/* Left Block */}
           <div>
-            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#F59A57] mb-5">
+            <p className="font-mono-custom text-[10px] tracking-[0.2em] uppercase text-[#D46213] mb-5">
               {eyebrow}
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-6">
@@ -86,17 +86,22 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => toggleFAQ(idx)}
-                    className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-display font-extrabold text-sm md:text-base text-[#0A0A0A] hover:text-[#F59A57] transition-colors"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${idx}`}
+                    className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-display font-extrabold text-sm md:text-base text-[#0A0A0A] hover:text-[#D46213] transition-colors"
                     suppressHydrationWarning
                   >
                     <span>{item.q}</span>
-                    <span className="text-lg font-mono text-[#F59A57]">
+                    <span className="text-lg font-mono text-[#D46213]" aria-hidden="true">
                       {isOpen ? "−" : "+"}
                     </span>
                   </button>
                   
                   {isOpen && (
-                    <div className="px-6 pb-6 text-[13px] text-[#55555A] leading-relaxed border-t border-black/5 pt-4 animate-slideDown">
+                    <div 
+                      id={`faq-answer-${idx}`}
+                      className="px-6 pb-6 text-[13px] text-[#55555A] leading-relaxed border-t border-black/5 pt-4 animate-slideDown"
+                    >
                       {item.a}
                     </div>
                   )}

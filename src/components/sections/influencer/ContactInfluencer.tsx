@@ -23,7 +23,7 @@ export default function ContactInfluencer() {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-4">
             GET IN TOUCH
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[42px] leading-[1.1] mb-4">
@@ -75,8 +75,9 @@ export default function ContactInfluencer() {
               <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Your Name</label>
+                    <label htmlFor="influencer-name" className="block text-xs text-[#55555A] font-semibold mb-2">Your Name</label>
                     <input 
+                      id="influencer-name"
                       type="text" 
                       placeholder="Full name"
                       value={formData.name}
@@ -87,8 +88,9 @@ export default function ContactInfluencer() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number</label>
+                    <label htmlFor="influencer-phone" className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number</label>
                     <input 
+                      id="influencer-phone"
                       type="tel" 
                       placeholder="Phone number"
                       value={formData.phone}
@@ -102,8 +104,9 @@ export default function ContactInfluencer() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Instagram / Channel Handle</label>
+                    <label htmlFor="influencer-handle" className="block text-xs text-[#55555A] font-semibold mb-2">Instagram / Channel Handle</label>
                     <input 
+                      id="influencer-handle"
                       type="text" 
                       placeholder="@yourhandle"
                       value={formData.socialHandle}
@@ -114,8 +117,9 @@ export default function ContactInfluencer() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Content Niche</label>
+                    <label htmlFor="influencer-niche" className="block text-xs text-[#55555A] font-semibold mb-2">Content Niche</label>
                     <select
+                      id="influencer-niche"
                       value={formData.category}
                       onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                       className="w-full bg-white border border-black/10 rounded-xl p-3 text-[#0A0A0A] text-sm focus:border-[#F59A57] focus:outline-none transition-all"
@@ -159,7 +163,7 @@ export default function ContactInfluencer() {
           ) : (
             /* SUCCESS SCREEN */
             <div className="text-center py-10 space-y-6">
-              <div className="w-16 h-16 bg-[#249E98]/10 text-[#249E98] border border-[#249E98]/30 rounded-full flex items-center justify-center text-3xl mx-auto">
+              <div className="w-16 h-16 bg-[#249E98]/10 text-[#0F766E] border border-[#249E98]/30 rounded-full flex items-center justify-center text-3xl mx-auto">
                 ✓
               </div>
               <div>

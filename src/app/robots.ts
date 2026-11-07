@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
         disallow: ['/api/', '/admin/'],
       },
       {
@@ -23,7 +23,8 @@ export default function robots(): MetadataRoute.Robots {
           'Applebot',
           'CCBot',
         ],
-        allow: '/',
+        allow: ['/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/api/', '/admin/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

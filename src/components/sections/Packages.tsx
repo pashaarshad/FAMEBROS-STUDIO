@@ -10,7 +10,7 @@ export default function Packages() {
           
           {/* Left info column */}
           <div>
-            <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#249E98] mb-4">
+            <p className="font-mono-custom text-[10px] tracking-[0.16em] uppercase text-[#0F766E] mb-4">
               OUR SOLUTIONS
             </p>
             <h2 className="font-display font-extrabold text-[#0A0A0A] text-[32px] md:text-[40px] leading-[1.1] mb-5">
@@ -71,7 +71,7 @@ export default function Packages() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <span className="font-mono-custom text-[11px] tracking-widest text-[#249E98] block">01 · BASIC</span>
+                    <span className="font-mono-custom text-[11px] tracking-widest text-[#0F766E] block">01 · BASIC</span>
                     <h3 className="font-display font-extrabold text-[#0A0A0A] text-[22px] mt-1">Social Media Growth</h3>
                   </div>
                 </div>
@@ -87,7 +87,7 @@ export default function Packages() {
                     "Creatives When Needed",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm text-[#55555A]">
-                      <span className="text-[#249E98] mt-0.5">✓</span>
+                      <span className="text-[#0F766E] mt-0.5">✓</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -109,7 +109,7 @@ export default function Packages() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <span className="font-mono-custom text-[11px] tracking-widest text-[#F59A57] block">02 · ELITE</span>
+                    <span className="font-mono-custom text-[11px] tracking-widest text-[#D46213] block">02 · ELITE</span>
                     <h3 className="font-display font-extrabold text-[#0A0A0A] text-[22px] mt-1">Social Media Growth</h3>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export default function Packages() {
                     "Influencer Coordination & Support",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm text-[#55555A]">
-                      <span className="text-[#F59A57] mt-0.5">✓</span>
+                      <span className="text-[#D46213] mt-0.5">✓</span>
                       <span>{item}</span>
                     </li>
                   ))}

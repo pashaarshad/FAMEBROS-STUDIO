@@ -43,7 +43,7 @@ export default function OrganicGrowth() {
           {/* Left Column: Bold Concept Card */}
           <div className="space-y-8">
             <div>
-              <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#F59A57] font-bold mb-5">
+              <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#D46213] font-bold mb-5">
                 {eyebrow}
               </p>
               <h2 className="font-display font-extrabold text-white text-[32px] md:text-[42px] leading-[1.1] mb-6">
@@ -55,7 +55,7 @@ export default function OrganicGrowth() {
             </div>
             
             <div className="bg-[#121215] border border-[#249E98]/20 rounded-2xl p-6 md:p-8 shadow-inner relative overflow-hidden">
-              <p className="font-display font-extrabold text-[#F59A57] text-lg leading-snug">
+              <p className="font-display font-extrabold text-[#D46213] text-lg leading-snug">
                 We don&apos;t just bring you sales today. <br />
                 We build a brand people remember tomorrow.
               </p>
@@ -69,7 +69,7 @@ export default function OrganicGrowth() {
                 key={idx} 
                 className="bg-[#121215] border border-white/5 rounded-xl p-4 flex items-start gap-3.5 hover:border-[#249E98]/25 transition-all duration-300"
               >
-                <span className="w-5 h-5 rounded-full bg-[#249E98]/10 text-[#249E98] border border-[#249E98]/25 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 select-none">
+                <span className="w-5 h-5 rounded-full bg-[#249E98]/10 text-[#0F766E] border border-[#249E98]/25 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 select-none">
                   ✓
                 </span>
                 <span className="text-white/80 text-[13px] md:text-[14px] font-medium leading-tight">

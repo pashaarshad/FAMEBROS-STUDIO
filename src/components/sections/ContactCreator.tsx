@@ -23,7 +23,7 @@ export default function ContactCreator() {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#249E98] font-bold mb-4">
+          <p className="font-mono-custom text-[11px] tracking-[0.25em] uppercase text-[#0F766E] font-bold mb-4">
             GET IN TOUCH
           </p>
           <h2 className="font-display font-extrabold text-[#0A0A0A] text-[34px] md:text-[42px] leading-[1.1] mb-4">
@@ -75,8 +75,9 @@ export default function ContactCreator() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Your Name*</label>
+                    <label htmlFor="creator-name" className="block text-xs text-[#55555A] font-semibold mb-2">Your Name*</label>
                     <input 
+                      id="creator-name"
                       type="text" 
                       placeholder="Full name"
                       value={formData.name}
@@ -87,8 +88,9 @@ export default function ContactCreator() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number*</label>
+                    <label htmlFor="creator-phone" className="block text-xs text-[#55555A] font-semibold mb-2">WhatsApp / Phone Number*</label>
                     <input 
+                      id="creator-phone"
                       type="tel" 
                       placeholder="Phone number"
                       value={formData.phone}
@@ -102,8 +104,9 @@ export default function ContactCreator() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Instagram / Social Media Handle*</label>
+                    <label htmlFor="creator-handle" className="block text-xs text-[#55555A] font-semibold mb-2">Instagram / Social Media Handle*</label>
                     <input 
+                      id="creator-handle"
                       type="text" 
                       placeholder="@username"
                       value={formData.handle}
@@ -114,8 +117,9 @@ export default function ContactCreator() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-[#55555A] font-semibold mb-2">Your Location*</label>
+                    <label htmlFor="creator-location" className="block text-xs text-[#55555A] font-semibold mb-2">Your Location*</label>
                     <input 
+                      id="creator-location"
                       type="text" 
                       placeholder="City / Area"
                       value={formData.location}
@@ -152,7 +156,7 @@ export default function ContactCreator() {
           ) : (
             /* SUCCESS SCREEN */
             <div className="text-center py-10 space-y-6">
-              <div className="w-16 h-16 bg-[#249E98]/10 text-[#249E98] border border-[#249E98]/30 rounded-full flex items-center justify-center text-3xl mx-auto">
+              <div className="w-16 h-16 bg-[#249E98]/10 text-[#0F766E] border border-[#249E98]/30 rounded-full flex items-center justify-center text-3xl mx-auto">
                 ✓
               </div>
               <div>
