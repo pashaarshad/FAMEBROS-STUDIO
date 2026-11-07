@@ -7,30 +7,30 @@ interface CelebrityGalleryProps {
 }
 
 const row1Photos = [
-  "/vedios/Photos with celebrity/1 (1).jpg",
-  "/vedios/Photos with celebrity/1 (2).jpg",
-  "/vedios/Photos with celebrity/1 (3).jpg",
-  "/vedios/Photos with celebrity/1 (4).jpg",
-  "/vedios/Photos with celebrity/1 (5).jpg",
-  "/vedios/Photos with celebrity/1 (6).jpg",
-  "/vedios/Photos with celebrity/1 (7).jpg",
-  "/new-Photos with celebrity/0905.png",
-  "/new-Photos with celebrity/0905(1).png",
-  "/new-Photos with celebrity/0905(2).png",
-  "/new-Photos with celebrity/0905(3).png",
+  "/vedios/Photos with celebrity/1 (1).webp",
+  "/vedios/Photos with celebrity/1 (2).webp",
+  "/vedios/Photos with celebrity/1 (3).webp",
+  "/vedios/Photos with celebrity/1 (4).webp",
+  "/vedios/Photos with celebrity/1 (5).webp",
+  "/vedios/Photos with celebrity/1 (6).webp",
+  "/vedios/Photos with celebrity/1 (7).webp",
+  "/new-Photos with celebrity/0905.webp",
+  "/new-Photos with celebrity/0905(1).webp",
+  "/new-Photos with celebrity/0905(2).webp",
+  "/new-Photos with celebrity/0905(3).webp",
 ];
 
 const row2Photos = [
-  "/vedios/Photos with celebrity/1 (8).jpg",
-  "/vedios/Photos with celebrity/1 (9).jpg",
-  "/vedios/Photos with celebrity/1 (10).jpg",
-  "/vedios/Photos with celebrity/1 (11).jpg",
-  "/vedios/Photos with celebrity/1 (12).jpg",
-  "/vedios/Photos with celebrity/1 (13).jpg",
-  "/vedios/Photos with celebrity/1 (14).jpg",
-  "/new-Photos with celebrity/0905(4).png",
-  "/new-Photos with celebrity/0905(5).png",
-  "/new-Photos with celebrity/0905(7).png",
+  "/vedios/Photos with celebrity/1 (8).webp",
+  "/vedios/Photos with celebrity/1 (9).webp",
+  "/vedios/Photos with celebrity/1 (10).webp",
+  "/vedios/Photos with celebrity/1 (11).webp",
+  "/vedios/Photos with celebrity/1 (12).webp",
+  "/vedios/Photos with celebrity/1 (13).webp",
+  "/vedios/Photos with celebrity/1 (14).webp",
+  "/new-Photos with celebrity/0905(4).webp",
+  "/new-Photos with celebrity/0905(5).webp",
+  "/new-Photos with celebrity/0905(7).webp",
 ];
 
 export default function CelebrityGallery({ isDark = false }: CelebrityGalleryProps) {

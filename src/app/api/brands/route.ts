@@ -32,7 +32,10 @@ export async function GET() {
         order: b.order ?? 0,
       }));
 
-      return NextResponse.json({ success: true, data: allBrands });
+      return NextResponse.json(
+        { success: true, data: allBrands },
+        { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800' } }
+      );
     }
 
     // Fallback if no db connection
@@ -42,7 +45,10 @@ export async function GET() {
       isLocked: false,
       order: i,
     }));
-    return NextResponse.json({ success: true, data: baselines });
+    return NextResponse.json(
+      { success: true, data: baselines },
+      { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800' } }
+    );
   } catch (error) {
     console.error('GET /api/brands error:', error);
     const baselines = BASELINE_BRANDS.map((b, i) => ({

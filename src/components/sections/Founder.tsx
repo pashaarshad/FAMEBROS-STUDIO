@@ -46,7 +46,7 @@ export default function Founder() {
               {/* Left Cutout Photo */}
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
-                  src="/Sultan photos-with-png.png" 
+                  src="/Sultan photos-with-png.webp" 
                   alt={`${founder1Name} - ${founder1Role} of Famebros Studio Social Media Agency Mulund Mumbai`}
                   className="absolute left-0 bottom-0 w-full h-full object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 group-hover:scale-105"
                 />
@@ -57,7 +57,7 @@ export default function Founder() {
                 {/* Signature styled in teal */}
                 <div className="h-8 md:h-10 mb-1.5 relative select-none">
                   <img 
-                    src="/Sultan sign.png" 
+                    src="/Sultan sign.webp" 
                     alt="Sultan Sayed Founder Signature"
                     className="h-full object-contain object-left"
                     style={{ 
@@ -96,7 +96,7 @@ export default function Founder() {
               {/* Left Cutout Photo (Horizontally Flipped to Right, shifted left to hide straight cut edge) */}
               <div className="w-[100px] xs:w-[125px] md:w-[155px] relative flex-shrink-0 select-none pointer-events-none self-stretch">
                 <img 
-                  src="/Bilal Sayed.png" 
+                  src="/Bilal Sayed.webp" 
                   alt={`${founder2Name} - ${founder2Role} of Famebros Studio Social Media Agency Mulund Mumbai`}
                   className="absolute left-[-16px] md:left-[-20px] bottom-0 w-full h-[84%] object-contain object-left-bottom filter brightness-105 z-10 transition-transform duration-500 [transform:scaleX(-1)] group-hover:[transform:scaleX(-1)_scale(1.05)]"
                 />
@@ -107,7 +107,7 @@ export default function Founder() {
                 {/* Signature styled in orange */}
                 <div className="h-8 md:h-10 mb-1.5 relative select-none">
                   <img 
-                    src="/Bilal Sayed-sings.png" 
+                    src="/Bilal Sayed-sings.webp" 
                     alt="Bilal Sayed Signature"
                     className="h-full object-contain object-left"
                     style={{ 

@@ -32,7 +32,7 @@ const businessHeroCards = [
     role: "Influencer Marketing / Celebrity Collaboration",
     growth: "Celebrity Collaboration",
     growthLabel: "Campaign Type",
-    img: "/vedios-hero/1st__poster.jpg",
+    img: "/vedios-hero/1st__poster.webp",
     videoSrc: "/vedios-hero/1st_.mp4",
     color: "text-[#F59A57]"
   },
@@ -43,7 +43,7 @@ const businessHeroCards = [
     role: "Celebrity / Music & Entertainment",
     growth: "Ongoing",
     growthLabel: "Collaboration",
-    img: "/vedios-hero/2nd_poster.jpg",
+    img: "/vedios-hero/2nd_poster.webp",
     videoSrc: "/vedios-hero/2nd.mp4",
     color: "text-[#249E98]"
   },
@@ -54,7 +54,7 @@ const businessHeroCards = [
     role: "Fashion / Abaya Brand",
     growth: "3 Cities",
     growthLabel: "Store Locations",
-    img: "/vedios-hero/3rd_poster.jpg",
+    img: "/vedios-hero/3rd_poster.webp",
     videoSrc: "/vedios-hero/3rd.mp4",
     color: "text-[#F59A57]"
   },
@@ -65,7 +65,7 @@ const businessHeroCards = [
     role: "Celebrity / Influencer Marketing",
     growth: "Celebrity Collaboration",
     growthLabel: "Campaign Type",
-    img: "/vedios-hero/4th_poster.jpg",
+    img: "/vedios-hero/4th_poster.webp",
     videoSrc: "/vedios-hero/4th.mp4",
     color: "text-[#249E98]"
   }
@@ -249,6 +249,7 @@ export default function Hero() {
                     src={card.img}
                     alt={card.name}
                     loading={idx === 0 ? "eager" : "lazy"}
+                    fetchPriority={idx === 0 ? "high" : "low"}
                     decoding="async"
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
                       isPlaying ? "opacity-0 pointer-events-none" : "opacity-100"

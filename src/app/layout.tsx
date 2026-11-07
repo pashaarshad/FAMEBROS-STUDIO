@@ -9,17 +9,20 @@ import JsonLd, { famebrosOrganizationSchema, websiteSchema } from "@/components/
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex",
   weight: ["400", "500", "600"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -107,6 +110,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="preload" as="image" href="/vedios-hero/1st__poster.webp" type="image/webp" fetchPriority="high" />
         <JsonLd data={[famebrosOrganizationSchema, websiteSchema]} />
       </head>
       <body

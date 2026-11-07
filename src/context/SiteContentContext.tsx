@@ -106,15 +106,47 @@ export const SiteContentProvider: React.FC<{ children: React.ReactNode }> = ({ c
       }
     }
 
-    loadData();
-
     // Check if in preview mode via URL query parameter or iframe
+    let isPreview = false;
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('preview') === 'true' || window.self !== window.top) {
         setIsLivePreview(true);
+        isPreview = true;
       }
     }
+
+    const isAdmin = typeof window !== 'undefined' && (
+      window.location.pathname.startsWith('/admin') || isPreview
+    );
+
+    if (isAdmin) {
+      loadData();
+      return;
+    }
+
+    // On public pages, defer CMS API checks so Core Web Vitals (LCP, TBT, CLS) are pristine
+    let idleId: number | null = null;
+    let timerId: NodeJS.Timeout | null = null;
+
+    const runDeferred = () => {
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        idleId = (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => {
+          loadData();
+        });
+      } else {
+        loadData();
+      }
+    };
+
+    timerId = setTimeout(runDeferred, 3500);
+
+    return () => {
+      if (timerId) clearTimeout(timerId);
+      if (idleId && typeof window !== 'undefined' && 'cancelIdleCallback' in window) {
+        (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(idleId);
+      }
+    };
   }, []);
 
   // Listen to postMessage from parent editor window

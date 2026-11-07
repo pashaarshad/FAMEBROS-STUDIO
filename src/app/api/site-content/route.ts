@@ -28,11 +28,15 @@ export async function GET(request: NextRequest) {
       dbMap[row.section][row.key] = row.value;
     }
 
+    const cacheHeaders = {
+      'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800',
+    };
+
     if (section) {
       // Merge defaults + DB overrides for this section
       const defaults = SITE_CONTENT_DEFAULTS[section] || {};
       const merged = { ...defaults, ...(dbMap[section] || {}) };
-      return NextResponse.json({ success: true, section, data: merged });
+      return NextResponse.json({ success: true, section, data: merged }, { headers: cacheHeaders });
     } else {
       // Return all sections merged
       const allSections: Record<string, Record<string, string>> = {};
@@ -43,7 +47,7 @@ export async function GET(request: NextRequest) {
       for (const [sec, keys] of Object.entries(dbMap)) {
         if (!allSections[sec]) allSections[sec] = keys;
       }
-      return NextResponse.json({ success: true, data: allSections });
+      return NextResponse.json({ success: true, data: allSections }, { headers: cacheHeaders });
     }
   } catch (error) {
     console.error('GET /api/site-content error:', error);

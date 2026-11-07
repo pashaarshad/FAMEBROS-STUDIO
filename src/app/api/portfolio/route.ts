@@ -46,7 +46,10 @@ export async function GET() {
         );
       }
 
-      return NextResponse.json({ success: true, data: mongoItems });
+      return NextResponse.json(
+        { success: true, data: mongoItems },
+        { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800' } }
+      );
     }
 
     // Fallback if DB offline
@@ -55,7 +58,10 @@ export async function GET() {
       id: `p_${i}`,
       isLocked: false,
     }));
-    return NextResponse.json({ success: true, data: fallback });
+    return NextResponse.json(
+      { success: true, data: fallback },
+      { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800' } }
+    );
   } catch (error) {
     console.error('GET Portfolio Error:', error);
     const fallback = ALL_CODE_VIDEOS.map((p, i) => ({
